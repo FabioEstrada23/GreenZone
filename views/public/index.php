@@ -6,6 +6,8 @@
     <!-- Espacio para agregar los LINK -->
     <!-- Iconos de Google -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- CSS Bootstrap -->
+    <link rel="stylesheet" type="text/css" href="../../resources/css/bootstrap.min.css">
     <!-- Vista de Compatibilidad -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- Optimizacion en equipos pequeñes -->
@@ -23,5 +25,7 @@
 </head>
 <body>
     
+    <!-- Agregamos SCRIPTS -->
+    <script src="../../resources/js/bootstrap.min.js"></script>
 </body>
 </html>
