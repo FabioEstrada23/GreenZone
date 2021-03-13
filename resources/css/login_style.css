@@ -1,0 +1,102 @@
+body{
+    margin: 0;
+    padding: 0;
+    background: url(../img/fondo_login.jpg) no-repeat center top;
+    background-size: cover;
+    font-family: Arial, Helvetica, sans-serif;
+    height: 100vh;
+}
+
+::placeholder { color: darkgray; }
+
+.login-box{
+    width: 600px;
+    height: 450px;
+    background-color: #0B486B;
+    color: black;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    padding: 70px 30px;
+}
+.right-part{
+    width: 300px;
+    height: 450px;
+    background: #3B8686;
+    color: black;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(0%, -50%);
+    padding: 70px 30px;
+}
+
+.login-box .avatar {
+    position: absolute;
+    top: 10px;
+    left: 0;
+}
+
+.login-box label[for='slogan']{
+    color: white;
+    position: absolute;
+    top: 40%;
+    left: -80%;
+    font-size: 20px;
+}
+
+.login-box label[for='slogan2']{
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: -90%;
+    font-size: 20px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.login-box label{
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+    display: block;
+    color: #0B486B;
+}
+
+.login-box input{
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.login-box input[type='text'],
+.login-box input[type='password']{
+    border: none;
+    border-bottom: 1px solid black;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    color: white;
+    font-size: 16px;
+}
+
+.login-box input[type='submit']{
+    border: none;
+    outline: none;
+    height: 40px;
+    background: #0B486B;
+    color: white;
+    font-size: 16px;
+    border-radius: 20px;
+}
+
+.login-box a{
+    text-decoration: none;
+    font-size: 12px;
+    line-height: 20px;
+    color: #0B486B;
+}
+
+.login-box a:hover{
+    color: white;
+}
+
