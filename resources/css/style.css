@@ -1,11 +1,113 @@
+*{
+    box-sizing: border-box;
+}
+
+a{
+    text-decoration: none;
+}
+
 body{
     background-color: #CFF09E;
 }
 
 #mnSuperior{
     background-color: #3B8686;
+    
 }
 
-nav{
-    margin: auto;
+
+#SearchBar{
+    display: flex;
+    align-items: flex-start;
 }
+
+
+#mnInferior{
+    background-color: #79BD9A;
+}
+
+.menu{
+    background-color: #79BD9A;
+    padding: 5px 0;
+    margin-bottom: 20px;
+}
+
+/* MENU DE BOTONES DE BARRITA Y CERRAR */
+.menu .contenedor-botones-menu{
+    display: none;
+    justify-content: space-between;
+    
+}
+
+/* ESTILOS DE BOTONES DEL MENU */
+.menu .contenedor-botones-menu button{
+    font-size: 20px;
+    color: white;
+    padding: 10px 20px;
+    border: 1px solid transparent;
+    display: inline-block;
+    cursor: pointer;
+    background: none;
+}
+/* ESTILOS DE BOTONES DEL MENU */
+
+.menu .contenedor-botones-menu button:hover{
+    border: 1px solid rgba(255, 255, 255, .4);
+}
+
+.menu .contenedor-botones-menu .btn-menu-cerrar{
+    display: none;
+}
+
+.menu .contenedor-botones-menu .btn-menu-cerrar.activo{
+    display: inline-block;
+}
+
+/* Orientacion del menu */
+
+.menu .contenedor-enlaces-nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.menu .btn-categorias{
+    color: white;
+    padding: 7px;
+    
+    display: flex;
+    border-radius: 3px;
+    align-items: flex-end;
+    border: 1px solid transparent;
+    font-size: 15px;
+    cursor: default;
+}
+
+.menu .btn-categorias i{
+    margin-left: 20px;
+    position: relative;
+    bottom: 16px;
+}
+
+.menu .btn-categorias:hover{
+    border: 1px solid rgba(255, 255, 255, .4)
+}
+
+.menu .btn-categorias span{
+    display: block;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.menu .contenedor-enlaces-nav .enlaces a{
+    color: white;
+    border: 1px solid transparent;
+    padding: 7px;
+    border-radius: 3px;
+    font-size: 17px;
+}
+
+.menu .contenedor-enlaces-nav .enlaces a:hover{
+    border: 1px solid rgba(255, 255, 255, .4);
+}
+

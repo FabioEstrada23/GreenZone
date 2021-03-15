@@ -33,13 +33,23 @@
             <div class="row ">  
                     <nav class="navbar navbar-expand-lg" id="mnSuperior">
                         <!-- Columna Logo -->
-                        <div class="col-12 col-xs-12 col-sm-12 col-lg-2 col-xl-2 col-xxl-2 text-center">
+                        <div class="col-10 col-xs-10 col-sm-11 col-lg-2 col-xl-2 col-xxl-2 text-center">
                             <img src="../../resources/img/logos/lg_head.png" class="img-fluid" alt="">
                         </div>
+                        <div class="col-2 col-xs-2 col-sm-1 d-lg-none text-left" id="mnSuperiorMobile">
+                            <button class="btn btn-primary ">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                                    <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                                  </svg>  
+                            </button>
+                        </div>
+                        
                         <!-- Columna Buscar -->
                         <div class="col-12 col-xs-12 col-sm-12 col-lg-8 col-xl-8 col-xxl-8 text-center">
                             <!-- Divison -->
                             <div class="row">
+                                <!-- Buscar Categoria -->
                                 <div class="col-3">
                                     <select class="form-select" aria-label="Default select example">
                                         <option selected>Categorias</option>
@@ -48,26 +58,128 @@
                                         <option value="3">Adornos</option>
                                     </select>
                                 </div>
-                                <div class="col-7">
+                                <!-- Barra de Busqueda -->
+                                <div class="col-9 text-center" id="SearchBar">
                                     <input type="text" class="form-control" placeholder="Buscar" aria-label="Buscar" aria-describedby="basic-addon1">
-                                </div>
-                                <div class="col-2">
-                                    <button class="btn btn-primary" type="button">Q</button>
+                                    <button class="btn btn-primary" type="button">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                                        </svg>
+                                   </button>
                                 </div>
                             </div>                     
                         </div>
                         <!-- Iniciar Sesion -->
                         <div class="col-12 col-xs-12 col-sm-12 col-lg-2 col-xl-2 col-xxl-2 text-center d-none d-lg-block">
-                            <button class="btn btn-primary" type="button">Ingresar</button>
+                            <button class="btn btn-primary ">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                                    <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                                  </svg>
+                                  Ingresar   
+                            </button>
                         </div>
                     </nav>
             </div>
         </div> 
+        
+        <!-- Menu Inferior FULL CSS -->
+        <div class="container-fluid" id="mnInferior">
+            <!-- navegacion del menu inferior -->
+            <nav class="menu" id="menu">
+                <!-- Menu para desplegables Mobiles-->
+                <div class="container contenedor-botones-menu">
+                    <!-- Barras para Parte Menu Mobile -->
+                    <button id="btn-menu-barras" class="btn-menu-barras">
+                        <i class="fas fa-bars">
+
+                        </i>
+                    </button>                    
+                    <button id="btn-menu-cerrar" class="btn-menu-cerrar">
+                        <i class="fas fa-times">
+
+                        </i>
+                    </button>
+
+                </div>
+
+                
+
+                <!-- Contenedor de los Enlaces -->
+                <div class="container contenedor-enlaces-nav">
+                    <div class="btn-categorias" id="btn-categorias">
+                        <p>Navegar por <span>Categorias</span></p>
+                        <i class="fas fa-caret-down"></i>
+                    </div>
+
+                    <div class="enlaces">
+                        <a href="#">Inicio</a>
+                        <a href="#">Ofertas</a>
+                        <a href="#">Marcas</a>
+                    </div>
+
+                </div>
+
+                <!-- COLAPSABLE -->
+                <div class="container contenedor-grid">
+                    <div class="grid" id="grid">
+                        <div class="categorias">
+                            
+                        </div>
+                        <div class="contenedor-subcategorias"></div>
+                    </div>
+                </div>
+
+            </nav>
+        </div>
+
+
+
+
+
+        <!-- <div class="container-fluid" id="mnInferior">
+            <nav class="navbar navbar-expand-lg navbar-light" id="XD">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col ">
+                            <a class="navbar-brand d-lg-none" href="#">Navegacion</a>
+                            <select class="form-select d-none d-xl-block d-lg-block" aria-label="Default select example">
+                                <option selected>Categorias</option>
+                                <option value="1">Utensilios</option>
+                                <option value="2">Cremas</option>
+                                <option value="3">Adornos</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                      <ul class="navbar-nav">
+                        <li class="nav-item">
+                          <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link active" href="#">Ofertas</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link active" href="#">Marcas</a>
+                        </li>
+                       
+                      </ul>
+                    </div>
+                </div>
+              </nav>
+        </div> -->
+       
     </header>
-
-
+    
+   
 
     <!-- Agregamos SCRIPTS -->
+    <script src="https://kit.fontawesome.com/592eb2e9e3.js" crossorigin="anonymous"></script>
     <script src="../../resources/js/bootstrap.min.js"></script>
+    <script src="../../resources/js/MenuInferior/mnInferior.js"></script>
 </body>
 </html>
