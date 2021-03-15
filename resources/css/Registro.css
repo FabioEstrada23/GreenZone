@@ -1,0 +1,163 @@
+body{
+    margin: 0;
+    padding: 0;
+    background: url(../img/fondo_login.jpg) no-repeat center top;
+    background-size: cover;
+    font-family: Arial, Helvetica, sans-serif;
+    height: 100vh;
+}
+
+::placeholder { color: darkgray; }
+
+.signUp-box{
+    width: 800px;
+    height: 600px;
+    background-color: #0B486B;
+    color: black;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    padding: 70px 30px;
+}
+
+.right-part{
+    width: 400px;
+    height: 600px;
+    background: #3B8686;
+    color: black;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-100%, -50%);
+    padding: 70px 30px;
+}
+
+.signUp-box .avatar {
+    position: absolute;
+    top: 10px;
+    left: 25;
+}
+
+.right-part h1{
+    padding: 0;
+    margin: 0;
+    top: 1%;
+    left: 130%;
+    position: absolute;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.signUp-box label[for='password']{
+    padding: 0;
+    margin: 0;
+    color: white;
+    position: absolute;
+    top: 20%;
+    left: 105%;
+    font-size: 20px;
+    font-weight: bold;
+    display: block
+}
+
+.signUp-box label[for='passwordConfirm']{
+    padding: 0;
+    margin: 0;
+    color: white;
+    position: absolute;
+    top: 35%;
+    left: 105%;
+    font-size: 20px;
+    font-weight: bold;
+    display: block
+}
+
+.signUp-box .password {
+    border: none;
+    border-bottom: 1px solid black;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    color: white;
+    font-size: 16px;
+    position: absolute;
+    width: 90%;
+    top: 25%;
+    left: 105%;
+}
+
+.signUp-box .Confirm {
+    border: none;
+    border-bottom: 1px solid black;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    color: white;
+    font-size: 16px;
+    position: absolute;
+    width: 90%;
+    top: 45%;
+    left: 105%;
+}
+
+
+.signUp-box label{
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+    display: block;
+    color: #0B486B;
+}
+
+.signUp-box input{
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.signUp-box input[type='text']{
+    border: none;
+    border-bottom: 1px solid black;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    color: white;
+    font-size: 16px;
+}
+
+.signUp-box .Siguiente{
+    border: none;
+    outline: none;
+    height: 40px;
+    background: #0B486B;
+    color: white;
+    font-size: 16px;
+    border-radius: 20px;
+}
+
+.signUp-box a{
+    text-decoration: none;
+    font-size: 12px;
+    line-height: 20px;
+    color: #0B486B;
+}
+
+.signUp-box a:hover{
+    color: white;
+}
+
+.signUp-box .SignUp{
+    border: none;
+    outline: none;
+    height: 40px;
+    left: 125%;
+    top: 60%;
+    background: #3B8686;
+    color: white;
+    font-size: 16px;
+    border-radius: 20px;
+    width: 200px;
+    position: absolute;
+}
