@@ -51,9 +51,11 @@
                                     <!-- Categorias -->
                                     <select class="form-select" aria-label="Default select example">
                                         <option selected>Categorias</option>
-                                        <option value="1">Utensilios</option>
-                                        <option value="2">Cremas</option>
-                                        <option value="3">Adornos</option>
+                                        <option value="1">Accesorios</option>
+                                        <option value="2">Bolsas</option>
+                                        <option value="3">Botellas</option>
+                                        <option value="4">Cuidado Personal</option>
+                                        <option value="5">Limpieza</option>
                                     </select>
                                     <!-- Formulario -->
                                     <input type="text" class="form-control" placeholder="Buscar" aria-label="Buscar" aria-describedby="basic-addon1">
@@ -118,13 +120,52 @@
 
                 <!-- COLAPSABLE -->
                 <div class="container contenedor-grid">
-                    <div class="grid" id="grid">
+                    <div class="grid activo" id="grid">
                         <div class="categorias">
-                            
+                            <button class="btn-regresar"><i class="fas fa-arrow-left"></i>  Regresar</button>
+                            <h3 class="subtitulo">Navegacion</h3>
+
+                            <a href="#" data-categoria="accesorios">Accesorios <i class="fas fa-angle-right"></i></a>
+                            <a href="#" data-categoria="bolsas">Bolsas <i class="fas fa-angle-right"></i></a>
+                            <a href="#" data-categoria="botellas">Botellas <i class="fas fa-angle-right"></i></a>
+                            <a href="#" data-categoria="cuidado-personal">Cuidad Personal <i class="fas fa-angle-right"></i></a>
+                            <a href="#" data-categoria="limpieza">Limpieza <i class="fas fa-angle-right"></i></a>
+
+
                         </div>
-                        <div class="contenedor-subcategorias"></div>
+                        <div class="contenedor-subcategorias">
+
+                            <div class="subcategoria" data-categoria="accesorios">
+                                <div class="info-subcategoria">
+                                    <button class="btn-regresar"><i class="fas fa-arrow-left"></i>  Regresar</button>
+                                    <h3 class="subtitulo">Accesorios</h3>
+                                    <p>Los mejores accesorios para tu vida cotidiana con la ventaja de ayudar al ecosistema</p>
+                                </div>
+                                <div class="banner-subcategoria">
+                                    <a href="#"> 
+                                        <img src="https://img.freepik.com/foto-gratis/paquete-cuidado-accesorios-ecologicos-desperdicio_82893-17100.jpg?size=626&ext=jpg" alt="">
+                                    </a>
+                                </div>
+                            </div>
+
+                            
+                            <div class="subcategoria" data-categoria="bolsas">
+                                
+                            </div>
+                            <div class="subcategoria" data-categoria="botellas">
+                                
+                            </div>
+                            <div class="subcategoria" data-categoria="cuidado-personal">
+                                
+                            </div>
+                            <div class="subcategoria" data-categoria="limpieza">
+                                
+                            </div>
+
+                        </div>
                     </div>
                 </div>
+                <!-- Termina Colapsable -->
 
             </nav>
         </div>

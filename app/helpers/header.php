@@ -7,9 +7,9 @@
     <!-- Iconos de Google -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- CSS Bootstrap -->
-    <link rel="stylesheet" type="text/css" href="../../resources/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../resources/css/bootstrap.min.css">
     <!-- Agregamos CSS Style -->
-    <link rel="stylesheet" href="../../resources/css/style.css">
+    <link rel="stylesheet" href="../resources/css/style.css">
     <!-- Vista de Compatibilidad -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- Optimizacion en equipos pequeñes -->
@@ -34,7 +34,7 @@
                     <nav class="navbar navbar-expand-lg" id="mnSuperior">
                         <!-- Columna Logo -->
                         <div class="col-11 col-xs-11 col-sm-11 col-lg-2 col-xl-2 col-xxl-2 text-center">
-                            <img src="../../resources/img/logos/lg_head.png" class="img-fluid" alt="">
+                            <img src="../resources/img/logos/lg_head.png" class="img-fluid" alt="">
                         </div>
                         <div class="col-1 col-xs-1 col-sm-1 d-lg-none text-left" id="mnSuperiorMobile">
                             <button class="btn btn-primary ">
@@ -51,9 +51,11 @@
                                     <!-- Categorias -->
                                     <select class="form-select" aria-label="Default select example">
                                         <option selected>Categorias</option>
-                                        <option value="1">Utensilios</option>
-                                        <option value="2">Cremas</option>
-                                        <option value="3">Adornos</option>
+                                        <option value="1">Accesorios</option>
+                                        <option value="2">Bolsas</option>
+                                        <option value="3">Botellas</option>
+                                        <option value="4">Cuidado Personal</option>
+                                        <option value="5">Limpieza</option>
                                     </select>
                                     <!-- Formulario -->
                                     <input type="text" class="form-control" placeholder="Buscar" aria-label="Buscar" aria-describedby="basic-addon1">
