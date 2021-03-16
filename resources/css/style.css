@@ -15,10 +15,31 @@ body{
     
 }
 
+#mnSuperior .btn{
+    color: black;
+    background-color: lightgreen;
+}
+
+
+.form-select{
+    border-radius: 0;
+    width: 30%;
+}
+
+.form-control{
+    border-radius: 0;
+}
+
+
 
 #SearchBar{
     display: flex;
     align-items: flex-start;
+}
+
+#SearchBar .btn{
+    border-radius: 0;
+    background-color: lightgreen;
 }
 
 
