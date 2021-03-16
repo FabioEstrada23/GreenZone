@@ -10,6 +10,16 @@ body{
     background-color: #CFF09E;
 }
 
+#ptDerechos{
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+#ptFooter{
+    background-color: #0B486B;
+    color: white;
+}
+
+
 #mnSuperior{
     background-color: #3B8686;
     
