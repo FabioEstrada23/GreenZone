@@ -12,14 +12,14 @@ h1{
     position: absolute;
     width: 90%;
     top: 40%;
-    left: 20%;
+    left: 30%;
 }
 
 .signUp-box .nombreTXT{
     border: none;
     outline: none;
     height: 40px;
-    left: 20%;
+    left: 30%;
     top: 45%;
     background: white;
     color: black;
@@ -40,14 +40,14 @@ h1{
     position: absolute;
     width: 90%;
     top: 55%;
-    left: 20%;
+    left: 30%;
 }
 
 .signUp-box .precioTXT{
     border: none;
     outline: none;
     height: 40px;
-    left: 20%;
+    left: 30%;
     top: 60%;
     background: white;
     color: black;
@@ -66,14 +66,14 @@ h1{
     position: absolute;
     width: 90%;
     top: 70%;
-    left: 20%;
+    left: 30%;
 }
 
 .signUp-box .descripcionTXT{
     border: none;
     outline: none;
     height: 40px;
-    left: 20%;
+    left: 30%;
     top: 75%;
     background: white;
     color: black;
@@ -92,14 +92,14 @@ h1{
     position: absolute;
     width: 90%;
     top: 85%;
-    left: 20%;
+    left: 30%;
 }
 
 .signUp-box .cantidadTXT{
     border: none;
     outline: none;
     height: 40px;
-    left: 20%;
+    left: 30%;
     top: 90%;
     background: white;
     color: black;
@@ -108,4 +108,34 @@ h1{
     position: absolute;
 }
 
+.signUp-box label[for='imagen'] {
+    border: none;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    color: black;
+    font-size: 16px;
+    position: absolute;
+    width: 90%;
+    top: 45%;
+    left: 60%;
+}
 
+.signUp-box .ImagenIMG{
+    border: none;
+    outline: none;
+    height: 300px;
+    left: 55%;
+    top: 50%;
+    background: rgb(133, 132, 132);
+    color: black;
+    font-size: 16px;
+    width: 300px;
+    position: absolute;
+}
+
+.signUp-box .Guardar{ 
+    left: 47%;
+    top: 100%;
+    position: absolute;
+}
