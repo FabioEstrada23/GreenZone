@@ -157,7 +157,7 @@ body{
     z-index: 1000;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: 1fr;
-    grid-template-areas: "categorias subcategoria subcategoria "; 
+    grid-template-areas: "categorias subcategoria subcategoria  "; 
 }
 
 .grid.activo{
@@ -203,6 +203,7 @@ body{
     grid-area: categorias;
     padding-top: 10px;
     min-height: 300px;
+    overflow: auto;
 }
 
 .grid .categorias .subtitulo{
@@ -234,15 +235,54 @@ body{
 /* Subcategorias */
 
 .grid .contenedor-subcategorias{
-    grid-area: "subcategoria";
+    grid-area: subcategoria;
+    
 }
 
 
 
 .grid .subcategoria{
-    display: grid;
+    display: none;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr;
     height: 100%;
 }
+
+.grid .subcategoria.activo{
+    display: grid;
+}
+
+.grid .subcategoria img{
+    width: 100%;
+    vertical-align: top;
+    height: 100%;
+    object-fit: cover;
+}
+
+.grid .subcategoria .info-subcategoria{
+    padding-top: 10px;
+    height: 100%;
+    max-height: 300px;
+    overflow: auto;
+}
+
+.grid .subcategoria .info-subcategoria p{
+    color: black;
+    display: block;
+    font-size: 15px;
+    padding: 10px 20px;
+}
+
+.grid .subtitulo{
+    font-size: 18px;
+    font-weight: normal;
+    color: #79BD9A;
+    padding: 10px 20px;
+}
+
+.grid .banner-subcategoria a{
+    display: block;
+    height: 100%;
+}
+
 
