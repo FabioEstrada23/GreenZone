@@ -1,5 +1,6 @@
 </main>
-    <footer class="text-center text-lg-start" id="ptFooter">
+
+    <aside class="text-center text-lg-start" id="ptFooter">
         
         <div class="container p-4  text-center">
           
@@ -45,17 +46,20 @@
           
         </div>
         
-      
+      <footer>
         <!-- Derechos Reservados -->
         <div class="text-center p-3" id="ptDerechos">
-        @2021 Derechos Reservados:
-          <a class="text-white" href="#">Green Zone </a>
-        </div>
-   </footer>
+            @2021 Derechos Reservados:
+              <a class="text-white" href="#">Green Zone </a>
+            </div>
+      </footer>
+        
+    </aside>
 
     <!-- Agregamos SCRIPTS -->
     <script src="https://kit.fontawesome.com/592eb2e9e3.js" crossorigin="anonymous"></script>
-    <script src="../resources/js/bootstrap.min.js"></script>
-    <script src="../resources/js/MenuInferior/mnInferior.js"></script>
+    <script src="../../resources/js/bootstrap.min.js"></script>
+    <script src="../../resources/js/MenuInferior/mnInferior.js"></script>
 </body>
+
 </html>

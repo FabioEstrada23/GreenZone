@@ -7,9 +7,9 @@
     <!-- Iconos de Google -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- CSS Bootstrap -->
-    <link rel="stylesheet" type="text/css" href="../resources/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/bootstrap.min.css">
     <!-- Agregamos CSS Style -->
-    <link rel="stylesheet" href="../resources/css/style.css">
+    <link rel="stylesheet" href="../../resources/css/style.css">
     <!-- Vista de Compatibilidad -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- Optimizacion en equipos pequeñes -->
@@ -34,14 +34,11 @@
                     <nav class="navbar navbar-expand-lg" id="mnSuperior">
                         <!-- Columna Logo -->
                         <div class="col-11 col-xs-11 col-sm-11 col-lg-2 col-xl-2 col-xxl-2 text-center">
-                            <img src="../resources/img/logos/lg_head.png" class="img-fluid" alt="">
+                            <img src="../../resources/img/logos/lg_head.png" class="img-fluid" alt="">
                         </div>
                         <div class="col-1 col-xs-1 col-sm-1 d-lg-none text-left" id="mnSuperiorMobile">
                             <button class="btn btn-primary ">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="Black" class="bi bi-person-circle" viewBox="0 0 16 16">
-                                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-                                    <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
-                                  </svg>  
+                                <i class="far fa-user"></i>
                             </button>
                         </div>
                         
@@ -69,11 +66,7 @@
                         <!-- Iniciar Sesion -->
                         <div class="col-12 col-xs-12 col-sm-12 col-lg-2 col-xl-2 col-xxl-2 text-center d-none d-lg-block">
                             <button class="btn btn-primary ">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="Black" class="bi bi-person-circle" viewBox="0 0 16 16">
-                                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-                                    <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
-                                  </svg> 
-                                  Ingresar   
+                                <i class="far fa-user"></i>   Ingresar   
                             </button>
                         </div>
                     </nav>
@@ -88,14 +81,10 @@
                 <div class="container contenedor-botones-menu">
                     <!-- Barras para Parte Menu Mobile -->
                     <button id="btn-menu-barras" class="btn-menu-barras">
-                        <i class="fas fa-bars">
-
-                        </i>
+                        <i class="fas fa-bars"></i>
                     </button>                    
                     <button id="btn-menu-cerrar" class="btn-menu-cerrar">
-                        <i class="fas fa-times">
-
-                        </i>
+                        <i class="fas fa-times"></i>
                     </button>
 
                 </div>
@@ -110,9 +99,9 @@
                     </div>
 
                     <div class="enlaces">
-                        <a href="#">Inicio</a>
-                        <a href="#">Ofertas</a>
-                        <a href="#"> Marcas</a>
+                        <a href="#"><i class="fas fa-home"></i>  Inicio</a>
+                        <a href="#"><i class="fas fa-percentage"></i>  Ofertas</a>
+                        <a href="#"><i class="fas fa-ticket-alt"></i>  Marcas</a>
                         <a href="#"><i class="fas fa-shopping-cart"></i>  Carrito</a>
                     </div>
 
@@ -122,11 +111,86 @@
                 <div class="container contenedor-grid">
                     <div class="grid" id="grid">
                         <div class="categorias">
-                            
+                            <button class="btn-regresar"><i class="fas fa-arrow-left"></i>  Regresar</button>
+                            <h3 class="subtitulo">Navegacion</h3>
+
+                            <a href="#" data-categoria="accesorios">Accesorios <i class="fas fa-angle-right"></i></a>
+                            <a href="#" data-categoria="bolsas">Bolsas <i class="fas fa-angle-right"></i></a>
+                            <a href="#" data-categoria="botellas">Botellas <i class="fas fa-angle-right"></i></a>
+                            <a href="#" data-categoria="cuidado-personal">Cuidado Personal <i class="fas fa-angle-right"></i></a>
+                            <a href="#" data-categoria="limpieza">Limpieza <i class="fas fa-angle-right"></i></a>
+
+
                         </div>
-                        <div class="contenedor-subcategorias"></div>
+                        <div class="contenedor-subcategorias">
+
+                            <div class="subcategoria activo" data-categoria="accesorios">
+                                <div class="info-subcategoria">
+                                    <button class="btn-regresar"><i class="fas fa-arrow-left"></i>  Regresar</button>
+                                    <a href=""><h3 class="subtitulo">Accesorios</h3></a>
+                                    <a href=""><p>Los mejores accesorios para tu vida cotidiana con la ventaja de ayudar al ecosistema</p></a>
+                                </div>
+                                <div class="banner-subcategoria">
+                                    <a href="#"> 
+                                        <img src="http://1.bp.blogspot.com/-udWJtfuDVe0/T0R1TnigfOI/AAAAAAAAAEA/xuG3kaIgYs4/s1600/IMG_2141.JPG" alt="">
+                                    </a>
+                                </div>
+                            </div>
+
+                            
+                            <div class="subcategoria " data-categoria="bolsas">
+                                <div class="info-subcategoria">
+                                    <button class="btn-regresar"><i class="fas fa-arrow-left"></i>  Regresar</button>
+                                    <a href=""><h3 class="subtitulo">Bolsas</h3></a>
+                                    <a href=""><p>Dejemos de contaminar el medio ambiente, con estas bolsas biodegradables todo sera mejor</p></a>
+                                </div>
+                                <div class="banner-subcategoria">
+                                    <a href="#"> 
+                                        <img src="https://gen-es.org/wp-content/uploads/2020/01/porque-debo-usas-bolsas-ecologicas.jpg" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="subcategoria " data-categoria="botellas">
+                                <div class="info-subcategoria">
+                                    <button class="btn-regresar"><i class="fas fa-arrow-left"></i>  Regresar</button>
+                                    <a href=""><h3 class="subtitulo">Botellas</h3></a>
+                                    <a href=""><p>El plastico va y viene, nuestras botellas se mantienen </p></a>
+                                </div>
+                                <div class="banner-subcategoria">
+                                    <a href="#"> 
+                                        <img src="https://ecoosfera.com/wp-content/imagenes/2018/05/botellas-agua-reutilizables-mas-ecologicas-diferencias-.jpg" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="subcategoria " data-categoria="cuidado-personal">
+                                <div class="info-subcategoria">
+                                    <button class="btn-regresar"><i class="fas fa-arrow-left"></i>  Regresar</button>
+                                    <a href=""><h3 class="subtitulo">Cuidado Personal</h3></a>
+                                    <a href=""><p>Que lo artificial no limite tu bellesa natura, nuestros productos solo reflejan tu "yo" verdadero</p></a>
+                                </div>
+                                <div class="banner-subcategoria">
+                                    <a href="#"> 
+                                        <img src="https://ezoco.org/loliyelamos/wp-content/uploads/sites/406/2020/02/shutterstock_114522214_2000x.jpg" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="subcategoria " data-categoria="limpieza">
+                                <div class="info-subcategoria">
+                                    <button class="btn-regresar"><i class="fas fa-arrow-left"></i>  Regresar</button>
+                                    <a href=""><h3 class="subtitulo">Limpieza</h3></a>
+                                    <a href=""><p>Evita los quimicos dañinos, usa lo que la naturaleza nos dio</p></a>
+                                </div>
+                                <div class="banner-subcategoria">
+                                    <a href="#"> 
+                                        <img src="https://www.zschimmer-schwarz.es/app/uploads/2020/10/productos-de-limpieza-sostenibles-detergentes-ecologicos-certificaciones-sostenibles-1280x720.jpg" alt="">
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
+                <!-- Termina Colapsable -->
 
             </nav>
         </div>
