@@ -8,6 +8,8 @@ include("../../app/helpers/header.php");
             <h1>¿Desea agregar un nuevo producto?</h1>
  </div>
 
+        
+
 <?php
 //Se incluye la plantilla del encabezado para la página web
 include("../../app/helpers/footer.php");
