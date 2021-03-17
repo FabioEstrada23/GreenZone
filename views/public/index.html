@@ -10,6 +10,11 @@
     <link rel="stylesheet" type="text/css" href="../../resources/css/bootstrap.min.css">
     <!-- Agregamos CSS Style -->
     <link rel="stylesheet" href="../../resources/css/style.css">
+
+
+    <!-- Estilo para Cabecera -->
+    <link rel="stylesheet" type="text/css" href="../../resources/css/IndexStyle/indexStyle.css">
+
     <!-- Vista de Compatibilidad -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- Optimizacion en equipos pequeñes -->
@@ -199,8 +204,64 @@
 
     <main>
         
-        <div class="text-center" >
-        <img src="https://i.pinimg.com/originals/6f/7a/c4/6f7ac49c67bc4ed30eb9d80b0da3aba4.jpg" alt="" width="400px" height="700px" >
+        <div class="container">
+            <!-- fila de tu Slider -->
+            <div class="row" id="caberceraSlider">
+                <div class="col-12">
+                    <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                          <div class="carousel-item active" data-bs-interval="10000">
+                            <img src="../../resources/img/slider/slider-1.png" class="d-block w-100" alt="...">
+
+                            <div class="text-center" id="textoFondo">
+                                <h1>Nuevos Ingresos</h1>
+                            </div>
+                            
+                          </div>
+                          <div class="carousel-item" data-bs-interval="2000">
+                            <img src="../../resources/img/slider/slider-2.png" class="d-block w-100" alt="...">
+                          </div>
+                          <div class="carousel-item">
+                              <div class="row">
+                                  <div class="col-4" id="texto-izquierda">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <h1>Nuevas bolsas <br> economicas</h1>
+                                        </div>
+                                        <div class="col-12">
+                                            <h5>Encuentra nuestras nuevas bolsas <br> ecologicas a un mejor precio</h5>
+                                        </div>
+                                        <div class="col-12">
+                                            <br>
+                                            <a href="#"> Visitar</a>
+                                        </div>
+                                        
+                                        
+                                    </div>
+                                    </div>
+                                  <div class="col-12">
+                                    <img src="../../resources/img/slider/slider-3.png" class="d-block w-100" alt="...">
+                                  </div>
+                              </div>
+                          </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval"  data-bs-slide="prev">
+                          
+                          <i class="fas fa-arrow-left" id="elementID"></i>
+                          <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval"  data-bs-slide="next">
+                            <i class="fas fa-arrow-right" id="elementID"></i>
+                          <span class="visually-hidden">Next</span>
+                        </button>
+                      </div>
+                </div>
+            </div>
+            <!-- fila de principales productos -->
+            <div class="row">
+
+            </div>
+            <br>
         </div>
 
 

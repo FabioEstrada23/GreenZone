@@ -1,0 +1,106 @@
+
+#texto-izquierda{
+    position: absolute;
+    z-index: 1000;
+    color: white;
+    left: 30%;
+    top: 45%;
+    transform: translate(-50%, -50%);
+}
+
+
+.carousel a{
+    animation-duration: 1s;
+    animation-name: slidein;
+    text-align: left;
+  }
+  
+  @keyframes slidein {
+    from {
+      margin-left: 100%;
+      width: 300%
+    }
+  
+    to {
+      margin-left: 0%;
+      width: 100%;
+    }
+  }
+
+
+
+
+#caberceraSlider #texto-izquierda a{
+    
+    color: white;
+    border: 1px solid transparent;
+    padding: 7px;
+    border-radius: 3px;
+    font-size: 17px;
+    border: 1px solid rgba(255, 255, 255, .4);
+}
+
+
+ #texto-izquierda h1, h5{
+    animation-duration: 1s;
+    animation-name: slidein;
+    text-align: left;
+  }
+  
+  @keyframes slidein {
+    from {
+      margin-left: 100%;
+      width: 300%
+    }
+  
+    to {
+      margin-left: 0%;
+      width: 100%;
+    }
+  }
+
+
+
+
+#textoFondo h1{
+    padding: 10px;
+    width: 100%;
+    background-color: #0B486B;
+    border-radius: 4px;
+    color: white;
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+#textoFondo h1{
+    animation-duration: 1s;
+    animation-name: slidein;
+  }
+  
+  @keyframes slidein {
+    from {
+      margin-left: 100%;
+      width: 300%
+    }
+  
+    to {
+      margin-left: 0%;
+      width: 100%;
+    }
+  }
+
+
+
+#elementID {
+    color: black;
+    text-shadow: 1px 1px 1px black;
+    font-size: 1em;
+}
+
+@media screen and (min-width: 1000px){
+
+
+}
