@@ -1,14 +1,49 @@
-
+/* posicionar el texxto de la imagen a la izquierda y sobre la imagen */
 #texto-izquierda{
     position: absolute;
-    z-index: 1000;
+    z-index: 500;
     color: white;
     left: 30%;
     top: 45%;
     transform: translate(-50%, -50%);
 }
 
+#textoLine{
+  background-color: #3B8686;
+  color: white;
+  text-transform: uppercase;
+  font-family: "Montserrat";
+}
 
+/* posicionar el texxto de la imagen a la derecha y sobre la imagen */
+
+#texto-derecha{
+  text-align: right;
+  position: absolute;
+  z-index: 500;
+  color: black;
+  left: 70%;
+  top: 45%;
+  transform: translate(-50%, -50%);
+}
+
+/* alilnear texto h5 a la derecha */
+#texto-derecha h5{
+  text-align: right;
+
+}
+
+/* link a a la derecha con color diferente */
+#texto-derecha a{
+  color: black;
+    border: 1px solid transparent;
+    padding: 7px;
+    border-radius: 3px;
+    font-size: 17px;
+    border: 1px solid black;
+}
+
+/* animacion del botones */
 .carousel a{
     animation-duration: 1s;
     animation-name: slidein;
@@ -29,9 +64,8 @@
 
 
 
-
-#caberceraSlider #texto-izquierda a{
-    
+/* estilo de A en carrusel */
+  .carousel a{
     color: white;
     border: 1px solid transparent;
     padding: 7px;
@@ -40,8 +74,8 @@
     border: 1px solid rgba(255, 255, 255, .4);
 }
 
-
- #texto-izquierda h1, h5{
+/* animacion de los h1 y h5 */
+  .carousel .carousel-inner .carousel-item h1 h5{
     animation-duration: 1s;
     animation-name: slidein;
     text-align: left;
@@ -59,23 +93,40 @@
     }
   }
 
+  /* animacinon de h5 individual en parte especifica */
+
+  .carousel .carousel-inner .carousel-item h5{
+    animation-duration: 1s;
+    animation-name: slidein;
+    text-align: left;
+  }
+  
+  @keyframes slidein {
+    from {
+      margin-left: 100%;
+      width: 300%
+    }
+  
+    to {
+      margin-left: 0%;
+      width: 100%;
+    }
+  }
+
+  /* tamaño de las imagenes  */
 
 
-
-#textoFondo h1{
-    padding: 10px;
-    width: 100%;
-    background-color: #0B486B;
-    border-radius: 4px;
-    color: white;
-    position: absolute;
-    top: 5%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+.carousel img{
+  height: 400px;
+  object-fit: cover;
 }
 
+/* estilo del fono del texto */
 
-#textoFondo h1{
+
+/*  animacion individual h1 */
+
+  .carousel .carousel-item h1{
     animation-duration: 1s;
     animation-name: slidein;
   }
@@ -93,6 +144,8 @@
   }
 
 
+  /* cambio de color de iconos de slider */
+
 
 #elementID {
     color: black;
@@ -100,7 +153,123 @@
     font-size: 1em;
 }
 
-@media screen and (min-width: 1000px){
 
+/* EMPEZAMOS EL PRIMER SLIDER DE PRODUCTOS XD */
 
+/* contenedor de slider */
+.box{
+  width: 300px;
+  
+  border-radius: 10px;
+  overflow: hidden;
+  margin-left: 15px;
+}
+
+/* propuedad de las imagenes */
+.slider-img{
+  height: 250px;
+  position: relative;
+
+}
+
+.slider-img img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  box-sizing: border-box;
+
+}
+
+/* caja detalle */
+
+.detail-box{
+  background-color: #D6D6D6;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  
+}
+
+/* caja tipo y sus componentes */
+
+.type{
+  display: flex;
+  flex-direction: column;
+
+}
+
+.type a{
+  color: #222222;
+  margin: 5px, 0px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  padding-right: 8px;
+}
+
+.type span{
+  color: rgba(26,26,26, 0.5);
+}
+
+/* estilo de precio */
+
+.price{
+  color: #333333;
+  font-weight: 600;
+  letter-spacing: 00.5px;
+  font-size: 1.1rem;
+
+}
+
+/* overlay de "card" */
+.overlay{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  width: 100%;
+  height: 100%;
+  background-color: rgba(121,189,154, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* estilo btn comprar */
+
+.buy-btn{
+  width: 160px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+  color: #252525;
+  font-weight: 700;
+  letter-spacing: 1px;
+  border-radius: 20px;
+  box-shadow: 2px 2px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* cuando se ponga dentro del boton cambie color */
+
+.buy-btn:hover{
+  color: #ffffff;
+  background-color: #A8DBA8;
+}
+
+.overlay{
+  visibility: hidden;
+}
+.slider-img:hover .overlay{
+  visibility: visible;
+}
+
+@keyframes fade{
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 100%;
+  }
 }

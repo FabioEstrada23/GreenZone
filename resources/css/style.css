@@ -1,19 +1,27 @@
 *{
     box-sizing: border-box;
+    
 }
+
+/* Quitamos decoracion de A */
 
 a{
     text-decoration: none;
 }
 
+/* ponemos color a body */
+
 body{
-    background-color: #CFF09E;
+    background-color: white;
 }
+
+/* Ponemos estilo al footer */
 
 #ptDerechos{
     background-color: rgba(0, 0, 0, 0.2);
 }
 
+/* estilos del footer principal */
 #ptFooter{
     background-color: #0B486B;
     color: white;
@@ -26,8 +34,9 @@ body{
 }
 
 #mnSuperior .btn{
-    color: black;
-    background-color: lightgreen;
+    color: white;
+    background-color: transparent;
+    border: 0px;
 }
 
 
@@ -50,6 +59,7 @@ body{
 #SearchBar .btn{
     border-radius: 0;
     background-color: lightgreen;
+    height: 37.5px;
 }
 
 
