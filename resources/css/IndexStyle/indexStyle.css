@@ -1,18 +1,31 @@
 /* posicionar el texxto de la imagen a la izquierda y sobre la imagen */
-#texto-izquierda{
+#texto-medio{
+    text-align: center;
+    font-size: 17px;
     position: absolute;
     z-index: 500;
     color: white;
-    left: 30%;
+    left: 50%;
     top: 45%;
     transform: translate(-50%, -50%);
 }
 
+#texto-izquierda{
+  position: absolute;
+  z-index: 500;
+  color: white;
+  left: 30%;
+  top: 45%;
+  transform: translate(-50%, -50%);
+}
+
+
 #textoLine{
-  background-color: #3B8686;
+  background-image: url(../../img/banners/banner-2.png);
   color: white;
   text-transform: uppercase;
   font-family: "Montserrat";
+  text-shadow: 3px 3px gray;
 }
 
 /* posicionar el texxto de la imagen a la derecha y sobre la imagen */
@@ -21,7 +34,7 @@
   text-align: right;
   position: absolute;
   z-index: 500;
-  color: black;
+  color: white;
   left: 70%;
   top: 45%;
   transform: translate(-50%, -50%);
@@ -35,12 +48,12 @@
 
 /* link a a la derecha con color diferente */
 #texto-derecha a{
-  color: black;
+  color: white;
     border: 1px solid transparent;
     padding: 7px;
     border-radius: 3px;
     font-size: 17px;
-    border: 1px solid black;
+    border: 1px solid white;
 }
 
 /* animacion del botones */
