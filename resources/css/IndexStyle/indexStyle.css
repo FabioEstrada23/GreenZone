@@ -97,6 +97,19 @@
     }
   }
 
+  #fondoOferta a{
+      color: white;
+      border: 1px solid transparent;
+      padding: 7px;
+      border-radius: 3px;
+      font-size: 17px;
+      border: 1px solid rgba(255, 255, 255, .4);
+
+  }
+
+  #TextoOferta{
+    padding: 40px;
+  }
 
 
 /* estilo de A en carrusel */
@@ -231,7 +244,7 @@
 
 #fondoOferta{
   color: white;
-  padding: 40px;
+  padding: 20px;
   background-color: #79bd9a;
   
 }
