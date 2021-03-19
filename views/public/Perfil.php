@@ -12,7 +12,7 @@ include("../../app/helpers/header.php");
     <!-- Iconos de Google -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- CSS Bootstrap -->
-    <link rel="stylesheet" type="text/css" href="../../resources/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/bootstrap/bootstrap.min.css">
     <!-- Agregamos CSS Style -->
     <link rel="stylesheet" href="../../resources/css/Perfil_style.css">
     <!-- Vista de Compatibilidad -->
@@ -35,11 +35,13 @@ include("../../app/helpers/header.php");
     <div class="user-profile-header">
         <div class="user-profile-corver-page">
             <div class="user-profile-avatar">
+                <!-- Imagen de perfil-->
                 <img src="../../resources/img/icon_user.png" alt="img-avatar">
                 <button type="button" class="button-avatar">
                         <i class="far fa-image"></i>
                 </button>
             </div>
+            <!-- Boton cambiar fondo-->
             <button type="button" class="button-cover-page">
                     <i class="far fa-image"></i> Cambiar fondo
             </button>
@@ -47,10 +49,12 @@ include("../../app/helpers/header.php");
     </div>
     <div class="user-profile-body">
             <div class="user-profile-bio">
+                <!-- Biografia -->
                 <h3 class="title">Fabio Lehilud Estrada Zuniga</h3>
                 <p class="text">Ingeniero en sistemas y amante de los juegos de disparos. Le encantan las mujeres</p>
             </div>
             <div class="user-profile-footer">
+                <!-- Datos del usuario -->
                 <ul class="data-list">
                     <li><i class="icono fas fa-user"></i> Nombre de usuario: FabioEstrada</li>
                     <li><i class="icono fas fa-at"></i> Correo electrónico: FabioEstrada@gmail.com</li>
@@ -60,7 +64,7 @@ include("../../app/helpers/header.php");
                     <li><i class="icono fas fa-map-marker-alt"></i> Ubicacion: San Salvador, mejicanos</li>
                     <li><i class="icono fas fa-phone-alt"></i> Teléfono: 2257-7777</li>
                 </ul>
-                
+                <!-- Boton guardar -->
                 <button type="button" class="button-cover-page">
                     <i class="far fa-edit"></i> Editar
                 </button>

@@ -12,7 +12,7 @@ include("../../app/helpers/header.php");
     <!-- Iconos de Google -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- CSS Bootstrap -->
-    <link rel="stylesheet" type="text/css" href="../../resources/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/bootstrap/bootstrap.min.css">
     <!-- Agregamos CSS Style -->
     <link rel="stylesheet" href="../../resources/css/marca_style.css">
     <!-- Vista de Compatibilidad -->
@@ -40,14 +40,17 @@ include("../../app/helpers/header.php");
             
             <input type="text" class="form-control" placeholder="Ingresa el nombre de la marca" aria-label="Ingresa el nombre de la marca" aria-describedby="basic-addon1">
             <div class='fondo'>
+                <!-- Boton guardar-->
                 <button type="button" class="btn btn-light">
                     <i class="far fa-save"></i> Guardar
                 </button>
+                <!-- Boton actualizar-->
                 <button type="button" class="btn btn-light">
                     <i class="far fa-edit"></i> Actualizar
                 </button>
             </div>
             <br>
+            <!-- Tabla marca-->
    <table class="table table-dark table-striped">
     <thead>
         <tr>
