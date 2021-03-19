@@ -8,11 +8,13 @@
     <!-- Iconos de Google -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- CSS Bootstrap -->
-    <link rel="stylesheet" type="text/css" href="../../resources/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/bootstrap/bootstrap.min.css">
     <!-- Agregamos CSS Style -->
     <link rel="stylesheet" type="text/css" href="../../resources/css/style.css">
      <!-- CarritoCSS -->
      <link rel="stylesheet" href="../../resources/css/carrito/carrito.css">
+    <!-- Producto ADD -->
+    <link rel="stylesheet" href="../../resources/css/productoAdd/productoAdd.css">
      <!-- SliderCSS -->
     <link rel="stylesheet" type="text/css" href="../../resources/css/IndexStyle/lightslider.css">
     <!-- gracias CSS -->
