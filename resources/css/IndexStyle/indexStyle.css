@@ -10,6 +10,7 @@
     transform: translate(-50%, -50%);
 }
 
+
 #texto-izquierda{
   position: absolute;
   z-index: 500;
@@ -57,6 +58,27 @@
 }
 
 /* animacion del botones */
+
+
+#texto-medio h6{
+  animation-duration: 1s;
+  animation-name: slidein;
+  text-align: center;
+}
+
+@keyframes slidein {
+  from {
+    margin-left: 100%;
+    width: 300%
+  }
+
+  to {
+    margin-left: 0%;
+    width: 100%;
+  }
+}
+
+
 .carousel a{
     animation-duration: 1s;
     animation-name: slidein;
@@ -204,6 +226,20 @@
   padding: 10px 20px;
   
 }
+
+/* Configuracion Fondo Oferta */
+
+#fondoOferta{
+  color: white;
+  padding: 40px;
+  background-color: #79bd9a;
+  
+}
+
+#fondoOferta p{
+  font-size: 17px;
+}
+
 
 /* caja tipo y sus componentes */
 
