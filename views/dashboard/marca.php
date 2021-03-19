@@ -34,15 +34,21 @@ include("../../app/helpers/header.php");
 <section class="section">
     <div class="brand">
             <!-- Ingreso de nombre marca -->
-            <label for="name-brand">Nombre de marca:</label>
+            <div class='n1'>
+                <h1><label for="name-brand">Nombre de marca:</label></h1>
+            </div>
+            
             <input type="text" class="form-control" placeholder="Ingresa el nombre de la marca" aria-label="Ingresa el nombre de la marca" aria-describedby="basic-addon1">
-            <div>
-                <button type="button" class="button-cover-page">
+            <div class='fondo'>
+                <button type="button" class="btn btn-light">
                     <i class="far fa-save"></i> Guardar
+                </button>
+                <button type="button" class="btn btn-light">
+                    <i class="far fa-edit"></i> Actualizar
                 </button>
             </div>
             <br>
-   <table class="table table-light table-hover">
+   <table class="table table-dark table-striped">
     <thead>
         <tr>
         <th scope="col">#</th>
@@ -50,15 +56,15 @@ include("../../app/helpers/header.php");
         </tr>
     </thead>
     <tbody>
-        <tr>
+        <tr class='table-light'>
         <th scope="row">1</th>
         <td>HealthyPC</td>
         </tr>
-        <tr>
+        <tr class='table-light'>
         <th scope="row">2</th>
         <td>DR Green</td>
         </tr>
-        <tr>
+        <tr class='table-light'>
         <th scope="row">3</th>
         <td colspan="2">DrassanVI</td>
         </tr>

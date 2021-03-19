@@ -52,15 +52,21 @@ include("../../app/helpers/header.php");
             </div>
             <div class="user-profile-footer">
                 <ul class="data-list">
-                    <li><i class="icono fas fa-user"></i> Nombre de usuario:</li>
-                    <li><i class="icono fas fa-at"></i> Correo electrónico:</li>
-                    <li><i class="icono fas fa-calendar-alt"></i> Fecha nacimiento:</li>
+                    <li><i class="icono fas fa-user"></i> Nombre de usuario: FabioEstrada</li>
+                    <li><i class="icono fas fa-at"></i> Correo electrónico: FabioEstrada@gmail.com</li>
+                    <li><i class="icono fas fa-calendar-alt"></i> Fecha nacimiento: 02-03-2003</li>
                 </ul>
                 <ul class="data-list">
-                    <li><i class="icono fas fa-map-marker-alt"></i> Ubicacion:</li>
-                    <li><i class="icono fas fa-phone-alt"></i> Teléfono:</li>
+                    <li><i class="icono fas fa-map-marker-alt"></i> Ubicacion: San Salvador, mejicanos</li>
+                    <li><i class="icono fas fa-phone-alt"></i> Teléfono: 2257-7777</li>
                 </ul>
+                
+                <button type="button" class="button-cover-page">
+                    <i class="far fa-edit"></i> Editar
+                </button>
+
             </div>
+
             <div class="social-media">
                 <a href="" class="boton-redes facebook fab fa-facebook-f"><i class="icon-facebook"></i></a>
                 <a href="" class="boton-redes twitter fab fa-twitter"><i class="icon-twitter"></i></a>

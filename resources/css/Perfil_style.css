@@ -39,6 +39,22 @@
     margin-right: 1rem;
 }
 
+.user-profile-section .user-profile-footer .button-cover-page {
+    position: absolute; 
+    top: 1rem;
+    right: 1rem;
+    border: 0;
+    border-radius: 8px;
+    padding: 12px 25px;
+    background-color: rgba(0, 0, 0, .5);
+    color: #fff;
+    cursor: pointer;
+}
+
+.user-profile-section .user-profile-footer .button-cover-page i {
+    margin-right: 1rem;
+}
+
 .user-profile-section .user-profile-avatar {
     display: flex;
     width: 180px;
