@@ -2,7 +2,8 @@ h1{
     text-align: center;
 }
 
-.signUp-box label[for='nombre'] {
+
+label[for='nombre'] {
     border: none;
     background: transparent;
     outline: none;
@@ -15,8 +16,8 @@ h1{
     left: 30%;
 }
 
-.signUp-box .nombreTXT{
-    border: none;
+.nombreTXT{
+    border-color: black;
     outline: none;
     height: 40px;
     left: 30%;
@@ -30,7 +31,7 @@ h1{
 
 
 
-.signUp-box label[for='precio'] {
+label[for='precio'] {
     border: none;
     background: transparent;
     outline: none;
@@ -43,8 +44,8 @@ h1{
     left: 30%;
 }
 
-.signUp-box .precioTXT{
-    border: none;
+.precioTXT{
+    border-color: black;
     outline: none;
     height: 40px;
     left: 30%;
@@ -56,7 +57,7 @@ h1{
     position: absolute;
 }
 
-.signUp-box label[for='Descripcion'] {
+label[for='Descripcion'] {
     border: none;
     background: transparent;
     outline: none;
@@ -69,8 +70,8 @@ h1{
     left: 30%;
 }
 
-.signUp-box .descripcionTXT{
-    border: none;
+.descripcionTXT{
+    border-color: black;
     outline: none;
     height: 40px;
     left: 30%;
@@ -82,7 +83,7 @@ h1{
     position: absolute;
 }
 
-.signUp-box label[for='cantidad'] {
+label[for='cantidad'] {
     border: none;
     background: transparent;
     outline: none;
@@ -95,8 +96,8 @@ h1{
     left: 30%;
 }
 
-.signUp-box .cantidadTXT{
-    border: none;
+.cantidadTXT{
+    border-color: black;
     outline: none;
     height: 40px;
     left: 30%;
@@ -108,7 +109,7 @@ h1{
     position: absolute;
 }
 
-.signUp-box label[for='imagen'] {
+label[for='imagen'] {
     border: none;
     background: transparent;
     outline: none;
@@ -121,7 +122,7 @@ h1{
     left: 60%;
 }
 
-.signUp-box .ImagenIMG{
+.ImagenIMG{
     border: none;
     outline: none;
     height: 300px;
@@ -134,7 +135,7 @@ h1{
     position: absolute;
 }
 
-.signUp-box .Guardar{ 
+.Guardar{ 
     left: 47%;
     top: 100%;
     position: absolute;
@@ -161,4 +162,10 @@ thead{
     background-color: lightblue;
     border-bottom: solid 5px #0f362f;
     color: white;
+}
+
+.fondo{
+    color: white;
+    background-color: #3B8686;
+    border-radius: 10px;
 }

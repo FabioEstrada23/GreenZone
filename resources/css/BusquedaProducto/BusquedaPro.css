@@ -7,7 +7,13 @@ h2{
     left: 50%;
 }
 
-.signUp-box label[for='nombre'] {
+h3{
+    left: 40%;
+    color: black;
+
+}
+
+label[for='Rango_pre'] {
     border: none;
     background: transparent;
     outline: none;
@@ -16,77 +22,84 @@ h2{
     font-size: 16px;
     position: absolute;
     width: 90%;
-    top: 40%;
-    left: 30%;
+    top: 32%;
+    left: 2%;
 }
 
-.signUp-box .nombreTXT{
-    border: none;
-    outline: none;
+.Rango1{
+    border-color: black;
+    outline: black;
     height: 40px;
-    left: 30%;
-    top: 45%;
+    left: 1%;
+    top: 37%;
     background: white;
     color: black;
     font-size: 16px;
-    width: 300px;
+    width: 50px;
     position: absolute;
 }
 
-
-
-.signUp-box label[for='precio'] {
-    border: none;
-    background: transparent;
-    outline: none;
+.Rango2{
+    border-color: black;
+    outline: black;
     height: 40px;
-    color: black;
-    font-size: 16px;
-    position: absolute;
-    width: 90%;
-    top: 55%;
-    left: 30%;
-}
-
-.signUp-box .precioTXT{
-    border: none;
-    outline: none;
-    height: 40px;
-    left: 30%;
-    top: 60%;
+    left: 9%;
+    top: 37%;
     background: white;
     color: black;
     font-size: 16px;
-    width: 300px;
+    width: 50px;
     position: absolute;
 }
 
-label[for='Descripcion'] {
+label[for='ofertas'] {
     border: none;
     background: transparent;
     outline: none;
     height: 40px;
     color: black;
-    font-size: 30px;
+    font-size: 16px;
     position: absolute;
     width: 90%;
-    top: 35%;
-    left: 50%;
+    top: 48%;
+    left: 4%;
+}
+
+.Si{
+    border-color: black;
+    outline: none;
+    left: 6%;
+    top: 54%;
+    background: white;
+    color: black;
+    position: absolute;
+}
+
+label[for='marca'] {
+    border: none;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    color: black;
+    font-size: 16;
+    position: absolute;
+    width: 90%;
+    top: 61%;
+    left: 4.5%;
     font-style: italic;
 }
 
-.descripcionTXT{
-    border: black;
-    outline: none;
-    height: 40px;
-    left: 50%;
-    top: 43%;
+.selectmarca{
+    border-color:black;
+    left: 2.5%;
+    top:66% ;
     background: white;
-    color: black;
-    font-size: 16px;
-    width: 400px;
     position: absolute;
+    outline: none;
+    width: 100px;
 }
+
+
 
 label[for='Precio_Num'] {
     border: none;
@@ -116,6 +129,12 @@ label[for='cantidad'] {
     font-style: italic;
 }
 
+img .IMG1{
+    position:relative;
+    left: 41% ;
+    top: 40%;
+}
+
 .CantidadTXT{
     border-color: black;
     outline: none;
@@ -142,31 +161,35 @@ label[for='cantidad'] {
 
 
 
-label[for='Comentario'] {
+label[for='Coincidencias'] {
     border: none;
     background: transparent;
     outline: none;
     height: 60px;
     color: black;
-    font-size: 16px;
+    font-size: 25px;
+    font-style: italic;
     position: absolute;
     width: 60%;
-    top: 45%;
-    left: 60%;
+    top: 25%;
+    left: 25%;
 }
 
-.signUp-box .ImagenIMG{
-    border: none;
+.TEXTBOX{
+    border-color: black;
     outline: none;
-    height: 300px;
-    left: 55%;
-    top: 50%;
-    background: rgb(133, 132, 132);
+    height: 40px;
+    top: 25%;
+    left: 41%;
+    background: white;
     color: black;
     font-size: 16px;
-    width: 300px;
+    width: 100px;
     position: absolute;
 }
+
+
+
 
 .Guardar{ 
     left: 69%;
@@ -177,7 +200,7 @@ label[for='Comentario'] {
 
 .GuardarComentario{ 
     left: 42%;
-    top: 132%;
+    top: 125%;
     position: absolute;
     background-color: rgb(186, 236, 86);
 }
@@ -246,4 +269,20 @@ button:nth-child(4):hover ~ button {
 button:nth-child(5):hover ~ button {
     color: var(--color-hover);
     transform: rotate(360deg);
+}
+
+.sidebar{
+    
+    left: 0;
+    width: 200px;
+    height: 100%;
+    background: #a8dba8;
+    min-height: 100vh;
+}
+
+.col-3
+{
+   flex-basis: 30px;
+   min-width: 250px;
+   margin-bottom: 30px;
 }
