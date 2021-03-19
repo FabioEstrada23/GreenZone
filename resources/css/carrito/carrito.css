@@ -1,0 +1,80 @@
+
+/* config de botones superiores */
+#regresar .bkl{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    
+}
+
+#regresar .bkl2{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+      
+}
+
+#regresar .bkl i{
+    margin-right: 10px;
+    position: relative;
+    bottom: 3px;
+}
+
+#regresar .bkl2 i{
+    margin-left: 10px;
+    position: relative;
+    bottom: 3px;
+}
+
+#regresar a{
+    text-decoration: none;
+    color: black;
+}
+/* termina config de botones superiores */
+
+
+/* fondo de cols */
+
+.fondo{
+    color: white;
+    background-color: #3B8686;
+    border-radius: 10px;
+}
+
+.fondo h1{
+    font-family: "Montserrat";
+    padding: 10px;
+}
+
+/* formato imagenes en tablas */
+
+.table img{
+    max-width: 100px;
+}
+.table a{
+    color: red;
+}
+
+/* Formatos en fondos */
+.fondoHijo{
+    color: white;
+    border-radius: 10px;
+    background-color: #79BD9A;
+    padding: 20px;
+}
+
+.fondoHijo2{
+    color: white;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: #0B486B;
+    
+
+}
+
+.fondoHijo2 .btn{
+    width: 100%;
+    color: white;
+    background-color: transparent;
+}
+
