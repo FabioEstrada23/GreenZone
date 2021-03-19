@@ -64,19 +64,22 @@ include("../../app/helpers/header.php");
                     <li><i class="icono fas fa-map-marker-alt"></i> Ubicacion: San Salvador, mejicanos</li>
                     <li><i class="icono fas fa-phone-alt"></i> Teléfono: 2257-7777</li>
                 </ul>
-                <!-- Boton guardar -->
-                <button type="button" class="button-cover-page">
-                    <i class="far fa-edit"></i> Editar
-                </button>
-
+               <div class="editar">
+                    <!-- Boton guardar -->
+                    <button type="button" class="button-edit">
+                        <i class="far fa-edit"></i> Editar
+                    </button>
+                </div>
             </div>
 
+            
+                
             <div class="social-media">
                 <a href="" class="boton-redes facebook fab fa-facebook-f"><i class="icon-facebook"></i></a>
                 <a href="" class="boton-redes twitter fab fa-twitter"><i class="icon-twitter"></i></a>
                 <a href="" class="boton-redes instagram fab fa-instagram"><i class="icon-instagram"></i></a>
             </div>
-        </div>
+        </div>  
 </section>
 
 
