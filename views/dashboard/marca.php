@@ -40,6 +40,9 @@ include("../../app/helpers/header.php");
                 <button type="button" class="button-cover-page">
                     <i class="far fa-save"></i> Guardar
                 </button>
+                <button type="button" class="button-cover-page">
+                    <i class="far fa-edit"></i> Actualizar
+                </button>
             </div>
             <br>
    <table class="table table-light table-hover">
