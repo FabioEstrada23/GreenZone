@@ -11,6 +11,9 @@
     <link rel="stylesheet" type="text/css" href="../../resources/css/bootstrap.min.css">
     <!-- Agregamos CSS Style -->
     <link rel="stylesheet" type="text/css" href="../../resources/css/style.css">
+     <!-- CarritoCSS -->
+     <link rel="stylesheet" href="../../resources/css/carrito/carrito.css">
+     <!-- SliderCSS -->
     <link rel="stylesheet" type="text/css" href="../../resources/css/IndexStyle/lightslider.css">
 
     <!-- Estilo para Cabecera -->
