@@ -40,27 +40,35 @@
             <!-- Ingresar correo electronico -->
             <label for="correo">Correo</label>
             <input type="text" placeholder="Ingresa tu correo electrónico">
-
+            <!-- Ingresar fecha de nacimiento-->
             <label for="start">Fecha de nacimiento:</label>    
             <input type="date" id="start" name="trip-start"
                     value="2021-03-15"
                     min="2021-01-01" max="2021-12-31">
             <input class='Siguiente' type="submit" value="Siguiente">
-            <center><a href="login.html">¿Ya tienes cuenta? </a><br></center>                   
+            <div class="text-center">
+                <a href="login.html">¿Ya tienes cuenta? </a><br>  
+            </div>
+                          
             </form>
         </div>
         <div class='right-part col-lg-11 d-flex flex-column max-vh-100'>
             <form>
                 <img src="../../resources/img/logos/lg_head.png" class="avatar" alt="Avatar Image">
-                <center><h1>Llenado de contraseña</h1></center>
+                <div>
+                    <h1>Llenado de contraseña</h1>
+                </div>
+                
                 <!-- Ingresar contraseña -->
                 <label for="password">Contraseña</label>
                 <input class='password'type="password" placeholder="Ingresa tu contraseña">
                 <!-- Ingresar contraseña -->
                 <label for="passwordConfirm">Confirmar Contraseña</label>
                 <input class='Confirm' type="password" placeholder="Ingresa nuevamente tu contraseña">
+                <div class="text-center">
+                    <input class='SignUp' type="submit" value="Registrar"></form>
+                </div>
                 
-                <center><input class='SignUp' type="submit" value="Registrar"></center></form>
             </form> 
         </div>
     </div>

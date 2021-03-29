@@ -39,8 +39,7 @@
     margin-right: 1rem;
 }
 
-.user-profile-section .user-profile-footer .button-cover-page {
-    position: absolute; 
+.user-profile-section .user-profile-footer .editar .button-edit {
     top: 1rem;
     right: 1rem;
     border: 0;
@@ -51,7 +50,7 @@
     cursor: pointer;
 }
 
-.user-profile-section .user-profile-footer .button-cover-page i {
+.user-profile-section .user-profile-footer .editar .button-edit i {
     margin-right: 1rem;
 }
 
@@ -110,6 +109,7 @@
 
 .user-profile-section .user-profile-footer,
 .user-profile-section .user-profile-bio {
+    justify-content: center;
     display: flex;
     flex-wrap: wrap;
     padding: 1.5rem 2rem;
@@ -183,7 +183,7 @@
     .user-profile-section .data-list {
         width: 100%;
     }
-
+    
     .user-profile-section .user-profile-corver-page,
     .user-profile-section .user-profile-body {
         width: 95%;
