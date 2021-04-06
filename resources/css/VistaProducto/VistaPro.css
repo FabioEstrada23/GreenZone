@@ -111,8 +111,6 @@ label[for='cantidad'] {
     font-size: 18px;
     position: absolute;
     width: 90%;
-    top: 53%;
-    left: 50%;
     font-style: italic;
 }
 
@@ -120,8 +118,6 @@ label[for='cantidad'] {
     border-color: black;
     outline: none;
     height: 40px;
-    top: 52%;
-    left: 56%;
     background: white;
     color: black;
     font-size: 16px;
@@ -247,3 +243,10 @@ button:nth-child(5):hover ~ button {
     color: var(--color-hover);
     transform: rotate(360deg);
 }
+
+#textoDesign{
+    background-color: #3B8686;
+    color: white;
+    text-transform: uppercase;
+    font-family: "Montserrat";
+  }
