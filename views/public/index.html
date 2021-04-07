@@ -16,15 +16,12 @@
     <!-- Producto ADD -->
     <link rel="stylesheet" href="../../resources/css/productoAdd/productoAdd.css">
      <!-- SliderCSS -->
-    <link rel="stylesheet" type="text/css" href="../../resources/css/IndexStyle/lightslider.css">
     <!-- gracias CSS -->
     <link rel="stylesheet" href="../../resources/css/gracias/gracias.css">
     <!-- proveedores css -->
     <link rel="stylesheet" type="text/css" href="../../resources/css/Proveedores/proveedores.css">
     <!-- Estilo para Cabecera -->
     <link rel="stylesheet" type="text/css" href="../../resources/css/IndexStyle/indexStyle.css">
-    <!-- JQUERY -->
-    <script src="../../resources/js/IndexSlider/Jquery.js"></script>
     <!-- Vista de Compatibilidad -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- Optimizacion en equipos pequeñes -->
@@ -49,7 +46,7 @@
         <!-- Container para Header -->
         <div class="container-fluid">
             <div class="row ">
-                <nav class="navbar navbar-expand-lg" id="mnSuperior">
+                <nav class="navbar fixed-top navbar-expand-lg" id="mnSuperior">
                     <!-- Columna Logo -->
                     <div class="col-11 col-xs-11 col-sm-11 col-lg-2 col-xl-2 col-xxl-2 text-center">
                         <img src="../../resources/img/logos/lg_head.png" class="img-fluid" alt="">
@@ -97,7 +94,7 @@
         <!-- Menu Inferior FULL CSS -->
         <div class="container-fluid" id="mnInferior">
             <!-- navegacion del menu inferior -->
-            <nav class="menu" id="menu">
+            <nav class="menu " id="menu">
                 <!-- Menu para desplegables Mobiles-->
                 <div class="container contenedor-botones-menu">
                     <!-- Barras para Parte Menu Mobile -->
@@ -361,9 +358,9 @@
                     </div>
                     <div class="col-s12 p-4">
 
-                        <ul id="autoWidth" class="cs-hidden">
-                            <!-- Lista de elementos -->
-                            <li class="item-a">
+                        <div class="row">
+
+                            <div class="col-12 col-sm-12 col-xs-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">
                                 <div class="box">
                                     <!-- caja de imagenes -->
                                     <div class="slider-img">
@@ -386,9 +383,8 @@
                                         <a href="#" class="price">10$</a>
                                     </div>
                                 </div>
-                            </li>
-
-                            <li class="item-b">
+                            </div>
+                            <div class="col-12 col-sm-12 col-xs-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">
                                 <div class="box">
                                     <!-- caja de imagenes -->
                                     <div class="slider-img">
@@ -404,16 +400,15 @@
                                     <div class="detail-box">
                                         <!-- tipo -->
                                         <div class="type">
-                                            <a href="">Sombrero de paja 2</a>
+                                            <a href="">Sombrero de paja 1</a>
                                             <span>Disponible</span>
                                         </div>
                                         <!-- Precio -->
                                         <a href="#" class="price">10$</a>
                                     </div>
                                 </div>
-                            </li>
-
-                            <li class="item-c">
+                            </div>
+                            <div class="col-12 col-sm-12 col-xs-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">
                                 <div class="box">
                                     <!-- caja de imagenes -->
                                     <div class="slider-img">
@@ -429,68 +424,22 @@
                                     <div class="detail-box">
                                         <!-- tipo -->
                                         <div class="type">
-                                            <a href="">Sombrero de paja 3</a>
+                                            <a href="">Sombrero de paja 1</a>
                                             <span>Disponible</span>
                                         </div>
                                         <!-- Precio -->
                                         <a href="#" class="price">10$</a>
                                     </div>
                                 </div>
-                            </li>
-
-                            <li class="item-d">
-                                <div class="box">
-                                    <!-- caja de imagenes -->
-                                    <div class="slider-img">
-                                        <img src="https://www.regalosfrikis.com/wp-content/uploads/2013/04/regalos-frikis-sombrero-de-paja-luffy-one-piece.jpg"
-                                            alt="1">
-                                        <!-- overlay -->
-                                        <div class="overlay">
-                                            <!-- comprar-btn -->
-                                            <a href="" class="buy-btn">Compralo</a>
-                                        </div>
-                                    </div>
-                                    <!-- detalles del producto -->
-                                    <div class="detail-box">
-                                        <!-- tipo -->
-                                        <div class="type">
-                                            <a href="">Sombrero de paja 4</a>
-                                            <span>Disponible</span>
-                                        </div>
-                                        <!-- Precio -->
-                                        <a href="#" class="price">10$</a>
-                                    </div>
-                                </div>
-                            </li>
-
-                            <li class="item-e">
-                                <div class="box">
-                                    <!-- caja de imagenes -->
-                                    <div class="slider-img">
-                                        <img src="https://www.regalosfrikis.com/wp-content/uploads/2013/04/regalos-frikis-sombrero-de-paja-luffy-one-piece.jpg"
-                                            alt="1">
-                                        <!-- overlay -->
-                                        <div class="overlay">
-                                            <!-- comprar-btn -->
-                                            <a href="" class="buy-btn">Compralo</a>
-                                        </div>
-                                    </div>
-                                    <!-- detalles del producto -->
-                                    <div class="detail-box">
-                                        <!-- tipo -->
-                                        <div class="type">
-                                            <a href="">Sombrero de paja 5</a>
-                                            <span>Disponible</span>
-                                        </div>
-                                        <!-- Precio -->
-                                        <a href="#" class="price">10$</a>
-                                    </div>
-                                </div>
-                            </li>
-
-                        </ul>
-
-
+                            </div>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                        </div>
 
 
                     </div>
@@ -530,10 +479,9 @@
 
 
                     <div class="col-12 p-4">
+                        <div class="row">
 
-                        <ul id="autoWidth2" class="cs-hidden">
-                            <!-- Lista de elementos -->
-                            <li class="item-a">
+                            <div class="col-12 col-sm-12 col-xs-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">
                                 <div class="box">
                                     <!-- caja de imagenes -->
                                     <div class="slider-img">
@@ -556,9 +504,8 @@
                                         <a href="#" class="price">10$</a>
                                     </div>
                                 </div>
-                            </li>
-
-                            <li class="item-b">
+                            </div>
+                            <div class="col-12 col-sm-12 col-xs-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">
                                 <div class="box">
                                     <!-- caja de imagenes -->
                                     <div class="slider-img">
@@ -574,16 +521,15 @@
                                     <div class="detail-box">
                                         <!-- tipo -->
                                         <div class="type">
-                                            <a href="">Sombrero de paja 2</a>
+                                            <a href="">Sombrero de paja 1</a>
                                             <span>Disponible</span>
                                         </div>
                                         <!-- Precio -->
                                         <a href="#" class="price">10$</a>
                                     </div>
                                 </div>
-                            </li>
-
-                            <li class="item-c">
+                            </div>
+                            <div class="col-12 col-sm-12 col-xs-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">
                                 <div class="box">
                                     <!-- caja de imagenes -->
                                     <div class="slider-img">
@@ -599,66 +545,25 @@
                                     <div class="detail-box">
                                         <!-- tipo -->
                                         <div class="type">
-                                            <a href="">Sombrero de paja 3</a>
+                                            <a href="">Sombrero de paja 1</a>
                                             <span>Disponible</span>
                                         </div>
                                         <!-- Precio -->
                                         <a href="#" class="price">10$</a>
                                     </div>
                                 </div>
-                            </li>
+                            </div>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                        </div>
 
-                            <li class="item-d">
-                                <div class="box">
-                                    <!-- caja de imagenes -->
-                                    <div class="slider-img">
-                                        <img src="https://www.regalosfrikis.com/wp-content/uploads/2013/04/regalos-frikis-sombrero-de-paja-luffy-one-piece.jpg"
-                                            alt="1">
-                                        <!-- overlay -->
-                                        <div class="overlay">
-                                            <!-- comprar-btn -->
-                                            <a href="" class="buy-btn">Compralo</a>
-                                        </div>
-                                    </div>
-                                    <!-- detalles del producto -->
-                                    <div class="detail-box">
-                                        <!-- tipo -->
-                                        <div class="type">
-                                            <a href="">Sombrero de paja 4</a>
-                                            <span>Disponible</span>
-                                        </div>
-                                        <!-- Precio -->
-                                        <a href="#" class="price">10$</a>
-                                    </div>
-                                </div>
-                            </li>
-
-                            <li class="item-e">
-                                <div class="box">
-                                    <!-- caja de imagenes -->
-                                    <div class="slider-img">
-                                        <img src="https://www.regalosfrikis.com/wp-content/uploads/2013/04/regalos-frikis-sombrero-de-paja-luffy-one-piece.jpg"
-                                            alt="1">
-                                        <!-- overlay -->
-                                        <div class="overlay">
-                                            <!-- comprar-btn -->
-                                            <a href="" class="buy-btn">Compralo</a>
-                                        </div>
-                                    </div>
-                                    <!-- detalles del producto -->
-                                    <div class="detail-box">
-                                        <!-- tipo -->
-                                        <div class="type">
-                                            <a href="">Sombrero de paja 5</a>
-                                            <span>Disponible</span>
-                                        </div>
-                                        <!-- Precio -->
-                                        <a href="#" class="price">10$</a>
-                                    </div>
-                                </div>
-                            </li>
-
-                        </ul>
+                        </div>
+                        
                     </div>
 
 
@@ -742,9 +647,9 @@
         <script src="https://kit.fontawesome.com/592eb2e9e3.js" crossorigin="anonymous"></script>
         <script src="../../resources/js/bootstrap/bootstrap.min.js"></script>
         <script src="../../resources/js/MenuInferior/mnInferior.js"></script>
-        <script src="../../resources/js/IndexSlider/index.js"></script>
         
-        <script src="../../resources/js/IndexSlider/lightslider.js"></script>
+        
+        
         </body>
         
         </html>
