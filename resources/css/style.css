@@ -64,6 +64,7 @@ body{
 
 
 #mnInferior{
+    padding-top: 80px;
     background-color: #79BD9A;
 }
 
@@ -299,7 +300,19 @@ body{
 
 /* Responsive de barra de navegacion 2 */
 
+@media screen and (max-width: 1400px){
+
+    #mnInferior{
+        padding-top: 65px;
+    }
+}
+
 @media screen and (max-width: 1000px){
+
+    #mnInferior{
+        padding-top: 120px;
+    }
+
     .menu .contenedor-enlaces-nav{
         padding: 0 10px;
     }
@@ -310,6 +323,11 @@ body{
 }
 
 @media screen and (max-width: 800px){
+
+    #mnInferior{
+        padding-top: 120px;
+    }
+
     .menu .container{
         width: 90%;
     }

@@ -15,16 +15,12 @@
      <link rel="stylesheet" href="../../resources/css/carrito/carrito.css">
     <!-- Producto ADD -->
     <link rel="stylesheet" href="../../resources/css/productoAdd/productoAdd.css">
-     <!-- SliderCSS -->
-    <link rel="stylesheet" type="text/css" href="../../resources/css/IndexStyle/lightslider.css">
     <!-- gracias CSS -->
     <link rel="stylesheet" href="../../resources/css/gracias/gracias.css">
     <!-- proveedores css -->
     <link rel="stylesheet" type="text/css" href="../../resources/css/Proveedores/proveedores.css">
     <!-- Estilo para Cabecera -->
     <link rel="stylesheet" type="text/css" href="../../resources/css/IndexStyle/indexStyle.css">
-    <!-- JQUERY -->
-    <script src="../../resources/js/IndexSlider/Jquery.js"></script>
     <!-- Vista de Compatibilidad -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- Optimizacion en equipos pequeñes -->
