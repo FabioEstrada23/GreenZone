@@ -64,7 +64,7 @@
                 </div>
             <div class="text-center">
                 <span class="text-footer">¿Ya tienes cuenta? 
-                    <a href="login.html">Ingresa</a><br> 
+                    <a href="login.php">Ingresa</a><br> 
                 </span>
                  
             </div>
