@@ -9,7 +9,7 @@
     <!-- CSS Bootstrap -->
     <link rel="stylesheet" type="text/css" href="../../resources/css/bootstrap/bootstrap.min.css">
     <!-- Agregamos CSS Style -->
-    <link rel="stylesheet" href="../../resources/css/login_style.css">
+    <link rel="stylesheet" href="../../resources/css/Recuperacion/Recu.css">
     <!-- Vista de Compatibilidad -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- Optimizacion en equipos pequeñes -->
@@ -23,29 +23,21 @@
     <!-- Copyright -->
     <meta name="copyright" content="Green Zone Team 2021">
     <!-- Titulo de nuestro Sitio Web -->
-    <title>Form Login | Green Zone Store</title>
+    <title>Form Recuperación de contraseña | Green Zone Store</title>
 </head>
 <body>
-    <div class="container row g-0 col-lg-11 min-vh-100">
-        <div class="login-box col-lg-11 d-none  d-sm-block max-vh-100">
+    <div class="signUp-box">
+        <img src="../../resources/img/logos/lg_head.png" class="avatar" alt="Avatar Image">
+             
             <form>
-                <label for="slogan">Evita lo pasajero,</label>
-                <label for="slogan2">piensa en el mañana</label>
-                </form>
-          </div>
-          <div class='right-part col-lg-11 d-flex flex-column max-vh-100'>
-            <img src="../../resources/img/logos/lg_head.png" class="avatar" alt="Avatar Image">
-             <!-- Ingresar nombre de usuario -->
-             <label for="username">Usuario</label>
-             <input type="text" placeholder="Ingresa tu usuario">
-             <!-- Ingresar contresenia de usuario -->
-             <label for="password">Contraseña</label>
-             <input type="password" placeholder="Ingresa tu contraseña">
-             <input type="submit" value="Log In">
-             <a href="Recuperacion.html">¿Perdiste tu contraseña? </a><br>
-             <a href="Registro.html"> ¿No tienes una cuenta? </a>
-             </form>
-        </div>
+            <!-- Ingresar correo de usuario -->
+            <label for="mail">Correo</label>
+            <input type="text" placeholder="Ingresa tu correo">
+            <input class='Siguiente' type="submit" value="Enviar mensaje">
+            <div class="RE text-center">
+                <a href="login.php">¿Recordaste tu contraseña?</a><br>
+            </div>                 
+            </form>
     </div>
 </body>
 </html>

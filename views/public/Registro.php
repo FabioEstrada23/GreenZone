@@ -9,7 +9,7 @@
     <!-- CSS Bootstrap -->
     <link rel="stylesheet" type="text/css" href="../../resources/css/bootstrap/bootstrap.min.css">
     <!-- Agregamos CSS Style -->
-    <link rel="stylesheet" href="../../resources/css/Registro.css">
+    <link rel="stylesheet" href="../../resources/css/Registro/Registro.css">
     <!-- Vista de Compatibilidad -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- Optimizacion en equipos pequeñes -->
@@ -26,9 +26,13 @@
     <title>Form Registro de cuenta | Green Zone Store</title>
 </head>
 <body>
-    <div class="container row g-0 col-lg-11 min-vh-100">
-        <div class="signUp-box col-lg-11 d-flex flex-column max-vh-100">
+    <div class="container">
+        <div class="signUp-box">
+            <img src="../../resources/img/logos/lg_head.png" class="logo" alt="">
             <!-- Ingresar nombre de la persona -->
+            <form>
+
+            <h1 class="title"> Registro</h1>
             <label for="nombre">Nombre</label>
             <input type="text" placeholder="Ingresa tu nombre">
             <!-- Ingresar apellidos de la persona -->
@@ -45,18 +49,8 @@
             <input type="date" id="start" name="trip-start"
                     value="2021-03-15"
                     min="2021-01-01" max="2021-12-31">
-            <input class='Siguiente' type="submit" value="Siguiente">
-            <div class="text-center">
-                <a href="login.html">¿Ya tienes cuenta? </a><br>  
-            </div>
-                          
-            </form>
-        </div>
-        <div class='right-part col-lg-11 d-flex flex-column max-vh-100'>
-            <form>
-                <img src="../../resources/img/logos/lg_head.png" class="avatar" alt="Avatar Image">
                 <div>
-                    <h1>Llenado de contraseña</h1>
+                    <h1 class="title"> Llenado de contraseña</h1>
                 </div>
                 
                 <!-- Ingresar contraseña -->
@@ -68,8 +62,14 @@
                 <div class="text-center">
                     <input class='SignUp' type="submit" value="Registrar"></form>
                 </div>
-                
-            </form> 
+            <div class="text-center">
+                <span class="text-footer">¿Ya tienes cuenta? 
+                    <a href="login.html">Ingresa</a><br> 
+                </span>
+                 
+            </div>
+                          
+            </form>
         </div>
     </div>
         
