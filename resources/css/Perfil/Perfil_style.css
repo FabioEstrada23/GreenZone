@@ -10,7 +10,7 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    background: linear-gradient(#0B486B, transparent);
+    background: linear-gradient(#3B8686, transparent);
     margin-bottom: 1.25rem;
 }
 
@@ -19,7 +19,7 @@
     position: relative;
     width: 90%;
     height: 17rem;
-    background: linear-gradient(45deg, #0B486B, #317FFF);
+    background:  linear-gradient(90deg, #0B486B, #3B8686);
     border-radius: 0 0 20px 20px;
 }
 
@@ -45,7 +45,7 @@
     border: 0;
     border-radius: 8px;
     padding: 12px 25px;
-    background-color: rgba(0, 0, 0, .5);
+    background: linear-gradient(90deg, #0B486B, #3B8686);
     color: #fff;
     cursor: pointer;
 }
@@ -178,7 +178,7 @@
     background: linear-gradient(45deg, #FF2DFD, #40A7FF);
 }
 
-/* adactacion a dispositivos */
+/* adaptacion a dispositivos */
 @media (max-width: 750px) {
     .user-profile-section .data-list {
         width: 100%;

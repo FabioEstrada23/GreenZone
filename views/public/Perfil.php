@@ -14,7 +14,7 @@ include("../../app/helpers/header.php");
     <!-- CSS Bootstrap -->
     <link rel="stylesheet" type="text/css" href="../../resources/css/bootstrap/bootstrap.min.css">
     <!-- Agregamos CSS Style -->
-    <link rel="stylesheet" href="../../resources/css/Perfil_style.css">
+    <link rel="stylesheet" href="../../resources/css/Perfil/Perfil_style.css">
     <!-- Vista de Compatibilidad -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- Optimizacion en equipos pequeñes -->
