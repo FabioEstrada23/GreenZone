@@ -1,4 +1,3 @@
-/*parte de indext*/
 *{
     box-sizing: border-box;
     
@@ -65,6 +64,7 @@ body{
 
 
 #mnInferior{
+    padding-top: 80px;
     background-color: #79BD9A;
 }
 
@@ -300,7 +300,19 @@ body{
 
 /* Responsive de barra de navegacion 2 */
 
+@media screen and (max-width: 1400px){
+
+    #mnInferior{
+        padding-top: 65px;
+    }
+}
+
 @media screen and (max-width: 1000px){
+
+    #mnInferior{
+        padding-top: 120px;
+    }
+
     .menu .contenedor-enlaces-nav{
         padding: 0 10px;
     }
@@ -311,6 +323,11 @@ body{
 }
 
 @media screen and (max-width: 800px){
+
+    #mnInferior{
+        padding-top: 120px;
+    }
+
     .menu .container{
         width: 90%;
     }
@@ -401,4 +418,677 @@ body{
     
 
 }
+
+/* Busqueda */
+
+#CajaFiltro{
+    background-color: #0B486B;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+#CajaFiltro .form-select {
+    border-radius: 0;
+    min-width: 200px;
+}
+
+#ContainerBusqueda{
+    min-height: 800px;
+}
+
+
+
+
+/* Contenido Index */
+
+/* posicionar el texxto de la imagen a la izquierda y sobre la imagen */
+#texto-medio{
+    text-align: center;
+    font-size: 17px;
+    position: absolute;
+    z-index: 500;
+    color: white;
+    left: 50%;
+    top: 45%;
+    transform: translate(-50%, -50%);
+}
+
+
+#texto-izquierda{
+  position: absolute;
+  z-index: 500;
+  color: white;
+  left: 30%;
+  top: 45%;
+  transform: translate(-50%, -50%);
+}
+
+
+#textoLine{
+  background-image: url(../../img/banners/banner-2.png);
+  color: white;
+  text-transform: uppercase;
+  font-family: "Montserrat";
+  text-shadow: 3px 3px gray;
+}
+
+/* posicionar el texxto de la imagen a la derecha y sobre la imagen */
+
+#texto-derecha{
+  text-align: right;
+  position: absolute;
+  z-index: 500;
+  color: white;
+  left: 70%;
+  top: 45%;
+  transform: translate(-50%, -50%);
+}
+
+/* alilnear texto h5 a la derecha */
+#texto-derecha h5{
+  text-align: right;
+
+}
+
+/* link a a la derecha con color diferente */
+#texto-derecha a{
+  color: white;
+    border: 1px solid transparent;
+    padding: 7px;
+    border-radius: 3px;
+    font-size: 17px;
+    border: 1px solid white;
+}
+
+/* animacion del botones */
+
+
+#texto-medio h6{
+  animation-duration: 1s;
+  animation-name: slidein;
+  text-align: center;
+}
+
+@keyframes slidein {
+  from {
+    margin-left: 100%;
+    width: 300%
+  }
+
+  to {
+    margin-left: 0%;
+    width: 100%;
+  }
+}
+
+
+.carousel a{
+    animation-duration: 1s;
+    animation-name: slidein;
+    text-align: left;
+  }
+  
+  @keyframes slidein {
+    from {
+      margin-left: 100%;
+      width: 300%
+    }
+  
+    to {
+      margin-left: 0%;
+      width: 100%;
+    }
+  }
+
+  #fondoOferta a{
+      color: white;
+      border: 1px solid transparent;
+      padding: 7px;
+      border-radius: 3px;
+      font-size: 17px;
+      border: 1px solid rgba(255, 255, 255, .4);
+
+  }
+
+  #TextoOferta{
+    padding: 40px;
+  }
+
+
+/* estilo de A en carrusel */
+  .carousel a{
+    color: white;
+    border: 1px solid transparent;
+    padding: 7px;
+    border-radius: 3px;
+    font-size: 17px;
+    border: 1px solid rgba(255, 255, 255, .4);
+}
+
+/* animacion de los h1 y h5 */
+  .carousel .carousel-inner .carousel-item h1 h5{
+    animation-duration: 1s;
+    animation-name: slidein;
+    text-align: left;
+  }
+  
+  @keyframes slidein {
+    from {
+      margin-left: 100%;
+      width: 300%
+    }
+  
+    to {
+      margin-left: 0%;
+      width: 100%;
+    }
+  }
+
+  /* animacinon de h5 individual en parte especifica */
+
+  .carousel .carousel-inner .carousel-item h5{
+    animation-duration: 1s;
+    animation-name: slidein;
+    text-align: left;
+  }
+  
+  @keyframes slidein {
+    from {
+      margin-left: 100%;
+      width: 300%
+    }
+  
+    to {
+      margin-left: 0%;
+      width: 100%;
+    }
+  }
+
+  /* tamaño de las imagenes  */
+
+
+.carousel img{
+  height: 400px;
+  object-fit: cover;
+}
+
+/* estilo del fono del texto */
+
+
+/*  animacion individual h1 */
+
+  .carousel .carousel-item h1{
+    animation-duration: 1s;
+    animation-name: slidein;
+  }
+  
+  @keyframes slidein {
+    from {
+      margin-left: 100%;
+      width: 300%
+    }
+  
+    to {
+      margin-left: 0%;
+      width: 100%;
+    }
+  }
+
+
+  /* cambio de color de iconos de slider */
+
+
+#elementID {
+    color: black;
+    text-shadow: 1px 1px 1px black;
+    font-size: 1em;
+}
+
+
+/* EMPEZAMOS EL PRIMER SLIDER DE PRODUCTOS XD */
+
+/* contenedor de slider */
+.box{
+  width: 300px;
+  
+  border-radius: 10px;
+  overflow: hidden;
+  margin-left: 15px;
+}
+
+/* propuedad de las imagenes */
+.slider-img{
+  height: 250px;
+  position: relative;
+
+}
+
+.slider-img img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  box-sizing: border-box;
+
+}
+
+/* caja detalle */
+
+.detail-box{
+  background-color: #D6D6D6;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  
+}
+
+/* Configuracion Fondo Oferta */
+
+#fondoOferta{
+  color: white;
+  padding: 20px;
+  background-color: #79bd9a;
+  
+}
+
+#fondoOferta p{
+  font-size: 17px;
+}
+
+
+/* caja tipo y sus componentes */
+
+.type{
+  display: flex;
+  flex-direction: column;
+
+}
+
+.type a{
+  color: #222222;
+  margin: 5px, 0px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  padding-right: 8px;
+}
+
+.type span{
+  color: rgba(26,26,26, 0.5);
+}
+
+/* estilo de precio */
+
+.price{
+  color: #333333;
+  font-weight: 600;
+  letter-spacing: 00.5px;
+  font-size: 1.1rem;
+
+}
+
+/* overlay de "card" */
+.overlay{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  width: 100%;
+  height: 100%;
+  background-color: rgba(121,189,154, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* estilo btn comprar */
+
+.buy-btn{
+  width: 160px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+  color: #252525;
+  font-weight: 700;
+  letter-spacing: 1px;
+  border-radius: 20px;
+  box-shadow: 2px 2px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* cuando se ponga dentro del boton cambie color */
+
+.buy-btn:hover{
+  color: #ffffff;
+  background-color: #A8DBA8;
+}
+
+.overlay{
+  visibility: hidden;
+}
+.slider-img:hover .overlay{
+  visibility: visible;
+}
+
+@keyframes fade{
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 100%;
+  }
+}
+
+/* CSS PERFIL */
+
+.user-profile-section .user-profile-body,
+.user-profile-section {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+}
+
+.user-profile-section .user-profile-header {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background: linear-gradient(#3B8686, transparent);
+    margin-bottom: 1.25rem;
+}
+
+.user-profile-section .user-profile-corver-page {
+    display: block;
+    position: relative;
+    width: 90%;
+    height: 17rem;
+    background:  linear-gradient(90deg, #0B486B, #3B8686);
+    border-radius: 0 0 20px 20px;
+}
+
+.user-profile-section .user-profile-corver-page .button-cover-page {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    border: 0;
+    border-radius: 8px;
+    padding: 12px 25px;
+    background-color: rgba(0, 0, 0, .5);
+    color: #fff;
+    cursor: pointer;
+}
+
+.user-profile-section .user-profile-corver-page .button-cover-page i {
+    margin-right: 1rem;
+}
+
+.user-profile-section .user-profile-footer .editar .button-edit {
+    top: 1rem;
+    right: 1rem;
+    border: 0;
+    border-radius: 8px;
+    padding: 12px 25px;
+    background: linear-gradient(90deg, #0B486B, #3B8686);
+    color: #fff;
+    cursor: pointer;
+}
+
+.user-profile-section .user-profile-footer .editar .button-edit i {
+    margin-right: 1rem;
+}
+
+.user-profile-section .user-profile-avatar {
+    display: flex;
+    width: 180px;
+    height: 180px;
+    align-items: center;
+    justify-content: center;
+    border: 7px solid #FFFFFF;
+    background-color: #DFE5F2;
+    border-radius: 50%;
+    box-shadow: 0 0 12px rgba(0, 0, 0, .2);
+    position: absolute;
+    bottom: -40px;
+    left: calc(50% - 90px);
+    z-index: 1;
+}
+
+.user-profile-section .user-profile-avatar img {
+    width: 100%;
+    position: relative;
+    border-radius: 50%;
+}
+
+.user-profile-section .user-profile-avatar .button-avatar {
+    position: absolute;
+    left: -2px;
+    top: -2px;
+    border: 0;
+    background-color: #fff;
+    box-shadow: 0 0 12px rgba(0, 0, 0, .2);
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.user-profile-section .user-profile-body {
+    width: 70%;
+    position: relative;
+    max-width: 750px;
+}
+
+.user-profile-section .user-profile-body .title {
+    display: block;
+    width: 100%;
+    font-size: 1.75em;
+    margin-bottom: 0.5rem;
+}
+
+.user-profile-section .user-profile-body .text {
+    color: #848484;
+    font-size: 0.95em;
+}
+
+.user-profile-section .user-profile-footer,
+.user-profile-section .user-profile-bio {
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1.5rem 2rem;
+    box-shadow: 0 0 12px rgba(0, 0, 0, .2);
+    background-color: #fff;
+    border-radius: 15px;
+    width: 100%;
+}
+
+.user-profile-section .user-profile-bio {
+    margin-bottom: 1.25rem;
+    text-align: center;
+}
+
+.user-profile-section .data-list {
+    width: 50%;
+    list-style: none;
+}
+
+.user-profile-section .data-list li {
+    padding: 5px 0;
+}
+
+.user-profile-section .data-list li>.icono {
+    margin-right: 1rem;
+    font-size: 1.2rem;
+    vertical-align: middle;
+}
+
+.user-profile-section .social-media {
+    position: absolute;
+    right: calc(0px - 50px - 1rem);
+    top: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.user-profile-section .social-media .boton-redes {
+    border: 0;
+    background-color: #fff;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    color: #fff;
+    box-shadow: 0 0 12px rgba(0, 0, 0, .2);
+    font-size: 1.3rem;
+}
+
+.user-profile-section .social-media .boton-redes+.boton-redes {
+    margin-top: .5rem;
+}
+
+.user-profile-section .boton-redes.facebook {
+    background-color: rgb(34, 34, 180);
+}
+
+.user-profile-section .boton-redes.twitter {
+    background-color: #35E1BF;
+}
+
+.user-profile-section .boton-redes.instagram {
+    background: linear-gradient(45deg, #FF2DFD, #40A7FF);
+}
+
+/* adaptacion a dispositivos */
+@media (max-width: 750px) {
+    .user-profile-section .data-list {
+        width: 100%;
+    }
+    
+    .user-profile-section .user-profile-corver-page,
+    .user-profile-section .user-profile-body {
+        width: 95%;
+    }
+
+    .user-profile-section .social-media {
+        position: relative;
+        flex-direction: row;
+        width: 100%;
+        left: 0;
+        text-align: center;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        align-items: center;
+        justify-content: center
+    }
+
+    .user-profile-section .social-media .boton-redes+.boton-redes {
+        margin-left: 1rem;
+        margin-top: 0;
+    }
+}
+
+/* GRACIAS CSS*/
+
+.gracias{
+    background-color: #3B8686;
+    padding: 40px;
+    border-radius: 15px;
+    color: white;
+}
+
+#btnCaja .btn{
+    background-color: transparent;
+    color: white;
+    width: 100%;
+    height: 100%;
+    max-width: 300px;
+}
+
+/* CARRITO CSS*/
+
+
+/* config de botones superiores */
+#regresar .bkl{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    
+}
+
+#regresar .bkl2{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+      
+}
+
+#regresar .bkl i{
+    margin-right: 10px;
+    position: relative;
+    bottom: 3px;
+}
+
+#regresar .bkl2 i{
+    margin-left: 10px;
+    position: relative;
+    bottom: 3px;
+}
+
+#regresar a{
+    text-decoration: none;
+    color: black;
+}
+/* termina config de botones superiores */
+
+
+/* fondo de cols */
+
+.fondo{
+    color: white;
+    background-color: #3B8686;
+    border-radius: 10px;
+}
+
+.fondo h1{
+    font-family: "Montserrat";
+    padding: 10px;
+}
+
+/* formato imagenes en tablas */
+
+.table img{
+    max-width: 100px;
+}
+.table a{
+    color: red;
+}
+
+/* Formatos en fondos */
+.fondoHijo{
+    color: white;
+    border-radius: 10px;
+    background-color: #79BD9A;
+    padding: 20px;
+}
+
+.fondoHijo2{
+    color: white;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: #0B486B;
+    
+
+}
+
+.fondoHijo2 .btn{
+    width: 100%;
+    color: white;
+    background-color: transparent;
+    height: 100%;
+}
+
 

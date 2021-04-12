@@ -52,7 +52,7 @@
             </span>
             <!-- Registro -->
             <span class="text-footer">¿No tienes una cuenta?
-                <a href="Registro.html">Créala</a>
+                <a href="Registro.php">Créala</a>
             </span>
         </div>
         <div class="ctn-text">

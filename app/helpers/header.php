@@ -10,17 +10,8 @@
     <!-- CSS Bootstrap -->
     <link rel="stylesheet" type="text/css" href="../../resources/css/bootstrap/bootstrap.min.css">
     <!-- Agregamos CSS Style -->
-    <link rel="stylesheet" type="text/css" href="../../resources/css/style.css">
-     <!-- CarritoCSS -->
-     <link rel="stylesheet" href="../../resources/css/carrito/carrito.css">
-    <!-- Producto ADD -->
-    <link rel="stylesheet" href="../../resources/css/productoAdd/productoAdd.css">
-    <!-- gracias CSS -->
-    <link rel="stylesheet" href="../../resources/css/gracias/gracias.css">
-    <!-- proveedores css -->
-    <link rel="stylesheet" type="text/css" href="../../resources/css/Proveedores/proveedores.css">
-    <!-- Estilo para Cabecera -->
-    <link rel="stylesheet" type="text/css" href="../../resources/css/IndexStyle/indexStyle.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/plantillasCSS/PlantillaPublica.css">
+
     <!-- Vista de Compatibilidad -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- Optimizacion en equipos pequeñes -->
