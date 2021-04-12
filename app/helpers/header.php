@@ -45,7 +45,7 @@
         <!-- Container para Header -->
         <div class="container-fluid">
             <div class="row ">
-                <nav class="navbar navbar-expand-lg" id="mnSuperior">
+                <nav class="navbar fixed-top navbar-expand-lg" id="mnSuperior">
                     <!-- Columna Logo -->
                     <div class="col-11 col-xs-11 col-sm-11 col-lg-2 col-xl-2 col-xxl-2 text-center">
                         <img src="../../resources/img/logos/lg_head.png" class="img-fluid" alt="">
