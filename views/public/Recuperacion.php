@@ -37,7 +37,7 @@
             <input type="text" placeholder="Ingresa tu correo">
             <input class='Enviar' type="submit" value="Enviar mensaje">
             <span class="text-footer">¿Recordaste la contraseña?
-                <a href="Registro.php">Ingresa</a>
+                <a href="Login.php">Ingresa</a>
             </span>               
             </form>
         </div>
