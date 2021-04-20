@@ -11,6 +11,7 @@
     <link rel="stylesheet" type="text/css" href="../../resources/css/bootstrap/bootstrap.min.css">
     <!-- Agregamos CSS Style -->
     <link rel="stylesheet" type="text/css" href="../../resources/css/plantillasCSS/PlantillaPublica.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/plantillasCSS/PlantillaPrivada.css">
 
     <!-- Vista de Compatibilidad -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">

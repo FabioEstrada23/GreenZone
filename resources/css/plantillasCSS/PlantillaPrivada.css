@@ -1,0 +1,151 @@
+/*Proveedores*/
+/* Estilo de texto prov */
+#infoProveedor{
+    background-color: #3B8686;
+    color: white;
+    border-radius: 10px;
+}
+/* estilo de texto registro prov */
+#regProveedor{
+    background-color: #3B8686;
+    color: white;
+    border-radius: 10px;
+}
+/* estilo de texto caja prov */
+#proveedorCaja{
+    padding:20px;
+    border-radius: 10px;
+    background-color: #A8DBA8;
+}
+/* la caja de campos proveecor ponemos un padding de 6 arriba para alinear con txt */
+#proveedorCaja h6{
+    padding-top: 6px;
+}
+
+/* estilo a la caja de proveedor */
+#controladorProvCaja{
+    background-color: #3B8686;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/* estilo a los botones de proveedor */
+
+#controladorProvCaja .btn{
+    background-color: transparent;
+    color: white;
+
+}
+
+.ordenar .btn{
+    background-color: #A8DBA8;
+    border-radius: 0px;
+}
+
+.ordenar{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+
+/* Estilo de texto marca */
+#brand #infoMarca{
+    background-color: #3B8686;
+    color: white;
+    border-radius: 10px;
+}
+/* estilo de texto registro marca */
+#regMarca{
+    background-color: #3B8686;
+    color: white;
+    border-radius: 10px;
+}
+/* estilo de texto caja marca */
+#MarcaCaja{
+    padding:20px;
+    border-radius: 10px;
+    background-color: #A8DBA8;
+}
+/* la caja de campos marca ponemos un padding de 6 arriba para alinear con txt */
+#MarcaCaja h6{
+    padding-top: 6px;
+}
+
+/* estilo a la caja de marca */
+#controladorMarcaCaja{
+    background-color: #3B8686;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/* estilo a los botones de marca */
+
+#controladorMarcaCaja .btn{
+    background-color: transparent;
+    color: white;
+
+}
+
+.ordenar .btn{
+    background-color: #A8DBA8;
+    border-radius: 0px;
+}
+
+.ordenar{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+#brand {
+    min-height: 620px;
+}
+
+
+/*AGREGAR PRODUCTO*/
+
+/* Estilo de texto prov */
+#infoProducto{
+    background-color: #3B8686;
+    color: white;
+    border-radius: 10px;
+}
+/* estilo de texto registro prov */
+#regProducto{
+    background-color: #3B8686;
+    color: white;
+    border-radius: 10px;
+}
+/* estilo de texto caja prov */
+#productoCaja{
+    padding:20px;
+    border-radius: 10px;
+    background-color: #A8DBA8;
+}
+/* la caja de campos proveecor ponemos un padding de 6 arriba para alinear con txt */
+#productoCaja h6{
+    padding-top: 6px;
+}
+
+/* estilo a la caja de proveedor */
+#controladorProduCaja{
+    background-color: #3B8686;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/* estilo a los botones de proveedor */
+
+#controladorProduCaja .btn{
+    background-color: transparent;
+    color: white;
+
+}
+
+#productoCaja .form-select {
+    border-radius: 0;
+    min-width: 200px;
+}
+
+
