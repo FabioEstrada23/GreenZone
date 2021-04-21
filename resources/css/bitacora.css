@@ -1,0 +1,27 @@
+#bitacora{
+    width: 100%;
+    max-width: 1000px;
+    margin: auto;
+    margin-top: 100px;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.abs-center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#infoBitacora{
+    background-color: #3B8686;
+    color: white;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    position: relative;
+    margin: auto;
+    margin-bottom: 20px;
+    
+}
+
+
