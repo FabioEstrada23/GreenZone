@@ -48,7 +48,7 @@
             <label for="start">Fecha de nacimiento:</label>    
             <input type="date" id="start" name="trip-start"
                     value="2021-03-15"
-                    min="2021-01-01" max="2021-12-31">
+                    min="2000-01-01" max="2021-12-31">
                 <div>
                     <h1 class="title"> Llenado de contraseña</h1>
                 </div>

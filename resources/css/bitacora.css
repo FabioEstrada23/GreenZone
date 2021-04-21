@@ -20,8 +20,46 @@
     margin-bottom: 20px;
     position: relative;
     margin: auto;
-    margin-bottom: 20px;
-    
+    margin-bottom: 20px;   
 }
 
+#Busqueda{
+    margin-bottom: 20px;
+   background-color: whitesmoke;
+   width: 150%;
+}
+
+#search{
+    border-radius: 20px;
+    background: linear-gradient(90deg, #0B486B, #3B8686);
+    color: white;
+    margin-left: 20px;
+    border: 0px;
+    font-size: 17px;
+    width: 15%;
+    height: 30px;
+    margin-bottom: 20px;
+}
+
+#search:hover{
+    background: linear-gradient(90deg, #3B8686, #0B486B)
+}
+
+label{
+    margin-top: 30px;
+    font-size: 17px;
+    font-weight: 200;
+    margin-bottom: 20px;
+}
+
+input[type="date"]{
+    padding: 10px;
+    width: 40%;
+    box-sizing: border-box;
+    margin-bottom: 25px;
+    border-radius: 3px;
+    outline: none;
+    border: none;
+    box-shadow: 0px 0px 3px gray;
+}
 
