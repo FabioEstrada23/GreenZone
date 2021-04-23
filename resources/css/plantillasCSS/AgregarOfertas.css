@@ -1,0 +1,49 @@
+/*Proveedores*/
+/* Estilo de texto prov */
+#FormularioOfer{
+    background-color: #3B8686;
+    color: white;
+    border-radius: 10px;
+}
+/* estilo de texto registro prov */
+#RegisOfer{
+    background-color: #3B8686;
+    color: white;
+    border-radius: 10px;
+}
+/* estilo de texto caja prov */
+#DatosOfer{
+    padding:20px;
+    border-radius: 10px;
+    background-color: #A8DBA8;
+}
+/* la caja de campos proveecor ponemos un padding de 6 arriba para alinear con txt */
+#proveedorCaja h6{
+    padding-top: 6px;
+}
+
+/* estilo a la caja de proveedor */
+#ControladorOfer{
+    background-color: #3B8686;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/* estilo a los botones de proveedor */
+
+#ControladorOfer .btn{
+    background-color: transparent;
+    color: white;
+
+}
+
+.BuscadorOfer .btn{
+    background-color: #A8DBA8;
+    border-radius: 0px;
+}
+
+.BuscadorOfer{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
