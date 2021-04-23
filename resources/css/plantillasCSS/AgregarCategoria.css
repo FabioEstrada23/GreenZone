@@ -1,18 +1,18 @@
 /*Proveedores*/
 /* Estilo de texto prov */
-#FormularioOfer{
+#FormularioCate{
     background-color: #3B8686;
     color: white;
     border-radius: 10px;
 }
 /* estilo de texto registro prov */
-#RegisOfer{
+#RegisCate{
     background-color: #3B8686;
     color: white;
     border-radius: 10px;
 }
 /* estilo de texto caja prov */
-#DatosOfer{
+#DatosCate{
     padding:20px;
     border-radius: 10px;
     background-color: #A8DBA8;
@@ -23,7 +23,7 @@
 }
 
 /* estilo a la caja de proveedor */
-#ControladorOfer{
+#ControladorCate{
     background-color: #3B8686;
     padding: 20px;
     border-radius: 10px;
@@ -31,18 +31,18 @@
 
 /* estilo a los botones de proveedor */
 
-#ControladorOfer .btn{
+#ControladorCate .btn{
     background-color: transparent;
     color: white;
 
 }
 
-.BuscadorOfertas .btn{
+.Buscador .btn{
     background-color: #A8DBA8;
     border-radius: 0px;
 }
 
-.BuscadorOfertas{
+.Buscador{
     display: flex;
     justify-content: flex-start;
     align-items: center;

@@ -11,7 +11,7 @@
     <link rel="stylesheet" type="text/css" href="../../resources/css/bootstrap/bootstrap.min.css">
     <!-- Agregamos CSS Style -->
     <link rel="stylesheet" type="text/css" href="../../resources/css/plantillasCSS/PlantillaPublica.css">
-    <link rel="stylesheet" type="text/css" href="../../resources/css/plantillasCSS/AgregarCategoria.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/plantillasCSS/AgregarOfertas.css">
 
     <!-- Vista de Compatibilidad -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -244,29 +244,59 @@
             <div class="col-12 col-xs-12 col-sm-12 col-lg-6 col-xl-6 p-4 col-xxl-6">
                 <!-- Fila de proveedores -->
                 <div class="row">
-                    <div class="col-12 text-center" id="FormularioCate">
-                        <h1>Categorias</h1>
+                    <div class="col-12 text-center" id="FormularioOfer">
+                        <h1>Ofertas</h1>
                     </div>
     
                     <!-- Proveedores Caja de Informacion -->
                     <div class="col-12">
                         <br>
-                        <div class="row" id="DatosCate">
+                        <div class="row" id="DatosOfer">
                             <div class="row  p-3">
                                 <div class="col-3 text-center">
-                                    <h6>Nombre</h6>
+                                    <h6>Descuento</h6>
                                 </div>
                                 <div class="col-9">
-                                    <input type="text" class="form-control" placeholder="Ej: MalteHC..."
-                                        aria-label="Buscar" aria-describedby="basic-addon1">
+                                    <input type="text" class="form-control"
+                                        aria-label="Buscar">
                                 </div>
+                            </div>
+                            <div class="row  p-3">
+                                <div class="col-3 text-center">
+                                    <h6>Precio Descuento</h6>
+                                </div>
+                                <div class="col-9">
+                                    <input type="text" class="form-control"
+                                        aria-label="Buscar">
+                                </div>
+                            </div>
+                            <div class="row  p-3">
+                                <div class="col-3 text-center">
     
+                                    <h6>Producto</h6>
+                                </div>
+                                <div class="col-9">
+                                    <select class="form-select" aria-label="Default select example">
+                                        <option selected></option>
+                                        <option value="1">Collar ecoamigable</option>
+                                        <option value="2">Camiseta de algodon reusable</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row  p-3">
+                                <div class="col-3 text-center">
+                                    <h6>Precio Anterior</h6>
+                                </div>
+                                <div class="col-9">
+                                    <input type="text" class="form-control"
+                                        aria-label="Buscar" >
+                                </div>
                             </div>
                         </div>
     
                         <!-- Controladores de Proveedor -->
                         <br>
-                        <div class="row text-center" id="ControladorCate">
+                        <div class="row text-center" id="ControladorOfer">
                             <div class="col-4">
                                 <button type="button" class="btn btn-light">Agregar +</button>
                             </div>
@@ -288,12 +318,12 @@
             <div class="col-12 col-xs-12 col-sm-12 col-lg-6 col-xl-6 p-4 col-xxl-6">
     
                 <div class="row">
-                    <div class="col-12 text-center" id="RegisCate">
+                    <div class="col-12 text-center" id="RegisOfer">
                         <h1>Registros</h1>
                     </div>
     
                     <div class="col-12 p-4" id="#searchBarProv">
-                        <div class="Buscador">
+                        <div class="BuscadorOfer">
                             <input type="text" class="form-control" placeholder="Buscar" aria-label="Buscar"
                                 aria-describedby="basic-addon1">
                             <!-- Boton de buscar -->
@@ -313,8 +343,11 @@
                             <table class="table table-dark table-striped">
                                 <thead>
                                     <tr>
-                                        <th scope="col">Id producto</th>
-                                        <th scope="col">Categoria</th>
+                                        <th scope="col">Id Oferta</th>
+                                        <th scope="col">Descuento</th>
+                                        <th scope="col">Precio Descuento</th>
+                                        <th scope="col">Producto</th>
+                                        <th scope="col">Precio anterior</th>
                                         <th scope="col"></th>
                                     </tr>
                                 </thead>
@@ -323,43 +356,64 @@
     
                                     <tr class="table-light">
                                         <th scope="row">1</th>
+                                        <td>0.75</td>
+                                        <td>5.06</td>
                                         <td>Pantalones</td>
+                                        <td>6.75</td>
                                         <td><a href=""><i class="fas fa-edit"></i></a></td>
                                     </tr>
     
                                     <tr class="table-light">
                                         <th scope="row">2</th>
-                                        <td>Carteras</td>
+                                        <td>0.75</td>
+                                        <td>5.06</td>
+                                        <td>Pantalones</td>
+                                        <td>6.75</td>
                                         <td><a href=""><i class="fas fa-edit"></i></a></td>
                                     </tr>
     
                                     <tr class="table-light">
                                         <th scope="row">3</th>
-                                        <td>Articulos varios</td>
+                                        <td>0.75</td>
+                                        <td>5.06</td>
+                                        <td>Pantalones</td>
+                                        <td>6.75</td>
                                         <td><a href=""><i class="fas fa-edit"></i></a></td>
                                     </tr>
     
                                     <tr class="table-light">
                                         <th scope="row">4</th>
-                                        <td>Vestidos</td>
+                                        <td>0.75</td>
+                                        <td>5.06</td>
+                                        <td>Pantalones</td>
+                                        <td>6.75</td>
                                         <td><a href=""><i class="fas fa-edit"></i></a></td>
                                     </tr>
     
                                     <tr class="table-light">
                                         <th scope="row">5</th>
-                                        <td>Zapatos</td>
+                                        <td>0.75</td>
+                                        <td>5.06</td>
+                                        <td>Pantalones</td>
+                                        <td>6.75</td>
                                         <td><a href=""><i class="fas fa-edit"></i></a></td>
                                     </tr>
     
                                     <tr class="table-light">
                                         <th scope="row">6</th>
-                                        <td>Camisetas</td>
+                                        <td>0.75</td>
+                                        <td>5.06</td>
+                                        <td>Pantalones</td>
+                                        <td>6.75</td>
                                         <td><a href=""><i class="fas fa-edit"></i></a></td>
                                     </tr>
     
                                     <tr class="table-light">
                                         <th scope="row">7</th>
-                                        <td>Accesorios</td>
+                                        <td>0.75</td>
+                                        <td>5.06</td>
+                                        <td>Pantalones</td>
+                                        <td>6.75</td>
                                         <td><a href=""><i class="fas fa-edit"></i></a></td>
                                     </tr>
                                     </tbody>
