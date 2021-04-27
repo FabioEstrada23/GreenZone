@@ -24,3 +24,37 @@ a {
     background-color: #3B8686;
     color: white;
 }
+
+#Descripcion{
+    padding: 10px;
+    border-radius: 15px;
+    background-color: #4bb689;
+    color: white;
+}
+
+.btPer{
+    background-color: #4bb689;
+    color: white;
+    border-radius: 10px;
+    text-decoration: none;
+    padding: 10px;
+}
+
+.btPer:hover{
+    color: green;
+    background-color: white;
+}
+
+#numProducto{
+    min-width: auto;
+    max-width: auto;
+}
+
+#Parte2 h6{
+    padding-top: 11px;
+}
+
+#Parte2 input{
+    border: transparent;
+    margin-top: 7px;
+}
