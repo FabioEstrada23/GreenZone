@@ -7,6 +7,9 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" type="text/css" href="../../resources/css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/plantillasCSS/PlantillaPublica.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/plantillasCSS/PlantillaPrivada.css">
+
     <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="../../resources/css/private_index.css">
     <title>Página principal</title>
@@ -56,9 +59,7 @@
             </nav>
         </div>
         <br>
-        <section>
-            <h1>Bienvenido</h1>
-        </section>
+        <main>
     </div>
     <script src="../../resources/js/menu/menu.js"></script>
     <!-- Optional JavaScript; choose one of the two! -->

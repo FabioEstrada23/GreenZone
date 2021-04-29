@@ -1,6 +1,6 @@
 <?php
 //Se incluye la plantilla del encabezado para la página web
-include("../../app/helpers/header.php");
+include("../../app/helpers/private_header.php");
 ?>
 
 <section>
