@@ -119,7 +119,7 @@ include("../../app/helpers/header.php");
 
                         <div class="row">
 
-                            <div class="col-12 col-sm-12 col-xs-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">
+                            <div class="col-12 col-sm-12 col-xs-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 text-center">
                                 <div class="box">
                                     <!-- caja de imagenes -->
                                     <div class="slider-img">
@@ -143,7 +143,7 @@ include("../../app/helpers/header.php");
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-12 col-sm-12 col-xs-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">
+                            <div class="col-12 col-sm-12 col-xs-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 text-center">
                                 <div class="box">
                                     <!-- caja de imagenes -->
                                     <div class="slider-img">
@@ -167,7 +167,7 @@ include("../../app/helpers/header.php");
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-12 col-sm-12 col-xs-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">
+                            <div class="col-12 col-sm-12 col-xs-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 text-center">
                                 <div class="box">
                                     <!-- caja de imagenes -->
                                     <div class="slider-img">
