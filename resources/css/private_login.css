@@ -1,6 +1,7 @@
 body{
     background: linear-gradient(90deg, #0B486B, #3B8686);
-    padding: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 .container-all{
@@ -11,6 +12,11 @@ body{
     display: flex;
     border-radius: 20px;
     overflow: hidden;
+}
+
+#cabecera{
+    margin-top: 0;
+    background-color: rgb(245, 241, 241);
 }
 
 .ctn-form{
@@ -112,6 +118,10 @@ input[type="submit"]:hover{
     color: white;
     font-weight: 300;
     font-size: 40px;
+}
+
+#LoginFooter{
+    color: white;
 }
 
 /* Responsive */ 
