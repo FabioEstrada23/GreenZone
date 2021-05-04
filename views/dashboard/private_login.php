@@ -14,11 +14,11 @@ Dashboard_Page::headerTemplate('Iniciar sesión');
                     <img src="../../resources/img/logos/lg_head.png" class="logo img-fluid">
                     <h1 class="title"> Iniciar sesión</h1>
 
-                    <form action="">
+                    <form method="post" id="session-form">
                         
                         <!-- Ingresar nombre de usuario -->
                         <label for="username">Usuario</label>
-                        <input type="text" placeholder="Ingresa tu usuario" name="clave" class="validate" required>
+                        <input type="text" placeholder="Ingresa tu usuario" name="username" class="validate" required>
                         <!-- Ingresar contresenia de usuario -->
                         <label for="password">Contraseña</label>
                         <input type="password" placeholder="Ingresa tu contraseña" name="clave" class="validate" required>
