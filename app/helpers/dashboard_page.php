@@ -27,38 +27,29 @@ class Dashboard_Page
                 <!-- CSS Bootstrap -->
                 <link rel="stylesheet" type="text/css" href="../../resources/css/bootstrap/bootstrap.min.css">
                 <!-- Agregamos CSS Style -->
-                <link type="text/css" rel="stylesheet" href="../../resources/css/dashboard.css"/>
                 <link type="text/css" rel="stylesheet" href="../../resources/css/material_icons.css"/>
                 <link rel="stylesheet" type="text/css" href="../../resources/css/private_login.css">
                 <title>Document</title>
             </head>
             <body>
-        ');
-        // Se obtiene el nombre del archivo de la página web actual.
-        $filename = basename($_SERVER['PHP_SELF']);
-        // Se comprueba si existe una sesión de administrador para mostrar el menú de opciones, de lo contrario se muestra un menú vacío.
-        if (isset($_SESSION['id_usuario'])) {
-            // Se verifica si la página web actual es diferente a index.php (Iniciar sesión) y a register.php (Crear primer usuario) para no iniciar sesión otra vez, de lo contrario se direcciona a main.php
-            if ($filename != 'private_login.php' && $filename != 'register.php') {
-                // Se llama al método que contiene el código de las cajas de dialogo (modals).
-                self::modals();
-                // Se imprime el código HTML para el encabezado del documento con el menú de opciones.
-                print('
-                    <header>
+            <header>
                         <div class="row">
                                     <div id="cabecera">
-                                        Hola
+                                    <a href="private_login.php" class="brand-logo"><i class="material-icons">dashboard</i></a>
                                     </div>
                         </div>
-                    </header>
+            </header>
                     <main class="container">
-                        <h3 class="center-align">' . $title . '</h3>
-                ');
-            } else {
-                
-            }
+                    
+                        
+        ');
+        
+        if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
+            header("location: private_index.php");
+            
         }
     
     }    
-}    
+}  
+?>  
     

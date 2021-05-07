@@ -5,7 +5,7 @@ require_once('../../app/helpers/dashboard_page.php');
 Dashboard_Page::headerTemplate('Iniciar sesión');
 ?>
 
-<main>
+
     <section>
             
             <div class="container-all">
@@ -22,7 +22,7 @@ Dashboard_Page::headerTemplate('Iniciar sesión');
                         <!-- Ingresar contresenia de usuario -->
                         <label for="password">Contraseña</label>
                         <input type="password" placeholder="Ingresa tu contraseña" name="clave" class="validate" required>
-                        <input type="submit" value="Log In">
+                        <button type="submit" class="btn waves-effect blue tooltipped" data-tooltip="Ingresar">Ingresar</button>
 
                     </form>
                 </div>
@@ -35,8 +35,7 @@ Dashboard_Page::headerTemplate('Iniciar sesión');
             </div>
         </section>
         <br>
-
-        </main>
+        
 
 
 
@@ -98,8 +97,11 @@ Dashboard_Page::headerTemplate('Iniciar sesión');
 </aside>
 
 <!-- Agregamos SCRIPTS -->
-<script src="https://kit.fontawesome.com/592eb2e9e3.js" crossorigin="anonymous"></script>
-<script src="../../resources/js/bootstrap/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../resources/js/bootstrap/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../resources/js/sweetalert.min.js"></script>
+<script type="text/javascript" src="../../app/helpers/components.js"></script>
+<script type="text/javascript" src="../../app/controllers/dashboard/index.js"></script>
+<script type="text/javascript" src="../../app/controllers/dashboard/initialization.js"></script>
 </body>
 
 </html>
