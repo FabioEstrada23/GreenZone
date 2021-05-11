@@ -153,5 +153,53 @@ class Usuarios extends Validator
         return Database::getRows($sql, $params);
     }
 
+    /*
+    *   Método para verificar el alias.
+    */
+    public function checkUser($alias)
+    {
+        $sql = 'SELECT id_empleado FROM empleado_user WHERE alias_emp = ?';
+        $params = array($alias);
+        if ($data = Database::getRow($sql, $params)) {
+            $this->id = $data['id_empleado'];
+            $this->alias = $alias;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /*
+    *   Método para verificar contraseña.
+    */
+    public function checkPassword($password)
+    {
+        $sql = 'SELECT clave_emp FROM empleado_user WHERE id_empleado = ?';
+        $params = array($this->id);
+
+        if ($data = Database::getRow($sql, $params)) {
+            $this->password = $data['clave_emp'];
+            return true;
+        } else {
+            return false;
+        }
+
+
+        /*$data = Database::getRow($sql, $params);
+        if (password_verify($password, $data['clave_emp'])) {
+            return true;
+        } else {
+            return false;
+        }*/
+    }
+
+    public function readProfile()
+    {
+        $sql = 'SELECT id_empleado, nombres_emp, apellidos_emp, correo_emp, alias_emp
+                FROM empleado_user
+                WHERE id_empleado = ?';
+        $params = array($_SESSION['id_empleado']);
+        return Database::getRow($sql, $params);
+    }
     
 }

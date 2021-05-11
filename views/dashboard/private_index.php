@@ -32,7 +32,7 @@
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <li><a class="dropdown-item" href="#">Mi perfil</a></li>
                                     <li><hr class="dropdown-divider"></li>
-                                    <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
+                                    <li><a class="dropdown-item" href="#" onclick="logOut()">Cerrar sesión</a></li>
                                 </ul>
                             </li>
                         </ul>            
@@ -61,6 +61,9 @@
         </section>
     </div>
     <script src="../../resources/js/menu/menu.js"></script>
+    <script src="../../app/controllers/dashboard/account.js"></script>
+    <script type="text/javascript" src="../../resources/js/sweetalert.min.js"></script>
+    <script type="text/javascript" src="../../app/helpers/components.js"></script>
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->

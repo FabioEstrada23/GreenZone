@@ -43,11 +43,6 @@ class Dashboard_Page
                     
                         
         ');
-        
-        if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-            header("location: private_index.php");
-            
-        }
     
     }    
 }  

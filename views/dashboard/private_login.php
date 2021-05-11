@@ -22,7 +22,7 @@ Dashboard_Page::headerTemplate('Iniciar sesión');
                         <!-- Ingresar contresenia de usuario -->
                         <label for="password">Contraseña</label>
                         <input type="password" placeholder="Ingresa tu contraseña" name="clave" class="validate" required>
-                        <button type="submit" class="btn waves-effect blue tooltipped" data-tooltip="Ingresar">Ingresar</button>
+                        <button type="submit" class="tooltipped" data-tooltip="Ingresar">Ingresar</button>
 
                     </form>
                 </div>
@@ -101,7 +101,6 @@ Dashboard_Page::headerTemplate('Iniciar sesión');
 <script type="text/javascript" src="../../resources/js/sweetalert.min.js"></script>
 <script type="text/javascript" src="../../app/helpers/components.js"></script>
 <script type="text/javascript" src="../../app/controllers/dashboard/index.js"></script>
-<script type="text/javascript" src="../../app/controllers/dashboard/initialization.js"></script>
 </body>
 
 </html>
