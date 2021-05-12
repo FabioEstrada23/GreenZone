@@ -169,6 +169,16 @@ class Usuarios extends Validator
         }
     }
 
+    public function createRow()
+    {
+        // Se encripta la clave por medio del algoritmo bcrypt que genera un string de 60 caracteres.
+        $hash = password_hash($this->clave, PASSWORD_DEFAULT);
+        $sql = 'INSERT INTO empleado_user(nombres_emp, apellidos_emp, correo_emp, alias_emp, clave_emp, id_tipo_empleado, id_estado_emp)
+                VALUES(?, ?, ?, ?, ?, ?, ?)';
+        $params = array($this->nombres, $this->apellidos, $this->correo, $this->alias, $hash, 1, 1);
+        return Database::executeRow($sql, $params);
+    }
+
     /*
     *   Método para verificar contraseña.
     */
@@ -177,7 +187,7 @@ class Usuarios extends Validator
         $sql = 'SELECT clave_emp FROM empleado_user WHERE id_empleado = ?';
         $params = array($this->id);
 
-        if ($data = Database::getRow($sql, $params)) {
+        /*if ($data = Database::getRow($sql, $params)) {
             if($password == $data['clave_emp']){
                return true; 
             }
@@ -187,16 +197,16 @@ class Usuarios extends Validator
             
         } else {
             return false;
-        }
+        }*/
 
 
-        /*$data = Database::getRow($sql, $params);
+        $data = Database::getRow($sql, $params);
         if (password_verify($password, $data['clave_emp'])) {
             
             return true;
         } else {
             return false;
-        }*/
+        }
     }
 
     public function readProfile()

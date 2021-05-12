@@ -1,0 +1,29 @@
+body{
+    background: linear-gradient(90deg, #0B486B, #3B8686);
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.container-reg{
+    width: 80%;
+    max-width: 700px;
+    margin: auto;
+    margin-top: 100px;
+    display: flex;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.register-form{
+    width: 100%;
+    padding: 40px;
+    background: rgb(245, 241, 241);
+}
+
+.logoreg{
+    width: 300px;
+    display: block;
+    margin: auto;
+    background: linear-gradient(90deg, #3B8686, #0B486B);
+    border-radius: 20px;
+}
