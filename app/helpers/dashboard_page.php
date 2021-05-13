@@ -45,8 +45,32 @@ class Dashboard_Page
                     
                         
         ');
-    
-    }   
+        // Se obtiene el nombre del archivo de la página web actual.
+        $filename = basename($_SERVER['PHP_SELF']);
+        // Se comprueba si existe una sesión de administrador para mostrar el menú de opciones, de lo contrario se muestra un menú vacío.
+        if (isset($_SESSION['id_empleado'])) {
+            // Se verifica si la página web actual es diferente a index.php (Iniciar sesión) y a register.php (Crear primer usuario) para no iniciar sesión otra vez, de lo contrario se direcciona a main.php
+            if ($filename != 'private_login.php' && $filename != 'register.php') {
+                // Se llama al método que contiene el código de las cajas de dialogo (modals).
+                self::modals();
+                // Se imprime el código HTML para el encabezado del documento con el menú de opciones.
+                print('
+                ');
+            } else {
+                header('location: private_index.php');
+            }
+        } else {
+            // Se verifica si la página web actual es diferente a index.php (Iniciar sesión) y a register.php (Crear primer usuario) para direccionar a index.php, de lo contrario se muestra un menú vacío.
+            if ($filename != 'private_login.php' && $filename != 'register.php') {
+                header('location: private_login.php');
+            } else {
+                // Se imprime el código HTML para el encabezado del documento con un menú vacío cuando sea iniciar sesión o registrar el primer usuario.
+                print('
+                ');
+            }
+        }
+    }    
+       
     
     /*
     
@@ -152,32 +176,6 @@ class Dashboard_Page
         ');
     }
 
-    
-        // Se obtiene el nombre del archivo de la página web actual.
-        $filename = basename($_SERVER['PHP_SELF']);
-        // Se comprueba si existe una sesión de administrador para mostrar el menú de opciones, de lo contrario se muestra un menú vacío.
-        if (isset($_SESSION['id_empleado'])) {
-            // Se verifica si la página web actual es diferente a index.php (Iniciar sesión) y a register.php (Crear primer usuario) para no iniciar sesión otra vez, de lo contrario se direcciona a main.php
-            if ($filename != 'private_login.php' && $filename != 'register.php') {
-                // Se llama al método que contiene el código de las cajas de dialogo (modals).
-                self::modals();
-                // Se imprime el código HTML para el encabezado del documento con el menú de opciones.
-                print('
-                ');
-            } else {
-                header('location: private_index.php');
-            }
-        } else {
-            // Se verifica si la página web actual es diferente a index.php (Iniciar sesión) y a register.php (Crear primer usuario) para direccionar a index.php, de lo contrario se muestra un menú vacío.
-            if ($filename != 'private_login.php' && $filename != 'register.php') {
-                header('location: private_login.php');
-            } else {
-                // Se imprime el código HTML para el encabezado del documento con un menú vacío cuando sea iniciar sesión o registrar el primer usuario.
-                print('
-                ');
-            }
-        }
-    }    
 }  
 ?>  
     
