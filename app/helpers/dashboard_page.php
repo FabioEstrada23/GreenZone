@@ -30,8 +30,7 @@ class Dashboard_Page
                 <link type="text/css" rel="stylesheet" href="../../resources/css/material_icons.css"/>
                 <link rel="stylesheet" type="text/css" href="../../resources/css/private_login.css">
                 <link rel="stylesheet" type="text/css" href="../../resources/css/register.css">
-                <link rel="stylesheet" type="text/css" href="../../resources/css/plantillasCSS/PlantillaPublica.css">
-                <link rel="stylesheet" type="text/css" href="../../resources/css/plantillasCSS/PlantillaPrivada.css">
+                
                 <title>Document</title>
             </head>
             <body>

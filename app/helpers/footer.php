@@ -65,6 +65,7 @@
 <script src="../../resources/js/bootstrap/bootstrap.min.js"></script>
 <script src="../../resources/js/MenuInferior/mnInferior.js"></script>
 <script src="../../resources/js/MenuInferior/jquery-3.6.0.min.js"></script>
+<script src="../../resources/js/menu/menu.js"></script>
 </body>
 
 </html>
