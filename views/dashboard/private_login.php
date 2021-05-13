@@ -77,7 +77,7 @@ Dashboard_Page::headerTemplate('Iniciar sesión');
                         <i class="fab fa-instagram fa-2x"></i>
                     </div>
                     <div class="col-1">
-                        <i class="fab fa-facebook-square fa-2x"></i>
+                        <i class="fab fa-facebook-square fa-2x "></i>
                     </div>
                 </div>
             </div>
@@ -97,6 +97,7 @@ Dashboard_Page::headerTemplate('Iniciar sesión');
 </aside>
 
 <!-- Agregamos SCRIPTS -->
+<script src="https://kit.fontawesome.com/592eb2e9e3.js" crossorigin="anonymous"></script>
 <script type="text/javascript" src="../../resources/js/bootstrap/bootstrap.min.js"></script>
 <script type="text/javascript" src="../../resources/js/sweetalert.min.js"></script>
 <script type="text/javascript" src="../../app/helpers/components.js"></script>

@@ -4,14 +4,16 @@ body{
     padding-right: 20px;
 }
 
-.container-all{
-    width: 100%;
-    max-width: 1000px;
-    margin: auto;
-    margin-top: 100px;
-    display: flex;
-    border-radius: 20px;
-    overflow: hidden;
+/* Ponemos estilo al footer */
+
+#ptDerechos{
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+/* estilos del footer principal */
+#ptFooter{
+    background-color: #0B486B;
+    color: white;
 }
 
 #cabecera{
@@ -138,7 +140,7 @@ button[type="submit"]:hover{
 }
 
 #LoginFooter{
-    color: white;
+    color: black;
 }
 
 /* Responsive */ 
