@@ -1,12 +1,11 @@
-const API_PRODUCTOS = '../../app/api/dashboard/proveedores.php?action=';
-const ENDPOINT_CATEGORIAS = '../../app/api/dashboard/proveedores.php?action=readAll';
+const API_PROVEEDOR = '../../app/api/dashboard/proveedores.php?action=';
+const ENDPOINT_PROVEEDORES = '../../app/api/dashboard/proveedores.php?action=readAll';
 
 function fillTable(dataset) {
     let content = '';
     // Se recorre el conjunto de registros (dataset) fila por fila a través del objeto row.
     dataset.map(function (row) {
-        // Se establece un icono para el estado del producto.
-        (row.estado_producto) ? icon = 'visibility' : icon = 'visibility_off';
+
         // Se crean y concatenan las filas de la tabla con los datos de cada registro.
         content += `
             <tr>
@@ -14,9 +13,8 @@ function fillTable(dataset) {
                 <td>${row.direccion_prov}</td>
                 <td>${row.correo_prov}</td>
                 <td>${row.telefono_prov}</td>
-                <td><i class="material-icons">${icon}</i></td>
                 <td>
-                    <a href="#" onclick="openUpdateDialog(${row.id_proveedor})" class="btn waves-effect blue tooltipped" data-tooltip="Actualizar"><i class="material-icons">mode_edit</i></a>
+                    <a href="#" onclick="openUpdateDialog(${row.id_proveedor})" class="btn waves-effect blue tooltipped" data-tooltip="Actualizar" data-bs-toggle="modal" data-bs-target="#exampleModal" ><i class="material-icons">mode_edit</i></a>
                     <a href="#" onclick="openDeleteDialog(${row.id_proveedor})" class="btn waves-effect red tooltipped" data-tooltip="Eliminar"><i class="material-icons">delete</i></a>
                 </td>
             </tr>
@@ -27,19 +25,33 @@ function fillTable(dataset) {
 
 }
 
+document.addEventListener('DOMContentLoaded', function () {
+    // Se llama a la función que obtiene los registros para llenar la tabla. Se encuentra en el archivo components.js
+    readRows(API_PROVEEDOR);
+});
+
+
+
 document.getElementById('search-form').addEventListener('submit', function (event) {
     // Se evita recargar la página web después de enviar el formulario.
     event.preventDefault();
     // Se llama a la función que realiza la búsqueda. Se encuentra en el archivo components.js
-    searchRows(API_PRODUCTOS, 'search-form');
+    searchRows(API_PROVEEDOR, 'search-form');
 });
+
+function openCreateDialog() {
+    // Se restauran los elementos del formulario.
+    document.getElementById('save-form').reset();
+    
+    // Se llama a la función que llena el select del formulario. Se encuentra en el archivo components.js
+    
+}
 
 function openUpdateDialog(id) {
     // Se restauran los elementos del formulario.
     document.getElementById('save-form').reset();
     // Se abre la caja de dialogo (modal) que contiene el formulario.
-    let instance = M.Modal.getInstance(document.getElementById('save-modal'));
-    instance.open();
+
     // Se asigna el título para la caja de dialogo (modal).
     document.getElementById('modal-title').textContent = 'Actualizar Proveedor';
 
@@ -48,7 +60,7 @@ function openUpdateDialog(id) {
     const data = new FormData();
     data.append('id_proveedor', id);
 
-    fetch(API_PRODUCTOS + 'readOne', {
+    fetch(API_PROVEEDOR + 'readOne', {
         method: 'post',
         body: data
     }).then(function (request) {
@@ -58,14 +70,12 @@ function openUpdateDialog(id) {
                 // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
                 if (response.status) {
                     // Se inicializan los campos del formulario con los datos del registro seleccionado.
-                    document.getElementById('id_proveedor').value = response.dataset.id_producto;
-                    document.getElementById('nombre_prov').value = response.dataset.nombre_prov;
-                    document.getElementById('direccion_prov').value = response.dataset.direccion_prov;
-                    document.getElementById('correo_prov').value = response.dataset.correo_prov;
-                    document.getElementById('telefono_prov').value = response.dataset.telefono_prov;
+                    document.getElementById('id_proveedor').value = response.dataset.id_proveedor;
+                    document.getElementById('nombre_prov2').value = response.dataset.nombre_prov;
+                    document.getElementById('direccion_prov2').value = response.dataset.direccion_prov;
+                    document.getElementById('correo_prov2').value = response.dataset.correo_prov;
+                    document.getElementById('telefono_prov2').value = response.dataset.telefono_prov;
                     
-                    // Se actualizan los campos para que las etiquetas (labels) no queden sobre los datos.
-                    M.updateTextFields();
                 } else {
                     sweetAlert(2, response.exception, null);
                 }
@@ -82,16 +92,22 @@ function openUpdateDialog(id) {
 document.getElementById('save-form').addEventListener('submit', function (event) {
     // Se evita recargar la página web después de enviar el formulario.
     event.preventDefault();
-    // Se define una variable para establecer la acción a realizar en la API.
-    let action = '';
-    // Se comprueba si el campo oculto del formulario esta seteado para actualizar, de lo contrario será para crear.
-    if (document.getElementById('id_proveedor').value) {
-        action = 'update';
-    } else {
-        action = 'create';
-    }
-    saveRow(API_PRODUCTOS, action, 'save-form', 'save-modal');
+    
+    saveRow(API_PROVEEDOR, 'create', 'save-form', null);
 });
+
+
+// Método manejador de eventos que se ejecuta cuando se envía el formulario de actualizar.
+document.getElementById('update-form').addEventListener('submit', function (event) {
+    // Se evita recargar la página web después de enviar el formulario.
+    event.preventDefault();
+    
+    updateRow(API_PROVEEDOR, 'update', 'update-form', 'exampleModal');
+});
+
+
+
+
 
 // Función para establecer el registro a eliminar y abrir una caja de dialogo de confirmación.
 function openDeleteDialog(id) {
@@ -99,5 +115,5 @@ function openDeleteDialog(id) {
     const data = new FormData();
     data.append('id_proveedor', id);
     // Se llama a la función que elimina un registro. Se encuentra en el archivo components.js
-    confirmDelete(API_PRODUCTOS, data);
+    confirmDelete(API_PROVEEDOR, data);
 }

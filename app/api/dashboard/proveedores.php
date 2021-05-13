@@ -5,10 +5,10 @@ require_once('../../models/proveedores.php');
 
 if (isset($_GET['action'])) {
     session_start();
-    $proveedores = new Proveedores;
+    $proveedores = new Proveedor;
     $result = array('status' => 0, 'message' => null, 'exception' => null);
 
-    if (isset($_SESSION['id_empleado'])) {
+    if (isset($_SESSION['id_empleado']) || true) {
 
         switch ($_GET['action']) {
             case 'readAll':
@@ -46,16 +46,16 @@ if (isset($_GET['action'])) {
                     }
                     break;
             case 'create':
-                    $_POST = $producto->validateForm($_POST);
-                    if($proveedores->setDireccion($_POST['direccion_prov']){
-                        if($proveedores->setEmail($_POST['correo_prov']){
-                            if($proveedores->setTelefono($_POST['telefono_prov']){
-                                if($proveedores->setNombre($_POST['nombre_prov']){
+                    $_POST = $proveedores->validateForm($_POST);
+                    if($proveedores->setDireccion($_POST['direccion_prov'])){
+                        if($proveedores->setEmail($_POST['correo_prov'])){
+                            if($proveedores->setTelefono($_POST['telefono_prov'])){
+                                if($proveedores->setNombre($_POST['nombre_prov'])){
                                     if ($proveedores->createRow()) {
                                         $result['status'] = 1;
-                                        $result['message'] = 'Producto creado correctamente';
+                                        $result['message'] = 'Proveedor creado correctamente';
                                     } else {
-                                        $result['exception'] = Database::getException();;
+                                        $result['exception'] = Database::getException();
                                     }
                                 }else{
                                     $result['message'] = 'Nombre Incorrecto';
@@ -76,15 +76,15 @@ if (isset($_GET['action'])) {
                    $_POST = $proveedores->validateForm($_POST);
                    if ($proveedores->setId($_POST['id_proveedor'])) {
                     if ($data = $proveedores->readOne()) {
-                        if($proveedores->setDireccion($_POST['direccion_prov']){
-                            if($proveedores->setEmail($_POST['correo_prov']){
-                                if($proveedores->setTelefono($_POST['telefono_prov']){
-                                    if($proveedores->setNombre($_POST['nombre_prov']){
-                                        if ($proveedores->createRow()) {
+                        if($proveedores->setDireccion($_POST['direccion_prov'])){
+                            if($proveedores->setEmail($_POST['correo_prov'])){
+                                if($proveedores->setTelefono($_POST['telefono_prov'])){
+                                    if($proveedores->setNombre($_POST['nombre_prov'])){
+                                        if ($proveedores->updateRow()) {
                                             $result['status'] = 1;
-                                            $result['message'] = 'Producto creado correctamente';
+                                            $result['message'] = 'Proveedor actualizado correctamente';
                                         } else {
-                                            $result['exception'] = Database::getException();;
+                                            $result['exception'] = Database::getException();
                                         }
                                     }else{
                                         $result['message'] = 'Nombre Incorrecto';
@@ -122,7 +122,7 @@ if (isset($_GET['action'])) {
 
             
             case 'delete':
-                    if ($proveedores->setId($_POST['id_producto'])) {
+                    if ($proveedores->setId($_POST['id_proveedor'])) {
                         if ($data = $proveedores->readOne()) {
                             if ($proveedores->deleteRow()) {
                                 $result['status'] = 1;

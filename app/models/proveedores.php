@@ -113,7 +113,7 @@ class Proveedor extends Validator
         return Database::getRows($sql, $params);
     }
 
-    public function readAll()
+    public function readOne()
     {
         $sql = 'SELECT id_proveedor, direccion_prov, correo_prov, telefono_prov, nombre_prov
                 FROM proveedor 
@@ -122,7 +122,7 @@ class Proveedor extends Validator
         return Database::getRow($sql, $params);
     }
 
-    public function updateRow($current_image)
+    public function updateRow()
     {
         $sql = 'UPDATE proveedor
                 SET  direccion_prov = ?, correo_prov = ?, telefono_prov  = ?, nombre_prov = ?

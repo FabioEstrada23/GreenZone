@@ -64,6 +64,7 @@
 <script src="https://kit.fontawesome.com/592eb2e9e3.js" crossorigin="anonymous"></script>
 <script src="../../resources/js/bootstrap/bootstrap.min.js"></script>
 <script src="../../resources/js/MenuInferior/mnInferior.js"></script>
+<script src="../../resources/js/MenuInferior/jquery-3.6.0.min.js"></script>
 </body>
 
 </html>
