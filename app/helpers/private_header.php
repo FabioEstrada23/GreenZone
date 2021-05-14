@@ -3,20 +3,20 @@
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" type="text/css" href="../../resources/css/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="../../resources/css/plantillasCSS/PlantillaPrivada.css">
-
-    <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="../../resources/css/material_icons.css"/>
     <link rel="stylesheet" type="text/css" href="../../resources/css/private_index.css">
+
     <title>Página principal</title>
 </head>
 <body>
 
+<div class="container-fluid">
     <header>
-    <div class="container-fluid">
         <div class="row">
 
             <nav class="navbar navbar-light bg-light">
@@ -51,7 +51,7 @@
                     <img src="../../resources/img/logos/lg_head.png" class="logo img-fluid">
                 
                     <a href="#" class="d-block text-light p-3"><i class="icon ion-md-cart mr-2 lead"></i> Productos</a>
-                    <a href="#" class="d-block text-light p-3"><i class="icon ion-md-pricetag mr-2 lead"></i> Marcas</a>
+                    <a href="../../views/dashboard/marca.php" class="d-block text-light p-3"><i class="icon ion-md-pricetag mr-2 lead"></i> Marcas</a>
                     <a href="#" class="d-block text-light p-3"><i class="icon ion-md-globe mr-2 lead"></i> Proveedores</a>
                     <a href="#" class="d-block text-light p-3"><i class="icon ion-md-list mr-2 lead"></i> Bitácora</a>
                     <a href="#" class="d-block text-light p-3"><i class="icon ion-md-clipboard mr-2 lead"></i> Reportes</a>
@@ -59,10 +59,7 @@
                 
             </nav>
         </div>
-    </div>    
-    </header>
-    
-        
+    </header>        
         <main>
     
     

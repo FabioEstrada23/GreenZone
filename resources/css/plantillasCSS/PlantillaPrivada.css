@@ -50,10 +50,55 @@
 
 #brand {
     min-height: auto;
+    max-width: 1000px;
+    margin: auto;
 }
 
+/* MARCA */
 
+#contenedor-bit{
+    max-width: 1000px;
+    margin: auto;
+    margin-top: 50px;
+    border-radius: 20px;
+    overflow: hidden;
+    background-color: rgb(245, 241, 241);
+    width: 70%;
+    margin-bottom: 50px;
+    padding-top: 50px;
+}
 
+#searchBarMarca{
+    width: 90%;
+}
+
+#searchBarMarca .btn{
+    background-color: #3B8686;
+    margin: 10px;
+    height: 40px;
+    width: 50px;
+}
+
+#tabla{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#tabla .btn{
+    color: red;
+}
+
+/* Responsive */ 
+
+@media screen and (max-width: 800px){
+    #contenedor-bit{
+        margin-left: 10px;
+        margin-right: 10px;
+        width: 96%;
+    }
+}
+
+/* FIN DE MARCA*/
 
 /*AGREGAR PRODUCTO*/
 
