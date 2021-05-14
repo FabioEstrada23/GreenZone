@@ -26,3 +26,61 @@ function fillTable(dataset) {
     // Se agregan las filas al cuerpo de la tabla mediante su id para mostrar los registros.
     document.getElementById('tbody-rows').innerHTML = content;
 }
+
+// Método manejador de eventos que se ejecuta cuando se envía el formulario de buscar.
+document.getElementById('search-form').addEventListener('submit', function (event) {
+    // Se evita recargar la página web después de enviar el formulario.
+    event.preventDefault();
+    // Se llama a la función que realiza la búsqueda. Se encuentra en el archivo components.js
+    searchRows(API_MARCA, 'search-form');
+});
+
+// Método manejador de eventos que se ejecuta cuando se envía el formulario de guardar.
+document.getElementById('save-form').addEventListener('submit', function (event) {
+    // Se evita recargar la página web después de enviar el formulario.
+    event.preventDefault();
+    
+    saveRow(API_MARCA, 'create', 'save-form', null);
+
+    document.getElementById('save-form').reset();
+});
+
+function openUpdateDialog(id) {
+    // Se restauran los elementos del formulario.
+    document.getElementById('save-form').reset();
+    // Se define un objeto con los datos del registro seleccionado.
+    const data = new FormData();
+    data.append('id_marca', id);
+
+    fetch(API_MARCA + 'readOne', {
+        method: 'post',
+        body: data
+    }).then(function (request) {
+        // Se verifica si la petición es correcta, de lo contrario se muestra un mensaje indicando el problema.
+        if (request.ok) {
+            request.json().then(function (response) {
+                // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
+                if (response.status) {
+                    // Se inicializan los campos del formulario con los datos del registro seleccionado.
+                    
+                    document.getElementById('n-marca-up').value = response.dataset.marca;
+                    
+                } else {
+                    sweetAlert(2, response.exception, null);
+                }
+            });
+        } else {
+            console.log(request.status + ' ' + request.statusText);
+        }
+    }).catch(function (error) {
+        console.log(error);
+    });
+}
+
+// Método manejador de eventos que se ejecuta cuando se envía el formulario de actualizar.
+document.getElementById('update-form').addEventListener('submit', function (event) {
+    // Se evita recargar la página web después de enviar el formulario.
+    event.preventDefault();
+    
+    updateRow(API_MARCA, 'update', 'update-form', 'update-modal');
+});

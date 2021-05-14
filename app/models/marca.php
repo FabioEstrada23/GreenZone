@@ -52,9 +52,9 @@ class Marca extends Validator
     {
         $sql = 'SELECT id_marca, marca
                 FROM marca_producto
-                WHERE marca ILIKE ? OR id_marca ILIKE ?
+                WHERE marca ILIKE ?
                 ORDER BY marca';
-        $params = array("%$value%", "%$value%");
+        $params = array("%$value%");
         return Database::getRows($sql, $params);
     }
     public function createRow()
@@ -76,7 +76,7 @@ class Marca extends Validator
 
     public function readOne()
     {
-        $sql = 'SELECT id_marca, marca
+        $sql = 'SELECT marca
                 FROM marca_producto
                 WHERE id_marca = ?';
         $params = array($this->id);

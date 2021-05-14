@@ -12,8 +12,9 @@ include("../../app/helpers/private_header.php");
     <!-- Creacion del buscador -->
     <div class="mx-auto" class="col-sm-12 col-md-12 col-lg-12 col-xl-8 offset-xl-1">
         <div class="row">
-            <div class="col-12 p-4" id="searchBarMarca">
-                <div class="ordenar">
+            <div class="p-4" id="searchBarMarca">
+                
+                    <form method="post" id="search-form">
                     <input type="text" class="form-control" placeholder="Buscar" aria-label="Buscar"
                     aria-describedby="basic-addon1" id="search" type="text" name="search" required >
                     <!-- Boton de buscar -->
@@ -25,11 +26,13 @@ include("../../app/helpers/private_header.php");
                         </svg>
                     </button>
                     <button type="button" class="btn" data-bs-toggle="modal" id="create"
-                            data-bs-target="#save-modal">
-                            <i class="material-icons">add_circle</i>
+                                data-bs-target="#save-modal">
+                                <i class="material-icons">add_circle</i>
                     </button>
-                </div>
+                    </form>
+                    
                 
+                     
             </div> 
             <div class="modal fade" id="save-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
@@ -39,17 +42,18 @@ include("../../app/helpers/private_header.php");
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <form>
+                            <form method="post" id="save-form">
                             <div class="mb-3">
-                                <label for="recipient-name" class="col-form-label">Nombre de marca:</label>
-                                <input type="text" class="form-control" id="n-marca">
+                                <label for="marca" class="col-form-label">Nombre de marca:</label>
+                                <input type="text" class="form-control" id="n-marca" name="n-marca">
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                <button type="submit" class="btn btn-primary">Guardar</button>
                             </div>
                             </form>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                            <button type="button" class="btn btn-primary">Guardar</button>
-                        </div>
+                        
                     </div>
             </div> 
         </div>
@@ -72,7 +76,28 @@ include("../../app/helpers/private_header.php");
         </div>
     </div>   
 </div>
-
+<div class="modal fade" id="update-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Agregar marca</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form method="post" id="update-form">
+                            <div class="mb-3">
+                                <label for="marca" class="col-form-label">Nombre de marca:</label>
+                                <input type="text" class="form-control" id="n-marca-up" name="n-marca-up">
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                <button type="submit" class="btn btn-primary">Guardar</button>
+                            </div>
+                            </form>
+                        </div>
+                        
+                    </div>
+            </div> 
 
 </main>
 
