@@ -76,14 +76,14 @@ class Marca extends Validator
 
     public function readOne()
     {
-        $sql = 'SELECT marca
+        $sql = 'SELECT id_marca, marca
                 FROM marca_producto
                 WHERE id_marca = ?';
         $params = array($this->id);
         return Database::getRow($sql, $params);
     }
 
-    public function updateRow($current_image)
+    public function updateRow()
     {
         $sql = 'UPDATE marca_producto
                 SET marca = ?

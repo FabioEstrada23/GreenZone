@@ -78,67 +78,39 @@ if (isset($_GET['action'])) {
                 }
                 break;
             case 'update':
-                $_POST = $categoria->validateForm($_POST);
-                if ($categoria->setId($_POST['id_categoria'])) {
-                    if ($data = $categoria->readOne()) {
-                        if ($categoria->setNombre($_POST['nombre_categoria'])) {
-                            if ($categoria->setDescripcion($_POST['descripcion_categoria'])) {
-                                if (is_uploaded_file($_FILES['archivo_categoria']['tmp_name'])) {
-                                    if ($categoria->setImagen($_FILES['archivo_categoria'])) {
-                                        if ($categoria->updateRow($data['imagen_categoria'])) {
-                                            $result['status'] = 1;
-                                            if ($categoria->saveFile($_FILES['archivo_categoria'], $categoria->getRuta(), $categoria->getImagen())) {
-                                                $result['message'] = 'Categoría modificada correctamente';
-                                            } else {
-                                                $result['message'] = 'Categoría modificada pero no se guardó la imagen';
-                                            }
-                                        } else {
-                                            $result['exception'] = Database::getException();
-                                        }
-                                    } else {
-                                        $result['exception'] = $categoria->getImageError();
-                                    }
-                                } else {
-                                    if ($categoria->updateRow($data['imagen_categoria'])) {
-                                        $result['status'] = 1;
-                                        $result['message'] = 'Categoría modificada correctamente';
-                                    } else {
-                                        $result['exception'] = Database::getException();
-                                    }
-                                }
+                $_POST = $marca->validateForm($_POST);
+                if ($marca->setId($_POST['id_marca'])) {
+                    if ($data = $marca->readOne()) {
+                        if($marca->setNombre($_POST['n-marca-up'])){
+                            if ($marca->updateRow()) {
+                                $result['status'] = 1;
+                                $result['message'] = 'Marca actualizada correctamente';
                             } else {
-                                $result['exception'] = 'Descripción incorrecta';
+                                $result['exception'] = Database::getException();
                             }
-                        } else {
-                            $result['exception'] = 'Nombre incorrecto';
+                        }else{
+                            $result['message'] = 'Marca Incorrecta';
                         }
-                    } else {
-                        $result['exception'] = 'Categoría inexistente';
                     }
-                } else {
-                    $result['exception'] = 'Categoría incorrecta';
-                }
+                }   
                 break;
             case 'delete':
-                if ($categoria->setId($_POST['id_categoria'])) {
-                    if ($data = $categoria->readOne()) {
-                        if ($categoria->deleteRow()) {
+                if ($marca->setId($_POST['id_marca'])) {
+                    if ($data = $marca->readOne()) {
+                        if ($marca->deleteRow()) {
                             $result['status'] = 1;
-                            if ($categoria->deleteFile($categoria->getRuta(), $data['imagen_categoria'])) {
-                                $result['message'] = 'Categoría eliminada correctamente';
-                            } else {
-                                $result['message'] = 'Categoría eliminada pero no se borró la imagen';
-                            }
+                            $result['message'] = 'Marca eliminada correctamente';
+
                         } else {
                             $result['exception'] = Database::getException();
                         }
                     } else {
-                        $result['exception'] = 'Categoría inexistente';
+                        $result['exception'] = 'Marca inexistente';
                     }
                 } else {
-                    $result['exception'] = 'Categoría incorrecta';
+                    $result['exception'] = 'Marca incorrecta';
                 }
-                break;
+            break;
             default:
                 $result['exception'] = 'Acción no disponible dentro de la sesión';
         }

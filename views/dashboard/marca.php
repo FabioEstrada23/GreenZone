@@ -80,18 +80,22 @@ include("../../app/helpers/private_header.php");
                     <div class="modal-dialog">
                         <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Agregar marca</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Actualizar marca</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
                             <form method="post" id="update-form">
+                            
+                                
+                                <input type="text" class="form-control d-none" id="id_marca" name="id_marca">
+                            
                             <div class="mb-3">
                                 <label for="marca" class="col-form-label">Nombre de marca:</label>
                                 <input type="text" class="form-control" id="n-marca-up" name="n-marca-up">
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                                <button type="submit" class="btn btn-primary">Guardar</button>
+                                <button type="submit" class="btn btn-primary">Guardar cambios</button>
                             </div>
                             </form>
                         </div>
@@ -166,6 +170,7 @@ include("../../app/helpers/private_header.php");
 <script src="https://kit.fontawesome.com/592eb2e9e3.js" crossorigin="anonymous"></script>
 <script src="../../resources/js/bootstrap/bootstrap.min.js"></script>
 <script src="../../resources/js/menu/menu.js"></script>
+<script src="../../app/controllers/dashboard/account.js"></script>
 <script type="text/javascript" src="../../resources/js/sweetalert.min.js"></script>
 <script type="text/javascript" src="../../app/helpers/components.js"></script>
 <script type="text/javascript" src="../../app/controllers/dashboard/marca.js"></script>

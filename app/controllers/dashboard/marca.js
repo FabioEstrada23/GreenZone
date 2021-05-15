@@ -17,7 +17,7 @@ function fillTable(dataset) {
                 <td>${row.marca}</td>
                 
                 <td>
-                <a href="#" onclick="openUpdateDialog(${row.id_marca})" class="btn waves-effect blue tooltipped" data-tooltip="Actualizar" data-bs-toggle="modal" data-bs-target="#exampleModal" ><i class="material-icons">mode_edit</i></a>
+                <a href="#" onclick="openUpdateDialog(${row.id_marca})" class="btn waves-effect blue tooltipped" data-tooltip="Actualizar" data-bs-toggle="modal" data-bs-target="#update-modal" ><i class="material-icons">mode_edit</i></a>
                 <a href="#" onclick="openDeleteDialog(${row.id_marca})" class="btn waves-effect red tooltipped" data-tooltip="Eliminar"><i class="material-icons">delete</i></a>
                 </td>
             </tr>
@@ -46,8 +46,6 @@ document.getElementById('save-form').addEventListener('submit', function (event)
 });
 
 function openUpdateDialog(id) {
-    // Se restauran los elementos del formulario.
-    document.getElementById('save-form').reset();
     // Se define un objeto con los datos del registro seleccionado.
     const data = new FormData();
     data.append('id_marca', id);
@@ -62,7 +60,7 @@ function openUpdateDialog(id) {
                 // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
                 if (response.status) {
                     // Se inicializan los campos del formulario con los datos del registro seleccionado.
-                    
+                    document.getElementById('id_marca').value = response.dataset.id_marca;
                     document.getElementById('n-marca-up').value = response.dataset.marca;
                     
                 } else {
@@ -84,3 +82,13 @@ document.getElementById('update-form').addEventListener('submit', function (even
     
     updateRow(API_MARCA, 'update', 'update-form', 'update-modal');
 });
+
+
+// Función para establecer el registro a eliminar y abrir una caja de dialogo de confirmación.
+function openDeleteDialog(id) {
+    // Se define un objeto con los datos del registro seleccionado.
+    const data = new FormData();
+    data.append('id_marca', id);
+    // Se llama a la función que elimina un registro. Se encuentra en el archivo components.js
+    confirmDelete(API_MARCA, data);
+}
