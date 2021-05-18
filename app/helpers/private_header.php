@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -31,12 +35,10 @@
                         <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
                             <li class="nav-item dropdown">
                                 <a id="configuracion" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="../../resources/img/Fabio.jpg" class="img-fluid rounded-circle avatar mr-2">  
-                                    Fabio Estrada
+                                <i class="material-icons left">verified_user</i>Usuario: <b><?php echo ucwords($_SESSION['alias_emp']); ?></b>
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" href="#">Mi perfil</a></li>
-                                    <li><hr class="dropdown-divider"></li>
+                                    
                                     <li><a class="dropdown-item" href="#" onclick="logOut()">Cerrar sesión</a></li>
                                 </ul>
                             </li>
@@ -50,7 +52,7 @@
             <nav class="menu-navegacion">
                 
                     <img src="../../resources/img/logos/lg_head.png" class="logo img-fluid">
-                
+                    <a href="../../views/dashboard/private_index.php" class="d-block text-light p-3"><i class="icon ion-md-home mr-2 lead"></i> Inicio</a>
                     <a href="#" class="d-block text-light p-3"><i class="icon ion-md-cart mr-2 lead"></i> Productos</a>
                     <a href="../../views/dashboard/marca.php" class="d-block text-light p-3"><i class="icon ion-md-pricetag mr-2 lead"></i> Marcas</a>
                     <a href="#" class="d-block text-light p-3"><i class="icon ion-md-globe mr-2 lead"></i> Proveedores</a>

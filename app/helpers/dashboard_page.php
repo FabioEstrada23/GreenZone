@@ -51,10 +51,10 @@ class Dashboard_Page
         if (isset($_SESSION['id_empleado'])) {
             // Se verifica si la página web actual es diferente a index.php (Iniciar sesión) y a register.php (Crear primer usuario) para no iniciar sesión otra vez, de lo contrario se direcciona a main.php
             if ($filename != 'private_login.php' && $filename != 'register.php') {
-                // Se llama al método que contiene el código de las cajas de dialogo (modals).
-                self::modals();
+                
                 // Se imprime el código HTML para el encabezado del documento con el menú de opciones.
                 print('
+                
                 ');
             } else {
                 header('location: private_index.php');
