@@ -13,7 +13,7 @@ function fillTable(dataset) {
         // Se crean y concatenan las filas de la tabla con los datos de cada registro.
         content += `
             <tr>
-                <td>${row.id_marca}</td>
+                
                 <td>${row.marca}</td>
                 
                 <td>
