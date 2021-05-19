@@ -211,24 +211,24 @@ class empleado extends Validator
 
     public function readOne()
     {
-        $sql = 'SELECT id_empleado, nombres_emp, apellidos_emp, correo_emp, alias_emp, clave_emp, id_tipo_empleado, id_estado_emp FROM empleado_user
-                WHERE id_empleado = ?';
+        $sql = 'SELECT id_producto, nombre_pro, id_estado_producto, id_categoria, id_marca, precio_pro, oferta_pro, precio_final, descripcion_pro, id_proveedor, existencias FROM producto
+                WHERE id_producto = ?';
         $params = array($this->id_empleado);
         return Database::getRow($sql, $params);
     }
 
     public function updateRow()
     {
-        $sql = 'UPDATE empleado_user set nombres_emp = ?, apellidos_emp = ?, correo_emp = ? , alias_emp = ?, clave_emp = ?, id_tipo_empleado = ?, id_estado_emp = ?
-                WHERE id_empleado = ?';
-        $params = array($this->nombres_emp,$this->apellidos_emp,$this->correo_emp,$this->alias_emp,$this->clave_emp,$this->id_tipo_empleado,$this->id_estado_emp,$this->id_empleado);
+        $sql = 'UPDATE producto set nombre_pro = ?,id_estado_producto = ?,id_categoria = ?, id_marca = ?, precio_pro = ?, oferta_pro = ?, precio_final = ? , descripcion_pro = ?, id_proveedor = ?, existencias = ?
+                WHERE id_producto = ?';
+        $params = array($this->$this->nombre_pro,$this->id_estado_producto,$this->id_categoria,$this->id_marca,$this->precio_pro$this->oferta_pro,$this->precio_final,$this->descripcion_pro,$this->id_proveedor,$this->existencias,$this->id_producto);
         return Database::executeRow($sql, $params);
     }
 
     public function deleteRow()
     {
-        $sql = 'DELETE FROM empleado_user
-                WHERE id_empleado = ?';
+        $sql = 'DELETE FROM producto
+                WHERE id_producto = ?';
         $params = array($this->id_empleado);
         return Database::executeRow($sql, $params);
     }
