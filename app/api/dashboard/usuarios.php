@@ -34,57 +34,7 @@ if (isset($_GET['action'])) {
                     }
                 }
                 break;
-            case 'editProfile':
-                $_POST = $usuario->validateForm($_POST);
-                if ($usuario->setNombres($_POST['nombres_perfil'])) {
-                    if ($usuario->setApellidos($_POST['apellidos_perfil'])) {
-                        if ($usuario->setCorreo($_POST['correo_perfil'])) {
-                            if ($usuario->setAlias($_POST['alias_perfil'])) {
-                                if ($usuario->editProfile()) {
-                                    $result['status'] = 1;
-                                    $_SESSION['alias_usuario'] = $usuario->getAlias();
-                                    $result['message'] = 'Perfil modificado correctamente';
-                                } else {
-                                    $result['exception'] = Database::getException();
-                                }
-                            } else {
-                                $result['exception'] = 'Alias incorrecto';
-                            }
-                        } else {
-                            $result['exception'] = 'Correo incorrecto';
-                        }
-                    } else {
-                        $result['exception'] = 'Apellidos incorrectos';
-                    }
-                } else {
-                    $result['exception'] = 'Nombres incorrectos';
-                }
-                break;
-            case 'changePassword':
-                if ($usuario->setId($_SESSION['id_usuario'])) {
-                    $_POST = $usuario->validateForm($_POST);
-                    if ($usuario->checkPassword($_POST['clave_actual'])) {
-                        if ($_POST['clave_nueva_1'] == $_POST['clave_nueva_2']) {
-                            if ($usuario->setClave($_POST['clave_nueva_1'])) {
-                                if ($usuario->changePassword()) {
-                                    $result['status'] = 1;
-                                    $result['message'] = 'Contraseña cambiada correctamente';
-                                } else {
-                                    $result['exception'] = Database::getException();
-                                }
-                            } else {
-                                $result['exception'] = $usuario->getPasswordError();
-                            }
-                        } else {
-                            $result['exception'] = 'Claves nuevas diferentes';
-                        }
-                    } else {
-                        $result['exception'] = 'Clave actual incorrecta';
-                    }
-                } else {
-                    $result['exception'] = 'Usuario incorrecto';
-                }
-                break;
+            
             case 'readAll':
                 if ($result['dataset'] = $usuario->readAll()) {
                     $result['status'] = 1;
