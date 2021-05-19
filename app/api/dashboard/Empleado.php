@@ -26,6 +26,32 @@ if (isset($_GET['action'])) {
                     }
                 }
                 break;
+
+                case 'readTipoEmpleado':
+                    if ($result['dataset'] = $Empleado->readTipoEmpleado()) {
+                        $result['status'] = 1;
+                    } else {
+                        if (Database::getException()) {
+                            $result['exception'] = Database::getException();
+                        } else {
+                            $result['exception'] = 'No hay tipos de empleados registrados';
+                        }
+                    }
+                    break;
+
+                    
+                case 'readEstadoEmpleado':
+                    if ($result['dataset'] = $Empleado->readEstadoEmpleado()) {
+                        $result['status'] = 1;
+                    } else {
+                        if (Database::getException()) {
+                            $result['exception'] = Database::getException();
+                        } else {
+                            $result['exception'] = 'No hay estados registrados';
+                        }
+                    }
+                    break;
+
                 case 'search':
                     $_POST = $Empleado->validateForm($_POST);
                     if ($_POST['search'] != '') {

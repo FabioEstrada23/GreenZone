@@ -198,7 +198,7 @@ include("../../app/helpers/header.php");
                             <div class="col-12 text-center" id="RegisEmpleados">
                                 <h1>Registros</h1>
                             </div>
-            
+                        <form id="search-form">
                             <div class="col-12 p-4" id="#searchBarEmp">
                                 <div class="DiseBuscador">
                                     <input type="text" class="form-control" placeholder="Buscar" aria-label="Buscar"
@@ -214,6 +214,7 @@ include("../../app/helpers/header.php");
                                 </div>
             
                             </div>
+                        </form>
             
                             <div class="col-12 p- text-center">
                                 <div class="table-responsive">

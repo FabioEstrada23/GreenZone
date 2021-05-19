@@ -14,7 +14,7 @@ include("../../app/helpers/header.php");
                     <h1>Productos</h1>
                 </div>
 
-                <!-- Proveedores Caja de Informacion -->
+                <!-- Producto Caja de Informacion -->
                 <div class="col-12">
                     <br>
                     <div class="row" id="productoCaja">
@@ -128,26 +128,28 @@ include("../../app/helpers/header.php");
                             </div>
                         </div>
 
+                        <div class="row  p-3">
+                            <div class="col-3 text-center">
 
-                        
-
+                                <h6>Categoria</h6>
+                            </div>
+                            <div class="col-9">
+                                <select class="form-select" aria-label="Default select example">
+                                    <option selected></option>
+                                    <option value="1">Disponible</option>
+                                    <option value="2">Agotado</option>
+                                    <option value="3">Pre-ordebar</option>
+                                </select>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- Controladores de Producto -->
                     <br>
                     <div class="row text-center" id="controladorProduCaja">
-                        <div class="col-4">
-                            <button type="button" class="btn btn-light">Agregar +</button>
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-light">Agregar +</button>
                         </div>
-
-                        <div class="col-4">
-                            <button type="button" class="btn btn-light">Eliminar -</button>
-                        </div>
-
-                        <div class="col-4">
-                            <button type="button" class="btn btn-light">Actualizar º</button>
-                        </div>
-
                     </div>
                 </div>
             </div>
@@ -188,26 +190,15 @@ include("../../app/helpers/header.php");
                                     <th scope="col">Oferta</th>
                                     <th scope="col">Proveedor</th>
                                     <th scope="col">Marca</th>
+                                    <th scope="col">Categoria</th>
                                     <th scope="col">Estado</th>
                                     <th scope="col">Existencias</th>
-                                    <th scope="col"></th>
+                                    <th class="actions-column">Acciones</th>
                                 </tr>
 
                             </thead>
 
-                            <tbody>
-
-                                <tr class="table-light">
-                                    <th scope="row">Caja Natural</th>
-                                    <td>45.12</td>
-                                    <td>0.25</td>
-                                    <td>HealtyHC</td>
-                                    <td>LockStadia</td>
-                                    <td>Disponible</td>
-                                    <td>14</td>
-                                    <td><a href=""><i class="fas fa-edit"></i></a></td>
-                                </tr>
-
+                            <tbody id="tbody-rows">
                             </tbody>
 
                         </table>

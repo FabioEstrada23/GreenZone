@@ -1,9 +1,13 @@
 // Constante para establecer la ruta y parámetros de comunicación con la API.
 const API_EMPLEADOS = '../../app/api/dashboard/Empleado.php?action=';
+const ENDPOINT_TIPOEMPLEADO = '../../app/api/dashboard/Empleado.php?action=readTipoEmpleado';
+const ENDPOINT_TIPOESTADO = '../../app/api/dashboard/Empleado.php?action=readEstadoEmpleado';
 
 // Método manejador de eventos que se ejecuta cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', function () {
     //Se llama a la funcion que obtiene los registros para llenar la tabla.
+    fillSelect(ENDPOINT_TIPOEMPLEADO,'tipo_empleado',null)
+    fillSelect(ENDPOINT_TIPOESTADO,'estado_emp',null)
     readRows(API_EMPLEADOS);
 });
 
@@ -37,7 +41,7 @@ document.getElementById('search-form').addEventListener('submit', function (even
     // Se evita recargar la página web después de enviar el formulario.
     event.preventDefault();
     // Se llama a la función que realiza la búsqueda. Se encuentra en el archivo components.js
-    searchRows(API_PROVEEDOR, 'search-form');
+    searchRows(API_EMPLEADOS, 'search-form');
 });
 
 // Método manejador de eventos que se ejecuta cuando se envía el formulario de guardar.
