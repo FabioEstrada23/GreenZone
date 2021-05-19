@@ -3,7 +3,10 @@
 include("../../app/helpers/private_header.php");
 require_once('../../app/helpers/dashboard_page.php');
 ?>
-
+<br>
+<br>
+<br>
+<br>
 <section>
     <div id="contenedor-bit">
     <div id="box" class="row">

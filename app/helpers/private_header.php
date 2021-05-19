@@ -24,7 +24,7 @@ session_start();
     <header>
         <div class="row">
 
-            <nav class="navbar navbar-light bg-light">
+            <nav class="navbar fixed-top navbar-light bg-light">
 
                 <div class="container-fluid">
                     <img class="hamburguer" src="../../resources/img/menu.png">

@@ -1,12 +1,18 @@
 <?php
 //Se incluye la plantilla del encabezado para la página web
 require_once('../../app/helpers/dashboard_page.php');
-include("../../app/helpers/header.php");
+include("../../app/helpers/private_header.php");
 
 ?>
 
-
+<br>
+    <br>
+    <br>
+    <br>
+    <br>
 <section>
+
+
 
     <div class="container">
         <div class="row">
@@ -175,7 +181,7 @@ include("../../app/helpers/header.php");
 
                         <div class="col-12 p- text-center">
                             <div class="table-responsive">
-                                <table class="table table-dark table-striped">
+                                <table class="table table-dark table-striped" id="tabla">
                                     <thead>
 
                                         <tr>
