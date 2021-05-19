@@ -86,10 +86,8 @@ include("../../app/helpers/header.php");
                                             <h6>tipo empleado</h6>
                                         </div>
                                         <div class="col-9">
-                                            <select class="form-select" aria-label="Default select example">
-                                                <option selected></option>
-                                                <option value="1">Tecnico</option>
-                                                <option value="2">Supervisor</option>
+                                            <select class="form-select" aria-label="Default select example"
+                                             id="tipo_empleado" name="tipo_empleado">
                                             </select>
                                         </div>
                                     </div>
@@ -100,10 +98,8 @@ include("../../app/helpers/header.php");
                                             <h6>estado emp</h6>
                                         </div>
                                         <div class="col-9">
-                                            <select class="form-select" aria-label="Default select example">
-                                                <option selected></option>
-                                                <option value="1">Inactivo</option>
-                                                <option value="2">Activo</option>
+                                            <select class="form-select" aria-label="Default select example"
+                                            id="estado_emp" name="estado_emp">
                                             </select>
                 
                                         </div>
@@ -114,7 +110,7 @@ include("../../app/helpers/header.php");
                                 <br>
                                 <div class="row text-center" id="ControladorEmpleados">
                                     <div class="col-12">
-                                        <button type="button" class="btn btn-light">Agregar +</button>
+                                        <button type="submit" class="btn btn-light">Agregar +</button>
                                     </div>            
                                 </div>
                                 </form>
@@ -122,6 +118,79 @@ include("../../app/helpers/header.php");
                         </div>
             
                     </div>
+
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modal-title">Modal title</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="update-form" method="post" enctype="multipart/form-data">
+                                <div class="form-group d-none">
+                                    <label for="formGroupExampleInput">ID:</label>
+                                    <input type="text" class="form-control " placeholder="Ej: MalteHC..."
+                                        aria-label="Buscar" aria-describedby="basic-addon1" id="id_empleado" type="text"
+                                        name="id_empleado" class="validate" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="formGroupExampleInput">Nombres:</label>
+                                    <input type="text" class="form-control" placeholder="Ej: MalteHC..."
+                                        aria-label="Buscar" aria-describedby="basic-addon1" id="nombre_emp2" type="text"
+                                        name="nombre_emp2" class="validate" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="formGroupExampleInput2">Apellidos:</label>
+                                    <input type="text" class="form-control"
+                                        placeholder="Ej: Finca Don Pedro, pasaje Jocote..." aria-label="Buscar"
+                                        aria-describedby="basic-addon1" id="apellidos_emp" type="text"
+                                        name="apellidos_emp" class="validate" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="formGroupExampleInput2">correo:</label>
+                                    <input type="text" class="form-control"
+                                        placeholder="Ej: Finca Don Pedro, pasaje Jocote..." aria-label="Buscar"
+                                        aria-describedby="basic-addon1" id="correo_emp2" type="text"
+                                        name="correo_emp2" class="validate" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="formGroupExampleInput3">Alias:</label>
+                                    <input type="text" class="form-control" placeholder="Ej: fulanito@gmail.com..."
+                                        aria-label="Buscar" aria-describedby="basic-addon1" id="alias_emp2" type="text"
+                                        name="alias_emp2" class="validate" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="formGroupExampleInput2">Clave:</label>
+                                    <input type="text" class="form-control"
+                                        placeholder="Ej: Finca Don Pedro, pasaje Jocote..." aria-label="Buscar"
+                                        aria-describedby="basic-addon1" id="clave_emp2" type="text"
+                                        name="clave_emp2" class="validate" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="tipo_empleado2">Tipo empleado:</label>
+                                    <select class="form-select" aria-label="Select" id="tipo_empleado2" name="tipo_empleado2">
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="estado_emp2">estado empleado:</label>
+                                    <select class="form-select" aria-label="Select" id="estado_emp2" name="estado_emp2">
+                                    </select>
+                                </div>
+                        </div>
+                        
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                            <button type="submit" data-tooltip="Actualizar" class="btn btn-primary" >Guardar Cambios</button>
+                        </div>
+                    </form>
+                    </div>
+                </div>
+            </div>
+
+
+
             
                     <div class="col-12 col-xs-12 col-sm-12 col-lg-6 col-xl-6 p-4 col-xxl-6">
             
