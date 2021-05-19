@@ -22,7 +22,7 @@ class Proveedor extends Validator
 
     public function setDireccion($value)
     {
-        if ($this->validateAlphanumeric($value, 1, 50)) {
+        if ($this->validateString($value, 1, 150)) {
             $this->direccion_prov = $value;
             return true;
         } else {

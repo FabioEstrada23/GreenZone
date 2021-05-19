@@ -87,8 +87,6 @@ class Dashboard_Page
                 <script type="text/javascript" src="../../resources/js/sweetalert.min.js"></script>
                 <script src="../../app/controllers/dashboard/account.js"></script>
                 <script type="text/javascript" src="../../app/helpers/components.js"></script>
-                <script src="../../resources/js/MenuInferior/mnInferior.js"></script>
-                <script src="../../resources/js/MenuInferior/jquery-3.6.0.min.js"></script>
                 <script type="text/javascript" src="../../app/controllers/dashboard/' . $controller . '"></script>
             ';
         } else {

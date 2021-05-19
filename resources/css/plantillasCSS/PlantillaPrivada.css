@@ -250,6 +250,31 @@
     align-items: center;
 }
 
+/* Valoraciones */
 
+#tablaVal{
+    margin: 20px;
+    height: 40px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#tablaVal .btn{
+    color: red;
+}
+
+#infoVal{
+    background-color: #3B8686;
+    color: white;
+    border-radius: 10px;
+}
+
+#regVal{
+    background-color: #3B8686;
+    color: white;
+    border-radius: 10px;
+}
+
+/*Termina valoraciones*/
 
 
