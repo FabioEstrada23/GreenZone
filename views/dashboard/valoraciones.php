@@ -39,6 +39,10 @@ include("../../app/helpers/private_header.php");
 
                             </div>
                         </form>
+
+                        <input type="text" class="form-control d-none" 
+                                        aria-label="Buscar" aria-describedby="basic-addon1" id="id_valoracion" type="text"
+                                        name="id_valoracion" class="validate" required>
                         
                     </div>
                 </div>
@@ -59,7 +63,7 @@ include("../../app/helpers/private_header.php");
                                     <thead>
 
                                         <tr>
-                                            <th scope="col">#</th>
+                                            
                                             <th scope="col">Nombre del cliente</th>
                                             <th scope="col">Producto valorado</th>
                                             <th scope="col">Puntuación</th>
@@ -94,5 +98,5 @@ include("../../app/helpers/private_header.php");
 
 <?php
 // Se imprime la plantilla del pie enviando el nombre del controlador para la página web.
-Dashboard_Page::footerTemplate('proveedores.js');
+Dashboard_Page::footerTemplate('valoraciones.js');
 ?>

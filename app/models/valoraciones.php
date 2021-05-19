@@ -86,13 +86,41 @@ class Valoraciones extends Validator
 
     public function searchRows($value)
     {   
-        $sql = 'select id_valoracion, cliente_user.cliente_user, producto.nombre_pro, puntuaciones from valoraciones
+        $sql = 'SELECT id_valoracion, cliente_user.cliente_user, producto.nombre_pro, puntuaciones, comentario FROM valoraciones
         INNER JOIN producto ON valoraciones.id_producto = producto.id_producto
         INNER JOIN cliente_user ON valoraciones.id_cliente_user = cliente_user.id_cliente_user 
-        from valoraciones where nombre_prov ILIKE ? order by producto.nombre_pro;';
+        WHERE producto.nombre_pro ILIKE ? order by producto.nombre_pro';
         $params = array("%$value%");
         return Database::getRows($sql, $params);
     }
+
+    public function readAll()
+    {
+        $sql = 'SELECT id_valoracion, cliente_user.cliente_user, producto.nombre_pro, puntuaciones, comentario FROM valoraciones
+        INNER JOIN producto ON valoraciones.id_producto = producto.id_producto
+        INNER JOIN cliente_user ON valoraciones.id_cliente_user = cliente_user.id_cliente_user
+        order by producto.nombre_pro';
+        $params = null;
+        return Database::getRows($sql, $params);
+    }
+
+    public function readOne()
+    {
+        $sql = 'SELECT id_valoracion, id_cliente_user, id_producto, puntuaciones, comentario
+                FROM valoraciones 
+                WHERE id_valoracion = ? ';
+        $params = array($this->id);
+        return Database::getRow($sql, $params);
+    }
+
+    public function deleteRow()
+    {
+        $sql = 'DELETE FROM valoraciones
+                WHERE id_valoracion = ?';
+        $params = array($this->id);
+        return Database::executeRow($sql, $params);
+    }
+
 }
 
 ?>

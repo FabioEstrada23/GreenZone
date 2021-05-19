@@ -68,7 +68,7 @@ require_once('../../app/helpers/dashboard_page.php');
             <table class="table table-dark table-striped">
                 <thead>
                     <tr>
-                        <th scope="col">Número:</th>
+                        
                         <th scope="col">Nombre de marca:</th>
                         <th class="actions-column">Acciones:</th>
                     </tr>
