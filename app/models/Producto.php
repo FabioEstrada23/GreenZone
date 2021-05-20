@@ -13,6 +13,8 @@ class producto extends Validator
     private $descripcion_pro = null;
     private $id_proveedor = null;
     private $existencias = null;
+    private $url = null;
+    private $direccion = '../../../resources/img/productos/'
 	
     public function setId($value){
         if ($this->validateNaturalNumber($value)) {
@@ -113,6 +115,16 @@ class producto extends Validator
         }  
     }
 
+    public function setURL($file)
+    {
+        if ($this->validateImageFile($file, 500, 500)) {
+            $this->url = $this->getImageName();
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function getId(){
         return $this->id_producto;
     }
@@ -157,9 +169,19 @@ class producto extends Validator
         return $this->existencias;
     }
 
+    public function getURL()
+    {
+        return $this->url;
+    }
+
+    public function getDireccion()
+    {
+        return $this->direccion;
+    }
+
     public function searchRows($value)
     {   
-        $sql = 'SELECT id_producto, nombre_pro, id_estado_producto, id_categoria, id_marca, precio_pro, oferta_pro, precio_final, descripcion_pro, id_proveedor, existencias
+        $sql = 'SELECT id_producto, nombre_pro, id_estado_producto, id_categoria, id_marca, precio_pro, oferta_pro, precio_final, descripcion_pro, id_proveedor, existencias, url
          from producto where nombre_pro ILIKE ? order by nombre_pro;';
         $params = array("%$value%");
         return Database::getRows($sql, $params);

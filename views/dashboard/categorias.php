@@ -20,6 +20,7 @@ include("../../app/helpers/header.php");
                     <!-- Proveedores Caja de Informacion -->
                     <div class="col-12">
                         <br>
+                        <form id="save-form" method="post" enctype="multipart/form-data">
                         <div class="row" id="DatosCate">
                             <div class="row  p-3">
                                 <div class="col-3 text-center">
@@ -41,6 +42,7 @@ include("../../app/helpers/header.php");
                                         data-tooltip="Crear">Agregar +</button>
                                 </div>
                             </div>
+                        </form>
                     </div>
                 </div>
     
