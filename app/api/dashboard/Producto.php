@@ -23,7 +23,54 @@ if (isset($_GET['action'])) {
                 }
                 break;
 
-                
+                case 'readEstadoProducto':
+                    if ($result['dataset'] = $Producto->readEstadoProducto()) {
+                        $result['status'] = 1;
+                    } else {
+                        if (Database::getException()) {
+                            $result['exception'] = Database::getException();
+                        } else {
+                            $result['exception'] = 'No hay estados registrados';
+                        }
+                    }
+                    break;
+
+                case 'readCategoria':
+                    if ($result['dataset'] = $Producto->readCategoria()) {
+                        $result['status'] = 1;
+                    } else {
+                        if (Database::getException()) {
+                            $result['exception'] = Database::getException();
+                        } else {
+                            $result['exception'] = 'No hay categorias registradas';
+                        }
+                    }
+                    break;
+
+                    case 'readMarca':
+                        if ($result['dataset'] = $Producto->readMarca()) {
+                            $result['status'] = 1;
+                        } else {
+                            if (Database::getException()) {
+                                $result['exception'] = Database::getException();
+                            } else {
+                                $result['exception'] = 'No hay marcas registrados';
+                            }
+                        }
+                        break;
+
+                        case 'readProveedor':
+                            if ($result['dataset'] = $Producto->readProveedor()) {
+                                $result['status'] = 1;
+                            } else {
+                                if (Database::getException()) {
+                                    $result['exception'] = Database::getException();
+                                } else {
+                                    $result['exception'] = 'No hay proveedores registrados';
+                                }
+                            }
+                            break;
+
             case 'search':
                 $_POST = $Producto->validateForm($_POST);
                 if ($_POST['search'] != '') {

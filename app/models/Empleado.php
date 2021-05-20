@@ -48,7 +48,7 @@ class empleado extends Validator
     }
 
     public function setAlias($value){
-        if($this->validateAlphabetic($value, 1, 30)){
+        if($this->validateAlphanumeric($value, 1, 30)){
             $this->alias_emp = $value;
             return true;
         }else{
@@ -165,9 +165,9 @@ class empleado extends Validator
 
     public function updateRow()
     {
-        $sql = 'UPDATE empleado_user set nombres_emp = ?, apellidos_emp = ?, correo_emp = ? , alias_emp = ?, clave_emp = ?, id_tipo_empleado = ?, id_estado_emp = ?
+        $sql = 'UPDATE empleado_user set nombres_emp = ?, apellidos_emp = ?, correo_emp = ? , alias_emp = ?, id_tipo_empleado = ?, id_estado_emp = ?
                 WHERE id_empleado = ?';
-        $params = array($this->nombres_emp,$this->apellidos_emp,$this->correo_emp,$this->alias_emp,$this->clave_emp,$this->id_tipo_empleado,$this->id_estado_emp,$this->id_empleado);
+        $params = array($this->nombres_emp,$this->apellidos_emp,$this->correo_emp,$this->alias_emp,$this->id_tipo_empleado,$this->id_estado_emp,$this->id_empleado);
         return Database::executeRow($sql, $params);
     }
 

@@ -156,6 +156,10 @@
     color: white;
     border-radius: 10px;
 }
+
+#tabla_emp .btn{
+    color: red;
+}
 /* estilo de texto registro prov */
 #RegisEmpleados{
     background-color: #3B8686;

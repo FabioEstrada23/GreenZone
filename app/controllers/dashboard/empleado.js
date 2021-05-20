@@ -23,12 +23,11 @@ function fillTable(dataset) {
                 <td>${row.apellidos_emp}</td>
                 <td>${row.correo_emp}</td>
                 <td>${row.alias_emp}</td>
-                <td>${row.clave_emp}</td>
                 <td>${row.id_tipo_empleado}</td>
                 <td>${row.id_estado_emp}</td>
                 <td>
-                    <a href="#" onclick="openUpdateDialog(${row.id_proveedor})" class="btn waves-effect blue tooltipped" data-tooltip="Actualizar" data-bs-toggle="modal" data-bs-target="#exampleModal" ><i class="material-icons">mode_edit</i></a>
-                    <a href="#" onclick="openDeleteDialog(${row.id_proveedor})" class="btn waves-effect red tooltipped" data-tooltip="Eliminar"><i class="material-icons">delete</i></a>
+                    <a href="#" onclick="openUpdateDialog(${row.id_empleado})" class="btn waves-effect blue tooltipped" data-tooltip="Actualizar" data-bs-toggle="modal" data-bs-target="#exampleModal" ><i class="material-icons">mode_edit</i></a>
+                    <a href="#" onclick="openDeleteDialog(${row.id_empleado})" class="btn waves-effect red tooltipped" data-tooltip="Eliminar"><i class="material-icons">delete</i></a>
                 </td>
             </tr>
         `;
@@ -64,9 +63,9 @@ document.getElementById('search-form').addEventListener('submit', function (even
 function openUpdateDialog(id) {
     // Se define un objeto con los datos del registro seleccionado.
     const data = new FormData();
-    data.append('id_marca', id);
+    data.append('id_empleado', id);
 
-    fetch(API_MARCA + 'readOne', {
+    fetch(API_EMPLEADOS + 'readOne', {
         method: 'post',
         body: data
     }).then(function (request) {
@@ -76,9 +75,13 @@ function openUpdateDialog(id) {
                 // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
                 if (response.status) {
                     // Se inicializan los campos del formulario con los datos del registro seleccionado.
-                    document.getElementById('id_marca').value = response.dataset.id_marca;
-                    document.getElementById('n-marca-up').value = response.dataset.marca;
-                    
+                    document.getElementById('id_empleado').value = response.dataset.id_empleado;
+                    document.getElementById('nombres_emp2').value = response.dataset.nombres_emp;
+                    document.getElementById('apellidos_emp2').value = response.dataset.apellidos_emp;
+                    document.getElementById('correo_emp2').value = response.dataset.correo_emp;
+                    document.getElementById('alias_emp2').value = response.dataset.alias_emp;
+                    fillSelect(ENDPOINT_TIPOEMPLEADO, 'tipo_empleado2', response.dataset.id_tipo_empleado);
+                    fillSelect(ENDPOINT_TIPOESTADO, 'estado_emp2', response.dataset.id_estado_emp);                    
                 } else {
                     sweetAlert(2, response.exception, null);
                 }
@@ -89,6 +92,23 @@ function openUpdateDialog(id) {
     }).catch(function (error) {
         console.log(error);
     });
+}
+
+// Método manejador de eventos que se ejecuta cuando se envía el formulario de actualizar.
+document.getElementById('update-form').addEventListener('submit', function (event) {
+    // Se evita recargar la página web después de enviar el formulario.
+    event.preventDefault();
+    
+    updateRow(API_EMPLEADOS, 'update', 'update-form', 'update-modal');
+});
+
+// Función para establecer el registro a eliminar y abrir una caja de dialogo de confirmación.
+function openDeleteDialog(id) {
+    // Se define un objeto con los datos del registro seleccionado.
+    const data = new FormData();
+    data.append('id_empleado', id);
+    // Se llama a la función que elimina un registro. Se encuentra en el archivo components.js
+    confirmDelete(API_EMPLEADOS, data);
 }
 
 

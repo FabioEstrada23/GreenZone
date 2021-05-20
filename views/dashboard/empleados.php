@@ -7,6 +7,7 @@ include("../../app/helpers/private_header.php");
 <br>
 <br>
 <br>
+
     <main>
         <section>
 
@@ -141,8 +142,8 @@ include("../../app/helpers/private_header.php");
                                 <div class="form-group">
                                     <label for="formGroupExampleInput">Nombres:</label>
                                     <input type="text" class="form-control" placeholder="Ej: MalteHC..."
-                                        aria-label="Buscar" aria-describedby="basic-addon1" id="nombre_emp2" type="text"
-                                        name="nombre_emp2" class="validate" required>
+                                        aria-label="Buscar" aria-describedby="basic-addon1" id="nombres_emp2" type="text"
+                                        name="nombres_emp2" class="validate" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="formGroupExampleInput2">Apellidos:</label>
@@ -164,13 +165,7 @@ include("../../app/helpers/private_header.php");
                                         aria-label="Buscar" aria-describedby="basic-addon1" id="alias_emp2" type="text"
                                         name="alias_emp2" class="validate" required>
                                 </div>
-                                <div class="form-group">
-                                    <label for="formGroupExampleInput2">Clave:</label>
-                                    <input type="text" class="form-control"
-                                        placeholder="Ej: Alfex224" aria-label="Buscar"
-                                        aria-describedby="basic-addon1" id="clave_emp2" type="text"
-                                        name="clave_emp2" class="validate" required>
-                                </div>
+                                
                                 <div class="form-group">
                                     <label for="tipo_empleado2">Tipo empleado:</label>
                                     <select class="form-select" aria-label="Select" id="tipo_empleado2" name="tipo_empleado2">
@@ -221,7 +216,7 @@ include("../../app/helpers/private_header.php");
             
                             <div class="col-12 p- text-center">
                                 <div class="table-responsive">
-                                    <table class="table table-dark table-striped">
+                                    <table class="table table-dark table-striped" id="tabla_emp">
                                         <thead>
             
                                             <tr>
@@ -229,7 +224,6 @@ include("../../app/helpers/private_header.php");
                                                 <th scope="col">Apellidos</th>
                                                 <th scope="col">Correo</th>
                                                 <th scope="col">Alias</th>
-                                                <th scope="col">Clave</th>
                                                 <th scope="col">Tipo emp</th>
                                                 <th scope="col">Estado_emp</th>
                                                 <th class="actions-column">Acciones</th>

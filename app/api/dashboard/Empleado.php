@@ -120,52 +120,73 @@ if (isset($_GET['action'])) {
                         }
                         break;
                 case 'readOne':
-                    if ($marca->setId($_POST['id_marca'])) {
-                        if ($result['dataset'] = $marca->readOne()) {
+                    if ($Empleado->setId($_POST['id_empleado'])) {
+                        if ($result['dataset'] = $Empleado->readOne()) {
                             $result['status'] = 1;
                         } else {
                             if (Database::getException()) {
                                 $result['exception'] = Database::getException();
                             } else {
-                                $result['exception'] = 'Marca inexistente';
+                                $result['exception'] = 'Empleado inexistente';
                             }
                         }
                     } else {
-                        $result['exception'] = 'Marca incorrecta';
+                        $result['exception'] = 'Empleado incorrecto';
                     }
                     break;
                 case 'update':
-                    $_POST = $marca->validateForm($_POST);
-                    if ($marca->setId($_POST['id_marca'])) {
-                        if ($data = $marca->readOne()) {
-                            if($marca->setNombre($_POST['n-marca-up'])){
-                                if ($marca->updateRow()) {
-                                    $result['status'] = 1;
-                                    $result['message'] = 'Marca actualizada correctamente';
-                                } else {
-                                    $result['exception'] = Database::getException();
-                                }
+                    $_POST = $Empleado->validateForm($_POST);
+                    if ($Empleado->setId($_POST['id_empleado'])) {
+                        if ($data = $Empleado->readOne()) {
+                            if($Empleado->setNombres($_POST['nombres_emp2'])){
+                                if($Empleado->setApellidos($_POST['apellidos_emp2'])){
+                                    if($Empleado->setCorreo($_POST['correo_emp2'])){
+                                        if($Empleado->setAlias($_POST['alias_emp2'])){
+                                            if($Empleado->setTipoEmp($_POST['tipo_empleado2'])){
+                                                if($Empleado->setEstado($_POST['estado_emp2'])){
+                                                    if ($Empleado->updateRow()) {
+                                                        $result['status'] = 1;
+                                                        $result['message'] = 'Empleado actualizado correctamente';
+                                                    } else {
+                                                        $result['exception'] = Database::getException();
+                                                    }
+                                                }else{
+                                                    $result['message'] = 'Estado Incorrecto';
+                                                }
+                                            }else{
+                                                $result['message'] = 'Tipo empleado Incorrecto';
+                                            }
+                                        }else{
+                                            $result['message'] = 'Alias Incorrecto';
+                                        }
+                                
+                                    }else{
+                                        $result['message'] = 'Correo Incorrecto';
+                                    }
+                                }else{
+                                    $result['message'] = 'Apellidos Incorrectos';
+                                }   
                             }else{
-                                $result['message'] = 'Marca Incorrecta';
+                                $result['message'] = 'Nombre Incorrecto';
                             }
                         }
                     }   
                     break;
                 case 'delete':
-                    if ($marca->setId($_POST['id_marca'])) {
-                        if ($data = $marca->readOne()) {
-                            if ($marca->deleteRow()) {
+                    if ($Empleado->setId($_POST['id_empleado'])) {
+                        if ($data = $Empleado->readOne()) {
+                            if ($Empleado->deleteRow()) {
                                 $result['status'] = 1;
-                                $result['message'] = 'Marca eliminada correctamente';
+                                $result['message'] = 'Empleado eliminado correctamente';
     
                             } else {
                                 $result['exception'] = Database::getException();
                             }
                         } else {
-                            $result['exception'] = 'Marca inexistente';
+                            $result['exception'] = 'Empleado inexistente';
                         }
                     } else {
-                        $result['exception'] = 'Marca incorrecta';
+                        $result['exception'] = 'Empleado incorrecto';
                     }
                 break;
                 default:

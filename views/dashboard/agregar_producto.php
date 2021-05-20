@@ -91,12 +91,8 @@ include("../../app/helpers/private_header.php");
                                 <h6>Marca</h6>
                             </div>
                             <div class="col-9">
-                                <select class="form-select" aria-label="Default select example">
-                                    <option selected></option>
-                                    <option value="1">LockStadia</option>
-                                    <option value="2">CreamSteam</option>
-                                    <option value="3">CleanWorld</option>
-                                    <option value="4">Natural Person</option>
+                                <select class="form-select" aria-label="Default select example"
+                                id="marca" name="marca">
                                 </select>
                                     
                             </div>
@@ -108,13 +104,8 @@ include("../../app/helpers/private_header.php");
                                 <h6>Proveedor</h6>
                             </div>
                             <div class="col-9">
-                                <select class="form-select" aria-label="Default select example">
-                                    <option selected></option>
-                                    <option value="1">HealtyHC</option>
-                                    <option value="2">WorldGreen</option>
-                                    <option value="3">GreenShapes</option>
-                                    <option value="4">I Green</option>
-                                    
+                                <select class="form-select" aria-label="Default select example"
+                                id="nombre_prov" name="nombre_prov">
                                 </select>
                             </div>
                         </div>
@@ -125,11 +116,8 @@ include("../../app/helpers/private_header.php");
                                 <h6>Estado</h6>
                             </div>
                             <div class="col-9">
-                                <select class="form-select" aria-label="Default select example">
-                                    <option selected></option>
-                                    <option value="1">Disponible</option>
-                                    <option value="2">Agotado</option>
-                                    <option value="3">Pre-ordebar</option>
+                                <select class="form-select" aria-label="Default select example"
+                                id="estado_pro" name="estado_pro">
                                 </select>
                             </div>
                         </div>
@@ -140,11 +128,8 @@ include("../../app/helpers/private_header.php");
                                 <h6>Categoria</h6>
                             </div>
                             <div class="col-9">
-                                <select class="form-select" aria-label="Default select example">
-                                    <option selected></option>
-                                    <option value="1">Disponible</option>
-                                    <option value="2">Agotado</option>
-                                    <option value="3">Pre-ordebar</option>
+                                <select class="form-select" aria-label="Default select example"
+                                id="categoria" name="categoria">
                                 </select>
                             </div>
                         </div>
