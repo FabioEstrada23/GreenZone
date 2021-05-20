@@ -181,7 +181,7 @@ class Producto extends Validator
 
     public function searchRows($value)
     {   
-        $sql = 'SELECT id_producto, nombre_pro, id_estado_producto, id_categoria, id_marca, precio_pro, oferta_pro, precio_final, descripcion_pro, id_proveedor, existencias, imagen
+        $sql = 'SELECT id_producto, nombre_pro, id_estado_producto, id_categoria, id_marca, precio_pro, oferta_pro,descripcion_pro, id_proveedor, existencias, imagen
          from producto where nombre_pro ILIKE ? order by nombre_pro;';
         $params = array("%$value%");
         return Database::getRows($sql, $params);
@@ -189,14 +189,14 @@ class Producto extends Validator
 
     public function createRow()
     {
-        $sql = 'INSERT INTO producto(nombre_pro, id_estado_producto, id_categoria, id_marca, precio_pro, oferta_pro, precio_final, descripcion_pro, id_proveedor, existencias, imagen) VALUES (?,?,?,?,?,?,?,?,?,?,?)';
-        $params = array($this->nombre_pro,$this->id_estado_producto,$this->id_categoria,$this->id_marca,$this->precio_pro,$this->oferta_pro,$this->precio_final,$this->descripcion_pro,$this->id_proveedor,$this->existencias,$this->imagen);
+        $sql = 'INSERT INTO producto(nombre_pro, id_estado_producto, id_categoria, id_marca, precio_pro, oferta_pro, descripcion_pro, id_proveedor, existencias, imagen) VALUES (?,?,?,?,?,?,?,?,?,?)';
+        $params = array($this->nombre_pro,$this->id_estado_producto,$this->id_categoria,$this->id_marca,$this->precio_pro,$this->oferta_pro,$this->descripcion_pro,$this->id_proveedor,$this->existencias,$this->imagen);
         return Database::executeRow($sql, $params);
     }
 
     public function readAll()
     {
-        $sql = 'SELECT id_producto, nombre_pro, id_estado_producto, id_categoria, id_marca, precio_pro, oferta_pro, precio_final, descripcion_pro, id_proveedor, existencias, imagen FROM producto INNER JOIN estado_producto USING(id_estado_producto) INNER JOIN categoria_producto USING(id_categoria) INNER JOIN marca_producto USING(id_marca) INNER JOIN proveedor USING(id_proveedor)
+        $sql = 'SELECT id_producto, nombre_pro, id_estado_producto, id_categoria, id_marca, precio_pro, oferta_pro, descripcion_pro, id_proveedor, existencias, imagen FROM producto INNER JOIN estado_producto USING(id_estado_producto) INNER JOIN categoria_producto USING(id_categoria) INNER JOIN marca_producto USING(id_marca) INNER JOIN proveedor USING(id_proveedor)
                 ORDER BY id_producto';
         $params = null;
         return Database::getRows($sql, $params);
@@ -233,7 +233,7 @@ class Producto extends Validator
 
     public function readOne()
     {
-        $sql = 'SELECT id_producto, nombre_pro, id_estado_producto, id_categoria, id_marca, precio_pro, oferta_pro, precio_final, descripcion_pro, id_proveedor, existencias, imagen FROM producto
+        $sql = 'SELECT id_producto, nombre_pro, id_estado_producto, id_categoria, id_marca, precio_pro, oferta_pro, descripcion_pro, id_proveedor, existencias, imagen FROM producto
                 WHERE id_producto = ?';
         $params = array($this->id_empleado);
         return Database::getRow($sql, $params);
@@ -241,9 +241,9 @@ class Producto extends Validator
 
     public function updateRow()
     {
-        $sql = 'UPDATE producto set nombre_pro = ?,id_estado_producto = ?,id_categoria = ?, id_marca = ?, precio_pro = ?, oferta_pro = ?, precio_final = ? , descripcion_pro = ?, id_proveedor = ?, existencias = ?, imagen = ?
+        $sql = 'UPDATE producto set nombre_pro = ?,id_estado_producto = ?,id_categoria = ?, id_marca = ?, precio_pro = ?, oferta_pro = ?,  descripcion_pro = ?, id_proveedor = ?, existencias = ?, imagen = ?
                 WHERE id_producto = ?';
-        $params = array($this->$this->nombre_pro,$this->id_estado_producto,$this->id_categoria,$this->id_marca,$this->precio_pro,$this->oferta_pro,$this->precio_final,$this->descripcion_pro,$this->id_proveedor,$this->existencias,$this->imagen,$this->id_producto);
+        $params = array($this->$this->nombre_pro,$this->id_estado_producto,$this->id_categoria,$this->id_marca,$this->precio_pro,$this->oferta_pro,$this->descripcion_pro,$this->id_proveedor,$this->existencias,$this->imagen,$this->id_producto);
         return Database::executeRow($sql, $params);
     }
 

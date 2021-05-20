@@ -119,6 +119,7 @@ if (isset($_GET['action'])) {
                             $result['message'] = 'Nombres Incorrectos';
                         }
                         break;
+
                 case 'readOne':
                     if ($Empleado->setId($_POST['id_empleado'])) {
                         if ($result['dataset'] = $Empleado->readOne()) {
@@ -134,6 +135,7 @@ if (isset($_GET['action'])) {
                         $result['exception'] = 'Empleado incorrecto';
                     }
                     break;
+                    
                 case 'update':
                     $_POST = $Empleado->validateForm($_POST);
                     if ($Empleado->setId($_POST['id_empleado'])) {

@@ -101,12 +101,54 @@ if (isset($_GET['action'])) {
                     $_POST = $producto->validateForm($_POST);
                     if($producto->setNombre($_POST['nombre_pro'])){
                         if(isset($_POST['estado_pro'])){
-                            if($Empleado->setIdEstado($_POST['estado_pro'])){
+                            if($producto->setIdEstado($_POST['estado_pro'])){
                                 if(isset($_POST['categoria'])){
-                                    if($Empleado->setIdCategoria($_POST['categoria'])){
+                                    if($producto->setIdCategoria($_POST['categoria'])){
                                         if(isset($_POST['marca'])){
-                                            if($Empleado->setIdMarca($_POST['marca'])){
-                                                
+                                            if($producto->setIdMarca($_POST['marca'])){
+                                                if($producto->setPrecioP($_POST['precio_pro'])){
+                                                    if($producto->setOfertaPro($_POST['oferta_pro'])){
+                                                        if($producto->setDescripcion($_POST['descripcion_pro'])){
+                                                            if(isset($_POST['nombre_prov'])){
+                                                                if($producto->setIdProveedor($_POST['nombre_prov'])){
+                                                                    if($producto->setExistencias($_POST['existencias'])){
+                                                                        if (is_uploaded_file($_FILES['archivo_producto']['tmp_name'])) {
+                                                                            if ($producto->setImagen($_FILES['archivo_producto'])) {
+                                                                                if ($producto->createRow()) {
+                                                                                    $result['status'] = 1;
+                                                                                    if ($producto->saveFile($_FILES['archivo_producto'], $producto->getRuta(), $producto->getImagen())) {
+                                                                                        $result['message'] = 'Producto creado correctamente';
+                                                                                    } else {
+                                                                                        $result['message'] = 'Producto creado pero no se guardó la imagen';
+                                                                                    }
+                                                                                } else {
+                                                                                    $result['exception'] = Database::getException();;
+                                                                                }
+                                                                            } else {
+                                                                                $result['exception'] = $producto->getImageError();
+                                                                            }
+                                                                        } else {
+                                                                            $result['exception'] = 'Seleccione una imagen';
+                                                                        }
+                                                                    }else{
+                                                                        $result['message'] = 'Existencias incorrecta'
+                                                                    }
+                                                                }else{
+                                                                    $result['message'] = 'Proveedor Incorrecto';    
+                                                                }
+                                                            }else{
+                                                                $result['message'] = 'Seleccione un Proveedor';
+                                                            }
+                                                        }else{
+                                                            $result['message'] = 'Descripcion incorrecta';
+                                                        }
+                                                    }else{
+                                                        $result['message'] = 'Oferta del producto incorrecto';
+                                                    }
+
+                                                }else{
+                                                    $result['message'] = 'Precio del producto Incorrecto';
+                                                }
                                             }else{
                                                 $result['message'] = 'Marca Incorrecto';    
                                             }

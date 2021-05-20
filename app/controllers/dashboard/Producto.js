@@ -50,10 +50,13 @@ document.getElementById('search-form').addEventListener('submit', function (even
     searchRows(API_PRODUCTOS, 'search-form');
 });
 
+
 // Método manejador de eventos que se ejecuta cuando se envía el formulario de guardar.
 document.getElementById('save-form').addEventListener('submit', function (event) {
     // Se evita recargar la página web después de enviar el formulario.
     event.preventDefault();
+    // Se establece el campo de archivo como obligatorio.
+    document.getElementById('archivo_producto').required = true;
     
     saveRow(API_PRODUCTOS, 'create', 'save-form', null);
 

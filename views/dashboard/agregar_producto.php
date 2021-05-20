@@ -156,8 +156,90 @@ include("../../app/helpers/private_header.php");
                     </form>
                 </div>
             </div>
-
         </div>
+
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modal-title">Actualizar Empleados</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="update-form" method="post" enctype="multipart/form-data">
+                                <div class="form-group d-none">
+                                    <label for="formGroupExampleInput">ID:</label>
+                                    <input type="text" class="form-control " placeholder="Ej: MalteHC..."
+                                        aria-label="Buscar" aria-describedby="basic-addon1" id="id_producto" type="text"
+                                        name="id_producto" class="validate" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="formGroupExampleInput">Nombres:</label>
+                                    <input type="text" class="form-control" placeholder="Ej: MalteHC..."
+                                        aria-label="Buscar" aria-describedby="basic-addon1" id="nombre_pro2" type="text"
+                                        name="nombre_pro2" class="validate" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="estado_pro2">estado producto:</label>
+                                    <select class="form-select" aria-label="Select" id="estado_pro2" name="estado_pro2">
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="categoria2">Categoria producto:</label>
+                                    <select class="form-select" aria-label="Select" id="categoria2" name="categoria2">
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="marca2">Marca empleado:</label>
+                                    <select class="form-select" aria-label="Select" id="marca2" name="marca2">
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="formGroupExampleInput2">Precio producto:</label>
+                                    <input input type="number" class="form-control" placeholder="0.01" aria-label="Buscar"
+                                    aria-describedby="basic-addon1" step="0.01" id="precio_pro2" type="number" name="precio_pro2"
+                                    class="validate" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="formGroupExampleInput2">Oferta:</label>
+                                    <input input type="number" class="form-control" placeholder="0.01" aria-label="Buscar"
+                                    aria-describedby="basic-addon1" step="0.01" id="oferta_pro2" type="number" name="oferta_pro2"
+                                    class="validate" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="formGroupExampleInput3">Descripcion:</label>
+                                    <input type="text" class="form-control" placeholder="Ej: MalteHC..."
+                                        aria-label="Buscar" aria-describedby="basic-addon1" id="descripcion_pro2" type="text"
+                                        name="descripcion_pro2" class="validate" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="marca2">Proveedor:</label>
+                                    <select class="form-select" aria-label="Select" id="nombre_prov2" name="nombre_prov2">
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="formGroupExampleInput2">Precio producto:</label>
+                                    <input input type="number" class="form-control"
+                                    aria-label="Buscar" aria-describedby="basic-addon1" id="existencias2"
+                                    type="number" name="existencias2" class="validate" required>
+                                </div>
+                                
+                                
+                        </div>
+                        
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                            <button type="submit" data-tooltip="Actualizar" class="btn btn-primary" >Guardar Cambios</button>
+                        </div>
+                    </form>
+                    </div>
+                </div>
+            </div>
+
+
 
         <div class="col-12 col-xs-12 col-sm-12 col-lg-6 col-xl-6 p-4 col-xxl-6">
             <!-- Caja de Registros -->
@@ -198,6 +280,7 @@ include("../../app/helpers/private_header.php");
                                     <th scope="col">Estado</th>
                                     <th scope="col">Existencias</th>
                                     <th scope="col">Descripción</th>
+                                    <th scope="col">Imagen</th>
                                     <th class="actions-column">Acciones</th>
                                 </tr>
 
