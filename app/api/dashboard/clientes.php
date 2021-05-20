@@ -24,6 +24,32 @@ if (isset($_GET['action'])) {
                 }
                 break;
 
+            case 'readEstados':
+                    if ($result['dataset'] = $cliente->readEstados()) {
+                        $result['status'] = 1;
+                    } else {
+                        if (Database::getException()) {
+                            $result['exception'] = Database::getException();
+                        } else {
+                            $result['exception'] = 'No hay estados registrados';
+                        }
+                    }
+                break;
+
+            case 'readCiudades':
+                    if ($result['dataset'] = $cliente->readCiudades()) {
+                        $result['status'] = 1;
+                    } else {
+                        if (Database::getException()) {
+                            $result['exception'] = Database::getException();
+                        } else {
+                            $result['exception'] = 'No hay ciudades registrados';
+                        }
+                    }
+                break;
+
+
+
             case 'readOne':
                 if ($oferta->setId($_POST['id_cliente_user'])) {
                     if ($result['dataset'] = $cliente->readOne()) {
@@ -80,6 +106,9 @@ if (isset($_GET['action'])) {
                     }
                    }
                 break;
+
+                default:
+                    $result['exception'] = 'Acción no disponible dentro de la sesión';
 
 
 
