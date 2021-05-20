@@ -1,6 +1,6 @@
 // Constante para establecer la ruta y parámetros de comunicación con la API.
 const API_PRODUCTOS = '../../app/api/dashboard/Producto.php?action=';
-const ENDPOINT_ESTADOPRO = '../../app/api/dashboard/Producto.php?action=readEstadoProducto';
+const ENDPOINT_ESTADOPRO = '../../app/api/dashboard/Producto.php?action=readEstados';
 const ENDPOINT_CATEGORIAPRO = '../../app/api/dashboard/Producto.php?action=readCategoria';
 const ENDPOINT_MARCA = '../../app/api/dashboard/Producto.php?action=readMarca';
 const ENDPOINT_PROVEEDOR = '../../app/api/dashboard/Producto.php?action=readProveedor';
@@ -8,10 +8,10 @@ const ENDPOINT_PROVEEDOR = '../../app/api/dashboard/Producto.php?action=readProv
 // Método manejador de eventos que se ejecuta cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', function () {
     //Se llama a la funcion que obtiene los registros para llenar la tabla.
-    fillSelect(ENDPOINT_ESTADOPRO,'estado_pro',null)
-    fillSelect(ENDPOINT_CATEGORIAPRO,'categoria',null)
-    fillSelect(ENDPOINT_MARCA,'marca',null)
-    fillSelect(ENDPOINT_PROVEEDOR,'nombre_prov',null)
+    fillSelect(ENDPOINT_ESTADOPRO,'estado_pro', null);
+    fillSelect(ENDPOINT_CATEGORIAPRO,'categoria', null);
+    fillSelect(ENDPOINT_MARCA,'marca', null);
+    fillSelect(ENDPOINT_PROVEEDOR,'nombre_prov', null);
     readRows(API_PRODUCTOS);
 });
 
@@ -24,15 +24,14 @@ function fillTable(dataset) {
         content += `
             <tr>
                 <td>${row.nombre_pro}</td>
-                <td>${row.id_estado_producto}</td>
-                <td>${row.id_categoria}</td>
-                <td>${row.id_marca}</td>
                 <td>${row.precio_pro}</td>
                 <td>${row.oferta_pro}</td>
-                <td>${row.precio_final}</td>
-                <td>${row.descripcion_pro}</td>
                 <td>${row.id_proveedor}</td>
-                <td>${row.id_existencias}</td>
+                <td>${row.id_marca}</td>
+                <td>${row.id_categoria}</td>
+                <td>${row.id_estado_producto}</td>
+                <td>${row.existencias}</td>
+                <td>${row.descripcion_pro}</td>
                 <td>
                     <a href="#" onclick="openUpdateDialog(${row.id_proveedor})" class="btn waves-effect blue tooltipped" data-tooltip="Actualizar" data-bs-toggle="modal" data-bs-target="#exampleModal" ><i class="material-icons">mode_edit</i></a>
                     <a href="#" onclick="openDeleteDialog(${row.id_proveedor})" class="btn waves-effect red tooltipped" data-tooltip="Eliminar"><i class="material-icons">delete</i></a>

@@ -1,6 +1,6 @@
 <?php
 
-class producto extends Validator
+class Producto extends Validator
 {
     private $id_producto = null;
     private $nombre_pro = null;
@@ -168,7 +168,7 @@ class producto extends Validator
     public function createRow()
     {
         $sql = 'INSERT INTO producto(nombre_pro, id_estado_producto, id_categoria, id_marca, precio_pro, oferta_pro, precio_final, descripcion_pro, id_proveedor, existencias) VALUES (?,?,?,?,?,?,?,?,?,?)';
-        $params = array($this->nombre_pro,$this->id_estado_producto,$this->id_categoria,$this->id_marca,$this->precio_pro$this->oferta_pro,$this->precio_final,$this->descripcion_pro,$this->id_proveedor,$this->existencias);
+        $params = array($this->nombre_pro,$this->id_estado_producto,$this->id_categoria,$this->id_marca,$this->precio_pro,$this->oferta_pro,$this->precio_final,$this->descripcion_pro,$this->id_proveedor,$this->existencias);
         return Database::executeRow($sql, $params);
     }
 
@@ -180,7 +180,7 @@ class producto extends Validator
         return Database::getRows($sql, $params);
     }
 
-    public function readEstadoProducto()
+    public function readEstados()
     {
         $sql = 'SELECT id_estado_producto, estado_pro FROM estado_producto';
         $params = null;
@@ -221,7 +221,7 @@ class producto extends Validator
     {
         $sql = 'UPDATE producto set nombre_pro = ?,id_estado_producto = ?,id_categoria = ?, id_marca = ?, precio_pro = ?, oferta_pro = ?, precio_final = ? , descripcion_pro = ?, id_proveedor = ?, existencias = ?
                 WHERE id_producto = ?';
-        $params = array($this->$this->nombre_pro,$this->id_estado_producto,$this->id_categoria,$this->id_marca,$this->precio_pro$this->oferta_pro,$this->precio_final,$this->descripcion_pro,$this->id_proveedor,$this->existencias,$this->id_producto);
+        $params = array($this->$this->nombre_pro,$this->id_estado_producto,$this->id_categoria,$this->id_marca,$this->precio_pro,$this->oferta_pro,$this->precio_final,$this->descripcion_pro,$this->id_proveedor,$this->existencias,$this->id_producto);
         return Database::executeRow($sql, $params);
     }
 
@@ -235,3 +235,4 @@ class producto extends Validator
 
 
 }
+?>

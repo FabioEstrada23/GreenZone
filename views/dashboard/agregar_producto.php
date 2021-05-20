@@ -174,7 +174,7 @@ include("../../app/helpers/private_header.php");
 
                 <div class="col-12 p- text-center">
                     <div class="table-responsive">
-                        <table class="table table-dark table-striped">
+                        <table class="table table-dark table-striped" id="tabla_pro">
                             <thead>
 
                                 <tr>
@@ -186,6 +186,7 @@ include("../../app/helpers/private_header.php");
                                     <th scope="col">Categoria</th>
                                     <th scope="col">Estado</th>
                                     <th scope="col">Existencias</th>
+                                    <th scope="col">Descripción</th>
                                     <th class="actions-column">Acciones</th>
                                 </tr>
 

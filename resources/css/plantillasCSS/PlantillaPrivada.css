@@ -149,6 +149,10 @@
     min-width: 200px;
 }
 
+#tabla_pro .btn{
+    color: red;
+}
+
 /*Empleados*/
 /* Estilo de texto prov */
 #FormularioEmpleado{

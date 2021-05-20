@@ -5,14 +5,14 @@ require_once('../../models/Producto.php');
 
 if (isset($_GET['action'])) {
     session_start();
-    $Producto = new producto;
+    $producto = new Producto;
     $result = array('status' => 0, 'message' => null, 'exception' => null);
 
-    if (isset($_SESSION['id_empleado']) || true) {
+    if (isset($_SESSION['id_empleado'])) {
         
         switch ($_GET['action']) {
             case 'readAll':
-                if ($result['dataset'] = $Categoria->readAll()) {
+                if ($result['dataset'] = $producto->readAll()) {
                     $result['status'] = 1;
                 } else {
                     if (Database::getException()) {
@@ -23,8 +23,8 @@ if (isset($_GET['action'])) {
                 }
                 break;
 
-                case 'readEstadoProducto':
-                    if ($result['dataset'] = $Producto->readEstadoProducto()) {
+                case 'readEstados':
+                    if ($result['dataset'] = $producto->readEstados()) {
                         $result['status'] = 1;
                     } else {
                         if (Database::getException()) {
@@ -33,10 +33,10 @@ if (isset($_GET['action'])) {
                             $result['exception'] = 'No hay estados registrados';
                         }
                     }
-                    break;
+                break;
 
                 case 'readCategoria':
-                    if ($result['dataset'] = $Producto->readCategoria()) {
+                    if ($result['dataset'] = $producto->readCategoria()) {
                         $result['status'] = 1;
                     } else {
                         if (Database::getException()) {
@@ -48,7 +48,7 @@ if (isset($_GET['action'])) {
                     break;
 
                     case 'readMarca':
-                        if ($result['dataset'] = $Producto->readMarca()) {
+                        if ($result['dataset'] = $producto->readMarca()) {
                             $result['status'] = 1;
                         } else {
                             if (Database::getException()) {
@@ -60,7 +60,7 @@ if (isset($_GET['action'])) {
                         break;
 
                         case 'readProveedor':
-                            if ($result['dataset'] = $Producto->readProveedor()) {
+                            if ($result['dataset'] = $producto->readProveedor()) {
                                 $result['status'] = 1;
                             } else {
                                 if (Database::getException()) {
@@ -72,9 +72,9 @@ if (isset($_GET['action'])) {
                             break;
 
             case 'search':
-                $_POST = $Producto->validateForm($_POST);
+                $_POST = $producto->validateForm($_POST);
                 if ($_POST['search'] != '') {
-                    if ($result['dataset'] = $Producto->searchRows($_POST['search'])) {
+                    if ($result['dataset'] = $producto->searchRows($_POST['search'])) {
                         $result['status'] = 1;
                         $rows = count($result['dataset']);
                         if ($rows > 1) {
@@ -95,9 +95,9 @@ if (isset($_GET['action'])) {
                 break;
 
                 case 'create':
-                    $_POST = $Producto->validateForm($_POST);
-                    if($Producto->setcateg($_POST['categoria'])){
-                        if ($Categoria->createRow()) {
+                    $_POST = $producto->validateForm($_POST);
+                    if($producto->setcateg($_POST['categoria'])){
+                        if ($producto->createRow()) {
                                 $result['status'] = 1;
                                 $result['message'] = 'Categoria creada correctamente';
                                 } else {
@@ -109,7 +109,9 @@ if (isset($_GET['action'])) {
                                 break;
 
             }
-
+            header('content-type: application/json; charset=utf-8');
+            // Se imprime el resultado en formato JSON y se retorna al controlador.
+            print(json_encode($result));
     }else{
         print(json_encode('Acceso denegado'));
     }
