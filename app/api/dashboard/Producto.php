@@ -109,7 +109,24 @@ if (isset($_GET['action'])) {
                                                             if(isset($_POST['nombre_prov'])){
                                                                 if($producto->setIdProveedor($_POST['nombre_prov'])){
                                                                     if($producto->setExistencias($_POST['existencias'])){
-
+                                                                        if (is_uploaded_file($_FILES['archivo_producto']['tmp_name'])) {
+                                                                            if ($producto->setImagen($_FILES['archivo_producto'])) {
+                                                                                if ($producto->createRow()) {
+                                                                                    $result['status'] = 1;
+                                                                                    if ($producto->saveFile($_FILES['archivo_producto'], $producto->getRuta(), $producto->getImagen())) {
+                                                                                        $result['message'] = 'Producto creado correctamente';
+                                                                                    } else {
+                                                                                        $result['message'] = 'Producto creado pero no se guardó la imagen';
+                                                                                    }
+                                                                                } else {
+                                                                                    $result['exception'] = Database::getException();;
+                                                                                }
+                                                                            } else {
+                                                                                $result['exception'] = $producto->getImageError();
+                                                                            }
+                                                                        } else {
+                                                                            $result['exception'] = 'Seleccione una imagen';
+                                                                        }
                                                                     }else{
                                                                         $result['message'] = 'Existencias incorrecta';
                                                                     }
