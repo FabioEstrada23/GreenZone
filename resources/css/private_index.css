@@ -32,15 +32,15 @@ a{
     background-color: var(--primary) !important;;
     top: 0;
     left: 0;
-    max-width: 24vw;
-    min-height: 120vh;
+    max-width: 20vw;
+    min-height: 160vh;
     position: fixed;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
     transition: transform .3s ease-out;
     transform: translate(-100%);
-    padding: 1px;
+    overflow: auto;
 }
 
 .bg-primary { background-color: var(--primary) !important; }
@@ -66,6 +66,6 @@ a{
 
 @media screen and (max-width: 375px){
     .menu-navegacion{
-        max-width: 30vw;
+        max-width: 40vw;
     }
 }
