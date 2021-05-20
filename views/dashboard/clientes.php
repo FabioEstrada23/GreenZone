@@ -23,71 +23,71 @@ include("../../app/helpers/private_header.php");
                         </div>
                         <div class="modal-body">
                             <form id="update-form" method="post" enctype="multipart/form-data">
-                                <div class="form-group">
+                                <div class="form-group d-none">
                                     <label for="formGroupExampleInput">ID:</label>
                                     <input type="text" class="form-control " placeholder="Ej: MalteHC..."
                                         aria-label="Buscar" aria-describedby="basic-addon1" id="id_cliente_user" 
-                                        name="id_cliente_user" class="validate" required>
+                                        name="id_cliente_user" class="validate" readonly>
                                 </div>
                                 <div class="form-group">
                                     <label for="formGroupExampleInput">Usuario:</label>
                                     <input type="text" class="form-control" placeholder="Ej: MalteHC..."
                                         aria-label="Buscar" aria-describedby="basic-addon1" id="cliente_user" 
-                                        name="cliente_user" class="validate" required>
+                                        name="cliente_user" class="validate" readonly>
                                 </div>
                                 <div class="form-group">
                                     <label for="formGroupExampleInput2">Dui:</label>
                                     <input type="text" class="form-control"
                                         placeholder="XXXXXXXXX-X" aria-label="Buscar"
                                         aria-describedby="basic-addon1" id="dui_cli"
-                                        name="dui_cli" class="validate" required>
+                                        name="dui_cli" class="validate" readonly>
                                 </div>
                                 <div class="form-group">
                                     <label for="formGroupExampleInput3">Nombres:</label>
                                     <input type="text" class="form-control" placeholder="Fernando Jose..."
                                         aria-label="Buscar" aria-describedby="basic-addon1" id="nombres_cli" 
-                                        name="nombres_cli" class="validate" required>
+                                        name="nombres_cli" class="validate" readonly>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleFormControlTextarea1">Apellidos:</label>
                                     <input type="text" class="form-control" placeholder="Aquino Valle..."
                                         aria-label="Telefono" aria-describedby="basic-addon1" id="apellidos_cli"
-                                        name="apellidos_cli" class="validate" required>
+                                        name="apellidos_cli" class="validate" readonly>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleFormControlTextarea1">Direccion:</label>
                                     <input type="text" class="form-control" placeholder="Ej: Av. 12 solorzano"
                                         aria-label="Telefono" aria-describedby="basic-addon1" id="direccion_cli"
-                                        name="direccion_cli" class="validate" required>
+                                        name="direccion_cli" class="validate" readonly>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleFormControlTextarea1">Ciudad:</label>
-                                    <select class="form-select" aria-label="Select" name="ciudad" id="ciudad"></select>
+                                    <select class="form-select" aria-label="Select" name="ciudad" id="ciudad" disabled></select>
                                 </div>
                                 
                                 <div class="form-group">
                                     <label for="exampleFormControlTextarea1">Fecha Nacimiento:</label>
                                     <input type="text" class="form-control" placeholder="YYYY-MM-DD"
                                         aria-label="Telefono" aria-describedby="basic-addon1" id="fecha_nac_cli"
-                                        name="fecha_nac_cli" class="validate" required>
+                                        name="fecha_nac_cli" class="validate" readonly>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="exampleFormControlTextarea1">Codigo Postal:</label>
                                     <input type="text" class="form-control" placeholder="Ej: CP-1223"
                                         aria-label="Telefono" aria-describedby="basic-addon1" id="codigo_pos_cli"
-                                        name="codigo_pos_cli" class="validate" required>
+                                        name="codigo_pos_cli" class="validate" readonly>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="exampleFormControlTextarea1">Genero:</label>
                                     <input type="text" class="form-control" placeholder="Ej: F o M"
                                         aria-label="Telefono" aria-describedby="basic-addon1" id="genero"
-                                        name="genero" class="validate" required>
+                                        name="genero" class="validate" readonly>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleFormControlTextarea1">Estado:</label>
-                                    <select class="form-select" aria-label="Select" name="estado_cli" id="estado_cli"></select>
+                                    <select class="form-select" aria-label="Select" name="estado_cli" id="estado_cli" ></select>
                                 </div>
 
 
