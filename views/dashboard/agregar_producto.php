@@ -1,7 +1,12 @@
 <?php
 //Se incluye la plantilla del encabezado para la página web
-include("../../app/helpers/header.php");
+require_once('../../app/helpers/dashboard_page.php');
+include("../../app/helpers/private_header.php");
 ?>
+<br>
+<br>
+<br>
+<br>
 
 <section>
 
@@ -13,10 +18,11 @@ include("../../app/helpers/header.php");
                 <div class="col-12 text-center" id="infoProducto">
                     <h1>Productos</h1>
                 </div>
-
+                
                 <!-- Producto Caja de Informacion -->
                 <div class="col-12">
                     <br>
+                    <form id="save-form" method="post" enctype="multipart/form-data">
                     <div class="row" id="productoCaja">
                         <div class="row  p-3">
                             <div class="col-3 text-center">
@@ -151,6 +157,7 @@ include("../../app/helpers/header.php");
                             <button type="submit" class="btn btn-light">Agregar +</button>
                         </div>
                     </div>
+                    </form>
                 </div>
             </div>
 
@@ -162,13 +169,13 @@ include("../../app/helpers/header.php");
                 <div class="col-12 text-center" id="regProducto">
                     <h1>Registros</h1>
                 </div>
-
+                <form id="search-form">
                 <div class="col-12 p-4" id="#searchBarProv">
                     <div class="ordenar">
                         <input type="text" class="form-control" placeholder="Buscar" aria-label="Buscar"
                             aria-describedby="basic-addon1">
                         <!-- Boton de buscar -->
-                        <button class="btn" type="button">
+                        <button class="btn" type="submit">
                             <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="Black"
                                 class="bi bi-search" viewBox="0 0 16 16">
                                 <path
@@ -178,6 +185,7 @@ include("../../app/helpers/header.php");
                     </div>
 
                 </div>
+                </form>
 
                 <div class="col-12 p- text-center">
                     <div class="table-responsive">
@@ -217,7 +225,7 @@ include("../../app/helpers/header.php");
 
 
 <?php
-//Se incluye la plantilla del encabezado para la página web
-include("../../app/helpers/footer.php");
+// Se imprime la plantilla del pie enviando el nombre del controlador para la página web.
+Dashboard_Page::footerTemplate('Producto.js');
 ?>
 
