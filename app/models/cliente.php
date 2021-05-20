@@ -253,7 +253,8 @@ class cliente extends validator{
     {
         $sql = 'SELECT id_cliente_user, DUI_cli, telefono_cli, cliente_user, correo_cli_us, contra_cli_us, nombres_cli, apellidos_cli, direccion_cli, ciudad.ciudad, codigo_pos_cli, fecha_nac_cli, genero, estado_cli  from cliente_user
         INNER JOIN ciudad ON cliente_user.id_ciudad = ciudad.id_ciudad
-        INNER JOIN estado_cli ON cliente_user.id_estado_cli = estado_cli.id_estado_cli 
+        INNER JOIN estado_cli ON cliente_user.id_estado_cli = estado_cli.id_estado_cli
+        WHERE estado_cli.id_estado_cli = 1  
         order by id_cliente_user asc ';
         $params = null;
         return Database::getRows($sql, $params);
