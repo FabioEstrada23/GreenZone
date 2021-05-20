@@ -65,6 +65,12 @@ include("../../app/helpers/private_header.php");
                                     <select class="form-select" aria-label="Select" name="ciudad" id="ciudad"></select>
                                 </div>
                                 <div class="form-group">
+                                    <label for="exampleFormControlTextarea1">Codigo Postal:</label>
+                                    <input type="text" class="form-control" placeholder="Ej: CP-1223"
+                                        aria-label="Telefono" aria-describedby="basic-addon1" id="codigo_pos_cli"
+                                        name="codigo_pos_cli" class="validate" required>
+                                </div>
+                                <div class="form-group">
                                     <label for="exampleFormControlTextarea1">Fecha Nacimiento:</label>
                                     <input type="text" class="form-control" placeholder="YYYY-MM-DD"
                                         aria-label="Telefono" aria-describedby="basic-addon1" id="fecha_nac_cli"
