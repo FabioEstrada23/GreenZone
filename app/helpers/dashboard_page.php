@@ -93,7 +93,7 @@ class Dashboard_Page
             $scripts = '
                 <script src="https://kit.fontawesome.com/592eb2e9e3.js" crossorigin="anonymous"></script>
                 <script src="../../resources/js/bootstrap/bootstrap.min.js"></script>
-                <script src="../../resources/js/menu/men.js"></script>
+                <script src="../../resources/js/menu/menu.js"></script>
                 <script src="../../resources/js/MenuInferior/mnInferior.js"></script>
                 <script type="text/javascript" src="../../resources/js/sweetalert.min.js"></script>
                 <script type="text/javascript" src="../../app/helpers/components.js"></script>
