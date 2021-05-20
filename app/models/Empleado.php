@@ -134,7 +134,7 @@ class empleado extends Validator
 
     public function readAll()
     {
-        $sql = 'SELECT id_empleado, nombres_emp, apellidos_emp, correo_emp, alias_emp, clave_emp, id_tipo_empleado, id_estado_emp FROM empleado_user INNER JOIN tipo_empleado USING(id_tipo_empleado) INNER JOIN estado_emp USING(id_estado_emp) 
+        $sql = 'SELECT id_empleado, nombres_emp, apellidos_emp, correo_emp, alias_emp, clave_emp, tipo_empleado, estado_emp FROM empleado_user INNER JOIN tipo_empleado USING(id_tipo_empleado) INNER JOIN estado_emp USING(id_estado_emp) 
                 ORDER BY id_empleado';
         $params = null;
         return Database::getRows($sql, $params);

@@ -23,8 +23,8 @@ function fillTable(dataset) {
                 <td>${row.apellidos_emp}</td>
                 <td>${row.correo_emp}</td>
                 <td>${row.alias_emp}</td>
-                <td>${row.id_tipo_empleado}</td>
-                <td>${row.id_estado_emp}</td>
+                <td>${row.tipo_empleado}</td>
+                <td>${row.estado_emp}</td>
                 <td>
                     <a href="#" onclick="openUpdateDialog(${row.id_empleado})" class="btn waves-effect blue tooltipped" data-tooltip="Actualizar" data-bs-toggle="modal" data-bs-target="#exampleModal" ><i class="material-icons">mode_edit</i></a>
                     <a href="#" onclick="openDeleteDialog(${row.id_empleado})" class="btn waves-effect red tooltipped" data-tooltip="Eliminar"><i class="material-icons">delete</i></a>
