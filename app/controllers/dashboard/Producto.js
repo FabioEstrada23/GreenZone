@@ -60,7 +60,6 @@ document.getElementById('save-form').addEventListener('submit', function (event)
     
     saveRow(API_PRODUCTOS, 'create', 'save-form', null);
 
-    document.getElementById('save-form').reset();
 });
 
 // Función para establecer el registro a eliminar y abrir una caja de dialogo de confirmación.

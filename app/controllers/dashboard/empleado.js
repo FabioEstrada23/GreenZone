@@ -49,7 +49,6 @@ document.getElementById('save-form').addEventListener('submit', function (event)
     event.preventDefault();
     
     saveRow(API_EMPLEADOS, 'create', 'save-form', null);
-    document.getElementById('save-form').reset();
 });
 
 // Método manejador de eventos que se ejecuta cuando se envía el formulario de buscar.
