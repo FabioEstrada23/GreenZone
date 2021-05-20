@@ -51,7 +51,7 @@ if (isset($_GET['action'])) {
 
 
             case 'readOne':
-                if ($oferta->setId($_POST['id_cliente_user'])) {
+                if ($cliente->setIdClienteUser($_POST['id_cliente_user'])) {
                     if ($result['dataset'] = $cliente->readOne()) {
                         $result['status'] = 1;
                     } else {
@@ -89,23 +89,23 @@ if (isset($_GET['action'])) {
                     }
                 break;
 
-            // case 'update':
-            //        $_POST = $cliente->validateForm($_POST);
-            //        if ($cliente->setIdClienteUser($_POST['id_cliente_user'])) {
-            //         if ($data = $cliente->readOne()) {
-            //             if($cliente->setIdEstadoCli($_POST['estado_cliente'])){
-            //                         if ($cliente->updateRow()) {
-            //                                 $result['status'] = 1;
-            //                                 $result['message'] = 'Cliente actualizado correctamente';
-            //                         } else {
-            //                                 $result['exception'] = Database::getException();
-            //                         }
-            //             }else{
-            //                 $result['message'] = 'Direccion Incorrecta';
-            //             }
-            //         }
-            //        }
-            //     break;
+            case 'update':
+                    $_POST = $cliente->validateForm($_POST);
+                    if ($cliente->setIdClienteUser($_POST['id_cliente_user'])) {
+                     if ($data = $cliente->readOne()) {
+                         if($cliente->setIdEstadoCli($_POST['estado_cliente'])){
+                                     if ($cliente->updateRow()) {
+                                            $result['status'] = 1;
+                                             $result['message'] = 'Cliente actualizado correctamente';
+                                     } else {
+                                             $result['exception'] = Database::getException();
+                                     }
+                         }else{
+                             $result['message'] = 'Direccion Incorrecta';
+                         }
+                     }
+                    }
+                 break;
 
                 default:
                     $result['exception'] = 'Acción no disponible dentro de la sesión';

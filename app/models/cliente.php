@@ -251,7 +251,7 @@ class cliente extends validator{
 
     public function readAll()
     {
-        $sql = 'SELECT id_cliente_user, DUI_cli, telefono_cli, cliente_user, correo_cli_us, contra_cli_us, nombres_cli, apellidos_cli, direccion_cli, ciudad.ciudad, codigo_pos_cli, fecha_nac_cli, genero, estado_cli.estado_cli  from cliente_user
+        $sql = 'SELECT id_cliente_user, DUI_cli, telefono_cli, cliente_user, correo_cli_us, contra_cli_us, nombres_cli, apellidos_cli, direccion_cli, ciudad.ciudad, codigo_pos_cli, fecha_nac_cli, genero, estado_cli  from cliente_user
         INNER JOIN ciudad ON cliente_user.id_ciudad = ciudad.id_ciudad
         INNER JOIN estado_cli ON cliente_user.id_estado_cli = estado_cli.id_estado_cli 
         order by id_cliente_user asc ';
@@ -261,11 +261,11 @@ class cliente extends validator{
 
     public function readOne()
     {
-        $sql = 'SELECT id_cliente_user, DUI_cli, telefono_cli, cliente_user, correo_cli_us, contra_cli_us, nombres_cli, apellidos_cli, direccion_cli, ciudad.ciudad, codigo_pos_cli, fecha_nac_cli, genero, estado_cli.estado_cli  from cliente_user
+        $sql = 'SELECT id_cliente_user, DUI_cli, telefono_cli, cliente_user, correo_cli_us, contra_cli_us, nombres_cli, apellidos_cli, direccion_cli, cliente_user.id_ciudad, codigo_pos_cli, fecha_nac_cli, genero, cliente_user.id_estado_cli  from cliente_user
         INNER JOIN ciudad ON cliente_user.id_ciudad = ciudad.id_ciudad
         INNER JOIN estado_cli ON cliente_user.id_estado_cli = estado_cli.id_estado_cli 
-        order by id_cliente_user asc';
-        $params = array($this->id);
+        WHERE id_cliente_user = ?';
+        $params = array($this->id_cliente_user);
         return Database::getRow($sql, $params);
     }
 
@@ -280,6 +280,13 @@ class cliente extends validator{
     {
         $sql = 'SELECT id_ciudad, ciudad FROM ciudad';
         $params = null;
+        return Database::getRows($sql, $params);
+    }
+
+    public function updateRow()
+    {
+        $sql = 'UPDATE clientes_user SET id_estado_cli = ? WHERE id_cliente_user = ?';
+        $params = array($this->id_estado_cli, $this->id_cliente_user);
         return Database::getRows($sql, $params);
     }
 

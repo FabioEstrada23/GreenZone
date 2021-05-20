@@ -16,10 +16,10 @@ function fillTable(dataset) {
                 <td>${row.apellidos_cli}</td>
                 <td>${row.direccion_cli}</td>
                 <td>${row.ciudad}</td>
+                <td>${row.codigo_pos_cli}</td>
                 <td>${row.fecha_nac_cli}</td>
                 <td>${row.genero}</td>
                 <td>${row.estado_cli}</td>
-                <td>${row.precio_anterior}</td>
 
                 <td>
                     <a href="#" onclick="openUpdateDialog(${row.id_cliente_user})" class="btn waves-effect blue tooltipped" data-tooltip="Actualizar" data-bs-toggle="modal" data-bs-target="#exampleModal" ><i class="material-icons">mode_edit</i></a>
@@ -54,7 +54,7 @@ function openUpdateDialog(id) {
     // Se abre la caja de dialogo (modal) que contiene el formulario.
 
     // Se asigna el título para la caja de dialogo (modal).
-    document.getElementById('modal-title').textContent = 'Actualizar Oferta';
+    document.getElementById('modal-title').textContent = 'Actualizar Cliente';
 
 
     // Se define un objeto con los datos del registro seleccionado.
@@ -72,8 +72,10 @@ function openUpdateDialog(id) {
                 if (response.status) {
                     // Se inicializan los campos del formulario con los datos del registro seleccionado.
                     document.getElementById('id_cliente_user').value = response.dataset.id_cliente_user;
-                    fillSelect(ENDPOINT_ESTADO, 'estado_cli', null);
-                    fillSelect(ENDPOINT_CIUDAD, 'ciudad', null);
+                    fillSelect(ENDPOINT_ESTADO, 'estado_cli', response.dataset.id_estado_cli);
+                    fillSelect(ENDPOINT_CIUDAD, 'ciudad', response.dataset.id_ciudad);
+                    document.getElementById('cliente_user').value = response.dataset.cliente_user;
+                    document.getElementById('direccion_cli').value = response.dataset.direccion_cli;
                     document.getElementById('dui_cli').value = response.dataset.dui_cli;
                     document.getElementById('nombres_cli').value = response.dataset.nombres_cli;
                     document.getElementById('apellidos_cli').value = response.dataset.apellidos_cli;
