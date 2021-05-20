@@ -169,8 +169,29 @@ if (isset($_GET['action'])) {
                     }
                 break;
 
+
+
+
+                case 'delete':
+                    if ($producto->setId($_POST['id_producto'])) {
+                        if ($data = $producto->readOne()) {
+                            if ($producto->deleteRow()) {
+                                $result['status'] = 1;
+                                $result['message'] = 'Producto eliminado correctamente';
+    
+                            } else {
+                                $result['exception'] = Database::getException();
+                            }
+                        } else {
+                            $result['exception'] = 'Producto inexistente';
+                        }
+                    } else {
+                        $result['exception'] = 'Producto incorrecto';
+                    }
+                break;
                 default:
-                $result['exception'] = 'Acción no disponible dentro de la sesión';
+                    $result['exception'] = 'Acción no disponible dentro de la sesión';
+
 
         }
         header('content-type: application/json; charset=utf-8');

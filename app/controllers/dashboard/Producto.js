@@ -34,7 +34,7 @@ function fillTable(dataset) {
                 <td>${row.descripcion_pro}</td>
                 <td>
                     <a href="#" onclick="openUpdateDialog(${row.id_proveedor})" class="btn waves-effect blue tooltipped" data-tooltip="Actualizar" data-bs-toggle="modal" data-bs-target="#exampleModal" ><i class="material-icons">mode_edit</i></a>
-                    <a href="#" onclick="openDeleteDialog(${row.id_proveedor})" class="btn waves-effect red tooltipped" data-tooltip="Eliminar"><i class="material-icons">delete</i></a>
+                    <a href="#" onclick="openDeleteDialog(${row.id_producto})" class="btn waves-effect red tooltipped" data-tooltip="Eliminar"><i class="material-icons">delete</i></a>
                 </td>
             </tr>
         `;
@@ -50,7 +50,6 @@ document.getElementById('search-form').addEventListener('submit', function (even
     searchRows(API_PRODUCTOS, 'search-form');
 });
 
-
 // Método manejador de eventos que se ejecuta cuando se envía el formulario de guardar.
 document.getElementById('save-form').addEventListener('submit', function (event) {
     // Se evita recargar la página web después de enviar el formulario.
@@ -62,6 +61,15 @@ document.getElementById('save-form').addEventListener('submit', function (event)
 
     document.getElementById('save-form').reset();
 });
+
+// Función para establecer el registro a eliminar y abrir una caja de dialogo de confirmación.
+function openDeleteDialog(id) {
+    // Se define un objeto con los datos del registro seleccionado.
+    const data = new FormData();
+    data.append('id_producto', id);
+    // Se llama a la función que elimina un registro. Se encuentra en el archivo components.js
+    confirmDelete(API_PRODUCTOS, data);
+}
 
 
 
