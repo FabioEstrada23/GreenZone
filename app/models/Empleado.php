@@ -147,7 +147,7 @@ class empleado extends Validator
 
     public function readEstadoEmpleado()
     {
-        $sql = 'SELECT id_estado, estado_empleado FROM estado_emp';
+        $sql = 'SELECT id_estado_emp, estado_emp FROM estado_emp';
         $params = null;
         return Database::getRows($sql, $params);
     }
