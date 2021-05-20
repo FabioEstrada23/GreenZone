@@ -53,7 +53,7 @@ session_start();
                 
                     <img src="../../resources/img/logos/lg_head.png" class="logo img-fluid">
                     <a href="../../views/dashboard/private_index.php" class="d-block text-light p-3"><i class="icon ion-md-home mr-2 lead"></i> Inicio</a>
-                    <a href="../../views/dashboard/agregar_productos.php" class="d-block text-light p-3"><i class="icon ion-md-cart mr-2 lead"></i> Productos</a>
+                    <a href="../../views/dashboard/agregar_producto.php" class="d-block text-light p-3"><i class="icon ion-md-cart mr-2 lead"></i> Productos</a>
                     <a href="../../views/dashboard/marca.php" class="d-block text-light p-3"><i class="icon ion-md-pricetag mr-2 lead"></i> Marcas</a>
                     <a href="../../views/dashboard/proveedores.php" class="d-block text-light p-3"><i class="icon ion-md-globe mr-2 lead"></i> Proveedores</a>
                     <a href="../../views/dashboard/oferta.php" class="d-block text-light p-3"><i class="icon ion-md-cart mr-2 lead"></i> Oferta</a>
