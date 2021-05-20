@@ -127,7 +127,7 @@ include("../../app/helpers/private_header.php");
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="modal-title">Modal title</h5>
+                            <h5 class="modal-title" id="modal-title">Actualizar Empleados</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
@@ -147,27 +147,27 @@ include("../../app/helpers/private_header.php");
                                 <div class="form-group">
                                     <label for="formGroupExampleInput2">Apellidos:</label>
                                     <input type="text" class="form-control"
-                                        placeholder="Ej: Finca Don Pedro, pasaje Jocote..." aria-label="Buscar"
-                                        aria-describedby="basic-addon1" id="apellidos_emp" type="text"
-                                        name="apellidos_emp" class="validate" required>
+                                        placeholder="Ej: MalteHC..." aria-label="Buscar"
+                                        aria-describedby="basic-addon1" id="apellidos_emp2" type="text"
+                                        name="apellidos_emp2" class="validate" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="formGroupExampleInput2">correo:</label>
                                     <input type="text" class="form-control"
-                                        placeholder="Ej: Finca Don Pedro, pasaje Jocote..." aria-label="Buscar"
+                                        placeholder="Ej: fulanito@gmail.com..." aria-label="Buscar"
                                         aria-describedby="basic-addon1" id="correo_emp2" type="text"
                                         name="correo_emp2" class="validate" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="formGroupExampleInput3">Alias:</label>
-                                    <input type="text" class="form-control" placeholder="Ej: fulanito@gmail.com..."
+                                    <input type="text" class="form-control" placeholder="Ej: MalteHC..."
                                         aria-label="Buscar" aria-describedby="basic-addon1" id="alias_emp2" type="text"
                                         name="alias_emp2" class="validate" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="formGroupExampleInput2">Clave:</label>
                                     <input type="text" class="form-control"
-                                        placeholder="Ej: Finca Don Pedro, pasaje Jocote..." aria-label="Buscar"
+                                        placeholder="Ej: Alfex224" aria-label="Buscar"
                                         aria-describedby="basic-addon1" id="clave_emp2" type="text"
                                         name="clave_emp2" class="validate" required>
                                 </div>
@@ -205,9 +205,9 @@ include("../../app/helpers/private_header.php");
                             <div class="col-12 p-4" id="#searchBarEmp">
                                 <div class="DiseBuscador">
                                     <input type="text" class="form-control" placeholder="Buscar" aria-label="Buscar"
-                                        aria-describedby="basic-addon1">
+                                        aria-describedby="basic-addon1" id="search" type="text" name="search" required>
                                     <!-- Boton de buscar -->
-                                    <button class="btn" type="button">
+                                    <button class="btn" type="submit">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="Black"
                                             class="bi bi-search" viewBox="0 0 16 16">
                                             <path

@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
     fillSelect(ENDPOINT_TIPOEMPLEADO,'tipo_empleado',null)
     fillSelect(ENDPOINT_TIPOESTADO,'estado_emp',null)
     readRows(API_EMPLEADOS);
-});
+}); 
 
 function fillTable(dataset) {
     let content = '';
@@ -50,9 +50,48 @@ document.getElementById('save-form').addEventListener('submit', function (event)
     event.preventDefault();
     
     saveRow(API_EMPLEADOS, 'create', 'save-form', null);
-
     document.getElementById('save-form').reset();
 });
+
+// Método manejador de eventos que se ejecuta cuando se envía el formulario de buscar.
+document.getElementById('search-form').addEventListener('submit', function (event) {
+    // Se evita recargar la página web después de enviar el formulario.
+    event.preventDefault();
+    // Se llama a la función que realiza la búsqueda. Se encuentra en el archivo components.js
+    searchRows(API_EMPLEADOS, 'search-form');
+});
+
+function openUpdateDialog(id) {
+    // Se define un objeto con los datos del registro seleccionado.
+    const data = new FormData();
+    data.append('id_marca', id);
+
+    fetch(API_MARCA + 'readOne', {
+        method: 'post',
+        body: data
+    }).then(function (request) {
+        // Se verifica si la petición es correcta, de lo contrario se muestra un mensaje indicando el problema.
+        if (request.ok) {
+            request.json().then(function (response) {
+                // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
+                if (response.status) {
+                    // Se inicializan los campos del formulario con los datos del registro seleccionado.
+                    document.getElementById('id_marca').value = response.dataset.id_marca;
+                    document.getElementById('n-marca-up').value = response.dataset.marca;
+                    
+                } else {
+                    sweetAlert(2, response.exception, null);
+                }
+            });
+        } else {
+            console.log(request.status + ' ' + request.statusText);
+        }
+    }).catch(function (error) {
+        console.log(error);
+    });
+}
+
+
 
 
 
