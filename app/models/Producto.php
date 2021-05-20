@@ -118,7 +118,7 @@ class Producto extends Validator
     public function setImagen($file)
     {
         if ($this->validateImageFile($file, 500, 500)) {
-            $this->url = $this->getImageName();
+            $this->imagen = $this->getImageName();
             return true;
         } else {
             return false;
@@ -133,15 +133,15 @@ class Producto extends Validator
         return $this->nombre_pro;
     }
 
-    public function IdEstado(){
-        return $this->id_estado_producto;
+    public function getIdEstado(){
+        return $this->id_estado_pro;
     }
 
-    public function IdCategoria(){
+    public function getIdCategoria(){
         return $this->id_categoria;
     }
 
-    public function IdMarca(){
+    public function getIdMarca(){
         return $this->id_marca;
     }
 
@@ -189,15 +189,19 @@ class Producto extends Validator
 
     public function createRow()
     {
-        $sql = 'INSERT INTO producto(nombre_pro, id_estado_producto, id_categoria, id_marca, precio_pro, oferta_pro, descripcion_pro, id_proveedor, existencias, imagen) VALUES (?,?,?,?,?,?,?,?,?,?,?)';
-        $params = array($this->nombre_pro,$this->id_estado_producto,$this->id_categoria,$this->id_marca,$this->precio_pro,$this->oferta_pro,$this->descripcion_pro,$this->id_proveedor,$this->existencias,$this->imagen);
+        $sql = 'INSERT INTO producto(nombre_pro, id_estado_producto, id_categoria, id_marca, precio_pro, oferta_pro, descripcion_pro, id_proveedor, existencias, imagen) VALUES (?,?,?,?,?,?,?,?,?,?)';
+        $params = array($this->nombre_pro,$this->id_estado_pro,$this->id_categoria,$this->id_marca,$this->precio_pro,$this->oferta_pro,$this->descripcion_pro,$this->id_proveedor,$this->existencias,$this->imagen);
         return Database::executeRow($sql, $params);
     }
 
     public function readAll()
     {
-        $sql = 'SELECT id_producto, nombre_pro, id_estado_producto, id_categoria, id_marca, precio_pro, oferta_pro, descripcion_pro, id_proveedor, existencias, imagen FROM producto INNER JOIN estado_producto USING(id_estado_producto) INNER JOIN categoria_producto USING(id_categoria) INNER JOIN marca_producto USING(id_marca) INNER JOIN proveedor USING(id_proveedor)
-                ORDER BY id_producto';
+        $sql = 'SELECT id_producto, nombre_pro, id_estado_producto, id_categoria, id_marca, precio_pro, oferta_pro, descripcion_pro, id_proveedor, existencias, imagen FROM producto 
+            INNER JOIN estado_producto USING(id_estado_producto) 
+            INNER JOIN categoria_producto USING(id_categoria) 
+            INNER JOIN marca_producto USING(id_marca) 
+            INNER JOIN proveedor USING(id_proveedor)
+            ORDER BY id_producto';
         $params = null;
         return Database::getRows($sql, $params);
     }
