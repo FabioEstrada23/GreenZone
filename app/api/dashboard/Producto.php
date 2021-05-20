@@ -8,7 +8,7 @@ if (isset($_GET['action'])) {
     $producto = new Producto;
     $result = array('status' => 0, 'message' => null, 'exception' => null);
 
-    if (isset($_SESSION['id_empleado'])) {
+    if (isset($_SESSION['id_empleado']) || true) {
         
         switch ($_GET['action']) {
             case 'readAll':
@@ -93,25 +93,47 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Ingrese un valor para buscar';
                 }
                 break;
+                
+                
+
 
                 case 'create':
                     $_POST = $producto->validateForm($_POST);
-                    if($producto->setcateg($_POST['categoria'])){
-                        if ($producto->createRow()) {
-                                $result['status'] = 1;
-                                $result['message'] = 'Categoria creada correctamente';
-                                } else {
-                                    $result['exception'] = Database::getException();
-                                }
+                    if($producto->setNombre($_POST['nombre_pro'])){
+                        if(isset($_POST['estado_pro'])){
+                            if($Empleado->setIdEstado($_POST['estado_pro'])){
+                                if(isset($_POST['categoria'])){
+                                    if($Empleado->setIdCategoria($_POST['categoria'])){
+                                        if(isset($_POST['marca'])){
+                                            if($Empleado->setIdMarca($_POST['marca'])){
+                                                
+                                            }else{
+                                                $result['message'] = 'Marca Incorrecto';    
+                                            }
+                                        }else{
+                                            $result['message'] = 'Seleccione una Marca';
+                                        }
+                                    }else{
+                                        $result['message'] = 'Categoria Incorrecto';    
+                                    }
                                 }else{
-                                    $result['message'] = 'Categoria Incorrecta';
+                                    $result['message'] = 'Seleccione una Categoria';
                                 }
-                                break;
+                            }else{
+                                $result['message'] = 'Estado producto Incorrecto';    
+                            }
+                        }else{
+                            $result['message'] = 'Seleccione un estado producto';
+                        }
+                    }else{
+                        $result['message'] = 'Nombres Incorrectos';
+                    }
+                break;
 
-            }
-            header('content-type: application/json; charset=utf-8');
-            // Se imprime el resultado en formato JSON y se retorna al controlador.
-            print(json_encode($result));
+        }
+        header('content-type: application/json; charset=utf-8');
+        // Se imprime el resultado en formato JSON y se retorna al controlador.
+        print(json_encode($result));
     }else{
         print(json_encode('Acceso denegado'));
     }

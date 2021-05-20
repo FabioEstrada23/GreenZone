@@ -46,6 +46,75 @@ if (isset($_GET['action'])) {
                     }
                     break;
 
+                    case 'create':
+                        $_POST = $Categoria->validateForm($_POST);
+                        if($Categoria->setcateg($_POST['categoria'])){
+                            if ($Categoria->createRow()) {
+                                    $result['status'] = 1;
+                                    $result['message'] = 'Categoria creada correctamente';
+                                    } else {
+                                        $result['exception'] = Database::getException();
+                                    }
+                        }else{
+                            $result['message'] = 'Categoria Incorrecta';
+                        }
+                        
+                        break;
+
+                        case 'update':
+                            $_POST = $Categoria->validateForm($_POST);
+                            if ($Categoria->setId($_POST['id_categoria'])) {
+                                if ($data = $Categoria->readOne()) {
+                                    if($Categoria->setcateg($_POST['categoria2'])){
+                                        if ($Categoria->updateRow()) {
+                                            $result['status'] = 1;
+                                            $result['message'] = 'Categoria actualizada correctamente';
+                                        } else {
+                                            $result['exception'] = Database::getException();
+                                        }
+                                    }else{
+                                        $result['message'] = 'Categoria Incorrecta';
+                                    }
+                                }
+                            }   
+                            break;
+
+                            case 'readOne':
+                                if ($Categoria->setId($_POST['id_categoria'])) {
+                                    if ($result['dataset'] = $Categoria->readOne()) {
+                                        $result['status'] = 1;
+                                    } else {
+                                        if (Database::getException()) {
+                                            $result['exception'] = Database::getException();
+                                        } else {
+                                            $result['exception'] = 'Categoria inexistente';
+                                        }
+                                    }
+                                } else {
+                                    $result['exception'] = 'Categoria incorrecta';
+                                }
+                                break;
+
+                                case 'delete':
+                                    if ($Categoria->setId($_POST['id_categoria'])) {
+                                        if ($data = $Categoria->readOne()) {
+                                            if ($Categoria->deleteRow()) {
+                                                $result['status'] = 1;
+                                                $result['message'] = 'Categoria eliminada correctamente';
+                    
+                                            } else {
+                                                $result['exception'] = Database::getException();
+                                            }
+                                        } else {
+                                            $result['exception'] = 'Categoria inexistente';
+                                        }
+                                    } else {
+                                        $result['exception'] = 'Categoria incorrecta';
+                                    }
+                                break;
+                                default:
+                                    $result['exception'] = 'Acción no disponible dentro de la sesión';
+
 
         }
         header('content-type: application/json; charset=utf-8');

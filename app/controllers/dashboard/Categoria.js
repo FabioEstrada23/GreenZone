@@ -43,5 +43,64 @@ document.getElementById('save-form').addEventListener('submit', function (event)
     document.getElementById('save-form').reset();
 });
 
+// Método manejador de eventos que se ejecuta cuando se envía el formulario de buscar.
+document.getElementById('search-form').addEventListener('submit', function (event) {
+    // Se evita recargar la página web después de enviar el formulario.
+    event.preventDefault();
+    // Se llama a la función que realiza la búsqueda. Se encuentra en el archivo components.js
+    searchRows(API_CATEGORIA, 'search-form');
+
+    document.getElementById('save-form').reset();
+});
+
+function openUpdateDialog(id) {
+    // Se define un objeto con los datos del registro seleccionado.
+    const data = new FormData();
+    data.append('id_categoria', id);
+
+    fetch(API_CATEGORIA + 'readOne', {
+        method: 'post',
+        body: data
+    }).then(function (request) {
+        // Se verifica si la petición es correcta, de lo contrario se muestra un mensaje indicando el problema.
+        if (request.ok) {
+            request.json().then(function (response) {
+                // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
+                if (response.status) {
+                    // Se inicializan los campos del formulario con los datos del registro seleccionado.
+                    document.getElementById('id_categoria').value = response.dataset.id_categoria;
+                    document.getElementById('categoria2').value = response.dataset.categoria;
+                    
+                } else {
+                    sweetAlert(2, response.exception, null);
+                }
+            });
+        } else {
+            console.log(request.status + ' ' + request.statusText);
+        }
+    }).catch(function (error) {
+        console.log(error);
+    });
+}
+
+// Método manejador de eventos que se ejecuta cuando se envía el formulario de actualizar.
+document.getElementById('update-form').addEventListener('submit', function (event) {
+    // Se evita recargar la página web después de enviar el formulario.
+    event.preventDefault();
+    
+    updateRow(API_CATEGORIA, 'update', 'update-form', 'update-modal');
+});
+
+// Función para establecer el registro a eliminar y abrir una caja de dialogo de confirmación.
+function openDeleteDialog(id) {
+    // Se define un objeto con los datos del registro seleccionado.
+    const data = new FormData();
+    data.append('id_categoria', id);
+    // Se llama a la función que elimina un registro. Se encuentra en el archivo components.js
+    confirmDelete(API_CATEGORIA, data);
+}
+
+
+
 
 

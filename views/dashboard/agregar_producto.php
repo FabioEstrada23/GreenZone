@@ -30,7 +30,8 @@ include("../../app/helpers/private_header.php");
                             </div>
                             <div class="col-9">
                                 <input type="text" class="form-control" placeholder="Ej: MalteHC..."
-                                    aria-label="Nombre" aria-describedby="basic-addon1">
+                                aria-label="Buscar" aria-describedby="basic-addon1" id="nombre_pro"
+                                type="text" name="nombre_pro" class="validate" required>
                             </div>
 
                         </div>
@@ -43,8 +44,8 @@ include("../../app/helpers/private_header.php");
                             </div>
                             <div class="col-9">
                                 <input type="text" class="form-control"
-                                    placeholder="Ej: Talla: XL, caraceristicas..." aria-label="Descripcion"
-                                    aria-describedby="basic-addon1">
+                                aria-label="Buscar" aria-describedby="basic-addon1" id="descripcion_pro"
+                                type="text" name="descripcion_pro" class="validate" required>
                             </div>
                         </div>
                         <!-- campo precio -->
@@ -54,9 +55,9 @@ include("../../app/helpers/private_header.php");
                                 <h6>Precio</h6>
                             </div>
                             <div class="col-9">
-                                <input type="text" class="form-control"
-                                    placeholder="Ej: 55.50.." aria-label="Telefono"
-                                    aria-describedby="basic-addon1">
+                                <input type="number" class="form-control" placeholder="0.01" aria-label="Buscar"
+                                    aria-describedby="basic-addon1" step="0.01" id="precio_pro" type="number" name="precio_pro"
+                                    class="validate" required>
                             </div>
                         </div>
 
@@ -66,9 +67,9 @@ include("../../app/helpers/private_header.php");
                                 <h6>Oferta</h6>
                             </div>
                             <div class="col-9">
-                                <input type="text" class="form-control"
-                                    placeholder="Ej: 0.25..." aria-label="Buscar"
-                                    aria-describedby="basic-addon1">
+                                <input type="number" class="form-control" placeholder="0.01" aria-label="Buscar"
+                                    aria-describedby="basic-addon1" step="0.01" id="oferta_pro" type="number" name="oferta_pro"
+                                    class="validate" required>
                             </div>
                         </div>
 
@@ -79,8 +80,8 @@ include("../../app/helpers/private_header.php");
                             </div>
                             <div class="col-9">
                                 <input type="number" class="form-control"
-                                    placeholder="Ej: 123..." aria-label="Buscar"
-                                    aria-describedby="basic-addon1">
+                                aria-label="Buscar" aria-describedby="basic-addon1" id="existencias"
+                                type="number" name="existencias" class="validate" required>
                             </div>
                         </div>
 
@@ -131,6 +132,16 @@ include("../../app/helpers/private_header.php");
                                 <select class="form-select" aria-label="Default select example"
                                 id="categoria" name="categoria">
                                 </select>
+                            </div>
+                        </div>
+
+                        <div class="file-field input-field col s12 m6">
+                            <div class="btn waves-effect tooltipped" data-tooltip="Seleccione una imagen de al menos 500x500">
+                            <span><i class="material-icons">image</i></span>
+                            <input id="archivo_producto" type="file" name="archivo_producto" accept=".gif, .jpg, .png"/>
+                        </div>
+                            <div class="file-path-wrapper">
+                            <input type="text" class="file-path validate" placeholder="Formatos aceptados: gif, jpg y png"/>
                             </div>
                         </div>
                     </div>

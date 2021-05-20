@@ -56,7 +56,7 @@ include("../../app/helpers/private_header.php");
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="modal-title">Modal title</h5>
+                            <h5 class="modal-title" id="modal-title">Actualizar Categorias</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
@@ -71,7 +71,7 @@ include("../../app/helpers/private_header.php");
                                     <label for="formGroupExampleInput">Nombre:</label>
                                     <input type="text" class="form-control" placeholder="Ej: MalteHC..."
                                         aria-label="Buscar" aria-describedby="basic-addon1" id="categoria2" type="text"
-                                        name="categoria" class="validate" required>
+                                        name="categoria2" class="validate" required>
                                 </div>
                         </div>
                         
@@ -83,8 +83,6 @@ include("../../app/helpers/private_header.php");
                     </div>
                 </div>
             </div>
-
-
     
             <div class="col-12 col-xs-12 col-sm-12 col-lg-6 col-xl-6 p-4 col-xxl-6">
     
@@ -111,7 +109,7 @@ include("../../app/helpers/private_header.php");
                     </form>
     
                     <div class="col-12 p- text-center">
-                        <div class="table-responsive">
+                        <div class="table-responsive" id="tabla_Cate">
                             <table class="table table-dark table-striped">
                                 <thead>
                                     <tr>

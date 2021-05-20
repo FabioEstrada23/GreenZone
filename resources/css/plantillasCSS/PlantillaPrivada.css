@@ -227,6 +227,10 @@
     border-radius: 10px;
     background-color: #A8DBA8;
 }
+
+#tabla_Cate .btn{
+    color: red;
+}
 /* la caja de campos proveecor ponemos un padding de 6 arriba para alinear con txt */
 #proveedorCaja h6{
     padding-top: 6px;

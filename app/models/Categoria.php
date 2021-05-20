@@ -53,8 +53,8 @@ class categoria extends Validator
 
     public function createRow()
     {
-        $sql = 'INSERT INTO categoria_producto(id_categoria, categoria)
-                VALUES(?, ?)';
+        $sql = 'INSERT INTO categoria_producto(categoria)
+                VALUES(?)';
         $params = array($this->categoria);
         return Database::executeRow($sql, $params);
     }

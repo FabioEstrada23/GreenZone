@@ -47,7 +47,7 @@ document.getElementById('search-form').addEventListener('submit', function (even
     // Se evita recargar la página web después de enviar el formulario.
     event.preventDefault();
     // Se llama a la función que realiza la búsqueda. Se encuentra en el archivo components.js
-    searchRows(API_EMPLEADOS, 'search-form');
+    searchRows(API_PRODUCTOS, 'search-form');
 });
 
 // Método manejador de eventos que se ejecuta cuando se envía el formulario de guardar.
@@ -55,7 +55,7 @@ document.getElementById('save-form').addEventListener('submit', function (event)
     // Se evita recargar la página web después de enviar el formulario.
     event.preventDefault();
     
-    saveRow(API_EMPLEADOS, 'create', 'save-form', null);
+    saveRow(API_PRODUCTOS, 'create', 'save-form', null);
 
     document.getElementById('save-form').reset();
 });
