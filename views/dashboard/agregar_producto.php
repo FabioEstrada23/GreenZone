@@ -251,7 +251,7 @@ include("../../app/helpers/private_header.php");
                 <div class="col-12 p-4" id="#searchBarProv">
                     <div class="ordenar">
                         <input type="text" class="form-control" placeholder="Buscar" aria-label="Buscar"
-                            aria-describedby="basic-addon1">
+                        aria-describedby="basic-addon1" id="search" type="text" name="search" required>
                         <!-- Boton de buscar -->
                         <button class="btn" type="submit">
                             <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="Black"

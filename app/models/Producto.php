@@ -189,7 +189,7 @@ class Producto extends Validator
 
     public function createRow()
     {
-        $sql = 'INSERT INTO producto(nombre_pro, id_estado_producto, id_categoria, id_marca, precio_pro, oferta_pro, descripcion_pro, id_proveedor, existencias, imagen) VALUES (?,?,?,?,?,?,?,?,?,?)';
+        $sql = 'INSERT INTO producto(nombre_pro, id_estado_producto, id_categoria, id_marca, precio_pro, oferta_pro, descripcion_pro, id_proveedor, existencias, imagen) VALUES (?,?,?,?,?,?,?,?,?,?,?)';
         $params = array($this->nombre_pro,$this->id_estado_producto,$this->id_categoria,$this->id_marca,$this->precio_pro,$this->oferta_pro,$this->descripcion_pro,$this->id_proveedor,$this->existencias,$this->imagen);
         return Database::executeRow($sql, $params);
     }
@@ -235,7 +235,7 @@ class Producto extends Validator
     {
         $sql = 'SELECT id_producto, nombre_pro, id_estado_producto, id_categoria, id_marca, precio_pro, oferta_pro, descripcion_pro, id_proveedor, existencias, imagen FROM producto
                 WHERE id_producto = ?';
-        $params = array($this->id_empleado);
+        $params = array($this->id_producto);
         return Database::getRow($sql, $params);
     }
 
@@ -251,7 +251,7 @@ class Producto extends Validator
     {
         $sql = 'DELETE FROM producto
                 WHERE id_producto = ?';
-        $params = array($this->id_empleado);
+        $params = array($this->id_producto);
         return Database::executeRow($sql, $params);
     }
 
