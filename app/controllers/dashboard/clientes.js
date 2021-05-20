@@ -23,7 +23,7 @@ function fillTable(dataset) {
 
                 <td>
                     <a href="#" onclick="openUpdateDialog(${row.id_cliente_user})" class="btn waves-effect blue tooltipped" data-tooltip="Actualizar" data-bs-toggle="modal" data-bs-target="#exampleModal" ><i class="material-icons">mode_edit</i></a>
-                    <a href="#" onclick="openDeleteDialog(${row.id_cliente_user})" class="btn waves-effect red tooltipped" data-tooltip="Eliminar"><i class="material-icons">delete</i></a>
+                    
                 </td>
             </tr>
         `;

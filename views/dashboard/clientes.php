@@ -23,7 +23,7 @@ include("../../app/helpers/private_header.php");
                         </div>
                         <div class="modal-body">
                             <form id="update-form" method="post" enctype="multipart/form-data">
-                                <div class="form-group d-none">
+                            <div class="form-group d-none">
                                     <label for="formGroupExampleInput">ID:</label>
                                     <input type="text" class="form-control " placeholder="Ej: MalteHC..."
                                         aria-label="Buscar" aria-describedby="basic-addon1" id="id_cliente_user" 
@@ -89,7 +89,17 @@ include("../../app/helpers/private_header.php");
                                     <label for="exampleFormControlTextarea1">Estado:</label>
                                     <select class="form-select" aria-label="Select" name="estado_cli" id="estado_cli" ></select>
                                 </div>
+                            
+                            <div class="row">
+                                <div class="col-6">
 
+                                </div>
+
+                                <div class="col-6">
+                                
+                                </div>
+                            
+                            </div>
 
 
 
