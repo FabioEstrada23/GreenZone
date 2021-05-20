@@ -99,7 +99,7 @@ class Valoraciones extends Validator
         $sql = 'SELECT id_valoracion, cliente_user.cliente_user, producto.nombre_pro, puntuaciones, comentario FROM valoraciones
         INNER JOIN producto ON valoraciones.id_producto = producto.id_producto
         INNER JOIN cliente_user ON valoraciones.id_cliente_user = cliente_user.id_cliente_user
-        order by producto.nombre_pro';
+        order by puntuaciones desc';
         $params = null;
         return Database::getRows($sql, $params);
     }
