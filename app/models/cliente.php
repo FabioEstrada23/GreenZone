@@ -285,7 +285,7 @@ class cliente extends validator{
 
     public function updateRow()
     {
-        $sql = 'UPDATE clientes_user SET id_estado_cli = ? WHERE id_cliente_user = ?';
+        $sql = 'UPDATE cliente_user SET id_estado_cli = ? WHERE id_cliente_user = ?';
         $params = array($this->id_estado_cli, $this->id_cliente_user);
         return Database::getRows($sql, $params);
     }

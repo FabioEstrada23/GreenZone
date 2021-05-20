@@ -58,7 +58,7 @@ session_start();
                     <a href="../../views/dashboard/valoraciones.php" class="d-block text-light p-3"><i class="icon ion-md-star mr-2 lead"></i> Valoraciones</a>
                     <a href="../../views/dashboard/pedidos.php" class="d-block text-light p-3"><i class="icon ion-md-people mr-2 lead"></i> Pedidos</a>
                     <a href="../../views/dashboard/categorias.php" class="d-block text-light p-3"><i class="icon ion-md-apps mr-2 lead"></i> Categorías</a>
-                
+                    <a href="../../views/dashboard/clientes.php" class="d-block text-light p-3"><i class="icon ion-md-people mr-2 lead"></i> Clientes</a>
             </nav>
         </div>
         <br>

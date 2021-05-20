@@ -93,7 +93,7 @@ if (isset($_GET['action'])) {
                     $_POST = $cliente->validateForm($_POST);
                     if ($cliente->setIdClienteUser($_POST['id_cliente_user'])) {
                      if ($data = $cliente->readOne()) {
-                         if($cliente->setIdEstadoCli($_POST['estado_cliente'])){
+                         if($cliente->setIdEstadoCli($_POST['estado_cli'])){
                                      if ($cliente->updateRow()) {
                                             $result['status'] = 1;
                                              $result['message'] = 'Cliente actualizado correctamente';
@@ -101,7 +101,7 @@ if (isset($_GET['action'])) {
                                              $result['exception'] = Database::getException();
                                      }
                          }else{
-                             $result['message'] = 'Direccion Incorrecta';
+                             $result['message'] = 'Estado Incorrecto';
                          }
                      }
                     }

@@ -93,4 +93,14 @@ function openUpdateDialog(id) {
     }).catch(function (error) {
         console.log(error);
     });
+
+    // Método manejador de eventos que se ejecuta cuando se envía el formulario de actualizar.
+    document.getElementById('update-form').addEventListener('submit', function (event) {
+    // Se evita recargar la página web después de enviar el formulario.
+    event.preventDefault();
+    
+    updateRow(API_CLIENTES, 'update', 'update-form', 'update-modal');
+});
 }
+
+
