@@ -1,9 +1,11 @@
 <?php
 //Se incluye la plantilla del encabezado para la página web
 require_once('../../app/helpers/dashboard_page.php');
-include("../../app/helpers/header.php");
+include("../../app/helpers/private_header.php");
 ?>
-
+<br>
+<br>
+<br>
 <main>
 
 <section>
@@ -97,7 +99,7 @@ include("../../app/helpers/header.php");
                             <input type="text" class="form-control" placeholder="Buscar" aria-label="Buscar"
                                 aria-describedby="basic-addon1" id="search" type="text" name="search" required>
                             <!-- Boton de buscar -->
-                            <button class="btn" type="button">
+                            <button class="btn" type="submit">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="Black"
                                     class="bi bi-search" viewBox="0 0 16 16">
                                     <path

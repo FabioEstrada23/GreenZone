@@ -27,4 +27,21 @@ function fillTable(dataset) {
 }
 
 
+document.getElementById('search-form').addEventListener('submit', function (event) {
+    // Se evita recargar la página web después de enviar el formulario.
+    event.preventDefault();
+    // Se llama a la función que realiza la búsqueda. Se encuentra en el archivo components.js
+    searchRows(API_CATEGORIA, 'search-form');
+});
+
+// Método manejador de eventos que se ejecuta cuando se envía el formulario de guardar.
+document.getElementById('save-form').addEventListener('submit', function (event) {
+    // Se evita recargar la página web después de enviar el formulario.
+    event.preventDefault();
+    
+    saveRow(API_CATEGORIA, 'create', 'save-form', null);
+    document.getElementById('save-form').reset();
+});
+
+
 

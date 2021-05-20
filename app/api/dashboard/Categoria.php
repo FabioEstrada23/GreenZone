@@ -5,7 +5,7 @@ require_once('../../models/Categoria.php');
 
 if (isset($_GET['action'])) {
     session_start();
-    $Categoria = new categoria;
+    $Categoria = new Categoria;
     $result = array('status' => 0, 'message' => null, 'exception' => null);
 
     if (isset($_SESSION['id_empleado']) || true) {
@@ -23,7 +23,7 @@ if (isset($_GET['action'])) {
                 }
                 break;
 
-            case 'search':
+                case 'search':
                     $_POST = $Categoria->validateForm($_POST);
                     if ($_POST['search'] != '') {
                         if ($result['dataset'] = $Categoria->searchRows($_POST['search'])) {
@@ -45,86 +45,7 @@ if (isset($_GET['action'])) {
                         $result['exception'] = 'Ingrese un valor para buscar';
                     }
                     break;
-            case 'create':
-                    $_POST = $Categoria->validateForm($_POST);
-                    if($Categoria->setcateg($_POST['categoria'])){
-                        if ($Categoria->createRow()) {
-                                $result['status'] = 1;
-                                $result['message'] = 'Categoria creada correctamente';
-                                } else {
-                                    $result['exception'] = Database::getException();
-                                }
-                                }else{
-                                    $result['message'] = 'Categoria Incorrecta';
-                                }
-                                break;
 
-             case 'update':
-                   $_POST = $Categoria->validateForm($_POST);
-                   if ($Categoria->setId($_POST['id_categoria'])) {
-                    if ($data = $Categoria->readOne()) {
-                        if ($Categoria->updateRow()) {
-                            $result['status'] = 1;
-                            $result['message'] = 'Categoria actualizada correctamente';
-                        } else {
-                            $result['exception'] = Database::getException();
-                        }
-                            }else{
-                                $result['message'] = 'Nombre Incorrecto';
-                            }
-                        }
-                    }
-                break;
-
-            case 'readOne':
-                if ($Categoria->setId($_POST['id_categoria'])) {
-                    if ($result['dataset'] = $Categoria->readOne()) {
-                        $result['status'] = 1;
-                    } else {
-                        if (Database::getException()) {
-                            $result['exception'] = Database::getException();
-                        } else {
-                            $result['exception'] = 'Categoria inexistente';
-                        }
-                    }
-                } else {
-                    $result['exception'] = 'Categoria incorrecto';
-                }
-                break;
-           
-
-            
-            case 'delete':
-                    if ($Categoria->setId($_POST['id_categoria'])) {
-                        if ($data = $Categoria->readOne()) {
-                            if ($Categoria->deleteRow()) {
-                                $result['status'] = 1;
-                                $result['message'] = 'Categoria eliminada correctamente';
-    
-                            } else {
-                                $result['exception'] = Database::getException();
-                            }
-                        } else {
-                            $result['exception'] = 'Categoria inexistente';
-                        }
-                    } else {
-                        $result['exception'] = 'Categoria incorrecta';
-                    }
-                break;
-            
-                case 'cantidadCategorias':
-                    if ($result['dataset'] = $Categoria->cantidadCate()) {
-                        $result['status'] = 1;
-                    } else {
-                        if (Database::getException()) {
-                            $result['exception'] = Database::getException();
-                        } else {
-                            $result['exception'] = 'No hay datos disponibles';
-                        }
-                    }
-                    break;
-                default:
-                    $result['exception'] = 'Acción no disponible dentro de la sesión';
 
         }
         header('content-type: application/json; charset=utf-8');
