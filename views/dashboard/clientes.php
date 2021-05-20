@@ -64,18 +64,21 @@ include("../../app/helpers/private_header.php");
                                     <label for="exampleFormControlTextarea1">Ciudad:</label>
                                     <select class="form-select" aria-label="Select" name="ciudad" id="ciudad"></select>
                                 </div>
-                                <div class="form-group">
-                                    <label for="exampleFormControlTextarea1">Codigo Postal:</label>
-                                    <input type="text" class="form-control" placeholder="Ej: CP-1223"
-                                        aria-label="Telefono" aria-describedby="basic-addon1" id="codigo_pos_cli"
-                                        name="codigo_pos_cli" class="validate" required>
-                                </div>
+                                
                                 <div class="form-group">
                                     <label for="exampleFormControlTextarea1">Fecha Nacimiento:</label>
                                     <input type="text" class="form-control" placeholder="YYYY-MM-DD"
                                         aria-label="Telefono" aria-describedby="basic-addon1" id="fecha_nac_cli"
                                         name="fecha_nac_cli" class="validate" required>
                                 </div>
+
+                                <div class="form-group">
+                                    <label for="exampleFormControlTextarea1">Codigo Postal:</label>
+                                    <input type="text" class="form-control" placeholder="Ej: CP-1223"
+                                        aria-label="Telefono" aria-describedby="basic-addon1" id="codigo_pos_cli"
+                                        name="codigo_pos_cli" class="validate" required>
+                                </div>
+
                                 <div class="form-group">
                                     <label for="exampleFormControlTextarea1">Genero:</label>
                                     <input type="text" class="form-control" placeholder="Ej: F o M"
@@ -143,6 +146,7 @@ include("../../app/helpers/private_header.php");
                                             <th scope="col">Apellidos</th>
                                             <th scope="col">Direccion</th>
                                             <th scope="col">Ciudad</th>
+                                            <th scope="col">Codigo Postal</th>
                                             <th scope="col">Fecha nacimiento</th>
                                             <th scope="col">Genero</th>
                                             <th scope="col">Estado</th>

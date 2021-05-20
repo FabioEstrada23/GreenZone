@@ -10,15 +10,15 @@ function fillTable(dataset) {
         // Se crean y concatenan las filas de la tabla con los datos de cada registro.
         content += `
             <tr>
-                <td>${row.id_cliente_user}</td>
-                <td>${row.precio_descuento}</td>
-                <td>${row.nombre_pro}</td>
-                <td>${row.precio_anterior}</td>
-                <td>${row.precio_anterior}</td>
-                <td>${row.precio_anterior}</td>
-                <td>${row.precio_anterior}</td>
-                <td>${row.precio_anterior}</td>
-                <td>${row.precio_anterior}</td>
+                <td>${row.cliente_user}</td>
+                <td>${row.dui_cli}</td>
+                <td>${row.nombres_cli}</td>
+                <td>${row.apellidos_cli}</td>
+                <td>${row.direccion_cli}</td>
+                <td>${row.ciudad}</td>
+                <td>${row.fecha_nac_cli}</td>
+                <td>${row.genero}</td>
+                <td>${row.estado_cli}</td>
                 <td>${row.precio_anterior}</td>
 
                 <td>
@@ -32,3 +32,10 @@ function fillTable(dataset) {
     document.getElementById('tbody-rows').innerHTML = content;
 
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+    // Se llama a la función que obtiene los registros para llenar la tabla. Se encuentra en el archivo components.js
+    fillSelect(ENDPOINT_ESTADO, 'estado_cli', null);
+    fillSelect(ENDPOINT_CIUDAD, 'ciudad', null);
+    readRows(API_CLIENTES);
+});
