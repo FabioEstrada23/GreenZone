@@ -21,7 +21,7 @@ class empleado extends Validator
     }
 
     public function setNombres($value){
-        if($this->validateAlphabetic($value)){
+        if($this->validateAlphabetic($value, 1, 40)){
             $this->nombres_emp = $value;
             return true;
         }else{
@@ -30,7 +30,7 @@ class empleado extends Validator
     }
 
     public function setApellidos($value){
-        if($this->validateAlphabetic($value)){
+        if($this->validateAlphabetic($value, 1, 30)){
             $this->apellidos_emp = $value;
             return true;
         }else{
@@ -48,7 +48,7 @@ class empleado extends Validator
     }
 
     public function setAlias($value){
-        if($this->validateAlphabetic($value)){
+        if($this->validateAlphabetic($value, 1, 30)){
             $this->alias_emp = $value;
             return true;
         }else{
@@ -57,7 +57,7 @@ class empleado extends Validator
     }
 
     public function setClave($value){
-        if($this->validateAlphabetic($value)){
+        if($this->validatePassword($value)){
             $this->clave_emp = $value;
             return true;
         }else{
@@ -125,8 +125,10 @@ class empleado extends Validator
 
     public function createRow()
     {
-        $sql = 'INSERT INTO empleado_user(nombres_emp, apellidos_emp, correo_emp, alias_emp, clave_emp, id_tipo_empleado, id_estado_emp) VALUES (?,?,?,?,?,?,?)';
-        $params = array($this->nombres_emp,$this->apellidos_emp,$this->correo_emp,$this->alias_emp,$this->clave_emp,$this->id_tipo_empleado,$this->id_estado_emp);
+        $hash = password_hash($this->clave_emp, PASSWORD_DEFAULT);
+        $sql = 'INSERT INTO empleado_user(nombres_emp, apellidos_emp, correo_emp, alias_emp, clave_emp, id_tipo_empleado, id_estado_emp) 
+        VALUES (?,?,?,?,?,?,?)';
+        $params = array($this->nombres_emp,$this->apellidos_emp,$this->correo_emp,$this->alias_emp, $hash,$this->id_tipo_empleado,$this->id_estado_emp);
         return Database::executeRow($sql, $params);
     }
 
@@ -147,7 +149,7 @@ class empleado extends Validator
 
     public function readEstadoEmpleado()
     {
-        $sql = 'SELECT id_estado, estado_empleado FROM estado_emp';
+        $sql = 'SELECT id_estado_emp, estado_emp FROM estado_emp';
         $params = null;
         return Database::getRows($sql, $params);
     }

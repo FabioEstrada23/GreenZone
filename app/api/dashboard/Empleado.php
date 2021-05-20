@@ -12,7 +12,7 @@ if (isset($_GET['action'])) {
     // Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
     $result = array('status' => 0, 'error' => 0, 'message' => null, 'exception' => null);
     // Se verifica si existe una sesión iniciada como administrador, de lo contrario se finaliza el script con un mensaje de error.
-    if (isset($_SESSION['id_empleado']) || true){
+    if (isset($_SESSION['id_empleado'])){
         // Se compara la acción a realizar cuando un administrador ha iniciado sesión.
         switch ($_GET['action']) {
             case 'readAll':
@@ -85,7 +85,12 @@ if (isset($_GET['action'])) {
                                                 if($Empleado->setTipoEmp($_POST['tipo_empleado'])){
                                                     if(isset($_POST['estado_emp'])){
                                                         if($Empleado->setEstado($_POST['estado_emp'])){
-
+                                                            if ($Empleado->createRow()) {
+                                                                $result['status'] = 1;
+                                                                $result['message'] = 'Usuario creado correctamente';
+                                                            } else {
+                                                                $result['exception'] = Database::getException();
+                                                            }
                                                         }else{
                                                             $result['message'] = 'Estado Empleado Incorrecto';    
                                                         }

@@ -1,9 +1,12 @@
 <?php
 //Se incluye la plantilla del encabezado para la página web
 require_once('../../app/helpers/dashboard_page.php');
-include("../../app/helpers/header.php");
+include("../../app/helpers/private_header.php");
 ?>
-
+<br>
+<br>
+<br>
+<br>
     <main>
         <section>
 
