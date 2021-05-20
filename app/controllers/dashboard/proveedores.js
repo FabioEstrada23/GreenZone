@@ -94,6 +94,7 @@ document.getElementById('save-form').addEventListener('submit', function (event)
     event.preventDefault();
     
     saveRow(API_PROVEEDOR, 'create', 'save-form', null);
+    document.getElementById('save-form').reset();
 });
 
 

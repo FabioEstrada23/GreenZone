@@ -8,7 +8,7 @@ if (isset($_GET['action'])) {
     $pedido = new Pedido;
     $result = array('status' => 0, 'message' => null, 'exception' => null);
 
-    if (isset($_SESSION['id_empleado']) || true) {
+    if (isset($_SESSION['id_empleado'])) {
 
         switch ($_GET['action']) {
             case 'readAll':
@@ -128,6 +128,9 @@ if (isset($_GET['action'])) {
                         $result['exception'] = 'ID incorrecto papu';
                     }
                     break;
+
+                    default:
+                    $result['exception'] = 'Acción no disponible dentro de la sesión';
                     
 
 

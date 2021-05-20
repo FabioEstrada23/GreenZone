@@ -8,7 +8,7 @@ if (isset($_GET['action'])) {
     $proveedores = new Proveedor;
     $result = array('status' => 0, 'message' => null, 'exception' => null);
 
-    if (isset($_SESSION['id_empleado']) || true) {
+    if (isset($_SESSION['id_empleado'])) {
 
         switch ($_GET['action']) {
             case 'readAll':
@@ -139,17 +139,7 @@ if (isset($_GET['action'])) {
                     }
                 break;
             
-                case 'cantidadProveedoresCategoria':
-                    if ($result['dataset'] = $proveedores->cantidadProductosCategoria()) {
-                        $result['status'] = 1;
-                    } else {
-                        if (Database::getException()) {
-                            $result['exception'] = Database::getException();
-                        } else {
-                            $result['exception'] = 'No hay datos disponibles';
-                        }
-                    }
-                    break;
+                
                 default:
                     $result['exception'] = 'Acción no disponible dentro de la sesión';
 

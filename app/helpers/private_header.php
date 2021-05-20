@@ -60,7 +60,7 @@ session_start();
                     <a href="#" class="d-block text-light p-3"><i class="icon ion-md-clipboard mr-2 lead"></i> Reportes</a>
                     <a href="#" class="d-block text-light p-3"><i class="icon ion-md-people mr-2 lead"></i> Usuarios</a>
                     <a href="../../views/dashboard/valoraciones.php" class="d-block text-light p-3"><i class="icon ion-md-star mr-2 lead"></i> Valoraciones</a>
-                    <a href="#" class="d-block text-light p-3"><i class="icon ion-md-people mr-2 lead"></i> Pedidos</a>
+                    <a href="../../views/dashboard/pedidos.php" class="d-block text-light p-3"><i class="icon ion-md-people mr-2 lead"></i> Pedidos</a>
             </nav>
         </div>
     </header>        

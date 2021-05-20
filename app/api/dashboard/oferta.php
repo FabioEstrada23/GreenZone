@@ -8,7 +8,7 @@ if (isset($_GET['action'])) {
     $oferta = new Oferta;
     $result = array('status' => 0, 'message' => null, 'exception' => null);
 
-    if (isset($_SESSION['id_empleado']) || true) {
+    if (isset($_SESSION['id_empleado'])) {
 
         switch ($_GET['action']) {
             case 'readAll':
@@ -174,6 +174,8 @@ if (isset($_GET['action'])) {
                         $result['exception'] = 'Oferta incorrecto';
                     }
                 break;        
+                default:
+                    $result['exception'] = 'Acción no disponible dentro de la sesión';
         }
         header('content-type: application/json; charset=utf-8');
         // Se imprime el resultado en formato JSON y se retorna al controlador.
