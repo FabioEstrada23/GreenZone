@@ -113,7 +113,7 @@ if (isset($_GET['action'])) {
                                                                             if ($producto->setImagen($_FILES['archivo_producto'])) {
                                                                                 if ($producto->createRow()) {
                                                                                     $result['status'] = 1;
-                                                                                    if ($producto->saveFile($_FILES['archivo_producto'], $producto->getRuta(), $producto->getImagen())) {
+                                                                                    if ($producto->saveFile($_FILES['archivo_producto'], $producto->getDireccion(), $producto->getImagen())) {
                                                                                         $result['message'] = 'Producto creado correctamente';
                                                                                     } else {
                                                                                         $result['message'] = 'Producto creado pero no se guardó la imagen';

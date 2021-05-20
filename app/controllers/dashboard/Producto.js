@@ -32,6 +32,7 @@ function fillTable(dataset) {
                 <td>${row.id_estado_producto}</td>
                 <td>${row.existencias}</td>
                 <td>${row.descripcion_pro}</td>
+                <td>${row.imagen}</td>
                 <td>
                     <a href="#" onclick="openUpdateDialog(${row.id_proveedor})" class="btn waves-effect blue tooltipped" data-tooltip="Actualizar" data-bs-toggle="modal" data-bs-target="#exampleModal" ><i class="material-icons">mode_edit</i></a>
                     <a href="#" onclick="openDeleteDialog(${row.id_producto})" class="btn waves-effect red tooltipped" data-tooltip="Eliminar"><i class="material-icons">delete</i></a>
