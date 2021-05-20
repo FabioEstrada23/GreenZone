@@ -269,6 +269,20 @@ class cliente extends validator{
         return Database::getRow($sql, $params);
     }
 
+    public function readEstados()
+    {
+        $sql = 'SELECT id_estado_cli, estado_cli FROM estado_cli';
+        $params = null;
+        return Database::getRows($sql, $params);
+    }
+
+    public function readCiudades()
+    {
+        $sql = 'SELECT id_ciudad, ciudad FROM ciudad';
+        $params = null;
+        return Database::getRows($sql, $params);
+    }
+
 }
 
 ?>
