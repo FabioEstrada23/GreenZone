@@ -1,6 +1,6 @@
 <?php
 
-class cliente extends validator{
+class Cliente extends validator{
 
     // Declaración de atributos (propiedades).
 
@@ -291,6 +291,15 @@ class cliente extends validator{
         return Database::getRows($sql, $params);
     }
 
+    public function createRow()
+    {
+        // Se encripta la clave por medio del algoritmo bcrypt que genera un string de 60 caracteres.
+        $hash = password_hash($this->contra_cli_us, PASSWORD_DEFAULT);
+        $sql = 'INSERT INTO cliente_user(DUI_cli, cliente_user, correo_cli_us, contra_cli_us, nombres_cli, apellidos_cli, fecha_nac_cli, id_estado_cli)
+                VALUES(?, ?, ?, ?, ?, ?, ?, ?)';
+        $params = array($this->dui_cli, $this->cliente_user, $this->correo_cli_us, $hash, $this->nombres_cli, $this->apellidos_cli, $this->fecha_nac_cli, 1);
+        return Database::executeRow($sql, $params);
+    }
 }
 
 ?>

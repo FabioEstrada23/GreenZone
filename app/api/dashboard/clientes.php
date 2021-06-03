@@ -5,7 +5,7 @@ require_once('../../models/cliente.php');
 
 if (isset($_GET['action'])) {
     session_start();
-    $cliente = new cliente;
+    $cliente = new Cliente;
     $result = array('status' => 0, 'message' => null, 'exception' => null);
 
     if (isset($_SESSION['id_empleado'])) {
