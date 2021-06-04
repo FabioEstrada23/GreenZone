@@ -2,6 +2,7 @@ const API_CLIENTES = '../../app/api/dashboard/clientes.php?action=';
 const ENDPOINT_ESTADO = '../../app/api/dashboard/clientes.php?action=readEstados';
 const ENDPOINT_CIUDAD = '../../app/api/dashboard/clientes.php?action=readCiudades';
 
+
 function fillTable(dataset) {
     let content = '';
     // Se recorre el conjunto de registros (dataset) fila por fila a través del objeto row.
@@ -33,6 +34,7 @@ function fillTable(dataset) {
 
 }
 
+
 document.addEventListener('DOMContentLoaded', function () {
     // Se llama a la función que obtiene los registros para llenar la tabla. Se encuentra en el archivo components.js
     fillSelect(ENDPOINT_ESTADO, 'estado_cli', null);
@@ -46,6 +48,7 @@ document.getElementById('search-form').addEventListener('submit', function (even
     // Se llama a la función que realiza la búsqueda. Se encuentra en el archivo components.js
     searchRows(API_CLIENTES, 'search-form');
 });
+
 
 
 function openUpdateDialog(id) {
@@ -83,6 +86,11 @@ function openUpdateDialog(id) {
                     document.getElementById('codigo_pos_cli').value = response.dataset.codigo_pos_cli;
                     document.getElementById('genero').value = response.dataset.genero;
                     
+                    
+                   
+
+
+
                 } else {
                     sweetAlert(2, response.exception, null);
                 }

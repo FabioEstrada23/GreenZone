@@ -326,6 +326,20 @@ class Cliente extends validator{
             return false;
         }
     }
+
+    public function readAllPedidoCliente()
+    {
+        $sql = 'SELECT id_pedido, fecha_pedido, fecha_entrega, id_estado_pedido from pedido 
+        INNER JOIN cliente_user using(id_cliente_user) 
+        where pedido.id_cliente_user = cliente_user.id_cliente_user and id_cliente_user = ?';
+        $params = array($this->id_cliente_user);
+        return Database::getRows($sql, $params);
+    }
+
+
 }
+
+   
+
 
 ?>

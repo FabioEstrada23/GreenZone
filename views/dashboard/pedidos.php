@@ -124,7 +124,7 @@ include("../../app/helpers/private_header.php");
                                         Cambios</button>
                                 </div>
 
-                            </form>
+                    
                         </div>
                     </div>
                 </div>
@@ -153,6 +153,8 @@ include("../../app/helpers/private_header.php");
 
 
             </div>
+
+            </form>
         </div>
     </div>
     <br>

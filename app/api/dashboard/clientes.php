@@ -24,6 +24,18 @@ if (isset($_GET['action'])) {
                 }
                 break;
 
+                case 'readAllPedidoCliente':
+                    if ($result['dataset'] = $cliente->readAllPedidoCliente()) {
+                        $result['status'] = 1;
+                    } else {
+                        if (Database::getException()) {
+                            $result['exception'] = Database::getException();
+                        } else {
+                            $result['exception'] = 'No hay pedidos registrados';
+                        }
+                    }
+                    break;
+
             case 'readEstados':
                     if ($result['dataset'] = $cliente->readEstados()) {
                         $result['status'] = 1;

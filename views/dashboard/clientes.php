@@ -11,7 +11,9 @@ include("../../app/helpers/private_header.php");
 <div class="container">
 
     <div class="row">
-    
+
+
+               
     
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
@@ -23,6 +25,10 @@ include("../../app/helpers/private_header.php");
                         </div>
                         <div class="modal-body">
                             <form id="update-form" method="post" enctype="multipart/form-data">
+                            
+                            
+                           <div class="container">
+                            <div class="row">
                             <div class="form-group d-none">
                                     <label for="formGroupExampleInput">ID:</label>
                                     <input type="text" class="form-control " placeholder="Ej: MalteHC..."
@@ -89,17 +95,12 @@ include("../../app/helpers/private_header.php");
                                     <label for="exampleFormControlTextarea1">Estado:</label>
                                     <select class="form-select" aria-label="Select" name="estado_cli" id="estado_cli" ></select>
                                 </div>
-                            
-                            <div class="row">
-                                <div class="col-6">
 
-                                </div>
 
-                                <div class="col-6">
-                                
-                                </div>
-                            
                             </div>
+
+                           
+                           </div>
 
 
 
@@ -109,6 +110,11 @@ include("../../app/helpers/private_header.php");
 
 
                         <div class="modal-footer">
+
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal2">
+                            Ver pedidos
+                            </button>
+
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                             <button type="submit" data-tooltip="Actualizar" class="btn btn-primary" >Guardar Cambios</button>
                         </div>
@@ -118,6 +124,44 @@ include("../../app/helpers/private_header.php");
             </div>
 
 
+
+            <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title2" id="exampleModalLabel">Pedidos</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                <div class="table-responsive">
+                                <table class="table table-dark table-striped" id="tabla">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Fecha Pedido</th>
+                                            <th scope="col">Fecha Entrega</th>
+                                            <th scope="col">Estado</th>
+    
+                                        </tr>
+
+                                    </thead>
+
+                                    <tbody id="tbody-rows2">
+
+                                    </tbody>
+                                </table>
+
+
+
+                            </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+                </div>
+            </div>
+            </div>
+    
 
 
 
