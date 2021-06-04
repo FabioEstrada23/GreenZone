@@ -10,8 +10,6 @@
     <link rel="stylesheet" type="text/css" href="../../resources/css/bootstrap/bootstrap.min.css">
     <!-- Agregamos CSS Style -->
     <link rel="stylesheet" type="text/css" href="../../resources/css/login/login_style.css">
-    <!-- Agregamos CSS Style -->
-    <link rel="stylesheet" type="text/css" href="../../resources/css/style.css">
     <!-- Vista de Compatibilidad -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- Optimizacion en equipos pequeñes -->
@@ -35,14 +33,14 @@
             <img src="../../resources/img/logos/lg_head.png" class="logo">
             <h1 class="title"> Iniciar sesión</h1>
 
-            <form action="">
+            <form method="post" id="session-form">
                 
                 <!-- Ingresar nombre de usuario -->
-                <label for="username">Usuario</label>
-                <input type="text" placeholder="Ingresa tu usuario">
+                <label for="username"><i class="material-icons prefix">email</i> Correo</label>
+                <input type="text" placeholder="Ingresa tu email" id="correo" name="correo" class="validate" required>
                 <!-- Ingresar contresenia de usuario -->
-                <label for="password">Contraseña</label>
-                <input type="password" placeholder="Ingresa tu contraseña">
+                <label for="password"><i class="material-icons prefix">security</i> Contraseña</label>
+                <input type="password" placeholder="Ingresa tu contraseña" id="clave" name="clave" class="validate" required>
                 <input type="submit" value="Log In">
 
             </form>
@@ -62,5 +60,12 @@
 
         </div>
     </div>
+
+    <!-- Agregamos SCRIPTS -->
+    <script src="https://kit.fontawesome.com/592eb2e9e3.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="../../resources/js/bootstrap/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../resources/js/sweetalert.min.js"></script>
+    <script type="text/javascript" src="../../app/helpers/components.js"></script>
+    <script type="text/javascript" src="../../app/controllers/public/index.js"></script>
 </body>
 </html>

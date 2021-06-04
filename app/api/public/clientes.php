@@ -100,6 +100,33 @@ if(isset($_GET['action'])){
                     $result['exception'] = 'Ocurrió un problema al cargar el reCAPTCHA';
                 }
                 break;
+                case 'logIn':
+                    $_POST = $cliente->validateForm($_POST);
+                    if ($cliente->checkUser($_POST['correo'])) {
+                        if ($cliente->getIdEstadoCli()) {
+                            if ($cliente->checkPassword($_POST['clave'])) {
+                                $_SESSION['id_cliente'] = $cliente->getIdClienteUser();
+                                $_SESSION['correo_cli_us'] = $cliente->getCorreoCliUs();
+                                $result['status'] = 1;
+                                $result['message'] = 'Autenticación correcta';
+                            } else {
+                                if (Database::getException()) {
+                                    $result['exception'] = Database::getException();
+                                } else {
+                                    $result['exception'] = 'Clave incorrecta';
+                                }
+                            }
+                        } else {
+                            $result['exception'] = 'La cuenta ha sido desactivada';
+                        }
+                    } else {
+                        if (Database::getException()) {
+                            $result['exception'] = Database::getException();
+                        } else {
+                            $result['exception'] = 'Correo incorrecto';
+                        }
+                    }
+                    break;
             default:
                 $result['exception'] = 'Acción no disponible fuera de la sesión';
         }

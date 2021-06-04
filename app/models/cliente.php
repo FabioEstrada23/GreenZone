@@ -185,7 +185,7 @@ class Cliente extends validator{
         return $this->cliente_user;
     }
 
-    public function getCorrepCliUs()
+    public function getCorreoCliUs()
     {
         return $this->correo_cli_us;
     }
@@ -299,6 +299,32 @@ class Cliente extends validator{
                 VALUES(?, ?, ?, ?, ?, ?, ?, ?)';
         $params = array($this->dui_cli, $this->cliente_user, $this->correo_cli_us, $hash, $this->nombres_cli, $this->apellidos_cli, $this->fecha_nac_cli, 1);
         return Database::executeRow($sql, $params);
+    }
+
+    public function checkUser($correo_cli_us)
+    {
+        $sql = 'SELECT id_cliente_user, id_estado_cli FROM cliente_user WHERE correo_cli_us = ?';
+        $params = array($correo_cli_us);
+        if ($data = Database::getRow($sql, $params)) {
+            $this->id_cliente_user = $data['id_cliente_user'];
+            $this->id_estado_cli = $data['id_estado_cli'];
+            $this->correo_cli_us = $correo_cli_us;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function checkPassword($password)
+    {
+        $sql = 'SELECT contra_cli_us FROM cliente_user WHERE id_cliente_user = ?';
+        $params = array($this->id_cliente_user);
+        $data = Database::getRow($sql, $params);
+        if (password_verify($password, $data['contra_cli_us'])) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
 
