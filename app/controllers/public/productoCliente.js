@@ -50,6 +50,7 @@ document.getElementById('search-form').addEventListener('submit', function (even
     searchRows(API_PRODUCTOSCLIENTE, 'search-form');
 });
 
+
 function openUpdateDialog(id) {
     // Se define un objeto con los datos del registro seleccionado.
     const data = new FormData();
@@ -67,13 +68,13 @@ function openUpdateDialog(id) {
                     // Se inicializan los campos del formulario con los datos del registro seleccionado.
                     document.getElementById('id_producto').value = response.dataset.id_producto;
                     document.getElementById('nombre_pro2').value = response.dataset.nombre_pro;
-                    document.getElementById('descripcion_pro2').value = response.dataset.descripcion_pro;
                     document.getElementById('existencias2').value = response.dataset.existencias;
-                    document.getElementById('preciouni2').value = response.dataset.precio_pro;
+                    document.getElementById('descripcion_pro2').value = response.dataset.descripcion_pro;
+                    document.getElementById('precio_uni2').value = response.dataset.precio_pro;
                     document.getElementById('oferta2').value = response.dataset.oferta_pro;
-                    fillSelect(ENDPOINT_TIPOESTADO, 'estado_pro2', response.dataset.id_estado_producto);
-                    fillSelect(ENDPOINT_CATEGORIAPRO, 'categoria2', response.dataset.id_categoria);
-                    fillSelect(ENDPOINT_MARCA, 'marca2', response.dataset.id_marca);                    
+                    fillSelect(ENDPOINT_ESTADOPRO, 'estado_pro2', response.dataset.id_estado_producto);
+                    fillSelect(ENDPOINT_MARCA, 'categoria2', response.dataset.id_marca);
+                    fillSelect(ENDPOINT_CATEGORIAPRO, 'categoria2', response.dataset.id_categoria);                    
                 } else {
                     sweetAlert(2, response.exception, null);
                 }
@@ -85,3 +86,4 @@ function openUpdateDialog(id) {
         console.log(error);
     });
 }
+

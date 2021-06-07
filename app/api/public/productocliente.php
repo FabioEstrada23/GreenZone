@@ -71,6 +71,22 @@ if (isset($_GET['action'])) {
                             }
                             break;
 
+                            case 'readOne':
+                                if ($producto->setId($_POST['id_producto'])) {
+                                    if ($result['dataset'] = $oferta->readOne()) {
+                                        $result['status'] = 1;
+                                    } else {
+                                        if (Database::getException()) {
+                                            $result['exception'] = Database::getException();
+                                        } else {
+                                            $result['exception'] = 'Producto inexistente';
+                                        }
+                                    }
+                                } else {
+                                    $result['exception'] = 'Producto incorrecto';
+                                }
+                                break;
+
             case 'search':
                 $_POST = $producto->validateForm($_POST);
                 if ($_POST['search'] != '') {

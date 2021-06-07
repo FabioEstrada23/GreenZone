@@ -82,7 +82,7 @@ include("../../app/helpers/header.php");
                                 <div class="form-group">
                                     <label for="formGroupExampleInput3">Descripcion:</label>
                                     <input type="text" class="form-control" placeholder="Ej: MalteHC..."
-                                        aria-label="Buscar" aria-describedby="basic-addon1" id="descripcion_pro2" type="text" readonly
+                                        aria-label="Buscar" aria-describedby="basic-addon1" id="descripcion_pro2" type="text" 
                                         name="descripcion_pro2" class="validate" required>
                                 </div>
                                 <div class="form-group">

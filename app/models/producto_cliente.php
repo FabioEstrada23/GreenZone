@@ -15,6 +15,7 @@ class ProductoCliente extends Validator
     private $existencias = null;
     private $imagen = null;
     private $direccion = '../../../resources/img/productos/';
+
 	
     public function setId($value){
         if ($this->validateNaturalNumber($value)) {
@@ -179,6 +180,8 @@ class ProductoCliente extends Validator
         return $this->direccion;
     }
 
+    
+
     public function searchRows($value)
     {   
         $sql = 'SELECT id_producto, nombre_pro, id_estado_producto, id_categoria, id_marca, precio_pro, oferta_pro,descripcion_pro, id_proveedor, existencias, imagen
@@ -234,6 +237,16 @@ class ProductoCliente extends Validator
                 WHERE id_producto = ?';
         $params = array($this->id_producto);
         return Database::getRow($sql, $params);
+    }
+
+    public function readProductosCategoria()
+    {
+        $sql = 'SELECT nombre_categoria, id_producto, imagen_producto, nombre_producto, descripcion_producto, precio_producto
+                FROM productos INNER JOIN categorias USING(id_categoria)
+                WHERE id_categoria = ? AND estado_producto = true
+                ORDER BY nombre_producto';
+        $params = array($this->id);
+        return Database::getRows($sql, $params);
     }
 }
 ?>

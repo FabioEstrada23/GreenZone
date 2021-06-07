@@ -17,7 +17,6 @@ function fillTable(dataset) {
     });
     // Se agregan las filas al cuerpo de la tabla mediante su id para mostrar los registros.
     document.getElementById('tbody-rows').innerHTML = content;
-
 }
 
 document.getElementById('search-form').addEventListener('submit', function (event) {
