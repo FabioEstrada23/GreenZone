@@ -103,7 +103,10 @@ class Public_Page
                                 <!-- Iniciar Sesion -->
                                 <div class="col-12 col-xs-12 col-sm-12 col-lg-2 col-xl-2 col-xxl-2 text-center d-none d-lg-block">
                                     <button class="btn btn-primary ">
-                                        <a href="../../views/public/registro.php"><i class="far fa-user"></i> Perfil</a>
+                                        <a href="../../views/public/perfil.php"><i class="far fa-user"></i> Perfil</a>
+                                    </button>
+                                    <button class="btn btn-primary ">
+                                        <a href="#" onclick="logOut()"><i class="fas fa-times"></i> Cerrar sesión</a>
                                     </button>
                                 </div>
                             </nav>
@@ -270,7 +273,7 @@ class Public_Page
             }
         } else {
 
-            if($filename != 'carrito.php') {
+            if($filename != 'login.php') {
                 print('
                 <!-- Header -->
                 <header>
@@ -354,7 +357,6 @@ class Public_Page
                                     <a href="#"><i class="fas fa-home"></i> Inicio</a>
                                     <a href="#"><i class="fas fa-percentage"></i> Ofertas</a>
                                     <a href="#"><i class="fas fa-ticket-alt"></i> Marcas</a>
-                                    <a href="../../views/public/carrito.php"><i class="fas fa-shopping-cart"></i> Carrito</a>
                                 </div>
             
                             </div>
@@ -481,7 +483,7 @@ class Public_Page
                 <main>
                 ');
             } else {
-                header('location: login.php');
+                
             }
         }
     }    
@@ -505,7 +507,6 @@ class Public_Page
                 <script src="../../resources/js/menu/menu.js"></script>
                 <script src="../../resources/js/bootstrap/bootstrap.min.js"></script>
                 <script type="text/javascript" src="../../resources/js/sweetalert.min.js"></script>
-                <script src="../../app/controllers/dashboard/account.js"></script>
                 <script type="text/javascript" src="../../app/helpers/components.js"></script>
                 <script type="text/javascript" src="../../app/controllers/public/' . $controller . '"></script>
             ';

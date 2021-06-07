@@ -14,6 +14,18 @@ if(isset($_GET['action'])){
     // Se verifica si existe una sesión iniciada como administrador, de lo contrario se finaliza el script con un mensaje de error.
     if (isset($_SESSION['id_cliente_user'])) {
 
+        switch ($_GET['action']) {
+            case 'logOut':
+                if (session_destroy()) {
+                    $result['status'] = 1;
+                    $result['message'] = 'Sesión eliminada correctamente';
+                } else {
+                    $result['exception'] = 'Ocurrió un problema al cerrar la sesión';
+                }
+                break;
+            default:
+                $result['exception'] = 'Acción no disponible dentro de la sesión';
+        }
     }else {
         // Se compara la acción a realizar cuando el administrador no ha iniciado sesión.
         switch ($_GET['action']) {
@@ -105,7 +117,7 @@ if(isset($_GET['action'])){
                     if ($cliente->checkUser($_POST['correo'])) {
                         if ($cliente->getIdEstadoCli()) {
                             if ($cliente->checkPassword($_POST['clave'])) {
-                                $_SESSION['id_cliente'] = $cliente->getIdClienteUser();
+                                $_SESSION['id_cliente_user'] = $cliente->getIdClienteUser();
                                 $_SESSION['correo_cli_us'] = $cliente->getCorreoCliUs();
                                 $result['status'] = 1;
                                 $result['message'] = 'Autenticación correcta';
