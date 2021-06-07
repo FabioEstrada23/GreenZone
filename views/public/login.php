@@ -66,6 +66,6 @@
     <script type="text/javascript" src="../../resources/js/bootstrap/bootstrap.min.js"></script>
     <script type="text/javascript" src="../../resources/js/sweetalert.min.js"></script>
     <script type="text/javascript" src="../../app/helpers/components.js"></script>
-    <script type="text/javascript" src="../../app/controllers/public/index.js"></script>
+    <script type="text/javascript" src="../../app/controllers/public/login.js"></script>
 </body>
 </html>
