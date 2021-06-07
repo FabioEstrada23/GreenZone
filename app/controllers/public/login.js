@@ -1,6 +1,14 @@
 // Constante para establecer la ruta y parámetros de comunicación con la API.
 const API_CLIENTES = '../../app/api/public/clientes.php?action=';
 
+// Método manejador de eventos que se ejecuta cuando el documento ha cargado.
+document.addEventListener('DOMContentLoaded', function () {
+    
+    sweetAlert(4, 'Debe autenticarse para ingresar', null);
+    
+});
+
+
 // Método manejador de eventos que se ejecuta cuando se envía el formulario de iniciar sesión.
 document.getElementById('session-form').addEventListener('submit', function (event) {
     // Se evita recargar la página web después de enviar el formulario.
