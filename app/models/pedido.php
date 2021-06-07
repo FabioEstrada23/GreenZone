@@ -16,7 +16,7 @@ class Pedido extends Validator
     private $cantidad = null;
 
     // Set para Pedidos
-
+    private $precio = null;
 
     public function setId($value){
         if ($this->validateNaturalNumber($value)) {
@@ -59,6 +59,16 @@ class Pedido extends Validator
             $this->id_estado_pedido = $value;
             return true;
         }else{
+            return false;
+        }
+    }
+
+    public function setPrecio($value)
+    {
+        if ($this->validateMoney($value)) {
+            $this->precio = $value;
+            return true;
+        } else {
             return false;
         }
     }
@@ -193,6 +203,73 @@ class Pedido extends Validator
          INNER JOIN pedido using(id_pedido) where detalle_pedido.id_pedido = pedido.id_pedido and id_pedido = ?';
         $params = array($this->id_pedido);
         return Database::getRow($sql, $params);
+    }
+
+    public function readOrder()
+    {
+        $sql = 'SELECT id_pedido
+                FROM pedido
+                WHERE id_estado_pedido = 0 AND id_cliente_user = ?';
+        $params = array($this->id_cliente_user);
+        if ($data = Database::getRow($sql, $params)) {
+            $this->id_pedido = $data['id_pedido'];
+            return true;
+        } else {
+            $sql = 'INSERT INTO pedidos(id_cliente_user)
+                    VALUES(?)';
+            $params = array($this->id_cliente_user);
+            // Se obtiene el ultimo valor insertado en la llave primaria de la tabla pedidos.
+            if ($this->id_pedido = Database::getLastRow($sql, $params)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    }
+
+    public function createDetail()
+    {
+        $sql = 'INSERT INTO detalle_pedido(id_producto, precio_producto, cantidad, id_pedido)
+                VALUES(?, ?, ?, ?)';
+        $params = array($this->producto, $this->precio, $this->cantidad, $this->id_pedido);
+        return Database::executeRow($sql, $params);
+    }
+
+    public function readCart()
+    {
+        $sql = 'SELECT id_detalle_pedido, nombre_pro, detalle_pedido.precio_producto, detalle_pedido.cantidad
+                FROM pedido INNER JOIN detalle_pedido USING(id_pedido) INNER JOIN producto USING(id_producto)
+                WHERE id_pedido = ?';
+        $params = array($this->id_pedido);
+        return Database::getRows($sql, $params);
+    }
+
+    public function finishOrder()
+    {
+        date_default_timezone_set('America/El_Salvador');
+        $date = date('Y-m-d');
+        $sql = 'UPDATE pedido
+                SET id_estado_pedido = ?, fecha_pedido = ?
+                WHERE id_pedido = ?';
+        $params = array(1, $date, $this->id_pedido);
+        return Database::executeRow($sql, $params);
+    }
+
+    public function updateDetail()
+    {
+        $sql = 'UPDATE detalle_pedido
+                SET cantidad = ?
+                WHERE id_pedido = ? AND id_detalle_pedido = ?';
+        $params = array($this->cantidad, $this->id_pedido, $this->id_detalle);
+        return Database::executeRow($sql, $params);
+    }
+
+    public function deleteDetail()
+    {
+        $sql = 'DELETE FROM detalle_pedido
+                WHERE id_pedido = ? AND id_detalle_pedido = ?';
+        $params = array($this->id_pedido, $this->id_detalle);
+        return Database::executeRow($sql, $params);
     }
 
 
