@@ -6,7 +6,7 @@
     text-decoration: none;
 }
 
-body{
+.login{
     background: linear-gradient(90deg, #0B486B, #3B8686);
     padding: 20px;
 }

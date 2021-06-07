@@ -1,7 +1,7 @@
 <?php
 //Se incluye la plantilla del encabezado para la página web
-include("../../app/helpers/header.php");
-
+require_once('../../app/helpers/public_page.php');
+Public_Page::headerTemplate('Tu tienda en línea de productos ecoamigables');
 ?>
 
     <!-- Comenzamos a poner los elementos del main  -->

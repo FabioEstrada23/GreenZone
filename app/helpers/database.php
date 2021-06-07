@@ -16,9 +16,9 @@ class Database
     {
         // Credenciales para establecer la conexión con la base de datos.
         $server = 'localhost';
-        $database = 'Green_Zone2';
+        $database = 'Green_Zone';
         $username = 'postgres';
-        $password = 'mejia224';
+        $password = '02032003';
              
 
         self::$connection = new PDO('pgsql:host='.$server.';dbname='.$database.';port=5432', $username, $password);

@@ -75,7 +75,7 @@
                     <!-- Iniciar Sesion -->
                     <div class="col-12 col-xs-12 col-sm-12 col-lg-2 col-xl-2 col-xxl-2 text-center d-none d-lg-block">
                         <button class="btn btn-primary ">
-                            <i class="far fa-user"></i> Ingresar
+                            <a href="../../views/public/login.php"><i class="far fa-user"></i> Ingresar</a>
                         </button>
                     </div>
                 </nav>
