@@ -47,48 +47,17 @@ include("../../app/helpers/header.php");
                                 <thead>
 
                                     <tr>
-                                        <th scope="col">Imagen</th>
                                         <th scope="col">Producto</th>
-                                        <th scope="col">Cantidad</th>
                                         <th scope="col">Precio</th>
+                                        <th scope="col">Cantidad</th>
+                                        <th scope="col">TOTAL</th>
                                         <th scope="col"></th>
                                     </tr>
 
                                 </thead>
 
-                                <tbody>
+                                <tbody id="tbody-rows">
 
-                                    <tr class="table-light">
-                                        <th scope="row"><img src="https://cosmeticanaturalkaylos.com/wp-content/uploads/foto-aceite-de-calendula-2.jpg" class="img-fluid" alt=""></th>
-                                        <td>Crema Natural</td>
-                                        <td>3</td>
-                                        <td>4.50 $</td>
-                                        <td><a href=""><i class="fas fa-trash-alt"></i></a></td>
-                                    </tr>
-
-                                    <tr class="table-light">
-                                        <th scope="row"><img src="https://cosmeticanaturalkaylos.com/wp-content/uploads/foto-aceite-de-calendula-2.jpg" class="img-fluid" alt=""></th>
-                                        <td>Crema Natural</td>
-                                        <td>3</td>
-                                        <td>4.50 $</td>
-                                        <td><a href=""><i class="fas fa-trash-alt"></i></a></td>
-                                    </tr>
-
-                                    <tr class="table-light">
-                                        <th scope="row"><img src="https://cosmeticanaturalkaylos.com/wp-content/uploads/foto-aceite-de-calendula-2.jpg" class="img-fluid" alt=""></th>
-                                        <td>Crema Natural</td>
-                                        <td>3</td>
-                                        <td>4.50 $</td>
-                                        <td><a href=""><i class="fas fa-trash-alt"></i></a></td>
-                                    </tr>
-
-                                    <tr class="table-light">
-                                        <th scope="row"><img src="https://cosmeticanaturalkaylos.com/wp-content/uploads/foto-aceite-de-calendula-2.jpg" class="img-fluid" alt=""></th>
-                                        <td>Crema Natural</td>
-                                        <td>3</td>
-                                        <td>4.50 $</td>
-                                        <td><a href=""><i class="fas fa-trash-alt"></i></a></td>
-                                    </tr>
                                 </tbody>
 
 
@@ -102,26 +71,22 @@ include("../../app/helpers/header.php");
                 <!-- Columna de Total a pagar -->
                 <div class="col-12 col-xs-12 col-sm-12 col-lg-4 col-xl-4 col-xxl-4 text-center">
                     <div class="col-12 fondo">
-                        <h1>Total a Pagar: </h1>
+                        <h1>Total a Pagar:</h1>
                     </div>
                     <br>
                     <div class="col-12 fondoHijo text-start">
                         
-                        <h6>Precio Productos:</h6>
-                        <br>
-                        <h6>Precio de Envio:</h6>
-                        <br>
-                        <h6>Precio de Final:</h6>
+                        <h6>Precio de Final:  <b id="pago"></b></h6>
                     </div>
                     <br>
                     <!-- Botones de comprar -->
                     <div class="col-12 fondoHijo2">
                         <div class="row">
                             <div class="col-6">
-                                <button type="button" class="btn btn-light">Hacer Pedido</button>
+                            <button type="button" onclick="finishOrder()" class="btn waves-effect blue tooltipped" data-tooltip="Finalizar pedido"><i class="material-icons">payment</i></button>
                             </div>
                             <div class="col-6">
-                                <button type="button" class="btn btn-light">Volver</button>
+                            <a href="index.php" class="btn waves-effect indigo tooltipped" data-tooltip="Seguir comprando"><i class="material-icons">store</i></a>
                             </div>
                             
                         </div>
@@ -129,6 +94,45 @@ include("../../app/helpers/header.php");
 
                         
                     </div>
+                    <form method="post" id="item-form"> 
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modal-title">Modal title</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="update-form" method="post" enctype="multipart/form-data">
+                                <div class="form-group d-none">
+                                    <label for="formGroupExampleInput">ID:</label>
+                                    <input type="text" class="form-control " placeholder="Ej: MalteHC..."
+                                        aria-label="Buscar" aria-describedby="basic-addon1"  type="text"
+                                         class="validate" id="id_detalle_pedido" name="id_detalle_pedido" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="formGroupExampleInput">Cantidad:</label>
+                                    <input type="number" class="form-control" placeholder="Ej: MalteHC..."
+                                        aria-label="Buscar" aria-describedby="basic-addon1" id="cantidad" 
+                                        name="cantidad" min="1" class="validate" required>
+                                </div>
+
+                        </div>
+                        </form>
+
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                            <button type="submit" data-tooltip="Actualizar" class="btn btn-primary" >Guardar Cambios</button>
+                        </div>
+                    </form>
+                    </div>
+                </div>
+            </div>
+
+
+
                     
                 </div>
             </div>
