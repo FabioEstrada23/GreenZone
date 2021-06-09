@@ -8,11 +8,6 @@ include("../../app/helpers/header.php");
 <div class="container">
             <!-- row principal -->
             <div class="row">
-
-                <div class="col-12 col-1 col-xs-12 col-sm-12 d-lg-none">
-                    
-                </div>
-
                 <!-- Barra de Navegacion Lateral -->
                     
                 <div class="row">
@@ -41,31 +36,29 @@ include("../../app/helpers/header.php");
                     </form>
     
                     <div class="col-12 p- text-center">
-                        <div class="table-responsive" id="tabla_Cate">
-                            <table class="table table-dark table-striped">
+                        <div class="table-responsive">
+                            <table class="table table-dark table-striped" id="tabla">
                                 <thead>
                                     <tr>
                                         <th scope="col">Descuento</th>
-                                        <th class="actions-column">Precio Descuento</th>
-                                        <th class="actions-column">Producto</th>
-                                        <th class="actions-column">Precio Anterior</th>
+                                        <th scope="col">Precio Descuento</th>
+                                        <th scope="col">Producto</th>
+                                        <th scope="col">Precio anterior</th>
+                                        <th scope="col"></th>
                                     </tr>
                                 </thead>
+
                                 <tbody id="tbody-rows">
+
                                 </tbody>
                             </table>
                         </div>
-    
-    
+
+
                     </div>
                 </div>
-    
-
-
             </div>
-        </div>
-
-
+</div>
 
 
 <?php

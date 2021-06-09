@@ -44,8 +44,6 @@ function readCart() {
                     document.getElementById('tbody-rows').innerHTML = content;
                     // Se muestra el total a pagar con dos decimales.
                     document.getElementById('pago').textContent = total.toFixed(2);
-                    // Se inicializa el componente Tooltip asignado a los enlaces para que funcionen las sugerencias textuales.
-                    M.Tooltip.init(document.querySelectorAll('.tooltipped'));
                 } else {
                     sweetAlert(4, response.exception, 'index.php');
                 }

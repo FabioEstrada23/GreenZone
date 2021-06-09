@@ -1,6 +1,6 @@
 <?php
 
-class Producto extends Validator
+class BusquedaProducto extends Validator
 {
     private $id_producto = null;
     private $nombre_pro = null;
@@ -257,15 +257,6 @@ class Producto extends Validator
                 WHERE id_producto = ?';
         $params = array($this->id_producto);
         return Database::executeRow($sql, $params);
-    }
-
-    public function readProductos()
-    {
-        $sql = 'SELECT id_producto, imagen, nombre_pro, descripcion_pro, precio_pro
-                FROM productos AND estado_producto = true
-                ORDER BY nombre_producto';
-        $params = array($this->id);
-        return Database::getRows($sql, $params);
     }
 
 
