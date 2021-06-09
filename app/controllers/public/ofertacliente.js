@@ -1,4 +1,5 @@
 const API_OFERTACLIENTE = '../../app/api/public/ofertaCliente.php?action=';
+const ENDPOINT_PRODUCTOOFERTA = '../../app/api/public/ofertaCliente.php?action=readProductos';
 
 function fillTable(dataset) {
     let content = '';
@@ -10,7 +11,7 @@ function fillTable(dataset) {
             <tr>
                 <td>${row.descuento}</td>
                 <td>${row.precio_descuento}</td>
-                <td>${row.nombre_pro}</td>
+                <td>${row.id_producto}</td>
                 <td>${row.precio_anterior}</td>
             </tr>
         `;
@@ -18,6 +19,12 @@ function fillTable(dataset) {
     // Se agregan las filas al cuerpo de la tabla mediante su id para mostrar los registros.
     document.getElementById('tbody-rows').innerHTML = content;
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+    // Se llama a la función que obtiene los registros para llenar la tabla. Se encuentra en el archivo components.js
+    fillSelect(ENDPOINT_PRODUCTOOFERTA, 'nombre_pro', null);
+    readRows(API_OFERTACLIENTE);
+});
 
 document.getElementById('search-form').addEventListener('submit', function (event) {
     // Se evita recargar la página web después de enviar el formulario.

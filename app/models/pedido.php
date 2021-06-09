@@ -209,7 +209,7 @@ class Pedido extends Validator
     {
         $sql = 'SELECT id_pedido
                 FROM pedido
-                WHERE id_estado_pedido = 0 AND id_cliente_user = ?';
+                WHERE id_estado_pedido = 1 AND id_cliente_user = ?';
         $params = array($this->id_cliente_user);
         if ($data = Database::getRow($sql, $params)) {
             $this->id_pedido = $data['id_pedido'];

@@ -150,7 +150,7 @@ Public_Page::headerTemplate('Carrito de compras');
 
 
 
-<?php
-//Se incluye la plantilla del encabezado para la página web
-include("../../app/helpers/footer.php");
+    <?php
+// Se imprime la plantilla del pie enviando el nombre del controlador para la página web.
+Public_Page::footerTemplate('cart.js');
 ?>
