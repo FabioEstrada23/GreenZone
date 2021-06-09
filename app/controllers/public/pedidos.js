@@ -26,7 +26,6 @@ function fillTable(dataset) {
 
 document.addEventListener('DOMContentLoaded', function () {
     // Se llama a la función que obtiene los registros para llenar la tabla. Se encuentra en el archivo components.js
-    
     readRows(API_PEDIDO);
 });
 
