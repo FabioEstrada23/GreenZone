@@ -33,7 +33,7 @@ class Public_Page
         <!-- Agregamos CSS Style -->
         <link rel="stylesheet" type="text/css" href="../../resources/css/plantillasCSS/PlantillaPublica.css">
         <link rel="stylesheet" type="text/css" href="../../resources/css/plantillasCSS/PlantillaPrivada.css">
-
+        <link rel="stylesheet" href="../../resources/css/plantillasCSS/reportes.css">
         <!-- Vista de Compatibilidad -->
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <!-- Optimizacion en equipos pequeñes -->
@@ -154,12 +154,12 @@ class Public_Page
                                         <button class="btn-regresar"><i class="fas fa-arrow-left"></i> Regresar</button>
                                         <h3 class="subtitulo">Navegacion</h3>
             
-                                        <a href="#" data-categoria="accesorios">Accesorios <i class="fas fa-angle-right"></i></a>
-                                        <a href="#" data-categoria="bolsas">Bolsas <i class="fas fa-angle-right"></i></a>
-                                        <a href="#" data-categoria="botellas">Botellas <i class="fas fa-angle-right"></i></a>
-                                        <a href="#" data-categoria="cuidado-personal">Cuidado Personal <i
+                                        <a href="productos.php?id=1&nombre=Accesorios" data-categoria="accesorios">Accesorios <i class="fas fa-angle-right"></i></a>
+                                        <a href="productos.php?id=2&nombre=Bolsas" data-categoria="bolsas">Bolsas <i class="fas fa-angle-right"></i></a>
+                                        <a href="productos.php?id=3&nombre=Botellas" data-categoria="botellas">Botellas <i class="fas fa-angle-right"></i></a>
+                                        <a href="productos.php?id=4&nombre=Cuidado%20personal" data-categoria="cuidado-personal">Cuidado Personal <i
                                                 class="fas fa-angle-right"></i></a>
-                                        <a href="#" data-categoria="limpieza">Limpieza <i class="fas fa-angle-right"></i></a>
+                                        <a href="productos.php?id=5&nombre=Limpieza" data-categoria="limpieza">Limpieza <i class="fas fa-angle-right"></i></a>
             
             
                                     </div>
@@ -368,12 +368,12 @@ class Public_Page
                                         <button class="btn-regresar"><i class="fas fa-arrow-left"></i> Regresar</button>
                                         <h3 class="subtitulo">Navegacion</h3>
             
-                                        <a href="#" data-categoria="accesorios">Accesorios <i class="fas fa-angle-right"></i></a>
-                                        <a href="#" data-categoria="bolsas">Bolsas <i class="fas fa-angle-right"></i></a>
-                                        <a href="#" data-categoria="botellas">Botellas <i class="fas fa-angle-right"></i></a>
-                                        <a href="#" data-categoria="cuidado-personal">Cuidado Personal <i
+                                        <a href="productos.php?id=1&nombre=Accesorios" data-categoria="accesorios">Accesorios <i class="fas fa-angle-right"></i></a>
+                                        <a href="productos.php?id=2&nombre=Bolsas" data-categoria="bolsas">Bolsas <i class="fas fa-angle-right"></i></a>
+                                        <a href="productos.php?id=3&nombre=Botellas" data-categoria="botellas">Botellas <i class="fas fa-angle-right"></i></a>
+                                        <a href="productos.php?id=4&nombre=Cuidado%20personal" data-categoria="cuidado-personal">Cuidado Personal <i
                                                 class="fas fa-angle-right"></i></a>
-                                        <a href="#" data-categoria="limpieza">Limpieza <i class="fas fa-angle-right"></i></a>
+                                        <a href="productos.php?id=5&nombre=Limpieza" data-categoria="limpieza">Limpieza <i class="fas fa-angle-right"></i></a>
             
             
                                     </div>
