@@ -103,7 +103,7 @@ class Public_Page
                                 <!-- Iniciar Sesion -->
                                 <div class="col-12 col-xs-12 col-sm-12 col-lg-2 col-xl-2 col-xxl-2 text-center d-none d-lg-block">
                                     <button class="btn btn-primary ">
-                                        <a href="../../views/public/perfil.php"><i class="far fa-user"></i> Perfil</a>
+                                        <a href="#" onclick="openProfileDialog()"><i class="far fa-user"></i> Perfil</a>
                                     </button>
                                     <button class="btn btn-primary ">
                                         <a href="#" onclick="logOut()"><i class="fas fa-times"></i> Cerrar sesión</a>
