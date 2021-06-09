@@ -1,8 +1,7 @@
 <?php
 //Se incluye la plantilla del encabezado para la página web
 require_once('../../app/helpers/public_page.php');
-include("../../app/helpers/header.php");
-
+Public_Page::headerTemplate('Pedidos');
 ?>
 
 

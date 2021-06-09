@@ -1,5 +1,5 @@
-const API_PEDIDO = '../../app/api/dashboard/pedido.php?action=';
-const ENDPOINT_ESTADO = '../../app/api/dashboard/pedido.php?action=readEstados';
+const API_PEDIDO = '../../app/api/public/pedidoscliente.php?action=';
+const ENDPOINT_ESTADO = '../../app/api/public/pedidoscliente.php?action=readEstados';
 
 
 function fillTable(dataset) {
@@ -12,7 +12,7 @@ function fillTable(dataset) {
             <tr>
                 <td>${row.id_pedido}</td>
                 <td>${row.fecha_pedido}</td>
-                <td>${row.id_estado_pedido}</td>
+                <td>${row.estado_pedido}</td>
                 <td>
                     <a href="#" onclick="openUpdateDialog(${row.id_pedido})" class="btn waves-effect blue tooltipped" data-tooltip="Actualizar" data-bs-toggle="modal" data-bs-target="#exampleModal" ><i class="material-icons">mode_edit</i></a>
                 </td>
