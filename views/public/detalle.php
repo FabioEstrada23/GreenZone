@@ -61,6 +61,17 @@ Public_Page::headerTemplate('Tu tienda en línea de productos ecoamigables');
     <div class="col-12" id="Titulo1">
       <h1>Valoraciones:</h1>
     </div>
+    <div class="col-12" id="comentarios">
+      <br>
+      <form action="post" id="comment">
+      <h1>Comentarios: </h1>
+      <input type="text" name="valoraciones" id="valoraciones" placeholder="Comenta que tan satisfactorio fue el producto..."></textarea>
+      <input type="number" id="puntuacion" name="puntuacion" min="1" max="5" class="validate" required/>
+      <input type="submit" id="enviar" value="Enviar">
+      </form>
+      <hr>
+    </div>
+
   </div>
 
   <br>
