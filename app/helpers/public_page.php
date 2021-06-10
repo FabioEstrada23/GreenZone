@@ -103,7 +103,7 @@ class Public_Page
                                 <!-- Iniciar Sesion -->
                                 <div class="col-12 col-xs-12 col-sm-12 col-lg-2 col-xl-2 col-xxl-2 text-center d-none d-lg-block">
                                     <button class="btn btn-primary ">
-                                        <a href="#" onclick="openProfileDialog()"class="btn waves-effect blue tooltipped" data-tooltip="profile" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="far fa-user"></i> Perfil</a>
+                                        <a href="#" onclick="openProfileDialog()"class="btn waves-effect blue tooltipped" data-tooltip="profile" data-bs-toggle="modal" data-bs-target="#profile"><i class="far fa-user"></i> Perfil</a>
                                     </button>
                                     <button class="btn btn-primary ">
                                         <a href="#" onclick="logOut()"><i class="fas fa-times"></i> Cerrar sesión</a>
@@ -266,7 +266,7 @@ class Public_Page
             
                 </header>
 
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                <div class="modal fade" id="profile" tabindex="-1" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
