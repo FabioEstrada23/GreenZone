@@ -20,7 +20,7 @@ function fillTable(dataset) {
                 <td>${row.puntuaciones}</td>
                 <td>${row.comentario}</td>
                 <td>
-                    
+                <a href="#" onclick="openUpdateDialog(${row.id_valoracion})" class="btn waves-effect blue tooltipped" data-tooltip="Actualizar" data-bs-toggle="modal" data-bs-target="#update-modal" ><i class="material-icons">mode_edit</i></a>
                     <a href="#" onclick="openDeleteDialog(${row.id_valoracion})" class="btn waves-effect red tooltipped" data-tooltip="Eliminar"><i class="material-icons">delete</i></a>
                 </td>
             </tr>
@@ -47,3 +47,43 @@ function openDeleteDialog(id) {
     // Se llama a la función que elimina un registro. Se encuentra en el archivo components.js
     confirmDelete(API_VAL, data);
 }
+
+function openUpdateDialog(id) {
+    // Se define un objeto con los datos del registro seleccionado.
+    const data = new FormData();
+    data.append('id_valoracion', id);
+
+    fetch(API_VAL + 'readOne', {
+        method: 'post',
+        body: data
+    }).then(function (request) {
+        // Se verifica si la petición es correcta, de lo contrario se muestra un mensaje indicando el problema.
+        if (request.ok) {
+            request.json().then(function (response) {
+                // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
+                if (response.status) {
+                    // Se inicializan los campos del formulario con los datos del registro seleccionado.
+                    document.getElementById('id_valoracion2').value = response.dataset.id_valoracion;
+                    document.getElementById('estado_val').value = response.dataset.estado_val;
+                    
+                } else {
+                    sweetAlert(2, response.exception, null);
+                }
+            });
+        } else {
+            console.log(request.status + ' ' + request.statusText);
+        }
+    }).catch(function (error) {
+        console.log(error);
+    });
+}
+
+// Método manejador de eventos que se ejecuta cuando se envía el formulario de actualizar.
+document.getElementById('update-form').addEventListener('submit', function (event) {
+    // Se evita recargar la página web después de enviar el formulario.
+    event.preventDefault();
+    
+    updateRow(API_VAL, 'update', 'update-form', 'update-modal');
+});
+
+

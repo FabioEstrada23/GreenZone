@@ -16,7 +16,7 @@ if(isset($_GET['action'])){
 
         switch ($_GET['action']) {
             case 'readAll':
-                if ($result['dataset'] = $val->readAll()) {
+                if ($result['dataset'] = $val->readValoraciones()) {
                     $result['status'] = 1;
                 } else {
                     if (Database::getException()) {
@@ -29,7 +29,7 @@ if(isset($_GET['action'])){
             case 'create':
                 $_POST = $val->validateForm($_POST);
                 if ($val->setIdCliente($_SESSION['id_cliente_user'])) {
-                    if($val->setIdProducto($_POST['id_producto'])){
+                    if($val->setIdProducto($_POST['id_producto2'])){
                         if($val->setComentario($_POST['valoraciones'])){
                             if($val->setPuntuaciones($_POST['puntuacion'])){
                                 if ($val->createRow()) {
@@ -39,7 +39,7 @@ if(isset($_GET['action'])){
                                         $result['exception'] = Database::getException();
                                     }
                             }else{
-                                $result['message'] = 'Comentario Incorrecto';
+                                $result['message'] = 'Puntuación Incorrecto';
                             }
                         }else{
                             $result['message'] = 'Comentario Incorrecto';

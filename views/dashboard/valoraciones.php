@@ -87,6 +87,36 @@ include("../../app/helpers/private_header.php");
                     </div>
 
                 </div>
+                <div class="modal fade" id="update-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Cambiar estado de valoración</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form method="post" id="update-form">
+                            
+                                
+                                <input type="text" class="form-control d-none" id="id_valoracion2" name="id_valoracion2">
+                            
+                            <div class="mb-3">
+                                <label for="marca" class="col-form-label">Cambiar estado:</label>
+                                <select class="form-select" aria-label="Select" id="estado_val" name="estado_val">
+                                <option disabled selected>Seleccione una opción</option>
+                                <option value="true">Admitido</option>
+                                <option value="false">Rechazar</option>
+                                </select>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                <button type="submit" class="btn btn-primary">Guardar cambios</button>
+                            </div>
+                            </form>
+                        </div>
+                        
+                    </div>
+            </div>
             </div>
         </div>
 </section>

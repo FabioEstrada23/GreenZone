@@ -9,7 +9,7 @@
         $valoraciones = new Valoraciones;
         $result = array('status' => 0, 'message' => null, 'exception' => null);
     
-        if (isset($_SESSION['id_empleado']) || true) {
+        if (isset($_SESSION['id_empleado'])) {
     
             switch ($_GET['action']) {
                 case 'readAll':
@@ -23,7 +23,24 @@
                         }
                     }
                     break;
-    
+                    
+                case 'update':
+                $_POST = $valoraciones->validateForm($_POST);
+                if ($valoraciones->setId($_POST['id_valoracion2'])) {
+                    if ($data = $valoraciones->readOne()) {
+                        if($valoraciones->setEstadoVal($_POST['estado_val'])){
+                            if ($valoraciones->updateRow()) {
+                                $result['status'] = 1;
+                                $result['message'] = 'Estado actualizado correctamente';
+                            } else {
+                                $result['exception'] = Database::getException();
+                            }
+                        }else{
+                            $result['message'] = 'Estado Incorrecto';
+                        }
+                    }
+                }   
+                break;    
                 case 'search':
                         $_POST = $valoraciones->validateForm($_POST);
                         if ($_POST['search'] != '') {
