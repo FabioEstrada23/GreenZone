@@ -336,7 +336,21 @@ class Cliente extends validator{
         return Database::getRows($sql, $params);
     }
 
+    public function readCiudad()
+    {
+        $sql = 'SELECT id_ciudad, ciudad FROM ciudad';
+        $params = null;
+        return Database::getRows($sql, $params);
+    }
 
+    public function readProfile()
+    {
+        $sql = 'SELECT id_cliente_user, dui_cli, telefono_cli, correo_usuario, alias_usuario
+                FROM usuarios
+                WHERE id_cliente_user = ?';
+        $params = array($_SESSION['id_usuario']);
+        return Database::getRow($sql, $params);
+    }
 }
 
    

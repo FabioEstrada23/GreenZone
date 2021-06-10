@@ -103,7 +103,7 @@ class Public_Page
                                 <!-- Iniciar Sesion -->
                                 <div class="col-12 col-xs-12 col-sm-12 col-lg-2 col-xl-2 col-xxl-2 text-center d-none d-lg-block">
                                     <button class="btn btn-primary ">
-                                        <a href="#" onclick="openProfileDialog()"><i class="far fa-user"></i> Perfil</a>
+                                        <a href="#" onclick="openProfileDialog()"class="btn waves-effect blue tooltipped" data-tooltip="profile" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="far fa-user"></i> Perfil</a>
                                     </button>
                                     <button class="btn btn-primary ">
                                         <a href="#" onclick="logOut()"><i class="fas fa-times"></i> Cerrar sesión</a>
@@ -265,6 +265,79 @@ class Public_Page
                     </div>
             
                 </header>
+
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modal-title">Perfil</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="update-form" method="post" enctype="multipart/form-data">
+                                <div class="form-group">
+                                <label for="formGroupExampleInput1"><i class="material-icons prefix">how_to_reg</i> DUI</label>
+                                <input type="text" placeholder="00000000-0" pattern="[0-9]{8}[-][0-9]{1}" name="dui_cli" class="validate" required>
+                                </div>
+                                <div class="form-group">
+                                <label for="formGroupExampleInput2"><i class="material-icons prefix">phone</i> Teléfono</label>
+                                <input type="text" placeholder="0000-0000" pattern="[2,6,7]{1}[0-9]{3}[-][0-9]{4}" name="telefono_cli" class="validate" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="nombre"><i class="material-icons prefix">person</i> Usuario</label>
+                                    <input type="text" placeholder="Usuario" name="user" class="validate" required>
+                                </div>
+                                <div class="form-group">
+                                <label for="correo"><i class="material-icons prefix">email</i> Correo</label>
+                                <input type="text" placeholder="Ingresa tu correo electrónico" name="correo" class="validate" required>
+                                </div>
+                                <div class="form-group">
+                                <label for="nombre"><i class="material-icons prefix">person</i> Nombres</label>
+                                <input type="text" placeholder="Ingresa tu nombre" name="nombres_cli" class="validate" required>
+                                </div>
+                                <div class="form-group">
+                                <label for="nombre"><i class="material-icons prefix">person</i> Apellidos</label>
+                                <input type="text" placeholder="Ingresa tu apellido" name="apellidos_cli" class="validate" required>
+                                </div>
+                                <div class="form-group">
+                                <label for="nombre"><i class="material-icons prefix">my_location</i> Dirección</label>
+                                <input type="text" placeholder="Ingresa tu dirección" name="direccion_cli" class="validate" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="marca2"> Ciudad</label>
+                                    <select class="form-select" aria-label="Select" id="ciudad" name="ciudad">
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                <label for="nombre"> Código postal</label>
+                                <input type="text" placeholder="Ingresa código postal" name="direccion_cli" class="validate" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleFormControlTextarea1">Fecha Nacimiento:</label>
+                                    <input type="text" class="form-control" placeholder="YYYY-MM-DD"
+                                        aria-label="Telefono" aria-describedby="basic-addon1" id="fecha_nac_cli"
+                                        name="fecha_nac_cli" class="validate" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label for="marca2"> Genero</label>
+                                    <select class="form-select" aria-label="Select" id="genero" name="genero">
+                                        <option value="M">Mujer</option>
+                                        <option value="H">Hombre</option>
+                                    </select>
+                                </div>
+                        </div>
+                        
+
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                            <button type="submit" data-tooltip="Actualizar" class="btn btn-primary" >Guardar Cambios</button>
+                        </div>
+                    </form>
+                    </div>
+                </div>
+            </div>
             
                 <main>
                 ');
