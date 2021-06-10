@@ -9,6 +9,12 @@ class Pedido extends Validator
     private $fecha_entrega = null;
     private $id_estado_pedido = null;
 
+    // Variables para Detalle del Pedido
+    private $id_detalle_pedido = null;
+    private $id_producto = null;
+    private $cantidad = null;
+    private $precio_producto = null;
+
     public function setId($value){
         if ($this->validateNaturalNumber($value)) {
             $this->id_pedido = $value;
@@ -55,6 +61,44 @@ class Pedido extends Validator
     }
 
 
+    // Sets de Detalle del Pedido
+    public function setId_detalle($value){
+        if($this->validateNaturalNumber($value)){
+            $this->id_detalle_pedido = $value;
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public function setProducto($value){
+        if($this->validateNaturalNumber($value)){
+            $this->id_producto = $value;
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public function SetCantidad($value){
+        if($this->validateNaturalNumber($value)){
+            $this->cantidad = $value;
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public function setPrecioP($value){
+        if($this->validateMoney($value)){
+            $this->precio_producto = $value;
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+
     // Getters para Pedido
     public function getId(){
         return $this->id_pedido;
@@ -76,6 +120,23 @@ class Pedido extends Validator
         return $this->id_estado_pedido;
     }
 
+    // Getters para detalle pedido
+    public function GetId_Detalle(){
+        return $this-> id_detalle_pedido;
+    }
+
+    public function getCantidad(){
+        return $this-> cantidad;
+    }
+
+    public function getProducto(){
+        return $this-> id_producto;
+    }
+
+    public function getPrecioP(){
+        return $this-> precio_producto;
+    }
+
     public function readAll()
     {
         $sql = 'SELECT id_pedido, cliente_user, fecha_pedido, fecha_entrega, estado_pedido FROM pedido
@@ -94,9 +155,10 @@ class Pedido extends Validator
         return Database::getRows($sql, $params);
     }
 
-    public function readOnePedido()
+    public function readDetalle()
     {
-        $sql = 'SELECT id_pedido, cliente_user, fecha_pedido, fecha_entrega, id_estado_pedido FROM pedido INNER JOIN cliente_user using(id_cliente_user)
+        $sql = 'SELECT id_detalle_pedido, nombre_pro, id_pedido, cantidad, precio_producto 
+        FROM detalle_pedido INNER JOIN nombre_pro using(id_producto)
         WHERE id_pedido = ?';
         $params = array($this->id_pedido);
         return Database::getRow($sql, $params);
