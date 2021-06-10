@@ -8,8 +8,8 @@ class ofertascliente extends Validator
     private $precio_descuento = null;
     private $precio_anterior = null;
     private $id_producto = null;
-    /* Metodos para asginar */ 
 
+    /* Metodos para asignar */ 
     public function setIdOferta($value){
         if ($this->validateNaturalNumber($value)) {
             $this->id_oferta = $value;
@@ -83,7 +83,7 @@ class ofertascliente extends Validator
 
 
      /*
-    *   Métodos para realizar las operaciones SCRUD (search, create, read, update, delete).
+    *   Métodos para realizar las operaciones SCRUD (search, read).
     */
 
     public function searchRows($value)
@@ -99,6 +99,13 @@ class ofertascliente extends Validator
     {
         $sql = 'SELECT id_oferta, descuento, precio_descuento, precio_anterior, id_producto
                 FROM oferta INNER JOIN producto USING(id_producto) order by id_oferta';
+        $params = null;
+        return Database::getRows($sql, $params);
+    }
+
+    public function readProductos()
+    {
+        $sql = 'SELECT id_producto, nombre_pro FROM producto';
         $params = null;
         return Database::getRows($sql, $params);
     }
