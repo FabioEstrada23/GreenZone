@@ -23,6 +23,18 @@ if (isset($_GET['action'])) {
                 }
                 break;
 
+                case 'readDetalle':
+                    if ($result['dataset'] = $pedido->readDetalle()) {
+                        $result['status'] = 1;
+                    } else {
+                        if (Database::getException()) {
+                            $result['exception'] = Database::getException();
+                        } else {
+                            $result['exception'] = 'No hay detalles registrados';
+                        }
+                    }
+                    break;
+
             case 'readEstados':
                     if ($result['dataset'] = $pedido->readEstados()) {
                         $result['status'] = 1;

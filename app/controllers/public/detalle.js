@@ -10,7 +10,29 @@ document.addEventListener('DOMContentLoaded', function () {
     const ID = params.get('id');
     // Se llama a la función que muestra el detalle del producto seleccionado previamente.
     readOneProducto(ID);
+    readRows(API_VAL);
 });
+
+
+function fillTable(dataset) {
+    let content = '';
+    // Se recorre el conjunto de registros (dataset) fila por fila a través del objeto row.
+    dataset.map(function (row) {
+
+        // Se crean y concatenan las filas de la tabla con los datos de cada registro.
+        content += `
+            <tr>
+                
+                <td>${row.cliente_user}</td>
+                <td>${row.puntuaciones}</td>
+                <td>${row.comentario}</td>
+            </tr>
+        `;
+    });
+    // Se agregan las filas al cuerpo de la tabla mediante su id para mostrar los registros.
+    document.getElementById('tabla-val').innerHTML = content;
+
+}
 
 // Función para obtener y mostrar los datos del producto seleccionado.
 function readOneProducto(id) {

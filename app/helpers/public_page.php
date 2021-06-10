@@ -103,7 +103,7 @@ class Public_Page
                                 <!-- Iniciar Sesion -->
                                 <div class="col-12 col-xs-12 col-sm-12 col-lg-2 col-xl-2 col-xxl-2 text-center d-none d-lg-block">
                                     <button class="btn btn-primary ">
-                                        <a href="#" onclick="openProfileDialog()"><i class="far fa-user"></i> Perfil</a>
+                                        <a href="#" onclick="openProfileDialog()"class="btn waves-effect blue tooltipped" data-tooltip="profile" data-bs-toggle="modal" data-bs-target="#profile"><i class="far fa-user"></i> Perfil</a>
                                     </button>
                                     <button class="btn btn-primary ">
                                         <a href="#" onclick="logOut()"><i class="fas fa-times"></i> Cerrar sesión</a>
@@ -266,6 +266,80 @@ class Public_Page
                     </div>
             
                 </header>
+
+                <div class="modal fade" id="profile" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modal-title">Perfil</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="profile-form" method="post" enctype="multipart/form-data">
+                                <div class="form-group">
+                                <label for="formGroupExampleInput1"><i class="material-icons prefix">how_to_reg</i> DUI</label>
+                                <input type="text" placeholder="00000000-0" pattern="[0-9]{8}[-][0-9]{1}" name="dui_cli" id="dui_cli" class="validate" required>
+                                </div>
+                                <div class="form-group">
+                                <label for="correo"><i class="material-icons prefix">phone</i> Teléfono</label>
+                                <input type="text" placeholder="0000-0000" pattern="[2,6,7]{1}[0-9]{3}[-][0-9]{4}" id="telefono_cli" name="telefono_cli" class="validate" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="correo"><i class="material-icons prefix">person</i> Usuario</label>
+                                    <input type="text" placeholder="Usuario" id="user" name="user" class="validate" required>
+                                </div>
+                                <div class="form-group">
+                                <label for="correo"><i class="material-icons prefix">email</i> Correo</label>
+                                <input type="text" placeholder="Ingresa tu correo electrónico" id="correo" name="correo" class="validate" required>
+                                </div>
+                                <div class="form-group">
+                                <label for="nombre"><i class="material-icons prefix">person</i> Nombres</label>
+                                <input type="text" placeholder="Ingresa tu nombre" id="nombres_cli" name="nombres_cli" class="validate" required>
+                                </div>
+                                <div class="form-group">
+                                <label for="nombre"><i class="material-icons prefix">person</i> Apellidos</label>
+                                <input type="text" placeholder="Ingresa tu apellido" id="apellidos_cli" name="apellidos_cli" class="validate" required>
+                                </div>
+                                <div class="form-group">
+                                <label for="nombre"><i class="material-icons prefix">my_location</i> Dirección</label>
+                                <input type="text" placeholder="Ingresa tu dirección" id="direccion_cli" name="direccion_cli" class="validate" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="marca2"> Ciudad</label>
+                                    <select class="form-select" aria-label="Select" id="ciudad" name="ciudad">
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                <label for="nombre"> Código postal</label>
+                                <input type="text" placeholder="Ingresa código postal" id="codigo_pos_cli" name="codigo_pos_cli" class="validate" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleFormControlTextarea1">Fecha Nacimiento:</label>
+                                    <input type="text" class="form-control" placeholder="YYYY-MM-DD"
+                                        aria-label="Telefono" aria-describedby="basic-addon1" id="fecha_nac_cli"
+                                        name="fecha_nac_cli" class="validate" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label for="marca2"> Género</label>
+                                    <select class="form-select" aria-label="Select" id="genero" name="genero">
+                                        <option disabled selected>Seleccione una opción</option>
+                                        <option value="M">Mujer</option>
+                                        <option value="H">Hombre</option>
+                                    </select>
+                                </div>
+                        </div>
+                        
+
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                            <button type="submit" data-tooltip="Actualizar" class="btn btn-primary" >Guardar Cambios</button>
+                        </div>
+                    </form>
+                    </div>
+                </div>
+            </div>
             
                 <main>
                 ');
@@ -512,6 +586,7 @@ class Public_Page
                 <script type="text/javascript" src="../../resources/js/sweetalert.min.js"></script>
                 <script type="text/javascript" src="../../app/helpers/components.js"></script>
                 <script src="../../app/controllers/public/cuenta.js"></script>
+                <script type="text/javascript" src="../../app/controllers/public/valoraciones.js"></script>
                 <script type="text/javascript" src="../../app/controllers/public/' . $controller . '"></script>
             ';
         } else {
@@ -521,6 +596,7 @@ class Public_Page
                 <script src="../../resources/js/MenuInferior/mnInferior.js"></script>
                 <script type="text/javascript" src="../../resources/js/sweetalert.min.js"></script>
                 <script type="text/javascript" src="../../app/helpers/components.js"></script>
+                <script type="text/javascript" src="../../app/controllers/public/valoraciones.js"></script>
                 <script type="text/javascript" src="../../app/controllers/public/' . $controller . '"></script>
             ';
         }

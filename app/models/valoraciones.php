@@ -8,6 +8,7 @@ class Valoraciones extends Validator
     private $idProducto = null;
     private $puntuaciones = null;
     private $comentario = null;
+    private $estado_val = null;
 
     /* Metodos para asignar */
 
@@ -50,7 +51,17 @@ class Valoraciones extends Validator
     public function setComentario($value)
     {
         if ($this->validateAlphanumeric($value, 1, 300)) {
-            $this->Comentario = $value;
+            $this->comentario = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function setEstadoVal($value)
+    {
+        if ($this->validateBoolean($value)) {
+            $this->estado_val = $value;
             return true;
         } else {
             return false;
@@ -84,6 +95,11 @@ class Valoraciones extends Validator
         return $this->comentario;
     }
 
+    public function getEstadoVal()
+    {
+        return $this->estado_val;
+    }
+
     public function searchRows($value)
     {   
         $sql = 'SELECT id_valoracion, cliente_user.cliente_user, producto.nombre_pro, puntuaciones, comentario FROM valoraciones
@@ -104,9 +120,20 @@ class Valoraciones extends Validator
         return Database::getRows($sql, $params);
     }
 
+    public function readValoraciones()
+    {
+        $sql = 'SELECT id_valoracion, cliente_user.cliente_user, producto.nombre_pro, puntuaciones, comentario FROM valoraciones
+        INNER JOIN producto ON valoraciones.id_producto = producto.id_producto
+        INNER JOIN cliente_user ON valoraciones.id_cliente_user = cliente_user.id_cliente_user
+        where estado_val = true
+        order by puntuaciones desc';
+        $params = null;
+        return Database::getRows($sql, $params);
+    }
+
     public function readOne()
     {
-        $sql = 'SELECT id_valoracion, id_cliente_user, id_producto, puntuaciones, comentario
+        $sql = 'SELECT id_valoracion, id_cliente_user, id_producto, puntuaciones, comentario, estado_val
                 FROM valoraciones 
                 WHERE id_valoracion = ? ';
         $params = array($this->id);
@@ -121,6 +148,22 @@ class Valoraciones extends Validator
         return Database::executeRow($sql, $params);
     }
 
+    public function createRow()
+    {
+        $sql = 'INSERT INTO valoraciones(id_cliente_user, id_producto, puntuaciones, comentario, estado_val)
+                VALUES(?, ?, ?, ?, false)';
+        $params = array($this->idCliente, $this->idProducto, $this->puntuaciones, $this->comentario);
+        return Database::executeRow($sql, $params);
+    }
+
+    public function updateRow()
+    {
+        $sql = 'UPDATE valoraciones
+                SET estado_val = ?
+                WHERE id_valoracion = ?';
+        $params = array($this->estado_val, $this->id);
+        return Database::executeRow($sql, $params);
+    }
 }
 
 ?>

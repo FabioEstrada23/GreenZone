@@ -1092,4 +1092,33 @@ body{
     height: 100%;
 }
 
+/* Valoraciones*/
+
+#valoraciones{
+    width: 75%;
+    height: 50px;
+    background-color: white;
+}
+
+#comentarios{
+    background-color: #0B486B;
+    height: 100vh;
+    margin-top: 10px;
+    color: white;
+    padding: 40px;
+}
+
+#puntuacion{
+    width: 10%;
+    height: 50px;
+    margin-left: 10px;
+}
+
+#enviar{
+    width: 10%;
+    height: 50px;
+    margin-left: 10px;
+}
+
+
 

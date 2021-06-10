@@ -24,7 +24,7 @@ function readCart() {
                     let total = 0;
                     // Se recorre el conjunto de registros (dataset) fila por fila a través del objeto row.
                     response.dataset.map(function (row) {
-                        subtotal = row.precio_pro * row.cantidad;
+                        subtotal = row.precio_producto * row.cantidad;
                         total += subtotal;
                         // Se crean y concatenan las filas de la tabla con los datos de cada registro.
                         content += `
