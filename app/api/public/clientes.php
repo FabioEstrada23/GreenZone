@@ -24,13 +24,13 @@ if(isset($_GET['action'])){
                 }
                 break;
             case 'readCiudad':
-                    if ($result['dataset'] = $cliente>readCiudad()) {
+                    if ($result['dataset'] = $cliente->readCiudad()) {
                         $result['status'] = 1;
                     } else {
                         if (Database::getException()) {
                             $result['exception'] = Database::getException();
                         } else {
-                            $result['exception'] = 'No hay estados registrados';
+                            $result['exception'] = 'No hay ciudades registradas';
                         }
                     }
                 break; 
@@ -44,7 +44,61 @@ if(isset($_GET['action'])){
                         $result['exception'] = 'Usuario inexistente';
                     }
                 }
-                break;       
+                break;
+            case 'editProfile':  
+                $_POST = $cliente->validateForm($_POST);
+                if ($cliente->setDuiCli($_POST['dui_cli'])){
+                    if ($cliente->setTelefonoCli($_POST['telefono_cli'])) {
+                        if ($cliente->setClienteUser($_POST['user'])) {
+                            if ($cliente->setCorreo($_POST['correo'])) {
+                                if ($cliente->setNombres($_POST['nombres_cli'])) {
+                                    if ($cliente->setApellidos($_POST['apellidos_cli'])) {
+                                        if ($cliente->setDireccion($_POST['direccion_cli'])) {
+                                            if ($cliente->setIdCiudad($_POST['ciudad'])) {
+                                                if ($cliente->setCodigoPostal($_POST['codigo_pos_cli'])) {
+                                                    if ($cliente->setNacimiento($_POST['fecha_nac_cli'])) {
+                                                        if ($cliente->setGenero($_POST['genero'])) {
+                                                            if ($cliente->editProfile()) {
+                                                                $result['status'] = 1;
+                                                                $_SESSION['alias_usuario'] = $cliente->getClienteUser();
+                                                                $result['message'] = 'Perfil modificado correctamente';
+                                                            } else {
+                                                                $result['exception'] = Database::getException();
+                                                            }
+                                                        } else{
+                                                            $result['exception'] = 'Generoincorrecto';
+                                                        }  
+                                                    } else{
+                                                        $result['exception'] = 'Fecha de nacimiento incorrecto';
+                                                    }  
+                                                } else{
+                                                    $result['exception'] = 'Código postal incorrecto';
+                                                }  
+                                            } else{
+                                                $result['exception'] = 'Ciudad incorrecta';
+                                            } 
+                                        } else{
+                                            $result['exception'] = 'Dirección incorrecta';
+                                        } 
+                                    } else{
+                                        $result['exception'] = 'Apellidos incorrecto';
+                                    } 
+                                } else{
+                                    $result['exception'] = 'Nombres incorrecto';
+                                } 
+                            } else{
+                                $result['exception'] = 'Correo incorrecto';
+                            }  
+                        } else{
+                            $result['exception'] = 'Usuario incorrecto';
+                        }  
+                    } else{
+                        $result['exception'] = 'Télefono incorrecto';
+                    }   
+                } else{
+                    $result['exception'] = 'Dui incorrecto';
+                }     
+                break;    
             default:
                 $result['exception'] = 'Acción no disponible dentro de la sesión';
         }

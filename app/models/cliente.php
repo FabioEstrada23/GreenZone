@@ -336,20 +336,29 @@ class Cliente extends validator{
         return Database::getRows($sql, $params);
     }
 
+    public function readProfile()
+    {
+        $sql = 'SELECT id_cliente_user, dui_cli, telefono_cli, cliente_user, correo_cli_us, nombres_cli, apellidos_cli, direccion_cli, id_ciudad, codigo_pos_cli, fecha_nac_cli, genero
+                FROM cliente_user
+                WHERE id_cliente_user = ?';
+        $params = array($_SESSION['id_cliente_user']);
+        return Database::getRow($sql, $params);
+    }
+
+    public function editProfile()
+    {
+        $sql = 'UPDATE cliente_user
+                SET dui_cli = ?, telefono_cli = ?, cliente_user = ?, correo_cli_us = ?, nombres_cli = ?, apellidos_cli = ?, direccion_cli = ?, id_ciudad = ?, codigo_pos_cli = ?, fecha_nac_cli = ?, genero = ?
+                WHERE id_cliente_user = ?';
+        $params = array($this->dui_cli, $this->telefono_cli, $this->cliente_user, $this->correo_cli_us, $this->nombres_cli, $this->apellidos_cli, $this->direccion_cli, $this->id_ciudad, $this->codigo_pos_cli, $this->fecha_nac_cli, $this->genero, $_SESSION['id_cliente_user']);
+        return Database::executeRow($sql, $params);
+    }
+
     public function readCiudad()
     {
         $sql = 'SELECT id_ciudad, ciudad FROM ciudad';
         $params = null;
         return Database::getRows($sql, $params);
-    }
-
-    public function readProfile()
-    {
-        $sql = 'SELECT id_cliente_user, dui_cli, telefono_cli, correo_usuario, alias_usuario
-                FROM usuarios
-                WHERE id_cliente_user = ?';
-        $params = array($_SESSION['id_usuario']);
-        return Database::getRow($sql, $params);
     }
 }
 

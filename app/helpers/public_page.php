@@ -275,34 +275,34 @@ class Public_Page
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <form id="update-form" method="post" enctype="multipart/form-data">
+                            <form id="profile-form" method="post" enctype="multipart/form-data">
                                 <div class="form-group">
                                 <label for="formGroupExampleInput1"><i class="material-icons prefix">how_to_reg</i> DUI</label>
-                                <input type="text" placeholder="00000000-0" pattern="[0-9]{8}[-][0-9]{1}" name="dui_cli" class="validate" required>
+                                <input type="text" placeholder="00000000-0" pattern="[0-9]{8}[-][0-9]{1}" name="dui_cli" id="dui_cli" class="validate" required>
                                 </div>
                                 <div class="form-group">
-                                <label for="formGroupExampleInput2"><i class="material-icons prefix">phone</i> Teléfono</label>
-                                <input type="text" placeholder="0000-0000" pattern="[2,6,7]{1}[0-9]{3}[-][0-9]{4}" name="telefono_cli" class="validate" required>
+                                <label for="correo"><i class="material-icons prefix">phone</i> Teléfono</label>
+                                <input type="text" placeholder="0000-0000" pattern="[2,6,7]{1}[0-9]{3}[-][0-9]{4}" id="telefono_cli" name="telefono_cli" class="validate" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="nombre"><i class="material-icons prefix">person</i> Usuario</label>
-                                    <input type="text" placeholder="Usuario" name="user" class="validate" required>
+                                    <label for="correo"><i class="material-icons prefix">person</i> Usuario</label>
+                                    <input type="text" placeholder="Usuario" id="user" name="user" class="validate" required>
                                 </div>
                                 <div class="form-group">
                                 <label for="correo"><i class="material-icons prefix">email</i> Correo</label>
-                                <input type="text" placeholder="Ingresa tu correo electrónico" name="correo" class="validate" required>
+                                <input type="text" placeholder="Ingresa tu correo electrónico" id="correo" name="correo" class="validate" required>
                                 </div>
                                 <div class="form-group">
                                 <label for="nombre"><i class="material-icons prefix">person</i> Nombres</label>
-                                <input type="text" placeholder="Ingresa tu nombre" name="nombres_cli" class="validate" required>
+                                <input type="text" placeholder="Ingresa tu nombre" id="nombres_cli" name="nombres_cli" class="validate" required>
                                 </div>
                                 <div class="form-group">
                                 <label for="nombre"><i class="material-icons prefix">person</i> Apellidos</label>
-                                <input type="text" placeholder="Ingresa tu apellido" name="apellidos_cli" class="validate" required>
+                                <input type="text" placeholder="Ingresa tu apellido" id="apellidos_cli" name="apellidos_cli" class="validate" required>
                                 </div>
                                 <div class="form-group">
                                 <label for="nombre"><i class="material-icons prefix">my_location</i> Dirección</label>
-                                <input type="text" placeholder="Ingresa tu dirección" name="direccion_cli" class="validate" required>
+                                <input type="text" placeholder="Ingresa tu dirección" id="direccion_cli" name="direccion_cli" class="validate" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="marca2"> Ciudad</label>
@@ -311,7 +311,7 @@ class Public_Page
                                 </div>
                                 <div class="form-group">
                                 <label for="nombre"> Código postal</label>
-                                <input type="text" placeholder="Ingresa código postal" name="direccion_cli" class="validate" required>
+                                <input type="text" placeholder="Ingresa código postal" id="codigo_pos_cli" name="codigo_pos_cli" class="validate" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleFormControlTextarea1">Fecha Nacimiento:</label>
@@ -320,8 +320,9 @@ class Public_Page
                                         name="fecha_nac_cli" class="validate" readonly>
                                 </div>
                                 <div class="form-group">
-                                    <label for="marca2"> Genero</label>
+                                    <label for="marca2"> Género</label>
                                     <select class="form-select" aria-label="Select" id="genero" name="genero">
+                                        <option disabled selected>Seleccione una opción</option>
                                         <option value="M">Mujer</option>
                                         <option value="H">Hombre</option>
                                     </select>
