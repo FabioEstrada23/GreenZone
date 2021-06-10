@@ -92,7 +92,8 @@ class Oferta extends Validator
 
     public function readAll()
     {
-        $sql = 'SELECT id_oferta, nombre_pro, precio_descuento, precio_anterior, descuento FROM oferta INNER JOIN producto USING(id_producto)
+        $sql = 'SELECT id_oferta, nombre_pro, precio_descuento, precio_anterior, descuento FROM oferta 
+                INNER JOIN nombre_pro USING(id_producto)
                 ORDER BY id_oferta';
         $params = null;
         return Database::getRows($sql, $params);
