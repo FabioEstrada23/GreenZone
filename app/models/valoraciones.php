@@ -121,6 +121,14 @@ class Valoraciones extends Validator
         return Database::executeRow($sql, $params);
     }
 
+    public function createRow()
+    {
+        $sql = 'INSERT INTO valoraciones(id_cliente_user, id_producto, puntuaciones, comentario)
+                VALUES(?, ?, ?, ?)';
+        $params = array($this->idCliente, $this->idProducto, $this->puntuaciones, $this->comentario);
+        return Database::executeRow($sql, $params);
+    }
+
 }
 
 ?>

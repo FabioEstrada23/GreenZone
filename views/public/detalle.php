@@ -63,13 +63,49 @@ Public_Page::headerTemplate('Tu tienda en línea de productos ecoamigables');
     </div>
     <div class="col-12" id="comentarios">
       <br>
-      <form action="post" id="comment">
+      <form action="post" id="comment-form">
       <h1>Comentarios: </h1>
-      <input type="text" name="valoraciones" id="valoraciones" placeholder="Comenta que tan satisfactorio fue el producto..."></textarea>
+      <input type="text" class="" name="id_producto" id="producto" class="validate" required/>
+      <input type="text" name="valoraciones" id="valoraciones" placeholder="Comenta que tan satisfactorio fue el producto..." class="validate" required/>
       <input type="number" id="puntuacion" name="puntuacion" min="1" max="5" class="validate" required/>
       <input type="submit" id="enviar" value="Enviar">
       </form>
       <hr>
+      <br>
+      <div class="col-12">
+
+                    <div class="row">
+                        <div class="col-12 text-center" id="regVal">
+                            <h1>Comentarios de otras personas</h1>
+                        </div>
+                        
+
+                        <div class="col-12 p- text-center">
+                            <div class="table-responsive">
+                                <table class="table table-dark table-striped" id="tablaVal">
+                                    <thead>
+
+                                        <tr>
+                                            
+                                            <th scope="col">Nombre del cliente</th>
+                                            <th scope="col">Puntuación</th>
+                                            <th scope="col">Comentario</th>
+                                        </tr>
+
+                                    </thead>
+
+                                    <tbody id="tabla-val">
+
+                                    </tbody>
+                                </table>
+
+
+
+                            </div>
+
+
+                        </div>
+                    </div>
     </div>
 
   </div>

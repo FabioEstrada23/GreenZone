@@ -583,6 +583,7 @@ class Public_Page
                 <script type="text/javascript" src="../../resources/js/sweetalert.min.js"></script>
                 <script type="text/javascript" src="../../app/helpers/components.js"></script>
                 <script src="../../app/controllers/public/cuenta.js"></script>
+                <script type="text/javascript" src="../../app/controllers/public/valoraciones.js"></script>
                 <script type="text/javascript" src="../../app/controllers/public/' . $controller . '"></script>
             ';
         } else {
@@ -592,6 +593,7 @@ class Public_Page
                 <script src="../../resources/js/MenuInferior/mnInferior.js"></script>
                 <script type="text/javascript" src="../../resources/js/sweetalert.min.js"></script>
                 <script type="text/javascript" src="../../app/helpers/components.js"></script>
+                <script type="text/javascript" src="../../app/controllers/public/valoraciones.js"></script>
                 <script type="text/javascript" src="../../app/controllers/public/' . $controller . '"></script>
             ';
         }
