@@ -139,10 +139,11 @@ class Public_Page
                                 </div>
             
                                 <div class="enlaces">
-                                    <a href="#"><i class="fas fa-home"></i> Inicio</a>
+                                    <a href="../../views/public/index.php"><i class="fas fa-home"></i> Inicio</a>
                                     <a href="#"><i class="fas fa-percentage"></i> Ofertas</a>
                                     <a href="#"><i class="fas fa-ticket-alt"></i> Marcas</a>
                                     <a href="../../views/public/carrito.php"><i class="fas fa-shopping-cart"></i> Carrito</a>
+                                    <a href="../../views/public/pedidos.php"><i class="fas fa-shopping-cart"></i> Pedidos</a>
                                 </div>
             
                             </div>
@@ -354,9 +355,11 @@ class Public_Page
                                 </div>
             
                                 <div class="enlaces">
-                                    <a href="#"><i class="fas fa-home"></i> Inicio</a>
-                                    <a href="#"><i class="fas fa-percentage"></i> Ofertas</a>
-                                    <a href="#"><i class="fas fa-ticket-alt"></i> Marcas</a>
+                                <a href="../../views/public/index.php"><i class="fas fa-home"></i> Inicio</a>
+                                <a href="#"><i class="fas fa-percentage"></i> Ofertas</a>
+                                <a href="#"><i class="fas fa-ticket-alt"></i> Marcas</a>
+                                <a href="../../views/public/carrito.php"><i class="fas fa-shopping-cart"></i> Carrito</a>
+                                <a href="../../views/public/pedidos.php"><i class="fas fa-shopping-cart"></i> Pedidos</a>
                                 </div>
             
                             </div>
