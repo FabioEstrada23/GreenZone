@@ -23,7 +23,7 @@ if (isset($_GET['action'])) {
                         $_POST = $pedido->validateForm($_POST);
                         if ($pedido->setProducto($_POST['id_producto'])) {
                             if ($pedido->setCantidad($_POST['cantidad'])) {
-                                if ($pedido->setPrecio($_POST['precio_producto'])) {
+                                if ($pedido->setPrecio($_POST['precio_pro'])) {
                                     if ($pedido->createDetail()) {
                                         $result['status'] = 1;
                                         $result['message'] = 'Producto agregado correctamente';

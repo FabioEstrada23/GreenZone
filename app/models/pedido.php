@@ -207,17 +207,20 @@ class Pedido extends Validator
 
     public function readOrder()
     {
+        date_default_timezone_set('America/El_Salvador');
+        $date = date('Y-m-d');
+
         $sql = 'SELECT id_pedido
                 FROM pedido
                 WHERE id_estado_pedido = 1 AND id_cliente_user = ?';
-        $params = array($this->id_cliente_user);
+        $params = array($_SESSION['id_cliente_user']);
         if ($data = Database::getRow($sql, $params)) {
             $this->id_pedido = $data['id_pedido'];
             return true;
         } else {
-            $sql = 'INSERT INTO pedidos(id_cliente_user)
-                    VALUES(?)';
-            $params = array($this->id_cliente_user);
+            $sql = 'INSERT INTO pedido(id_cliente_user, fecha_pedido, fecha_entrega, id_estado_pedido)
+                    VALUES(?,?,?,1)';
+            $params = array($_SESSION['id_cliente_user'], $date, $date);
             // Se obtiene el ultimo valor insertado en la llave primaria de la tabla pedidos.
             if ($this->id_pedido = Database::getLastRow($sql, $params)) {
                 return true;
@@ -230,8 +233,8 @@ class Pedido extends Validator
     public function createDetail()
     {
         $sql = 'INSERT INTO detalle_pedido(id_producto, precio_producto, cantidad, id_pedido)
-                VALUES(?, ?, ?, ?)';
-        $params = array($this->producto, $this->precio, $this->cantidad, $this->id_pedido);
+                VALUES(?, (SELECT precio_pro from producto where id_producto = ?), ?, ?)';
+        $params = array($this->id_producto, $this->id_producto, $this->cantidad, $this->id_pedido);
         return Database::executeRow($sql, $params);
     }
 

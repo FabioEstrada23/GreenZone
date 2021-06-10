@@ -1,6 +1,6 @@
 // Constante para establecer la ruta y parámetros de comunicación con la API.
 const API_CATALOGO = '../../app/api/public/catalogo.php?action=';
-const API_PEDIDOS = '../../app/api/public/pedidos.php?action=';
+const API_PEDIDOS = '../../app/api/public/pedido.php?action=';
 
 // Método manejador de eventos que se ejecuta cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', function () {
@@ -28,13 +28,13 @@ function readOneProducto(id) {
                 // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
                 if (response.status) {
                     // Se colocan los datos en la tarjeta de acuerdo al producto seleccionado previamente.
-                    document.getElementById('imagen').setAttribute('src', '../../resources/img/productos/' + response.dataset.imagen_producto);
-                    document.getElementById('nombre').textContent = response.dataset.nombre_producto;
-                    document.getElementById('descripcion').textContent = response.dataset.descripcion_producto;
-                    document.getElementById('precio').textContent = response.dataset.precio_producto;
+                    document.getElementById('imagen').setAttribute('src', '../../resources/img/productos/' + response.dataset.imagen + '.jpg');
+                    document.getElementById('nombre').textContent = response.dataset.nombre_pro;
+                    document.getElementById('descripcion').textContent = response.dataset.descripcion_pro;
+                    document.getElementById('precio').textContent = response.dataset.precio_pro;
                     // Se asignan los valores a los campos ocultos del formulario.
                     document.getElementById('id_producto').value = response.dataset.id_producto;
-                    document.getElementById('precio_producto').value = response.dataset.precio_producto;
+                    document.getElementById('precio_pro').value = response.dataset.precio_pro;
                 } else {
                     // Se presenta un mensaje de error cuando no existen datos para mostrar.
                     document.getElementById('title').innerHTML = `<i class="material-icons small">cloud_off</i><span class="red-text">${response.exception}</span>`;
@@ -64,7 +64,7 @@ document.getElementById('shopping-form').addEventListener('submit', function (ev
             request.json().then(function (response) {
                 // Se comprueba si la respuesta es satisfactoria, de lo contrario se constata si el cliente ha iniciado sesión.
                 if (response.status) {
-                    sweetAlert(1, response.message, 'cart.php');
+                    sweetAlert(1, response.message, 'carrito.php');
                 } else {
                     // Se verifica si el cliente ha iniciado sesión para mostrar la excepción, de lo contrario se direcciona para que se autentique. 
                     if (response.session) {
