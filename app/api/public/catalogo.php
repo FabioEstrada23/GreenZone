@@ -1,30 +1,32 @@
 <?php
 require_once('../../helpers/database.php');
 require_once('../../helpers/validator.php');
+require_once('../../models/categoria.php');
 require_once('../../models/Producto.php');
 
 // Se comprueba si existe una acción a realizar, de lo contrario se finaliza el script con un mensaje de error.
 if (isset($_GET['action'])) {
     // Se instancian las clases correspondientes.
+    $categoria = new categoria;
     $producto = new Producto;
     // Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
     $result = array('status' => 0, 'message' => null, 'exception' => null);
     // Se compara la acción a realizar según la petición del controlador.
     switch ($_GET['action']) {
         case 'readAll':
-            if ($result['dataset'] = $producto->readAll()) {
+            if ($result['dataset'] = $categoria->readAll()) {
                 $result['status'] = 1;
             } else {
                 if (Database::getException()) {
                     $result['exception'] = Database::getException();
                 } else {
-                    $result['exception'] = 'No existen productos para mostrar';
+                    $result['exception'] = 'No existen categorías para mostrar';
                 }
             }
             break;
         case 'readProductosCategoria':
-            if ($producto->setId($_POST['id_producto'])) {
-                if ($result['dataset'] = $producto->readProductos()) {
+            if ($categoria->setId($_POST['id_categoria'])) {
+                if ($result['dataset'] = $categoria->readProductosCategoria()) {
                     $result['status'] = 1;
                 } else {
                     if (Database::getException()) {
@@ -34,7 +36,7 @@ if (isset($_GET['action'])) {
                     }
                 }
             } else {
-                $result['exception'] = 'Productos incorrectos';
+                $result['exception'] = 'Categoría incorrecta';
             }
             break;
         case 'readOne':

@@ -245,6 +245,8 @@ class Producto extends Validator
 
     public function updateRow()
     {
+
+        
         $sql = 'UPDATE producto set nombre_pro = ?,id_estado_producto = ?,id_categoria = ?, id_marca = ?, precio_pro = ?, oferta_pro = ?,  descripcion_pro = ?, id_proveedor = ?, existencias = ?, imagen = ?
                 WHERE id_producto = ?';
         $params = array($this->$this->nombre_pro,$this->id_estado_producto,$this->id_categoria,$this->id_marca,$this->precio_pro,$this->oferta_pro,$this->descripcion_pro,$this->id_proveedor,$this->existencias,$this->imagen,$this->id_producto);
@@ -270,4 +272,3 @@ class Producto extends Validator
 
 
 }
-?>

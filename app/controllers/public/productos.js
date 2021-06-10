@@ -32,30 +32,36 @@ function readProductosCategoria(id, categoria) {
                     response.dataset.map(function (row) {
                         // Se crean y concatenan las tarjetas con los datos de cada producto.
                         content += `
-                            <div class="col s12 m6 l4">
-                                <div class="card hoverable">
-                                    <div class="card-image">
-                                        <img src="../../resources/img/productos/${row.imagen_producto}" class="materialboxed">
-                                        <a href="detalle.php?id=${row.id_producto}" class="btn-floating halfway-fab waves-effect waves-light red tooltipped" data-tooltip="Ver detalle">
-                                            <i class="material-icons">add</i>
-                                        </a>
-                                    </div>
-                                    <div class="card-content">
-                                        <span class="card-title">${row.nombre_producto}</span>
-                                        <p>Precio(US$) ${row.precio_producto}</p>
-                                    </div>
+                        <div class="col-12 col-xs-12 col-sm-6 col-lg-6 col-xl-4 col-xxl-4">
+                        <div class="box p-2">
+                            <!-- caja de imagenes -->
+                            <div class="slider-img">
+                                <img src="../../resources/img/productos/${row.imagen}.jpg"
+                                    alt="1">
+                                <!-- overlay -->
+                                <div class="overlay">
+                                    <!-- comprar-btn -->
+                                    <a href="detalle.php?id=${row.id_producto}" class="buy-btn">Compralo</a>
                                 </div>
                             </div>
+                            <!-- detalles del producto -->
+                            <div class="detail-box">
+                                <!-- tipo -->
+                                <div class="type">
+                                    <a href="">${row.nombre_pro}</a>
+                                    <span>Disponible</span>
+                                </div>
+                                <!-- Precio -->
+                                <a href="#" class="price">${row.precio_pro}</a>
+                            </div>
+                        </div>
+                    </div>
                         `;
                     });
                     // Se asigna como título la categoría de los productos.
                     document.getElementById('title').textContent = 'Categoría: ' + categoria;
                     // Se agregan las tarjetas a la etiqueta div mediante su id para mostrar los productos.
                     document.getElementById('productos').innerHTML = content;
-                    // Se inicializa el componente Material Box asignado a las imagenes para que funcione el efecto Lightbox.
-                    M.Materialbox.init(document.querySelectorAll('.materialboxed'));
-                    // Se inicializa el componente Tooltip asignado a los enlaces para que funcionen las sugerencias textuales.
-                    M.Tooltip.init(document.querySelectorAll('.tooltipped'));
                 } else {
                     // Se presenta un mensaje de error cuando no existen datos para mostrar.
                     document.getElementById('title').innerHTML = `<i class="material-icons small">cloud_off</i><span class="red-text">${response.exception}</span>`;

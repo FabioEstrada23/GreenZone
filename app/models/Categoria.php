@@ -93,5 +93,15 @@ class categoria extends Validator
         return Database::executeRow($sql, $params);
     }
 
+    public function readProductosCategoria()
+    {
+        $sql = 'SELECT categoria, id_producto, imagen, nombre_pro, descripcion_pro, precio_pro
+                FROM producto INNER JOIN categoria_producto USING(id_categoria)
+                WHERE id_categoria = ? AND id_estado_producto = 1
+                ORDER BY nombre_pro';
+        $params = array($this->id_categoria);
+        return Database::getRows($sql, $params);
+    }
+
 }
 
