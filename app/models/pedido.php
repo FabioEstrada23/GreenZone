@@ -263,7 +263,7 @@ class Pedido extends Validator
         $sql = 'UPDATE detalle_pedido
                 SET cantidad = ?
                 WHERE id_pedido = ? AND id_detalle_pedido = ?';
-        $params = array($this->cantidad, $this->id_pedido, $this->id_detalle);
+        $params = array($this->cantidad, $this->id_pedido, $this->id_detalle_pedido);
         return Database::executeRow($sql, $params);
     }
 
@@ -271,7 +271,7 @@ class Pedido extends Validator
     {
         $sql = 'DELETE FROM detalle_pedido
                 WHERE id_pedido = ? AND id_detalle_pedido = ?';
-        $params = array($this->id_pedido, $this->id_detalle);
+        $params = array($this->id_pedido, $this->id_detalle_pedido);
         return Database::executeRow($sql, $params);
     }
 
