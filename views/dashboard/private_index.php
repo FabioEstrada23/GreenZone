@@ -1,22 +1,9 @@
 <?php
-session_start();
+//Se incluye la plantilla del encabezado para la página web
+require_once('../../app/helpers/dashboard_page.php');
+include("../../app/helpers/private_header.php");
 ?>
-
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" type="text/css" href="../../resources/css/bootstrap/bootstrap.min.css">
-    <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="../../resources/css/private_index.css">
-    <link type="text/css" rel="stylesheet" href="../../resources/css/material_icons.css"/>
-    <title>Página principal</title>
-</head>
-<body>
+<main>
     <div class="container-fluid">
         <div class="row">
 
@@ -62,23 +49,27 @@ session_start();
             </nav>
         </div>
         <br>
-        <section>
-            <h1>Bienvenido</h1>
-        </section>
+
     </div>
+    <br>
+    <!-- Se muestra un saludo de acuerdo con la hora del empleado -->
+        <div class="row">
+            <h4 class="text-center blue-text" id="greeting"></h4>
+        </div>
+
+        <!-- Se muestran las gráficas de acuerdo con algunos datos disponibles en la base de datos -->
+        <div class="row">
+            <div class="text-center col-12 col-xs-12 col-sm-12 col-lg-6 col-xl-6 p-4 col-xxl-6">
+                <!-- Se muestra una gráfica de barra con la cantidad de productos por categoría -->
+                <canvas id="chartCategorias"></canvas>
+            </div>
+            
+        </div>
+    </main>
     <script src="../../resources/js/menu/menu.js"></script>
-    <script src="../../app/controllers/dashboard/account.js"></script>
-    <script type="text/javascript" src="../../resources/js/sweetalert.min.js"></script>
-    <script type="text/javascript" src="../../app/helpers/components.js"></script>
-    <!-- Optional JavaScript; choose one of the two! -->
-
-    <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
-
-    <!-- Option 2: Separate Popper and Bootstrap JS -->
-    <!--
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
-    -->
-</body>
-</html>
+    <!-- Importación del archivo para generar gráficas en tiempo real. Para más información https://www.chartjs.org/ -->
+<script type="text/javascript" src="../../resources/js/chart.js"></script>
+<?php
+// Se imprime la plantilla del pie enviando el nombre del controlador para la página web.
+Dashboard_Page::footerTemplate('main.js');
+?>

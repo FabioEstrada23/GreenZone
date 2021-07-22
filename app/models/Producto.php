@@ -270,5 +270,17 @@ class Producto extends Validator
         return Database::getRows($sql, $params);
     }
 
+    /*
+    *   Métodos para generar gráficas.
+    */
+    public function cantidadProductosCategoria()
+    {
+        $sql = 'SELECT categoria, COUNT(id_producto) cantidad
+                FROM producto INNER JOIN categoria_producto USING(id_categoria)
+                GROUP BY categoria ORDER BY cantidad DESC';
+        $params = null;
+        return Database::getRows($sql, $params);
+    }
+
 
 }

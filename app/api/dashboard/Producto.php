@@ -8,7 +8,7 @@ if (isset($_GET['action'])) {
     $producto = new Producto;
     $result = array('status' => 0, 'message' => null, 'exception' => null);
 
-    if (isset($_SESSION['id_empleado']) || true) {
+    if (isset($_SESSION['id_empleado'])) {
         
         switch ($_GET['action']) {
             case 'readAll':
@@ -189,6 +189,18 @@ if (isset($_GET['action'])) {
                         $result['exception'] = 'Producto incorrecto';
                     }
                 break;
+                
+                case 'cantidadProductosCategoria':
+                    if ($result['dataset'] = $producto->cantidadProductosCategoria()) {
+                        $result['status'] = 1;
+                    } else {
+                        if (Database::getException()) {
+                            $result['exception'] = Database::getException();
+                        } else {
+                            $result['exception'] = 'No hay datos disponibles';
+                        }
+                    }
+                    break;
                 default:
                     $result['exception'] = 'Acción no disponible dentro de la sesión';
 
