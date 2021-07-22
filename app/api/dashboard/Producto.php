@@ -201,6 +201,28 @@ if (isset($_GET['action'])) {
                         }
                     }
                     break;
+                case 'cantidadProductosMarcas':
+                    if ($result['dataset'] = $producto->cantidadProductosMarca()) {
+                        $result['status'] = 1;
+                    } else {
+                        if (Database::getException()) {
+                            $result['exception'] = Database::getException();
+                        } else {
+                            $result['exception'] = 'No hay datos disponibles';
+                        }
+                    }
+                    break;   
+                case 'MostSelling':
+                    if ($result['dataset'] = $producto->MostSelling()) {
+                        $result['status'] = 1;
+                    } else {
+                        if (Database::getException()) {
+                            $result['exception'] = Database::getException();
+                        } else {
+                            $result['exception'] = 'No hay datos disponibles';
+                        }
+                    }
+                    break;       
                 default:
                     $result['exception'] = 'Acción no disponible dentro de la sesión';
 

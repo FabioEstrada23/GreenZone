@@ -63,7 +63,28 @@ include("../../app/helpers/private_header.php");
                 <!-- Se muestra una gráfica de barra con la cantidad de productos por categoría -->
                 <canvas id="chartCategorias"></canvas>
             </div>
-            
+            <div class="text-center col-12 col-xs-12 col-sm-12 col-lg-6 col-xl-6 p-4 col-xxl-6">
+                <!-- Se muestra una gráfica de pastel con el porcentaje de productos por categoría -->
+                <canvas id="chartPastelCategorias"></canvas>
+            </div>
+            <br>
+            <div class="text-center col-12 col-xs-12 col-sm-12 col-lg-6 col-xl-6 p-4 col-xxl-6">
+                <!-- Se muestra una gráfica de barras con la cantidad de productos por marca -->
+                <canvas id="charMarcas"></canvas>
+            </div>
+            <div class="text-center col-12 col-xs-12 col-sm-12 col-lg-6 col-xl-6 p-4 col-xxl-6">
+                <!-- Se muestra una gráfica de pastel con el porcentaje de productos por marca -->
+                <canvas id="chartPastelMarcas"></canvas>
+            </div>
+            <br>
+            <div class="text-center col-12 col-xs-12 col-sm-12 col-lg-6 col-xl-6 p-4 col-xxl-6">
+                <!-- Se muestra una gráfica de barras con la cantidad de de los cinco producto más comprados -->
+                <canvas id="charMostSelling"></canvas>
+            </div>
+            <div class="text-center col-12 col-xs-12 col-sm-12 col-lg-6 col-xl-6 p-4 col-xxl-6">
+                <!-- Se muestra una gráfica de pastel con el porcentaje de los cinco producto más comprados -->
+                <canvas id="chartPastelMostSelling"></canvas>
+            </div>
         </div>
     </main>
     <script src="../../resources/js/menu/menu.js"></script>
