@@ -293,9 +293,9 @@ class Producto extends Validator
 
     public function MostSelling()
     {
-        $sql = 'SELECT nombre_pro, SUM(cantidad) TotalVentas 
+        $sql = 'SELECT nombre_pro, SUM(cantidad) cantidad 
                 FROM producto INNER JOIN detalle_pedido USING(id_producto) 
-                GROUP BY nombre_pro ORDER BY TotalVentas DESC LIMIT 5 ' ;
+                GROUP BY nombre_pro ORDER BY cantidad DESC LIMIT 5 ' ;
         $params = null;
         return Database::getRows($sql, $params);
     }

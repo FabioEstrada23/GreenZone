@@ -181,7 +181,7 @@ function graficaBarrasMostSelling() {
                     response.dataset.map(function (row) {
                         // Se asignan los datos a los arreglos.
                         productos.push(row.nombre_pro);
-                        cantidad.push(row.TotalVentas);
+                        cantidad.push(row.cantidad);
                     });
                     // Se llama a la función que genera y muestra una gráfica de barras. Se encuentra en el archivo components.js
                     barGraph('charMostSelling', productos, cantidad, 'Cantidad de productos', 'Cantidad de los productos más vendidos');
@@ -215,7 +215,7 @@ function graficaPastelMostSelling() {
                     response.dataset.map(function (row) {
                         // Se asignan los datos a los arreglos.
                         productos.push(row.nombre_pro);
-                        cantidad.push(row.TotalVentas);
+                        cantidad.push(row.cantidad);
                     });
                     // Se llama a la función que genera y muestra una gráfica de pastel en porcentajes. Se encuentra en el archivo components.js
                     pieGraph('chartPastelMostSelling', productos, cantidad, 'Porcentaje de los productos más vendidos');
