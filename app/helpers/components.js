@@ -309,7 +309,8 @@ function barGraph(canvas, xAxis, values, legend, title) {
                 borderColor: '#0B486B',
                 borderWidth: 1,
                 backgroundColor: colors,
-                fill: false
+                fill: false,
+                lineTension: 0,
             }]
         },
         options: {
