@@ -300,15 +300,16 @@ function barGraph(canvas, xAxis, values, legend, title) {
     const context = document.getElementById(canvas).getContext('2d');
     // Se crea una instancia para generar la gráfica con los datos recibidos.
     const chart = new Chart(context, {
-        type: 'bar',
+        type: 'line',
         data: {
             labels: xAxis,
             datasets: [{
                 label: legend,
                 data: values,
-                borderColor: '#000000',
+                borderColor: '#0B486B',
                 borderWidth: 1,
-                backgroundColor: colors
+                backgroundColor: colors,
+                fill: false
             }]
         },
         options: {
