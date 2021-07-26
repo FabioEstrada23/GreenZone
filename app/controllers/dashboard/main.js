@@ -116,7 +116,7 @@ function graficaBarrasMarcas() {
                         cantidad.push(row.cantidad);
                     });
                     // Se llama a la función que genera y muestra una gráfica de barras. Se encuentra en el archivo components.js
-                    barGraph('charMarcas', marcas, cantidad, 'Cantidad de productos', 'Cantidad de productos por marca');
+                    lineGraph('charMarcas', marcas, cantidad, 'Cantidad de productos', 'Cantidad de productos por marca');
                 } else {
                     document.getElementById('charMarcas').remove();
                     console.log(response.exception);
