@@ -7,19 +7,19 @@ $pdf = new Report;
 // Se inicia el reporte con el encabezado del documento.
 $pdf->startReport('Productos por Proveedor');
 
-// Se instancia el módelo Categorías para obtener los datos.
+// Se instancia el módelo Proveedor para obtener los datos.
 $proveedor = new Proveedor;
-// Se verifica si existen registros (categorías) para mostrar, de lo contrario se imprime un mensaje.
+// Se verifica si existen registros (proveedores) para mostrar, de lo contrario se imprime un mensaje.
 if ($dataProveedores = $proveedor->readAll()) {
-    // Se recorren los registros ($dataCategorias) fila por fila ($rowCategoria).
+    // Se recorren los registros ($dataProveedores) fila por fila ($rowProveedor).
     foreach ($dataProveedores as $rowProveedor) {
-        // Se establece un color de relleno para mostrar el nombre de la categoría.
+        // Se establece un color de relleno para mostrar el nombre del proveedor.
         $pdf->SetFillColor(175);
-        // Se establece la fuente para el nombre de la categoría.
+        // Se establece la fuente para el nombre del proveedor.
         $pdf->SetFont('Times', 'B', 12);
-        // Se imprime una celda con el nombre de la categoría.
+        // Se imprime una celda con el nombre del proveedor.
         $pdf->Cell(0, 10, utf8_decode('Proveedor: '.$rowProveedor['nombre_prov']), 1, 1, 'C', 1);
-        // Se establece la categoría para obtener sus productos, de lo contrario se imprime un mensaje de error.
+        // Se establece el proveedor para obtener sus productos, de lo contrario se imprime un mensaje de error.
         if ($proveedor->setId($rowProveedor['id_proveedor'])) {
             // Se verifica si existen registros (productos) para mostrar, de lo contrario se imprime un mensaje.
             if ($dataProductos = $proveedor->readProductosProveedor()) {
