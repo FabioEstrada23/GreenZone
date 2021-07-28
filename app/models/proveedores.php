@@ -139,17 +139,15 @@ class Proveedor extends Validator
         return Database::executeRow($sql, $params);
     }
 
-
-
-
-
-
-    
-
-    
-
-
-
+    public function readProductosProveedor()
+    {
+        $sql = 'SELECT nombre_prov, id_producto, nombre_pro, precio_pro, existencias
+                FROM producto INNER JOIN proveedor USING(id_proveedor)
+                WHERE id_proveedor = ? 
+                ORDER BY nombre_pro';
+        $params = array($this->id_proveedor);
+        return Database::getRows($sql, $params);
+    }
 
 }
 

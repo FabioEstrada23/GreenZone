@@ -152,6 +152,8 @@ include("../../app/helpers/private_header.php");
                         <div class="col-12">
                             <button type="submit" class="btn btn-light">Agregar +</button>
                         </div>
+                        <a href="../../app/reports/dashboard/productos.php" target="_blank" class="btn btn-light" data-tooltip="Reporte de productos por categoría"></a>
+                        <a href="../../app/reports/dashboard/proveedor.php" target="_blank" class="btn btn-light" data-tooltip="Reporte de productos por proveedor"></a>
                     </div>
                     </form>
                 </div>
