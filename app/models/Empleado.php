@@ -179,5 +179,21 @@ class empleado extends Validator
         return Database::executeRow($sql, $params);
     }
 
+    public function readEmpleadosPorTipo()
+    {
+        $sql = 'SELECT id_empleado, nombres_emp, apellidos_emp, correo_emp, alias_emp, clave_emp, tipo_empleado, estado_emp FROM empleado_user INNER JOIN tipo_empleado USING(id_tipo_empleado) INNER JOIN estado_emp USING(id_estado_emp) 
+        WHERE id_tipo_empleado = ?';
+        $params =  array($this->id_tipo_empleado);
+        return Database::getRows($sql, $params);
+    }
+
+    public function readOneTipo()
+    {
+        $sql = 'SELECT id_tipo_empleado, tipo_empleado FROM tipo_empleado
+                WHERE id_tipo_empleado = ?';
+        $params = array($this->id_tipo_empleado);
+        return Database::getRow($sql, $params);
+    }
+
 
 }

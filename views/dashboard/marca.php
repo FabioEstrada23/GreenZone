@@ -109,7 +109,7 @@ require_once('../../app/helpers/dashboard_page.php');
             </div> 
 </section>
 
-
+<script type="text/javascript" src="../../resources/js/chart.js"></script>
 <?php
 // Se imprime la plantilla del pie enviando el nombre del controlador para la página web.
 Dashboard_Page::footerTemplate('marca.js');
