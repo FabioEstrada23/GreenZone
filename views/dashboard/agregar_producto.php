@@ -140,9 +140,6 @@ include("../../app/helpers/private_header.php");
                             <span><i class="material-icons">image</i></span>
                             <input id="archivo_producto" type="file" name="archivo_producto" accept=".gif, .jpg, .png"/>
                         </div>
-                            <div class="file-path-wrapper">
-                            <input type="text" class="file-path validate" placeholder="Formatos aceptados: gif, jpg y png"/>
-                            </div>
                         </div>
                     </div>
 
@@ -152,8 +149,13 @@ include("../../app/helpers/private_header.php");
                         <div class="col-12">
                             <button type="submit" class="btn btn-light">Agregar +</button>
                         </div>
-                        <a href="../../app/reports/dashboard/productos.php" target="_blank" class="btn btn-light" data-tooltip="Reporte de productos por categoría"></a>
-                        <a href="../../app/reports/dashboard/proveedor.php" target="_blank" class="btn btn-light" data-tooltip="Reporte de productos por proveedor"></a>
+                        <br>
+                        <div class="col-12">
+                        <a href="../../app/reports/dashboard/productos.php" target="_blank" class="btn btn-light" data-tooltip="Reporte de productos por categoría">Reporte por categorias</a>
+                        </div>
+                        <div class="col-12">
+                        <a href="../../app/reports/dashboard/proveedor.php" target="_blank" class="btn btn-light" data-tooltip="Reporte de productos por proveedor">Reporte por proveedores</a>
+                        </div>
                     </div>
                     </form>
                 </div>

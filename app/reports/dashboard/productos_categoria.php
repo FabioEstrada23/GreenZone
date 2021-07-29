@@ -2,21 +2,21 @@
 // Se verifica si existe el parámetro id en la url, de lo contrario se direcciona a la página web de origen.
 if (isset($_GET['id'])) {
     require('../../helpers/report.php');
-    require('../../models/marca.php');
+    require('../../models/Categoria.php');
 
-    // Se instancia el módelo marcas para procesar los datos.
-    $marca = new Marca;
+    // Se instancia el módelo Categorias para procesar los datos.
+    $categoria = new categoria;
 
     // Se verifica si el parámetro es un valor correcto, de lo contrario se direcciona a la página web de origen.
-    if ($marca->setId($_GET['id'])) {
+    if ($categoria->setId($_GET['id'])) {
         // Se verifica si la categoría del parametro existe, de lo contrario se direcciona a la página web de origen.
-        if ($rowMarca = $marca->readOne()) {
+        if ($rowCategoria = $categoria->readOne()) {
             // Se instancia la clase para crear el reporte.
             $pdf = new Report;
             // Se inicia el reporte con el encabezado del documento.
-            $pdf->startReport('Productos de la marca '.$rowMarca['marca']);
+            $pdf->startReport('Productos de la categoría '.$rowCategoria['categoria']);
             // Se verifica si existen registros (productos) para mostrar, de lo contrario se imprime un mensaje.
-            if ($dataProductos = $marca->readProductosMarca()) {
+            if ($dataProductos = $categoria->readProductosCategoria()) {
                 // Se establece un color de relleno para los encabezados.
                 $pdf->SetFillColor(225);
                 // Se establece la fuente para los encabezados.
@@ -35,17 +35,17 @@ if (isset($_GET['id'])) {
                     $pdf->Cell(46, 10, $rowProducto['precio_pro'], 1, 1);
                 }
             } else {
-                $pdf->Cell(0, 10, utf8_decode('No hay productos para esta marca'), 1, 1);
+                $pdf->Cell(0, 10, utf8_decode('No hay productos para esta categoría'), 1, 1);
             }
             // Se envía el documento al navegador y se llama al método Footer()
             $pdf->Output();
         } else {
-            header('location: ../../../views/dashboard/marca.php');
+            header('location: ../../../views/dashboard/categorias.php');
         }
     } else {
-        header('location: ../../../views/dashboard/marca.php');
+        header('location: ../../../views/dashboard/categorias.php');
     }
 } else {
-    header('location: ../../../views/dashboard/marca.php');
+    header('location: ../../../views/dashboard/categorias.php');
 }
 ?>
