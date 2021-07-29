@@ -55,7 +55,7 @@ include("../../app/helpers/private_header.php");
                                 <h6>Precio</h6>
                             </div>
                             <div class="col-9">
-                                <input type="number" class="form-control" placeholder="0.01" aria-label="Buscar"
+                                <input type="number" class="form-control" min="0.01" placeholder="0.01" aria-label="Buscar"
                                     aria-describedby="basic-addon1" step="0.01" id="precio_pro" type="number" name="precio_pro"
                                     class="validate" required>
                             </div>
@@ -67,7 +67,7 @@ include("../../app/helpers/private_header.php");
                                 <h6>Oferta</h6>
                             </div>
                             <div class="col-9">
-                                <input type="number" class="form-control" placeholder="0.01" aria-label="Buscar"
+                                <input type="number" class="form-control" min="0.01" placeholder="0.01" aria-label="Buscar"
                                     aria-describedby="basic-addon1" step="0.01" id="oferta_pro" type="number" name="oferta_pro"
                                     class="validate" required>
                             </div>
@@ -79,7 +79,7 @@ include("../../app/helpers/private_header.php");
                                 <h6>Existencias</h6>
                             </div>
                             <div class="col-9">
-                                <input type="number" class="form-control"
+                                <input type="number" min="1" class="form-control"
                                 aria-label="Buscar" aria-describedby="basic-addon1" id="existencias"
                                 type="number" name="existencias" class="validate" required>
                             </div>
@@ -200,13 +200,13 @@ include("../../app/helpers/private_header.php");
                                 </div>
                                 <div class="form-group">
                                     <label for="formGroupExampleInput2">Precio producto:</label>
-                                    <input input type="number" class="form-control" placeholder="0.01" aria-label="Buscar"
+                                    <input input type="number" min="0.01" class="form-control" placeholder="0.01" aria-label="Buscar"
                                     aria-describedby="basic-addon1" step="0.01" id="precio_pro2" type="number" name="precio_pro2"
                                     class="validate" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="formGroupExampleInput2">Oferta:</label>
-                                    <input input type="number" class="form-control" placeholder="0.01" aria-label="Buscar"
+                                    <input input type="number" min="0.01" class="form-control" placeholder="0.01" aria-label="Buscar"
                                     aria-describedby="basic-addon1" step="0.01" id="oferta_pro2" type="number" name="oferta_pro2"
                                     class="validate" required>
                                 </div>
