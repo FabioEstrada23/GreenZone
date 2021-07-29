@@ -247,7 +247,7 @@ include("../../app/helpers/private_header.php");
     </main>
 <?php
 // Se imprime la plantilla del pie enviando el nombre del controlador para la página web.
-Dashboard_Page::footerTemplate('empleados.js');
+Dashboard_Page::footerTemplate('empleado.js');
 ?>
 
 

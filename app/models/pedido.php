@@ -275,7 +275,21 @@ class Pedido extends Validator
         return Database::executeRow($sql, $params);
     }
 
+    public function comprobantePago()
+    {
+        $sql = 'SELECT id_detalle_pedido, nombre_pro, precio_producto, cantidad
+        FROM pedido INNER JOIN detalle_pedido USING(id_pedido) INNER JOIN producto USING(id_producto)
+        WHERE id_cliente_user = ? and id_pedido = (select max(id_pedido) from pedido where id_cliente_user = ?) group by id_detalle_pedido, nombre_pro, precio_pro, cantidad';
+       $params = array($this->id_cliente_user,$this->id_cliente_user);
+       return Database::getRows($sql, $params);   
+    }
 
+    public function readCliente()
+    {
+        $sql = 'SELECT nombres_cli, apellidos_cli from cliente_user where id_cliente_user = ?';
+        $params = array($this->id_cliente_user);
+        return Database::getRow($sql, $params);
+    }
 
     
 
