@@ -14,7 +14,7 @@ if ($dataTipoEmpleado = $empleado->readTipoEmpleado()) {
     // Se recorren los registros ($dataEmpleado) fila por fila ($rowEmpleado).
     foreach ($dataTipoEmpleado as $rowTipoEmpleado) {
         // Se establece un color de relleno para mostrar el nombre de la categoría.
-        $pdf->SetFillColor(175);
+        $pdf->SetFillColor(59, 134, 134);
         // Se establece la fuente para el nombre del empleado.
         $pdf->SetFont('Times', 'B', 12);
         // Se imprime una celda con el nombre de la categoría.
@@ -24,7 +24,7 @@ if ($dataTipoEmpleado = $empleado->readTipoEmpleado()) {
             // Se verifica si existen registros (empleados) para mostrar, de lo contrario se imprime un mensaje.
             if ($dataEmpleado = $empleado->readEmpleadosPorTipo()) {
                 // Se establece un color de relleno para los encabezados.
-                $pdf->SetFillColor(225);
+                $pdf->SetFillColor(168, 219, 168);
                 // Se establece la fuente para los encabezados.
                 $pdf->SetFont('Times', 'B', 11);
                 // Se imprimen las celdas con los encabezados.

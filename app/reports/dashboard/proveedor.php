@@ -14,7 +14,7 @@ if ($dataProveedores = $proveedor->readAll()) {
     // Se recorren los registros ($dataProveedores) fila por fila ($rowProveedor).
     foreach ($dataProveedores as $rowProveedor) {
         // Se establece un color de relleno para mostrar el nombre del proveedor.
-        $pdf->SetFillColor(175);
+        $pdf->SetFillColor(59, 134, 134);
         // Se establece la fuente para el nombre del proveedor.
         $pdf->SetFont('Times', 'B', 12);
         // Se imprime una celda con el nombre del proveedor.
@@ -24,7 +24,7 @@ if ($dataProveedores = $proveedor->readAll()) {
             // Se verifica si existen registros (productos) para mostrar, de lo contrario se imprime un mensaje.
             if ($dataProductos = $proveedor->readProductosProveedor()) {
                 // Se establece un color de relleno para los encabezados.
-                $pdf->SetFillColor(225);
+                $pdf->SetFillColor(168, 219, 168);
                 // Se establece la fuente para los encabezados.
                 $pdf->SetFont('Times', 'B', 11);
                 // Se imprimen las celdas con los encabezados.

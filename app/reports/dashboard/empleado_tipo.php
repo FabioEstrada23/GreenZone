@@ -18,7 +18,7 @@ if (isset($_GET['id_tipo_empleado'])) {
             // Se verifica si existen registros (productos) para mostrar, de lo contrario se imprime un mensaje.
             if ($dataEmpleado = $empleado->readEmpleadosPorTipo()) {
                 // Se establece un color de relleno para los encabezados.
-                $pdf->SetFillColor(225);
+                $pdf->SetFillColor(168, 219, 168);
                 // Se establece la fuente para los encabezados.
                 $pdf->SetFont('Times', 'B', 11);
                 // Se imprimen las celdas con los encabezados.

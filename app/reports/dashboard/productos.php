@@ -14,9 +14,9 @@ if ($dataCategorias = $categoria->readAll()) {
     // Se recorren los registros ($dataCategorias) fila por fila ($rowCategoria).
     foreach ($dataCategorias as $rowCategoria) {
         // Se establece un color de relleno para mostrar el nombre de la categoría.
-        $pdf->SetFillColor(175);
+        $pdf->SetFillColor(59, 134, 134);
         // Se establece la fuente para el nombre de la categoría.
-        $pdf->SetFont('Times', 'B', 12);
+        $pdf->SetFont('Times', 'B', 13);
         // Se imprime una celda con el nombre de la categoría.
         $pdf->Cell(0, 10, utf8_decode('Categoría: '.$rowCategoria['categoria']), 1, 1, 'C', 1);
         // Se establece la categoría para obtener sus productos, de lo contrario se imprime un mensaje de error.
@@ -24,7 +24,7 @@ if ($dataCategorias = $categoria->readAll()) {
             // Se verifica si existen registros (productos) para mostrar, de lo contrario se imprime un mensaje.
             if ($dataProductos = $categoria->readProductosCategoria()) {
                 // Se establece un color de relleno para los encabezados.
-                $pdf->SetFillColor(225);
+                $pdf->SetFillColor(168, 219, 168);
                 // Se establece la fuente para los encabezados.
                 $pdf->SetFont('Times', 'B', 11);
                 // Se imprimen las celdas con los encabezados.
