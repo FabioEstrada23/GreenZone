@@ -56,7 +56,8 @@ class Report extends FPDF
         // Se ubica la fecha y hora del servidor.
         $this->Cell(20);
         $this->SetFont('Arial', '', 10);
-        $this->Cell(166, 10, 'Fecha/Hora: '.date('d-m-Y H:i:s'), 0, 1, 'C');
+        $this->Cell(166, 10, 'Fecha/Hora: '.date('d-m-Y H:i:s') , 0, 1, 'C');
+        $this->Cell(205, 10, 'Usuario: '.($_SESSION['alias_emp']), 0, 1, 'C');
         // Se agrega un salto de línea para mostrar el contenido principal del documento.
         $this->Ln(10);
     }
