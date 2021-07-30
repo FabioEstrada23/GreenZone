@@ -1,7 +1,7 @@
 <?php
 // Se verifica si existe el parámetro id en la url, de lo contrario se direcciona a la página web de origen.
 if (isset($_GET['id_pedido'])) {
-    require('../../helpers/report.php');
+    require('../../helpers/report_public.php');
     require('../../models/pedidocliente.php');
 
     // Se instancia el módelo Categorias para procesar los datos.
@@ -44,9 +44,9 @@ if (isset($_GET['id_pedido'])) {
             header('location: ../../../views/public/pedidos.php');
         }
     } else {
-        header('location: ../../views/dashboard/empleados.php');
+        header('location: ../../../views/public/pedidos.php');
     }
 } else {
-    header('location: ../../views/dashboard/empleados.php');
+    header('location: ../../../views/public/pedidos.php');
 }
 ?>

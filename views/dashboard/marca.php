@@ -1,7 +1,8 @@
 <?php
 //Se incluye la plantilla del encabezado para la página web
-include("../../app/helpers/private_header.php");
 require_once('../../app/helpers/dashboard_page.php');
+// Se imprime la plantilla del encabezado enviando el título de la página web.
+Dashboard_Page::headerTemplate('Gestión de marcas');
 ?>
 <br>
 <br>
