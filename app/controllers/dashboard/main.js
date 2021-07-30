@@ -98,7 +98,7 @@ function graficaPastelCategorias() {
 
 // Función para mostrar la cantidad de productos por marca en una gráfica de barras.
 function graficaBarrasMarcas() {
-    fetch(API_PRODUCTOS + 'cantidadProductosMarcas', {
+    fetch(API_PRODUCTOS + 'cantidadProductosMenosVendidos', {
         method: 'get'
     }).then(function (request) {
         // Se verifica si la petición es correcta, de lo contrario se muestra un mensaje indicando el problema.
@@ -112,11 +112,11 @@ function graficaBarrasMarcas() {
                     // Se recorre el conjunto de registros devuelto por la API (dataset) fila por fila a través del objeto row.
                     response.dataset.map(function (row) {
                         // Se asignan los datos a los arreglos.
-                        marcas.push(row.marca);
+                        marcas.push(row.nombre_pro);
                         cantidad.push(row.cantidad);
                     });
                     // Se llama a la función que genera y muestra una gráfica de barras. Se encuentra en el archivo components.js
-                    lineGraph('charMarcas', marcas, cantidad, 'Cantidad de productos', 'Cantidad de productos por marca');
+                    lineGraph('charMarcas', marcas, cantidad, 'Cantidad de productos', 'Cantidad de productos menos vendidos');
                 } else {
                     document.getElementById('charMarcas').remove();
                     console.log(response.exception);
@@ -132,7 +132,7 @@ function graficaBarrasMarcas() {
 
 // Función para mostrar el porcentaje de productos por marcas en una gráfica de pastel.
 function graficaPastelMarcas() {
-    fetch(API_PRODUCTOS + 'cantidadProductosMarcas', {
+    fetch(API_PRODUCTOS + 'cantidadProductosMenosVendidos', {
         method: 'get'
     }).then(function (request) {
         // Se verifica si la petición es correcta, de lo contrario se muestra un mensaje indicando el problema.
@@ -146,11 +146,11 @@ function graficaPastelMarcas() {
                     // Se recorre el conjunto de registros devuelto por la API (dataset) fila por fila a través del objeto row.
                     response.dataset.map(function (row) {
                         // Se asignan los datos a los arreglos.
-                        marcas.push(row.marca);
+                        marcas.push(row.nombre_pro);
                         cantidad.push(row.cantidad);
                     });
                     // Se llama a la función que genera y muestra una gráfica de pastel en porcentajes. Se encuentra en el archivo components.js
-                    pieGraph('chartPastelMarcas', marcas, cantidad, 'Porcentaje de productos por marca');
+                    pieGraph('chartPastelMarcas', marcas, cantidad, 'Porcentaje de productos menos vendidos');
                 } else {
                     document.getElementById('chartPastelMarcas').remove();
                     console.log(response.exception);

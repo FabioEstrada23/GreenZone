@@ -201,7 +201,7 @@ if (isset($_GET['action'])) {
                         }
                     }
                     break;
-                case 'cantidadProductosMarcas':
+                case 'cantidadProductosMenosVendidos':
                     if ($result['dataset'] = $producto->cantidadProductosMarca()) {
                         $result['status'] = 1;
                     } else {

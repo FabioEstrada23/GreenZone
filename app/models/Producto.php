@@ -284,9 +284,9 @@ class Producto extends Validator
 
     public function cantidadProductosMarca()
     {
-        $sql = 'SELECT marca, COUNT(id_producto) cantidad
-                FROM producto INNER JOIN marca_producto USING(id_marca)
-                GROUP BY marca ORDER BY cantidad DESC';
+        $sql = 'SELECT nombre_pro, sum(cantidad) cantidad 
+        FROM producto INNER JOIN detalle_pedido USING(id_producto) 
+        GROUP BY nombre_pro ORDER BY cantidad asc LIMIT 3';
         $params = null;
         return Database::getRows($sql, $params);
     }
