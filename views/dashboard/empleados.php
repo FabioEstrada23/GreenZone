@@ -113,15 +113,44 @@ include("../../app/helpers/private_header.php");
                                 <!-- Controladores de Proveedor -->
                                 <br>
                                 <div class="row text-center" id="ControladorEmpleados">
-                                    <div class="col-12">
+                                    <div class="col-4">
                                         <button type="submit" class="btn btn-light">Agregar +</button>
-                                    </div>            
+                                    </div>   
+                                    <div class="col-4">
+                                    <a href="../../app/reports/dashboard/empleados.php" target="_blank" class="btn btn-light" data-tooltip="Reporte de productos por categoría">Reporte general</a>
+                                    </div>
+                                    <div class="col-4">
+                                    <a data-bs-toggle="modal" data-bs-target="#wea" target="_blank" class="btn btn-light" data-tooltip="Reporte de productos por categoría">Reporte por tipo</a>
+                                    </div>         
                                 </div>
                                 </form>
                             </div>
                         </div>
             
                     </div>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="wea" tabindex="-1" aria-labelledby="wea" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Reporte</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                        <a href="../../app/reports/dashboard/empleado_tipo.php?id_tipo_empleado=1" target="_blank" class="btn btn-light" data-tooltip="Reporte de productos por categoría">Reporte Root</a>
+                        <a href="../../app/reports/dashboard/empleado_tipo.php?id_tipo_empleado=2" target="_blank" class="btn btn-light" data-tooltip="Reporte de productos por categoría">Reporte Admin</a>
+                        <a href="../../app/reports/dashboard/empleado_tipo.php?id_tipo_empleado=3" target="_blank" class="btn btn-light" data-tooltip="Reporte de productos por categoría">Reporte Empleado</a>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+
+
+
 
                     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">

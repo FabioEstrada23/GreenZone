@@ -1,15 +1,15 @@
 <?php
 // Se verifica si existe el parámetro id en la url, de lo contrario se direcciona a la página web de origen.
-if (isset($_GET['id_cliente_user'])) {
+if (isset($_GET['id_pedido'])) {
     require('../../helpers/report.php');
-    require('../../models/pedido.php');
+    require('../../models/pedidocliente.php');
 
     // Se instancia el módelo Categorias para procesar los datos.
     $pedido = new Pedido;
 
     // Se verifica si el parámetro es un valor correcto, de lo contrario se direcciona a la página web de origen.
-    if ($pedido->setCliente($_GET['id_cliente_user'])) {
-        // Se verifica si el tipo de empleado del parametro existe, de lo contrario se direcciona a la página web de origen.
+    if ($pedido->setId($_GET['id_pedido'])) {
+        // Se verifica si el cliente del parametro existe, de lo contrario se direcciona a la página web de origen.
         if ($rowCliente = $pedido->readCliente()) {
             // Se instancia la clase para crear el reporte.
             $pdf = new Report;
@@ -41,7 +41,7 @@ if (isset($_GET['id_cliente_user'])) {
             // Se envía el documento al navegador y se llama al método Footer()
             $pdf->Output();
         } else {
-            header('location: ../../views/dashboard/empleados.php');
+            header('location: ../../../views/public/pedidos.php');
         }
     } else {
         header('location: ../../views/dashboard/empleados.php');
