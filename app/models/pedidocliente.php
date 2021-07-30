@@ -181,4 +181,13 @@ class Pedido extends Validator
         return Database::getRow($sql, $params);
     }
 
+    public function totalPago()
+    {
+        $sql = 'SELECT  SUM(cantidad * precio_pro) as Total
+        FROM pedido INNER JOIN detalle_pedido USING(id_pedido) INNER JOIN producto USING(id_producto)
+        WHERE id_pedido = ?';
+       $params = array($this->id_pedido);
+       return Database::getRow($sql, $params);   
+    }
+
 }

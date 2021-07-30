@@ -38,7 +38,16 @@ if (isset($_GET['id_pedido'])) {
             } else {
                 $pdf->Cell(0, 10, utf8_decode('No hay empleados para este tipo'), 1, 1);
             }
+            
+            if ($dataPedido = $pedido->totalPago()) {
+                
+                $pdf->Cell(124, 10, utf8_decode('Total(US$)'), 1, 0, 'C', 1);
+                $pdf->Cell(62, 10, utf8_decode($dataPedido['total']), 1, 1, 'C', 1);
+            }
+
+
             // Se envía el documento al navegador y se llama al método Footer()
+
             $pdf->Output();
         } else {
             header('location: ../../../views/public/pedidos.php');
