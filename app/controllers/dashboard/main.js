@@ -82,7 +82,7 @@ function graficaPastelCategorias() {
                         cantidad.push(row.cantidad);
                     });
                     // Se llama a la función que genera y muestra una gráfica de pastel en porcentajes. Se encuentra en el archivo components.js
-                    pieGraph('chartPastelCategorias', categorias, cantidad, 'Porcentaje de productos por categoría');
+                    donutGraph('chartPastelCategorias', categorias, cantidad, 'Porcentaje de productos por categoría');
                 } else {
                     document.getElementById('chartPastelCategorias').remove();
                     console.log(response.exception);
@@ -218,7 +218,7 @@ function graficaPastelMostSelling() {
                         cantidad.push(row.cantidad);
                     });
                     // Se llama a la función que genera y muestra una gráfica de pastel en porcentajes. Se encuentra en el archivo components.js
-                    pieGraph('chartPastelMostSelling', productos, cantidad, 'Porcentaje de los productos más vendidos');
+                    donutGraph('chartPastelMostSelling', productos, cantidad, 'Porcentaje de los productos más vendidos');
                 } else {
                     document.getElementById('chartPastelMostSelling').remove();
                     console.log(response.exception);
