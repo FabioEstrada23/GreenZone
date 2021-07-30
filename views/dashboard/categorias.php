@@ -136,7 +136,7 @@ Dashboard_Page::headerTemplate('Gestión de categorías');
 
 <?php
 // Se imprime la plantilla del pie enviando el nombre del controlador para la página web.
-Dashboard_Page::footerTemplate('Categoria.js');
+Dashboard_Page::footerTemplate('categoria.js');
 ?>
 
 

@@ -311,6 +311,6 @@ Dashboard_Page::headerTemplate('Gestión de productos');
 
 <?php
 // Se imprime la plantilla del pie enviando el nombre del controlador para la página web.
-Dashboard_Page::footerTemplate('Producto.js');
+Dashboard_Page::footerTemplate('producto.js');
 ?>
 
