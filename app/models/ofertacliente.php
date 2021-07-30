@@ -1,6 +1,6 @@
 <?php 
 
-class ofertascliente extends Validator
+class Ofertascliente extends Validator
 {
     /* Declaramos las variables */
     private $id_oferta = null;

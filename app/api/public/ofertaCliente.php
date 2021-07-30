@@ -5,7 +5,7 @@ require_once('../../models/ofertacliente.php');
 
 if (isset($_GET['action'])) {
     session_start();
-    $oferta = new ofertascliente;
+    $oferta = new Ofertascliente;
     $result = array('status' => 0, 'message' => null, 'exception' => null);
 
     if (isset($_SESSION['id_cliente_user']) ) {

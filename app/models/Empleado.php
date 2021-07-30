@@ -1,6 +1,6 @@
 <?php
 
-class empleado extends Validator
+class Empleado extends Validator
 {
     private $id_empleado = null;
     private $nombres_emp = null;
