@@ -1,7 +1,7 @@
 <?php
 require_once('../../helpers/database.php');
 require_once('../../helpers/validator.php');
-require_once('../../models/Producto.php');
+require_once('../../models/producto.php');
 
 if (isset($_GET['action'])) {
     session_start();

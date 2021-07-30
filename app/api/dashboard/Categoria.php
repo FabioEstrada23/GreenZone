@@ -1,14 +1,14 @@
 <?php
 require_once('../../helpers/database.php');
 require_once('../../helpers/validator.php');
-require_once('../../models/Categoria.php');
+require_once('../../models/categoria.php');
 
 if (isset($_GET['action'])) {
     session_start();
     $Categoria = new Categoria;
     $result = array('status' => 0, 'message' => null, 'exception' => null);
 
-    if (isset($_SESSION['id_empleado']) || true) {
+    if (isset($_SESSION['id_empleado'])) {
 
         switch ($_GET['action']) {
             case 'readAll':
