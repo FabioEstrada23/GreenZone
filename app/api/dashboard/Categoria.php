@@ -3,13 +3,23 @@ require_once('../../helpers/database.php');
 require_once('../../helpers/validator.php');
 require_once('../../models/categoria.php');
 
+// Se comprueba si existe una acción a realizar, de lo contrario se finaliza el script con un mensaje de error.
 if (isset($_GET['action'])) {
+    // Se crea una sesión o se reanuda la actual para poder utilizar variables de sesión en el script.
     session_start();
+    // Se instancia la clase correspondiente.
     $Categoria = new Categoria;
+    // Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
     $result = array('status' => 0, 'message' => null, 'exception' => null);
+<<<<<<< Updated upstream
 
     if (isset($_SESSION['id_empleado'])) {
 
+=======
+    // Se verifica si existe una sesión iniciada como administrador, de lo contrario se finaliza el script con un mensaje de error.
+    if (isset($_SESSION['id_empleado']) || true) {
+        // Se compara la acción a realizar cuando un administrador ha iniciado sesión.
+>>>>>>> Stashed changes
         switch ($_GET['action']) {
             case 'readAll':
                 if ($result['dataset'] = $Categoria->readAll()) {
