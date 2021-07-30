@@ -40,6 +40,10 @@ if (isset($_GET['id_pedido'])) {
             }
             
             if ($dataPedido = $pedido->totalPago()) {
+                // Se establece un color de relleno para los encabezados.
+                $pdf->SetFillColor(59, 134, 134);
+                $pdf->SetTextColor(255, 255, 255);
+                $pdf->SetFont('Times', 'B', 11);
                 
                 $pdf->Cell(124, 10, utf8_decode('Total(US$)'), 1, 0, 'C', 1);
                 $pdf->Cell(62, 10, utf8_decode($dataPedido['total']), 1, 1, 'C', 1);
