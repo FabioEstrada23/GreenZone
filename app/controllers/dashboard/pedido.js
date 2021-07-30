@@ -16,6 +16,7 @@ function fillTable(dataset) {
                 <td>${row.estado_pedido}</td>
                 <td>
                     <a href="#" onclick="openUpdateDialog(${row.id_pedido})" class="btn waves-effect blue tooltipped" data-tooltip="Actualizar" data-bs-toggle="modal" data-bs-target="#exampleModal" ><i class="material-icons">mode_edit</i></a>
+                    <a href="../../app/reports/dashboard/productos_categoria.php?id=${row.id_categoria}" target="_blank" class="btn waves-effect amber tooltipped" data-tooltip="Reporte de pedido"><i class="material-icons">assignment</i></a>
                 </td>
             </tr>
         `;

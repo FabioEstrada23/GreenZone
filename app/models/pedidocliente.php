@@ -142,8 +142,9 @@ class Pedido extends Validator
         $sql = 'SELECT id_pedido, cliente_user, fecha_pedido, fecha_entrega, estado_pedido FROM pedido
                 INNER JOIN cliente_user USING(id_cliente_user) 
                 INNER JOIN estado_pedido using(id_estado_pedido)
+                WHERE id_cliente_user = ?
                 ORDER BY id_pedido';
-        $params = null;
+        $params = array($_SESSION['id_cliente_user']);
         return Database::getRows($sql, $params);
     }
 
@@ -160,6 +161,22 @@ class Pedido extends Validator
         $sql = 'SELECT id_detalle_pedido, nombre_pro, id_pedido, cantidad, precio_producto 
         FROM detalle_pedido INNER JOIN nombre_pro using(id_producto)
         WHERE id_pedido = ?';
+        $params = array($this->id_pedido);
+        return Database::getRow($sql, $params);
+    }
+
+    public function comprobantePago()
+    {
+        $sql = 'SELECT id_detalle_pedido, nombre_pro, precio_producto, cantidad
+        FROM pedido INNER JOIN detalle_pedido USING(id_pedido) INNER JOIN producto USING(id_producto)
+        WHERE id_pedido = ? group by id_detalle_pedido, nombre_pro, precio_pro, cantidad';
+       $params = array($this->id_pedido);
+       return Database::getRows($sql, $params);   
+    }
+
+    public function readCliente()
+    {
+        $sql = 'SELECT nombres_cli, apellidos_cli from pedido INNER JOIN cliente_user using(id_cliente_user) where id_pedido = ?';
         $params = array($this->id_pedido);
         return Database::getRow($sql, $params);
     }
