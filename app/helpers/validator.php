@@ -219,12 +219,33 @@ class Validator
     public function validatePassword($value)
     {
         // Se verifica la longitud mínima de la contraseña.
-        if (strlen($value) >= 8) {
-            return true;
-        } else {
+        if (strlen($value) < 8) {
             $this->passwordError = 'Clave menor a 8 caracteres';
             return false;
-        }
+        } 
+        if(strlen($value) > 16){
+            $this->passwordError = "La clave no puede tener más de 16 caracteres";
+            return false;
+         }
+         if (!preg_match('`[a-z]`',$value)){
+            $this->passwordError = "La clave debe tener al menos una letra minúscula";
+            return false;
+         }
+         if (!preg_match('`[A-Z]`',$value)){
+            $this->passwordError = "La clave debe tener al menos una letra mayúscula";
+            return false;
+         }
+         if (!preg_match('`[0-9]`',$value)){
+            $this->passwordError = "La clave debe tener al menos un caracter numérico";
+            return false;
+         }
+         if ((strpos($value, " "))){
+            $this->passwordError = "No deje espacios vacíos";
+            return false;
+         }
+         
+         return true;
+      
     }
 
     /*
