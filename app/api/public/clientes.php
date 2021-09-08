@@ -16,12 +16,11 @@ if(isset($_GET['action'])){
 
         switch ($_GET['action']) {
             case 'logOut':
-                if (session_destroy()) {
+                
+                    unset($_SESSION['id_cliente_user']);
                     $result['status'] = 1;
                     $result['message'] = 'Sesión eliminada correctamente';
-                } else {
-                    $result['exception'] = 'Ocurrió un problema al cerrar la sesión';
-                }
+                
                 break;
             case 'readCiudad':
                     if ($result['dataset'] = $cliente->readCiudad()) {
@@ -45,6 +44,34 @@ if(isset($_GET['action'])){
                     }
                 }
                 break;
+
+                case 'changePassword':
+                    if ($cliente->setIdClienteUser($_SESSION['id_cliente_user'])) {
+                        $_POST = $cliente->validateForm($_POST);
+                        if ($cliente->checkPassword($_POST['clave_actual_cli'])) {
+                            if ($_POST['clave_nueva_1_cli'] == $_POST['clave_nueva_2_cli']) {
+                                        
+                                        if ($cliente->setClave($_POST['clave_nueva_1_cli'])) {
+                                            if ($cliente->changePassword()) {
+                                                $result['status'] = 1;
+                                                $result['message'] = 'Contraseña cambiada correctamente';
+                                            } else {
+                                                $result['exception'] = Database::getException();
+                                            }
+                                        } else {
+                                            $result['exception'] = $usuario->getPasswordError();
+                                        }
+                                      
+                            } else {
+                                $result['exception'] = 'Claves nuevas diferentes';
+                            }
+                        } else {
+                            $result['exception'] = 'Clave actual incorrecta';
+                        }
+                    } else {
+                        $result['exception'] = 'Usuario incorrecto';
+                    }
+                    break;    
             case 'editProfile':  
                 $_POST = $cliente->validateForm($_POST);
                 if ($cliente->setDuiCli($_POST['dui_cli'])){

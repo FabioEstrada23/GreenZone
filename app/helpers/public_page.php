@@ -106,6 +106,9 @@ class Public_Page
                                         <a href="#" onclick="openProfileDialog()"class="btn waves-effect blue tooltipped" data-tooltip="profile" data-bs-toggle="modal" data-bs-target="#profile"><i class="far fa-user"></i> Perfil</a>
                                     </button>
                                     <button class="btn btn-primary ">
+                                        <a href="#" onclick=""class="btn waves-effect blue tooltipped" data-tooltip="profile" data-bs-toggle="modal" data-bs-target="#password-modal-cli"><i class="fas fa-shield-alt"></i> Cambiar contraseña</a>
+                                    </button>
+                                    <button class="btn btn-primary ">
                                         <a href="#" onclick="logOut()"><i class="fas fa-times"></i> Cerrar sesión</a>
                                     </button>
                                 </div>
@@ -340,7 +343,54 @@ class Public_Page
                     </div>
                 </div>
             </div>
-            
+            <div class="modal fade" id="password-modal-cli" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="modal-title"> Cambio de contraseña</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form id="password-form-cli" method="post" enctype="multipart/form-data">
+                                    <div class="form-group">
+                                        
+                                            <i class="fas fa-shield-alt"></i>
+                                            <label for="clave_actual">Clave actual</label>   
+                                            <input id="clave_actual_cli" type="password" name="clave_actual_cli" class="validate form-control" required/>
+                                            
+                                        
+                                    </div>
+                                    <br>
+                                    <div class="center-align">
+                                        <label>CLAVE NUEVA</label>
+                                    </div>
+                                    <br>
+                                    <div class="form-group">
+                                        
+                                            <i class="fas fa-shield-alt"></i>
+                                            <label for="clave_nueva_1">Clave</label>
+                                            <input id="clave_nueva_1_cli" type="password" name="clave_nueva_1_cli" class="validate form-control" required/>
+                                            
+                                            
+                                    </div>
+                                    <br>
+                                    
+                                    <div class="form-group">
+                                            <i class="fas fa-shield-alt"></i>
+                                            <label for="clave_nueva_2">Confirmar clave</label>   
+                                            <input id="clave_nueva_2_cli" type="password" name="clave_nueva_2_cli" class="validate form-control" required/>
+                                            
+                                    </div>        
+                                </div>  
+                            <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                            <button type="submit" data-tooltip="Actualizar" class="btn btn-primary" >Guardar Cambios</button>
+                        </div>
+                    </form>
+                    </div>
+                </div>
+            </div>                 
                 <main>
                 ');
             } else {

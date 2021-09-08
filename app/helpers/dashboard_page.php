@@ -63,7 +63,7 @@ class Dashboard_Page
                                                 <i class="material-icons left">verified_user</i>Usuario: <b>'. ($_SESSION['alias_emp']) .'</b>
                                                 </a>
                                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                                    <li><a href="#" onclick=""class="btn waves-effect blue tooltipped" data-tooltip="profile" data-bs-toggle="modal" data-bs-target="#password-modal"><i class="far fa-user"></i> Cambiar contraseña</a></li>
+                                                    <li><a href="#" onclick=""class="btn waves-effect blue tooltipped" data-tooltip="profile" data-bs-toggle="modal" data-bs-target="#password-modal"><i class="fas fa-shield-alt"></i> Cambiar contraseña</a></li>
                                                     <li><a class="btn waves-effect blue tooltipped" href="#" onclick="logOut()"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a></li>
                                                 </ul>
                                             </li>
@@ -91,7 +91,7 @@ class Dashboard_Page
                         </div>
                     </header>        
                         <main> 
-                        <div class="modal fade" id="password-modal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    <div class="modal fade" id="password-modal" tabindex="-1" aria-labelledby="exampleModalLabel"
                         aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
@@ -134,11 +134,11 @@ class Dashboard_Page
                             <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                             <button type="submit" data-tooltip="Actualizar" class="btn btn-primary" >Guardar Cambios</button>
+                                </div>
+                            </form>
                         </div>
-                    </form>
                     </div>
-                </div>
-            </div>                          
+                </div>                          
                     ');
                 
             } else {

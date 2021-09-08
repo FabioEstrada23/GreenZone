@@ -186,20 +186,6 @@ class Usuarios extends Validator
     {
         $sql = 'SELECT clave_emp FROM empleado_user WHERE id_empleado = ?';
         $params = array($this->id);
-
-        /*if ($data = Database::getRow($sql, $params)) {
-            if($password == $data['clave_emp']){
-               return true; 
-            }
-            else{
-                return false;
-            }
-            
-        } else {
-            return false;
-        }*/
-
-
         $data = Database::getRow($sql, $params);
         if (password_verify($password, $data['clave_emp'])) {
             

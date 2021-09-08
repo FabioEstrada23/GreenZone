@@ -321,6 +321,7 @@ class Cliente extends validator{
         $params = array($this->id_cliente_user);
         $data = Database::getRow($sql, $params);
         if (password_verify($password, $data['contra_cli_us'])) {
+            
             return true;
         } else {
             return false;
@@ -359,6 +360,15 @@ class Cliente extends validator{
         $sql = 'SELECT id_ciudad, ciudad FROM ciudad';
         $params = null;
         return Database::getRows($sql, $params);
+    }
+
+    public function changePassword()
+    {
+        // Se transforma la contraseña a una cadena de texto de longitud fija mediante el algoritmo por defecto.
+        $hash = password_hash($this->contra_cli_us, PASSWORD_DEFAULT);
+        $sql = 'UPDATE cliente_user SET clave_cli = ? WHERE id_cliente_user = ?';
+        $params = array($hash, $_SESSION['id_cliente_user']);
+        return Database::executeRow($sql, $params);
     }
 }
 
