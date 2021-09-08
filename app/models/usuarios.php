@@ -217,5 +217,14 @@ class Usuarios extends Validator
         $params = array($_SESSION['id_empleado']);
         return Database::getRow($sql, $params);
     }
+
+    public function changePassword()
+    {
+        // Se transforma la contraseña a una cadena de texto de longitud fija mediante el algoritmo por defecto.
+        $hash = password_hash($this->clave, PASSWORD_DEFAULT);
+        $sql = 'UPDATE empleado_user SET clave_emp = ? WHERE id_empleado = ?';
+        $params = array($hash, $_SESSION['id_empleado']);
+        return Database::executeRow($sql, $params);
+    }
     
 }

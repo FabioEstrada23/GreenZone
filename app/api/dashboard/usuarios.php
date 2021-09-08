@@ -23,6 +23,31 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Ocurrió un problema al cerrar la sesión';
                 }
                 break;
+                case 'changePassword':
+                    if ($usuario->setId($_SESSION['id_empleado'])) {
+                        $_POST = $usuario->validateForm($_POST);
+                        if ($usuario->checkPassword($_POST['clave_actual'])) {
+                            if ($_POST['clave_nueva_1'] == $_POST['clave_nueva_2']) {
+                                if ($usuario->setClave($_POST['clave_nueva_1'])) {
+                                    if ($usuario->changePassword()) {
+                                        $result['status'] = 1;
+                                        $result['message'] = 'Contraseña cambiada correctamente';
+                                    } else {
+                                        $result['exception'] = Database::getException();
+                                    }
+                                } else {
+                                    $result['exception'] = $usuario->getPasswordError();
+                                }
+                            } else {
+                                $result['exception'] = 'Claves nuevas diferentes';
+                            }
+                        } else {
+                            $result['exception'] = 'Clave actual incorrecta';
+                        }
+                    } else {
+                        $result['exception'] = 'Usuario incorrecto';
+                    }
+                    break;
             case 'readProfile':
                 if ($result['dataset'] = $usuario->readProfile()) {
                     $result['status'] = 1;
