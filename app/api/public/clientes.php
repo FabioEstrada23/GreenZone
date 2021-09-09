@@ -59,7 +59,7 @@ if(isset($_GET['action'])){
                                                 $result['exception'] = Database::getException();
                                             }
                                         } else {
-                                            $result['exception'] = $usuario->getPasswordError();
+                                            $result['exception'] = $cliente->getPasswordError();
                                         }
                                       
                             } else {

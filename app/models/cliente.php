@@ -366,7 +366,7 @@ class Cliente extends validator{
     {
         // Se transforma la contraseña a una cadena de texto de longitud fija mediante el algoritmo por defecto.
         $hash = password_hash($this->contra_cli_us, PASSWORD_DEFAULT);
-        $sql = 'UPDATE cliente_user SET clave_cli = ? WHERE id_cliente_user = ?';
+        $sql = 'UPDATE cliente_user SET contra_cli_us = ? WHERE id_cliente_user = ?';
         $params = array($hash, $_SESSION['id_cliente_user']);
         return Database::executeRow($sql, $params);
     }
