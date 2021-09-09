@@ -40,6 +40,8 @@ class Dashboard_Page
         $filename = basename($_SERVER['PHP_SELF']);
         // Se comprueba si existe una sesión de administrador para mostrar el menú de opciones, de lo contrario se muestra un menú vacío.
         if (isset($_SESSION['id_empleado'])) {
+
+            
             // Se verifica si la página web actual es diferente a index.php (Iniciar sesión) y a register.php (Crear primer usuario) para no iniciar sesión otra vez, de lo contrario se direcciona a main.php
             if ($filename != 'private_login.php' && $filename != 'register.php') {
                 print('

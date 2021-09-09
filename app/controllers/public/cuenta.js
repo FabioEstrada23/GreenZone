@@ -2,6 +2,32 @@
 const API = '../../app/api/public/clientes.php?action=';
 const ENDPOINT_CIUDAD = '../../app/api/public/clientes.php?action=readCiudad';
 
+// Método manejador de eventos que se ejecuta cuando el documento ha cargado.
+document.addEventListener('DOMContentLoaded', function () {
+    
+
+    inactivityTime(); 
+});
+
+
+var inactivityTime = function () {
+    var time;
+    window.onload = resetTimer;
+    // DOM Events
+    document.onmousemove = resetTimer;
+    document.onkeypress = resetTimer;
+
+    function logout() {
+        sweetAlert(2, 'Se ha cerrado sesión por inactividad', 'inactividad.php');
+    }
+
+    function resetTimer() {
+        clearTimeout(time);
+        time = setTimeout(logout, 10000)
+        // 1000 milliseconds = 1 second
+    }
+};
+
 // Función para mostrar el formulario de editar perfil con los datos del usuario que ha iniciado sesión.
 function openProfileDialog() {
     fetch(API + 'readProfile', {

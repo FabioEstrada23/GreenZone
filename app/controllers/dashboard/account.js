@@ -6,6 +6,32 @@
 // Constante para establecer la ruta y parámetros de comunicación con la API.
 const API = '../../app/api/dashboard/usuarios.php?action=';
 
+// Método manejador de eventos que se ejecuta cuando el documento ha cargado.
+document.addEventListener('DOMContentLoaded', function () {
+    
+
+    inactivityTime(); 
+});
+
+
+var inactivityTime = function () {
+    var time;
+    window.onload = resetTimer;
+    // DOM Events
+    document.onmousemove = resetTimer;
+    document.onkeypress = resetTimer;
+
+    function logout() {
+        sweetAlert(2, 'Se ha cerrado sesión por inactividad', 'logout.php');
+    }
+
+    function resetTimer() {
+        clearTimeout(time);
+        time = setTimeout(logout, 10000)
+        // 1000 milliseconds = 1 second
+    }
+};
+
 // Método manejador de eventos que se ejecuta cuando se envía el formulario de cambiar clave.
 document.getElementById('password-form').addEventListener('submit', function (event) {
     // Se evita recargar la página web después de enviar el formulario.
