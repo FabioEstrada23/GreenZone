@@ -27,22 +27,30 @@ if (isset($_GET['action'])) {
                     if ($usuario->setId($_SESSION['id_empleado'])) {
                         $_POST = $usuario->validateForm($_POST);
                         if ($usuario->checkPassword($_POST['clave_actual'])) {
-                            if ($_POST['clave_nueva_1'] == $_POST['clave_nueva_2']) {
-                                        
-                                        if ($usuario->setClave($_POST['clave_nueva_1'])) {
-                                            if ($usuario->changePassword()) {
-                                                $result['status'] = 1;
-                                                $result['message'] = 'Contraseña cambiada correctamente';
+                            if ($_POST['clave_actual'] != $_POST['clave_nueva_1']) {
+                                if ($_POST['clave_nueva_1'] == $_POST['clave_nueva_2']) {
+                                            
+                                            if ($usuario->setClave($_POST['clave_nueva_1'])) {
+                                                if ($usuario->setPasswordAlias($_POST['clave_nueva_1'], $_SESSION['alias_emp'])) {
+                                                    if ($usuario->changePassword()) {
+                                                        $result['status'] = 1;
+                                                        $result['message'] = 'Contraseña cambiada correctamente';
+                                                    } else {
+                                                        $result['exception'] = Database::getException();
+                                                    }
+                                                } else {
+                                                    $result['exception'] = $usuario->getPasswordError();
+                                                }
                                             } else {
-                                                $result['exception'] = Database::getException();
+                                                $result['exception'] = $usuario->getPasswordError();
                                             }
-                                        } else {
-                                            $result['exception'] = $usuario->getPasswordError();
-                                        }
-                                      
+                                        
+                                } else {
+                                    $result['exception'] = 'Claves nuevas diferentes';
+                                }
                             } else {
-                                $result['exception'] = 'Claves nuevas diferentes';
-                            }
+                                $result['exception'] = 'Intente ingresar una contraseña que no sea igual a la anterior';
+                            }    
                         } else {
                             $result['exception'] = 'Clave actual incorrecta';
                         }
@@ -103,11 +111,15 @@ if (isset($_GET['action'])) {
                             if ($usuario->setAlias($_POST['alias_usuario'])) {
                                 if ($_POST['clave_usuario'] == $_POST['confirmar_clave']) {
                                     if ($usuario->setClave($_POST['clave_usuario'])) {
-                                        if ($usuario->createRow()) {
-                                            $result['status'] = 1;
-                                            $result['message'] = 'Usuario creado correctamente';
+                                        if ($usuario->setPasswordAlias($_POST['clave_nueva_1'], $_POST['alias_usuario'])) {
+                                            if ($usuario->createRow()) {
+                                                $result['status'] = 1;
+                                                $result['message'] = 'Contraseña cambiada correctamente';
+                                            } else {
+                                                $result['exception'] = Database::getException();
+                                            }
                                         } else {
-                                            $result['exception'] = Database::getException();
+                                            $result['exception'] = $usuario->getPasswordError();
                                         }
                                     } else {
                                         $result['exception'] = $usuario->getPasswordError();

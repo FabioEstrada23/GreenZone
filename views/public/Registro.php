@@ -36,22 +36,22 @@
             <input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response"/>
             <h1 class="title"> Registro</h1>
             <label for="nombre"><i class="material-icons prefix">person</i> Nombre</label>
-            <input type="text" placeholder="Ingresa tu nombre" name="nombres" class="validate" required>
+            <input type="text" placeholder="Ingresa tu nombre" name="nombres" class="validate" autocomplete="off" required>
             <!-- Ingresar apellidos de la persona -->
             <label for="apellidos">Apellidos</label>
-            <input type="text" placeholder="Ingresa tus apellidos" name="apellidos" class="validate" required>
+            <input type="text" placeholder="Ingresa tus apellidos" name="apellidos" class="validate" autocomplete="off" required>
             <!-- Ingresar nombre de usuario -->
             <label for="username">Nombre de usuario</label>
-            <input type="text" placeholder="Ingresa tu nombre de usuario" name="usuario" class="validate" required/>
+            <input type="text" placeholder="Ingresa tu nombre de usuario" name="usuario" class="validate" autocomplete="off" required/>
             <!-- Ingresar correo electronico -->
             <label for="correo"><i class="material-icons prefix">email</i> Correo</label>
-            <input type="text" placeholder="Ingresa tu correo electrónico" name="correo" class="validate" required>
+            <input type="text" placeholder="Ingresa tu correo electrónico" name="correo" class="validate" autocomplete="off" required>
             <!-- Ingresar DUI -->
             <label for="correo"><i class="material-icons prefix">how_to_reg</i> DUI</label>
-            <input type="text" placeholder="00000000-0" pattern="[0-9]{8}[-][0-9]{1}" name="dui" class="validate" required>
+            <input type="text" placeholder="00000000-0" pattern="[0-9]{8}[-][0-9]{1}" name="dui" class="validate" autocomplete="off" required>
             <!-- Ingresar fecha de nacimiento-->
             <label for="start"><i class="material-icons prefix">cake</i> Fecha de nacimiento:</label>    
-            <input type="date" id="nacimiento_cliente" name="nacimiento_cliente" class="validate" required/>
+            <input type="date" id="nacimiento_cliente" name="nacimiento_cliente" class="validate" autocomplete="off" required/>
                 <div>
                     <h1 class="title"> Llenado de contraseña</h1>
                 </div>
@@ -104,7 +104,7 @@
     </div>
 
     <!-- Importación del archivo para que funcione el reCAPTCHA. Para más información https://developers.google.com/recaptcha/docs/v3 -->
-    <script type="text/javascript" src="https://www.google.com/recaptcha/api.js?render=6LdBzLQUAAAAAJvH-aCUUJgliLOjLcmrHN06RFXT"></script>
+    <script type="text/javascript" src="https://www.google.com/recaptcha/api.js?render=6LeBqFccAAAAAKKKyrQri1N3nktSRu1YR8TC2iNs"></script>
     <script src="../../resources/js/bootstrap/bootstrap.min.js"></script>
     <script type="text/javascript" src="../../resources/js/sweetalert.min.js"></script>
     <script type="text/javascript" src="../../app/controllers/public/registro.js"></script>

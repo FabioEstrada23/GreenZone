@@ -1,4 +1,4 @@
-<!-- Código para destruir la sesión debido a la inactividad en el sitio privado -->
+<!-- Código para destruir la sesión debido a la inactividad en el sitio publico -->
 <?php
 session_start();
 //Cerrar sesión

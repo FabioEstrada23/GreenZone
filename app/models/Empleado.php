@@ -10,7 +10,20 @@ class Empleado extends Validator
     private $clave_emp = null;
     private $id_tipo_empleado = null;
     private $id_estado_emp = null;
-	
+    private $passwordAlias = null;
+
+	/*
+    *   Métodos para asignar valores a los atributos.
+    */
+    public function setPasswordEmpleado($value, $alias)
+    {
+        if ($this->validatePasswordAlias($value, $alias, 16)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function setId($value){
         if ($this->validateNaturalNumber($value)) {
             $this->id_empleado = $value;

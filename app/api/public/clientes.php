@@ -49,22 +49,28 @@ if(isset($_GET['action'])){
                     if ($cliente->setIdClienteUser($_SESSION['id_cliente_user'])) {
                         $_POST = $cliente->validateForm($_POST);
                         if ($cliente->checkPassword($_POST['clave_actual_cli'])) {
-                            if ($_POST['clave_nueva_1_cli'] == $_POST['clave_nueva_2_cli']) {
-                                        
-                                        if ($cliente->setClave($_POST['clave_nueva_1_cli'])) {
-                                            if ($cliente->changePassword()) {
-                                                $result['status'] = 1;
-                                                $result['message'] = 'Contraseña cambiada correctamente';
+                            if ($_POST['clave_actual_cli'] != $_POST['clave_nueva_1_cli']) {
+                                if ($_POST['clave_nueva_1_cli'] == $_POST['clave_nueva_2_cli']) {
+                                    if ($cliente->setPasswordNombreUsuario($_POST['clave_nueva_1_cli'], $_SESSION['nombre_usuario'])) {
+                                            if ($cliente->setClave($_POST['clave_nueva_1_cli'])) {
+                                                if ($cliente->changePassword()) {
+                                                    $result['status'] = 1;
+                                                    $result['message'] = 'Contraseña cambiada correctamente';
+                                                } else {
+                                                    $result['exception'] = Database::getException();
+                                                }
                                             } else {
-                                                $result['exception'] = Database::getException();
+                                                $result['exception'] = $cliente->getPasswordError();
                                             }
-                                        } else {
-                                            $result['exception'] = $usuario->getPasswordError();
-                                        }
-                                      
+                                    } else {
+                                        $result['exception'] = $cliente->getPasswordError();
+                                    }    
+                                } else {
+                                    $result['exception'] = 'Claves nuevas diferentes';
+                                }
                             } else {
-                                $result['exception'] = 'Claves nuevas diferentes';
-                            }
+                                $result['exception'] = 'Intente ingresar una contraseña que no sea igual a la anterior';
+                            }    
                         } else {
                             $result['exception'] = 'Clave actual incorrecta';
                         }
@@ -137,7 +143,7 @@ if(isset($_GET['action'])){
                 // Se sanea el valor del token para evitar datos maliciosos.
                 $token = filter_input(INPUT_POST, 'g-recaptcha-response', FILTER_SANITIZE_STRING);
                 if ($token) {
-                    $secretKey = '6LdBzLQUAAAAAL6oP4xpgMao-SmEkmRCpoLBLri-';
+                    $secretKey = '6LeBqFccAAAAADTwGbfo-lrZJb3p6lb0T6_m8Lkf';
                     $ip = $_SERVER['REMOTE_ADDR'];
 
                     $data = array(
@@ -170,7 +176,7 @@ if(isset($_GET['action'])){
                                     
                                         if ($cliente->setDuiCli($_POST['dui'])) {
                                             if ($cliente->setNacimiento($_POST['nacimiento_cliente'])) {
-                                                
+                                                if ($cliente->setPasswordCliente($_POST['clave_cliente'], $_POST['correo'])) {
                                                     if ($_POST['clave_cliente'] == $_POST['confirmar_clave']) {
                                                         if ($cliente->setClave($_POST['clave_cliente'])) {
                                                             if ($cliente->setClienteUser($_POST['usuario'])) {
@@ -190,7 +196,9 @@ if(isset($_GET['action'])){
                                                     } else {
                                                         $result['exception'] = 'Claves diferentes';
                                                     }
-                                                
+                                                } else {
+                                                    $result['exception'] = $cliente->getPasswordError();
+                                                }
                                             } else {
                                                 $result['exception'] = 'Fecha de nacimiento incorrecta';
                                             }
@@ -221,6 +229,7 @@ if(isset($_GET['action'])){
                         if ($cliente->getIdEstadoCli()) {
                             if ($cliente->checkPassword($_POST['clave'])) {
                                 $_SESSION['id_cliente_user'] = $cliente->getIdClienteUser();
+                                $_SESSION['nombre_usuario'] = $cliente->getClienteUser();
                                 $_SESSION['correo_cli_us'] = $cliente->getCorreoCliUs();
                                 $result['status'] = 1;
                                 $result['message'] = 'Autenticación correcta';

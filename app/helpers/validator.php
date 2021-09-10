@@ -9,7 +9,6 @@ class Validator
     private $passwordError = null;
     private $imageError = null;
     private $imageName = null;
-
     /*
     *   Método para obtener el error al validar una contraseña.
     */
@@ -243,8 +242,20 @@ class Validator
             $this->passwordError = "No deje espacios vacíos";
             return false;
          }
-         
          return true;
+      
+    }
+
+    public function validatePasswordAlias($value, $alias, $length)
+    {
+        
+        if ((strncmp($value, $alias, $length))){
+            $this->passwordError = "Por favor no introduzca su nombre de usuario como contraseña";
+            return false;
+        }
+            return true;
+        
+        
       
     }
 
