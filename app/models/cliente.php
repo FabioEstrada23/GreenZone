@@ -34,9 +34,9 @@ class Cliente extends validator{
     *   Métodos para asignar valores a los atributos.
     */
 
-    public function setPasswordCorreo($value, $alias)
+    public function setPasswordCorreo($value)
     {
-        if ($this->validatePasswordAlias($value, $alias, 16)) {
+        if ($this->validatePasswordAlias($value, $this->cliente_user, 16)) {
             return true;
         } else {
             return false;
@@ -50,15 +50,6 @@ class Cliente extends validator{
         }else{
             return false;
         }  
-    }
-
-    public function setPasswordNombreUsuario($value, $alias)
-    {
-        if ($this->validatePasswordAlias($value, $alias, 16)) {
-            return true;
-        } else {
-            return false;
-        }
     }
 
     public function setIdClienteUser($value)

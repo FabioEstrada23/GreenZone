@@ -2,23 +2,9 @@
 const API = '../../app/api/public/clientes.php?action=';
 const ENDPOINT_CIUDAD = '../../app/api/public/clientes.php?action=readCiudad';
 
-// Método manejador de eventos que se ejecuta cuando el documento ha cargado.
-document.addEventListener('DOMContentLoaded', function () {
-    
-
-    inactivityTime(); 
-});
-
-
-var inactivityTime = function () {
-    var time;
-    window.onload = resetTimer;
-    // DOM Events
-    document.onmousemove = resetTimer;
-    document.onkeypress = resetTimer;
-
-    function logout() {
-        fetch(API + 'logOut', {
+function sessionTime() 
+{
+        fetch(API + 'sessionTime', {
             method: 'get'
         }).then(function (request) {
             // Se verifica si la petición es correcta, de lo contrario se muestra un mensaje indicando el problema.
@@ -26,9 +12,9 @@ var inactivityTime = function () {
                 request.json().then(function (response) {
                     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
                     if (response.status) {
-                        sweetAlert(3, "Se ha cerrado la sesión por inactividad", 'login.php');
+                        sweetAlert(4, response.message, 'login.php');
                     } else {
-                        sweetAlert(2, response.exception, null);
+                        console.log('Sesión activa')
                     }
                 });
             } else {
@@ -37,14 +23,12 @@ var inactivityTime = function () {
         }).catch(function (error) {
             console.log(error);
         });
-    }
+}
 
-    function resetTimer() {
-        clearTimeout(time);
-        time = setTimeout(logout, 10000)
-        // 1000 milliseconds = 1 second
-    }
-};
+//Métodos manejadores de eventos que se ejecutan cuando se realiza una acción
+document.addEventListener('click', sessionTime);
+
+document.addEventListener('DOMContentLoaded', sessionTime);
 
 // Función para mostrar el formulario de editar perfil con los datos del usuario que ha iniciado sesión.
 function openProfileDialog() {

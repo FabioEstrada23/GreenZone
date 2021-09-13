@@ -16,12 +16,19 @@ if (isset($_GET['action'])) {
         
         // Se compara la acción a realizar cuando un administrador ha iniciado sesión.
         switch ($_GET['action']) {
-            case 'logOut':
-
+                case 'logOut':
                     unset($_SESSION['id_empleado']);
                     $result['status'] = 1;
-                    $result['message'] = 'Sesión eliminada correctamente';
-                
+                    $result['message'] = 'Se ha cerrado la sesión por inactividad';          
+                break;
+                case 'sessionTime':
+                    if((time() - $_SESSION['tiempo_usuario']) < 10){
+                        $_SESSION['tiempo_usuario'] = time();
+                    } else{
+                       unset($_SESSION['id_empleado'], $_SESSION['alias_emp'], $_SESSION['tiempo_usuario']);
+                        $result['status'] = 1;
+                        $result['message'] = 'Se ha cerrado la sesión por inactividad'; 
+                    }
                 break;
                 case 'changePassword':
                     if ($usuario->setId($_SESSION['id_empleado'])) {
@@ -264,7 +271,7 @@ if (isset($_GET['action'])) {
                         $result['message'] = 'Autenticación correcta';
                         $_SESSION['id_empleado'] = $usuario->getId();
                         $_SESSION['alias_emp'] = $usuario->getAlias();
-                        $_SESSION['last_login_timestamp'] = time();
+                        $_SESSION['tiempo_usuario'] = time();
                     } else {
                         if (Database::getException()) {
                             $result['exception'] = Database::getException();

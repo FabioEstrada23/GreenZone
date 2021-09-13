@@ -25,11 +25,11 @@ Public_Page::headerTemplate('Iniciar sesión');
             </form>
             <!-- Recuperacion de contrasenia -->
             <span class="text-footer">¿Perdiste tu contraseña?
-                <a href="Recuperacion.php">Recupérala</a>
+                <a href="recuperacion.php">Recupérala</a>
             </span>
             <!-- Registro -->
             <span class="text-footer">¿No tienes una cuenta?
-                <a href="Registro.php">Créala</a>
+                <a href="registro.php">Créala</a>
             </span>
         </div>
         <div class="ctn-text">

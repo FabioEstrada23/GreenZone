@@ -6,23 +6,9 @@
 // Constante para establecer la ruta y parámetros de comunicación con la API.
 const API = '../../app/api/dashboard/usuarios.php?action=';
 
-// Método manejador de eventos que se ejecuta cuando el documento ha cargado.
-document.addEventListener('DOMContentLoaded', function () {
-    
-
-    inactivityTime(); 
-});
-
-
-var inactivityTime = function () {
-    var time;
-    window.onload = resetTimer;
-    // DOM Events
-    document.onmousemove = resetTimer;
-    document.onkeypress = resetTimer;
-
-    function logout() {
-        fetch(API + 'logOut', {
+function sessionTime() 
+{
+        fetch(API + 'sessionTime', {
             method: 'get'
         }).then(function (request) {
             // Se verifica si la petición es correcta, de lo contrario se muestra un mensaje indicando el problema.
@@ -30,9 +16,9 @@ var inactivityTime = function () {
                 request.json().then(function (response) {
                     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
                     if (response.status) {
-                        sweetAlert(3, "Se ha cerrado la sesión por inactividad", 'private_login.php');
+                        sweetAlert(4, response.message, 'private_login.php');
                     } else {
-                        sweetAlert(2, response.exception, null);
+                        console.log('Sesión activa')
                     }
                 });
             } else {
@@ -41,14 +27,12 @@ var inactivityTime = function () {
         }).catch(function (error) {
             console.log(error);
         });
-    }
+}
 
-    function resetTimer() {
-        clearTimeout(time);
-        time = setTimeout(logout, 10000)
-        // 1000 milliseconds = 1 second
-    }
-};
+//Métodos manejadores de eventos que se ejecutan cuando se realiza una acción
+document.addEventListener('click', sessionTime);
+
+document.addEventListener('DOMContentLoaded', sessionTime);
 
 // Método manejador de eventos que se ejecuta cuando se envía el formulario de cambiar clave.
 document.getElementById('password-form').addEventListener('submit', function (event) {

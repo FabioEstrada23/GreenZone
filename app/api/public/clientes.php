@@ -22,6 +22,15 @@ if(isset($_GET['action'])){
                     $result['message'] = 'Sesión eliminada correctamente';
                 
                 break;
+            case 'sessionTime':
+                    if((time() - $_SESSION['tiempo_usuario']) < 10){
+                        $_SESSION['tiempo_usuario'] = time();
+                    } else{
+                       unset($_SESSION['id_cliente_user'], $_SESSION['correo_cli_us'], $_SESSION['tiempo_usuario']);
+                        $result['status'] = 1;
+                        $result['message'] = 'Se ha cerrado la sesión por inactividad'; 
+                    }
+                break;    
             case 'readCiudad':
                     if ($result['dataset'] = $cliente->readCiudad()) {
                         $result['status'] = 1;
@@ -173,10 +182,10 @@ if(isset($_GET['action'])){
                         if ($cliente->setNombres($_POST['nombres'])) {
                             if ($cliente->setApellidos($_POST['apellidos'])) {
                                 if ($cliente->setCorreo($_POST['correo'])) {
-                                    
+                                    if ($cliente->setClienteUser($_POST['usuario'])) {
                                         if ($cliente->setDuiCli($_POST['dui'])) {
                                             if ($cliente->setNacimiento($_POST['nacimiento_cliente'])) {
-                                                if ($cliente->setPasswordCliente($_POST['clave_cliente'], $_POST['correo'])) {
+                                                if ($cliente->setPasswordCorreo($_POST['clave_cliente'])) {
                                                     if ($_POST['clave_cliente'] == $_POST['confirmar_clave']) {
                                                         if ($cliente->setClave($_POST['clave_cliente'])) {
                                                             if ($cliente->setClienteUser($_POST['usuario'])) {
@@ -205,7 +214,9 @@ if(isset($_GET['action'])){
                                         } else {
                                             $result['exception'] = 'DUI incorrecto';
                                         }
-                                    
+                                    } else {
+                                        $result['exception'] = 'Usuario incorrecto';
+                                    }
                                 } else {
                                     $result['exception'] = 'Correo incorrecto';
                                 }
@@ -229,8 +240,8 @@ if(isset($_GET['action'])){
                         if ($cliente->getIdEstadoCli()) {
                             if ($cliente->checkPassword($_POST['clave'])) {
                                 $_SESSION['id_cliente_user'] = $cliente->getIdClienteUser();
-                                $_SESSION['nombre_usuario'] = $cliente->getClienteUser();
                                 $_SESSION['correo_cli_us'] = $cliente->getCorreoCliUs();
+                                $_SESSION['tiempo_usuario'] = time();
                                 $result['status'] = 1;
                                 $result['message'] = 'Autenticación correcta';
                             } else {
