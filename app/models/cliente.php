@@ -1,5 +1,13 @@
 <?php
 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\SMTP;
+
+require '../../../libraries/phpmailer/src/Exception.php';
+require '../../../libraries/phpmailer/src/PHPMailer.php';
+require '../../../libraries/phpmailer/src/SMTP.php';
+
 class Cliente extends validator{
 
     // Declaración de atributos (propiedades).
@@ -18,6 +26,7 @@ class Cliente extends validator{
     private $fecha_nac_cli = null;
     private $genero = null;
     private $id_estado_cli = null;
+    private $correoError = null;
 
 
     /*
@@ -173,6 +182,11 @@ class Cliente extends validator{
     /*
     *   Métodos para obtener valores de los atributos.
     */
+
+    public function getCorreoError()
+    {
+        return $this->correoError;
+    }
 
     public function getIdClienteUser()
     {
@@ -379,6 +393,61 @@ class Cliente extends validator{
         $params = array($hash, $_SESSION['id_cliente_user']);
         return Database::executeRow($sql, $params);
     }
+
+    
+    public function generarCodigoRecu($longitud){
+        //creamos la variable codigo
+        $codigo = "";
+        //caracteres a ser utilizados
+        $caracteres="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        //el maximo de caracteres a usar
+        $max=strlen($caracteres)-1;
+        //creamos un for para generar el codigo aleatorio utilizando parametros min y max
+        for($i=0;$i < $longitud;$i++)
+        {
+            $codigo.=$caracteres[rand(0,$max)];
+        }
+        //regresamos codigo como valor
+        return $codigo;
+    }
+
+    public function enviarCorreo($correo, $codigo){
+        // Inicio
+        $mail = new PHPMailer(true);
+
+        try {
+            // Configuracion SMTP
+            $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      // Mostrar salida (Desactivar en producción)
+            $mail->isSMTP();                                               // Activar envio SMTP
+            $mail->Host  = 'smtp.gmail.com';                     // Servidor SMTP
+            $mail->SMTPAuth  = true;                                       // Identificacion SMTP
+            $mail->Username  = '20160393@ricaldone.edu.sv';                  // Usuario SMTP
+            $mail->Password  = '16625968';	          // Contraseña SMTP
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+            $mail->Port  = 587;
+            $mail->setFrom("20160393@ricaldone.edu.sv", "Green Zone");                // Remitente del correo
+
+            // Destinatarios
+            $mail->addAddress($correo);  // Email y nombre del destinatario
+
+            // Contenido del correo
+            $mail->isHTML(true);
+            $mail->Subject = 'Código para restaurar contraseña';
+            $mail->Body = 'Estimado cliente, ' .$correo .'gracias por preferirnos. 
+                        Por este medio le enviamos el codígo de verificación para continuar con el proceso de restauración de contraseña
+                        El cual es:<b>'.$codigo.'!</b>';
+            $mail->send();
+            
+            
+            
+
+        } catch (Exception $e) {
+            $this->$correoError = "El mensaje no se ha enviado. Mailer Error: {$mail->ErrorInfo}";
+            return false;
+        }
+    }
+    
+
 }
 
    

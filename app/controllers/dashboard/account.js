@@ -22,7 +22,25 @@ var inactivityTime = function () {
     document.onkeypress = resetTimer;
 
     function logout() {
-        sweetAlert(2, 'Se ha cerrado sesión por inactividad', 'logout.php');
+        fetch(API + 'logOut', {
+            method: 'get'
+        }).then(function (request) {
+            // Se verifica si la petición es correcta, de lo contrario se muestra un mensaje indicando el problema.
+            if (request.ok) {
+                request.json().then(function (response) {
+                    // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
+                    if (response.status) {
+                        sweetAlert(3, "Se ha cerrado la sesión por inactividad", 'private_login.php');
+                    } else {
+                        sweetAlert(2, response.exception, null);
+                    }
+                });
+            } else {
+                console.log(request.status + ' ' + request.statusText);
+            }
+        }).catch(function (error) {
+            console.log(error);
+        });
     }
 
     function resetTimer() {

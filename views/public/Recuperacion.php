@@ -31,17 +31,23 @@
         <div class="Recu">
         <img src="../../resources/img/logos/lg_head.png" class="logo">
             <h1 class="title"> Recuperación de contraseña</h1>
-            <form>
+            <form id="recuperacion-form" method="post">
             <!-- Ingresar correo de usuario -->
             <label for="mail">Correo</label>
-            <input type="text" placeholder="Ingresa tu correo">
-            <input class='Enviar' type="submit" value="Enviar mensaje">
+            <input id="correo" name="correo" type="text" placeholder="Ingresa tu correo" class="validate" required>
+            <input class='Enviar' type="submit" value="Enviar mensaje" >
             <span class="text-footer">¿Recordaste la contraseña?
-                <a href="Login.php">Ingresa</a>
+                <a href="login.php">Ingresa</a>
             </span>               
             </form>
         </div>
     </div>
+
+    <script src="../../resources/js/bootstrap/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../resources/js/sweetalert.min.js"></script>
+    <script type="text/javascript" src="../../app/controllers/public/recuperacion.js"></script>
+    <script type="text/javascript" src="../../app/helpers/components.js"></script>
+        
     
 </body>
 </html>
