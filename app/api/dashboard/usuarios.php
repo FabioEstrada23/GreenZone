@@ -13,6 +13,7 @@ if (isset($_GET['action'])) {
     $result = array('status' => 0, 'error' => 0, 'message' => null, 'exception' => null);
     // Se verifica si existe una sesión iniciada como administrador, de lo contrario se finaliza el script con un mensaje de error.
     if (isset($_SESSION['id_empleado'])) {
+        
         // Se compara la acción a realizar cuando un administrador ha iniciado sesión.
         switch ($_GET['action']) {
             case 'logOut':
@@ -26,22 +27,30 @@ if (isset($_GET['action'])) {
                     if ($usuario->setId($_SESSION['id_empleado'])) {
                         $_POST = $usuario->validateForm($_POST);
                         if ($usuario->checkPassword($_POST['clave_actual'])) {
-                            if ($_POST['clave_nueva_1'] == $_POST['clave_nueva_2']) {
-                                        
-                                        if ($usuario->setClave($_POST['clave_nueva_1'])) {
-                                            if ($usuario->changePassword()) {
-                                                $result['status'] = 1;
-                                                $result['message'] = 'Contraseña cambiada correctamente';
+                            if ($_POST['clave_actual'] != $_POST['clave_nueva_1']) {
+                                if ($_POST['clave_nueva_1'] == $_POST['clave_nueva_2']) {
+                                            
+                                            if ($usuario->setClave($_POST['clave_nueva_1'])) {
+                                                if ($usuario->setPasswordAlias($_POST['clave_nueva_1'], $_SESSION['alias_emp'])) {
+                                                    if ($usuario->changePassword()) {
+                                                        $result['status'] = 1;
+                                                        $result['message'] = 'Contraseña cambiada correctamente';
+                                                    } else {
+                                                        $result['exception'] = Database::getException();
+                                                    }
+                                                } else {
+                                                    $result['exception'] = $usuario->getPasswordError();
+                                                }
                                             } else {
-                                                $result['exception'] = Database::getException();
+                                                $result['exception'] = $usuario->getPasswordError();
                                             }
-                                        } else {
-                                            $result['exception'] = $usuario->getPasswordError();
-                                        }
-                                      
+                                        
+                                } else {
+                                    $result['exception'] = 'Claves nuevas diferentes';
+                                }
                             } else {
-                                $result['exception'] = 'Claves nuevas diferentes';
-                            }
+                                $result['exception'] = 'Intente ingresar una contraseña que no sea igual a la anterior';
+                            }    
                         } else {
                             $result['exception'] = 'Clave actual incorrecta';
                         }
@@ -102,11 +111,15 @@ if (isset($_GET['action'])) {
                             if ($usuario->setAlias($_POST['alias_usuario'])) {
                                 if ($_POST['clave_usuario'] == $_POST['confirmar_clave']) {
                                     if ($usuario->setClave($_POST['clave_usuario'])) {
-                                        if ($usuario->createRow()) {
-                                            $result['status'] = 1;
-                                            $result['message'] = 'Usuario creado correctamente';
+                                        if ($usuario->setPasswordAlias($_POST['clave_nueva_1'], $_POST['alias_usuario'])) {
+                                            if ($usuario->createRow()) {
+                                                $result['status'] = 1;
+                                                $result['message'] = 'Contraseña cambiada correctamente';
+                                            } else {
+                                                $result['exception'] = Database::getException();
+                                            }
                                         } else {
-                                            $result['exception'] = Database::getException();
+                                            $result['exception'] = $usuario->getPasswordError();
                                         }
                                     } else {
                                         $result['exception'] = $usuario->getPasswordError();
@@ -251,6 +264,7 @@ if (isset($_GET['action'])) {
                         $result['message'] = 'Autenticación correcta';
                         $_SESSION['id_empleado'] = $usuario->getId();
                         $_SESSION['alias_emp'] = $usuario->getAlias();
+                        $_SESSION['last_login_timestamp'] = time();
                     } else {
                         if (Database::getException()) {
                             $result['exception'] = Database::getException();

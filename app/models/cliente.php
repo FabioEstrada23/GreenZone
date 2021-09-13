@@ -24,6 +24,15 @@ class Cliente extends validator{
     *   Métodos para asignar valores a los atributos.
     */
 
+    public function setPasswordNombreUsuario($value, $alias)
+    {
+        if ($this->validatePasswordAlias($value, $alias, 16)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function setIdClienteUser($value)
     {
         if ($this->validateNaturalNumber($value)) {

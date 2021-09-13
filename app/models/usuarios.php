@@ -13,10 +13,20 @@ class Usuarios extends Validator
     private $clave = null;
     private $idTiUsE = null;
     private $idEsUsE = null;
+    private $passwordAlias = null;
 
     /*
     *   Métodos para asignar valores a los atributos.
     */
+    public function setPasswordAlias($value, $alias)
+    {
+        if ($this->validatePasswordAlias($value, $alias, 16)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function setId($value)
     {
         if ($this->validateNaturalNumber($value)) {
