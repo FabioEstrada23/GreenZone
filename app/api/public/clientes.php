@@ -182,41 +182,28 @@ if(isset($_GET['action'])){
                         if ($cliente->setNombres($_POST['nombres'])) {
                             if ($cliente->setApellidos($_POST['apellidos'])) {
                                 if ($cliente->setCorreo($_POST['correo'])) {
-                                    if ($cliente->setClienteUser($_POST['usuario'])) {
                                         if ($cliente->setDuiCli($_POST['dui'])) {
                                             if ($cliente->setNacimiento($_POST['nacimiento_cliente'])) {
-                                                if ($cliente->setPasswordCorreo($_POST['clave_cliente'])) {
                                                     if ($_POST['clave_cliente'] == $_POST['confirmar_clave']) {
-                                                        if ($cliente->setClave($_POST['clave_cliente'])) {
-                                                            if ($cliente->setClienteUser($_POST['usuario'])) {
-                                                                if ($cliente->createRow()) {
-                                                                $result['status'] = 1;
-                                                                $result['message'] = 'Cliente registrado correctamente';
-                                                                } else {
-                                                                    $result['exception'] = Database::getException();
-                                                                }
+                                                                if ($cliente->setClave($_POST['clave_cliente'])) {
+                                                                        if ($cliente->createRow()) {
+                                                                        $result['status'] = 1;
+                                                                        $result['message'] = 'Cliente registrado correctamente';
+                                                                        } else {
+                                                                            $result['exception'] = Database::getException();
+                                                                        } 
                                                             } else {
-                                                                $result['exception'] = 'Usuario incorrecto';
+                                                                $result['exception'] = $cliente->getPasswordError();
                                                             }
-                                                            
-                                                        } else {
-                                                            $result['exception'] = $cliente->getPasswordError();
-                                                        }
                                                     } else {
                                                         $result['exception'] = 'Claves diferentes';
                                                     }
-                                                } else {
-                                                    $result['exception'] = $cliente->getPasswordError();
-                                                }
                                             } else {
                                                 $result['exception'] = 'Fecha de nacimiento incorrecta';
                                             }
                                         } else {
                                             $result['exception'] = 'DUI incorrecto';
                                         }
-                                    } else {
-                                        $result['exception'] = 'Usuario incorrecto';
-                                    }
                                 } else {
                                     $result['exception'] = 'Correo incorrecto';
                                 }

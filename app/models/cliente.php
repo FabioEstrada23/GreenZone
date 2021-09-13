@@ -15,7 +15,6 @@ class Cliente extends validator{
     private $id_cliente_user = null;
     private $dui_cli = null;
     private $telefono_cli = null;
-    private $cliente_user = null;
     private $correo_cli_us = null;
     private $contra_cli_us = null;
     private $nombres_cli = null;
@@ -33,15 +32,6 @@ class Cliente extends validator{
     /*
     *   Métodos para asignar valores a los atributos.
     */
-
-    public function setPasswordCorreo($value)
-    {
-        if ($this->validatePasswordAlias($value, $this->cliente_user, 16)) {
-            return true;
-        } else {
-            return false;
-        }
-    }
 
     public function setCodigoRecu($value){
         if($this->validateAlphanumeric($value, 1, 6)){
@@ -80,15 +70,6 @@ class Cliente extends validator{
         } else {
             return false;
         }
-    }
-
-    public function setClienteUser($value){
-        if($this->validateAlphanumeric($value, 1, 25)){
-            $this->cliente_user = $value;
-            return true;
-        }else{
-            return false;
-        }  
     }
 
     public function setCorreo($value)
@@ -213,11 +194,6 @@ class Cliente extends validator{
         return $this->telefono_cli;
     }
 
-    public function getClienteUser()
-    {
-        return $this->cliente_user;
-    }
-
     public function getCorreoCliUs()
     {
         return $this->correo_cli_us;
@@ -333,9 +309,9 @@ class Cliente extends validator{
     {
         // Se encripta la clave por medio del algoritmo bcrypt que genera un string de 60 caracteres.
         $hash = password_hash($this->contra_cli_us, PASSWORD_DEFAULT);
-        $sql = 'INSERT INTO cliente_user(DUI_cli, cliente_user, correo_cli_us, contra_cli_us, nombres_cli, apellidos_cli, fecha_nac_cli, id_estado_cli)
-                VALUES(?, ?, ?, ?, ?, ?, ?, ?)';
-        $params = array($this->dui_cli, $this->cliente_user, $this->correo_cli_us, $hash, $this->nombres_cli, $this->apellidos_cli, $this->fecha_nac_cli, 1);
+        $sql = 'INSERT INTO cliente_user(DUI_cli, correo_cli_us, contra_cli_us, nombres_cli, apellidos_cli, fecha_nac_cli, id_estado_cli)
+                VALUES(?, ?, ?, ?, ?, ?, ?)';
+        $params = array($this->dui_cli, $this->correo_cli_us, $hash, $this->nombres_cli, $this->apellidos_cli, $this->fecha_nac_cli, 1);
         return Database::executeRow($sql, $params);
     }
 
