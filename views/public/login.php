@@ -20,8 +20,8 @@ Public_Page::headerTemplate('Iniciar sesión');
                 <!-- Ingresar contresenia de usuario -->
                 <label for="password"><i class="material-icons prefix">security</i> Contraseña</label>
                 <input type="password" placeholder="Ingresa tu contraseña" id="clave" name="clave" class="validate" required>
-                <input type="submit" value="Log In">
-
+                <input type="submit" value="Log In" data-bs-toggle="modal" data-bs-target="#recuperacion-modal">
+                
             </form>
             <!-- Recuperacion de contrasenia -->
             <span class="text-footer">¿Perdiste tu contraseña?

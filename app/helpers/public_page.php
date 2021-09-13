@@ -58,7 +58,7 @@ class Public_Page
         // Se comprueba si existe una sesión de administrador para mostrar el menú de opciones, de lo contrario se muestra un menú vacío.
         if (isset($_SESSION['id_cliente_user'])) {
             // Se verifica si la página web actual es diferente a index.php (Iniciar sesión) y a register.php (Crear primer usuario) para no iniciar sesión otra vez, de lo contrario se direcciona a main.php
-            if ($filename != 'login.php' && $filename != 'registro.php') {
+            if ($filename != 'login.php' && $filename != 'registro.php' && $filename != 'codigo.php' && $filename != 'recuperacion.php') {
                 print('
                 <!-- Header -->
                 <header>
@@ -398,7 +398,7 @@ class Public_Page
             }
         } else {
 
-            if($filename != 'login.php') {
+            if($filename != 'login.php' && $filename != 'codigo.php' && $filename != 'recuperacion.php') {
                 print('
                 <!-- Header -->
                 <header>

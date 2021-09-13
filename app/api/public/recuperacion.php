@@ -22,14 +22,19 @@ require_once('../../models/cliente.php');
                 case 'recover':
                     $_POST = $cliente->validateForm($_POST);
                     if ($cliente->checkUser($_POST['correo'])) {
-                        if ($cliente->getIdEstadoCli()) {
-                            
+                        if ($cliente->getIdEstadoCli()) { 
                                 $codigo = $cliente->generarCodigoRecu(6);
                                 if ($cliente->enviarCorreo($_POST['correo'], $codigo)) {
-                                    $result['status'] = 1;
-                                    $result['message'] = 'El correo fue enviado satisfactoriamente';
-                                
-                                
+                                    if ($cliente->setCodigoRecu($codigo)) {
+                                        if ($cliente->updateCodigo()) {
+                                            $result['status'] = 1;
+                                            $result['message'] = 'El correo fue enviado satisfactoriamente. Favor de ingresar el código mandado en el siguiente formulario';
+                                        } else {
+                                            $result['exception'] = Database::getException();
+                                        }
+                                    } else {
+                                        $result['exception'] = 'Hubo un problema al obtener el código';
+                                    }
                                 } else {
                                     $result['exception'] = $cliente->getCorreoError();
                                 }
@@ -41,10 +46,38 @@ require_once('../../models/cliente.php');
                         if (Database::getException()) {
                             $result['exception'] = Database::getException();
                         } else {
-                            $result['exception'] = 'El correo ingresado no tiene un cuenta creada en esta tienda';
+                            $result['exception'] = 'El correo ingresado no tiene una cuenta creada en esta tienda';
                         }
                     }
                     break;
+                    case 'restorePassword':
+                            $id= $cliente->getIdClienteUser();
+                            echo $id;
+                            $_POST = $cliente->validateForm($_POST);
+                            if ($cliente->checkCodigo($_POST['codigo_recu'])) {
+                                    if ($_POST['clave_nueva_1'] == $_POST['clave_nueva_2']) {
+                                        if ($cliente->setPasswordNombreUsuario($_POST['clave_nueva_1_cli'], $cliente->getCorreoCliUs())) {
+                                                if ($cliente->setClave($_POST['clave_nueva_1_cli'])) {
+                                                    if ($cliente->restorePassword()) {
+                                                        $result['status'] = 1;
+                                                        $result['message'] = 'Contraseña restaurada correctamente';
+                                                    } else {
+                                                        $result['exception'] = Database::getException();
+                                                    }
+                                                } else {
+                                                    $result['exception'] = $cliente->getPasswordError();
+                                                }
+                                        } else {
+                                            $result['exception'] = $cliente->getPasswordError();
+                                        }    
+                                    } else {
+                                        $result['exception'] = 'Claves nuevas diferentes';
+                                    }        
+                            } else {
+                                $result['exception'] = 'Código ingresado erróneo';
+                            }
+                        
+                        break;   
             default:
                 $result['exception'] = 'Acción no disponible fuera de la sesión';
             }

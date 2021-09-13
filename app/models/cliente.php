@@ -27,11 +27,30 @@ class Cliente extends validator{
     private $genero = null;
     private $id_estado_cli = null;
     private $correoError = null;
+    private $codigo_recu = null;
 
 
     /*
     *   Métodos para asignar valores a los atributos.
     */
+
+    public function setPasswordCorreo($value, $alias)
+    {
+        if ($this->validatePasswordAlias($value, $alias, 16)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function setCodigoRecu($value){
+        if($this->validateAlphanumeric($value, 1, 6)){
+            $this->codigo_recu = $value;
+            return true;
+        }else{
+            return false;
+        }  
+    }
 
     public function setPasswordNombreUsuario($value, $alias)
     {
@@ -258,6 +277,11 @@ class Cliente extends validator{
         return $this->id_estado_cli;
     }
 
+    public function getCodigoRecu()
+    {
+        return $this->codigo_recu;
+    }
+
     /*
     *   Métodos para realizar las operaciones SCRUD (search, create, read, update, delete).
     */
@@ -417,13 +441,13 @@ class Cliente extends validator{
 
         try {
             // Configuracion SMTP
-            $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      // Mostrar salida (Desactivar en producción)
+            $mail->SMTPDebug = 0;                      // Mostrar salida (Desactivar en producción)
             $mail->isSMTP();                                               // Activar envio SMTP
             $mail->Host  = 'smtp.gmail.com';                     // Servidor SMTP
             $mail->SMTPAuth  = true;                                       // Identificacion SMTP
             $mail->Username  = '20160393@ricaldone.edu.sv';                  // Usuario SMTP
             $mail->Password  = '16625968';	          // Contraseña SMTP
-            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+            $mail->SMTPSecure = 'tls';
             $mail->Port  = 587;
             $mail->setFrom("20160393@ricaldone.edu.sv", "Green Zone");                // Remitente del correo
 
@@ -438,16 +462,42 @@ class Cliente extends validator{
                         El cual es:<b>'.$codigo.'!</b>';
             $mail->send();
             
-            
-            
+            return true;
 
         } catch (Exception $e) {
             $this->$correoError = "El mensaje no se ha enviado. Mailer Error: {$mail->ErrorInfo}";
             return false;
         }
     }
-    
 
+    public function updateCodigo()
+    {
+        $sql = 'UPDATE cliente_user SET codigo_recu = ? WHERE id_cliente_user = ?';
+        $params = array($this->codigo_recu, $this->id_cliente_user);
+        return Database::getRows($sql, $params);
+    }
+
+    public function checkCodigo($restauracion)
+    {
+        $sql = 'SELECT codigo_recu FROM cliente_user WHERE id_cliente_user = ?';
+        $params = array($this->id_cliente_user);
+        $data = Database::getRow($sql, $params);
+        if ($restauracion == $data['codigo_recu']) {
+            
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function restorePassword()
+    {
+        // Se transforma la contraseña a una cadena de texto de longitud fija mediante el algoritmo por defecto.
+        $hash = password_hash($this->contra_cli_us, PASSWORD_DEFAULT);
+        $sql = 'UPDATE cliente_user SET contra_cli_us = ? WHERE id_cliente_user = ?';
+        $params = array($hash, $id_cliente_user);
+        return Database::executeRow($sql, $params);
+    }
 }
 
    
