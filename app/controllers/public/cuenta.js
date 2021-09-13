@@ -43,7 +43,6 @@ function openProfileDialog() {
                     // Se inicializan los campos del formulario con los datos del usuario que ha iniciado sesión.
                     document.getElementById('dui_cli').value = response.dataset.dui_cli;
                     document.getElementById('telefono_cli').value = response.dataset.telefono_cli;
-                    document.getElementById('user').value = response.dataset.cliente_user;
                     document.getElementById('correo').value = response.dataset.correo_cli_us;
                     document.getElementById('nombres_cli').value = response.dataset.nombres_cli;
                     document.getElementById('apellidos_cli').value = response.dataset.apellidos_cli;

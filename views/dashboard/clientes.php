@@ -195,7 +195,7 @@ Dashboard_Page::headerTemplate('Gestión de clientes');
                                 <table class="table table-dark table-striped" id="tabla">
                                     <thead>
                                         <tr>
-                                            <th scope="col">Usuario</th>
+                                            <th scope="col">Correo</th>
                                             <th scope="col">DUI</th>
                                             <th scope="col">Nombres</th>
                                             <th scope="col">Apellidos</th>

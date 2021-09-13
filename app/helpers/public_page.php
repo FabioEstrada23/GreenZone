@@ -289,10 +289,6 @@ class Public_Page
                                 <input type="text" placeholder="0000-0000" pattern="[2,6,7]{1}[0-9]{3}[-][0-9]{4}" id="telefono_cli" name="telefono_cli" class="validate" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="correo"><i class="material-icons prefix">person</i> Usuario</label>
-                                    <input type="text" placeholder="Usuario" id="user" name="user" class="validate" required>
-                                </div>
-                                <div class="form-group">
                                 <label for="correo"><i class="material-icons prefix">email</i> Correo</label>
                                 <input type="text" placeholder="Ingresa tu correo electrónico" id="correo" name="correo" class="validate" required>
                                 </div>
