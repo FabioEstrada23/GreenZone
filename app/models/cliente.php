@@ -33,6 +33,15 @@ class Cliente extends validator{
     *   Métodos para asignar valores a los atributos.
     */
 
+    public function setPasswordNombreUsuario($value, $alias)
+    {
+        if ($this->validatePasswordAlias($value, $alias, 16)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function setCodigoRecu($value){
         if($this->validateAlphanumeric($value, 1, 6)){
             $this->codigo_recu = $value;
@@ -446,11 +455,11 @@ class Cliente extends validator{
 
     public function checkCodigo($restauracion)
     {
-        $sql = 'SELECT codigo_recu FROM cliente_user WHERE id_cliente_user = ?';
-        $params = array($this->id_cliente_user);
-        $data = Database::getRow($sql, $params);
-        if ($restauracion == $data['codigo_recu']) {
-            
+        $sql = 'SELECT id_cliente_user, correo_cli_us FROM cliente_user WHERE codigo_recu = ?';
+        $params = array($restauracion);
+        if ($data = Database::getRow($sql, $params)) {
+            $this->id_cliente_user = $data['id_cliente_user'];
+            $this->correo_cli_us = $data['correo_cli_us'];
             return true;
         } else {
             return false;
@@ -462,7 +471,7 @@ class Cliente extends validator{
         // Se transforma la contraseña a una cadena de texto de longitud fija mediante el algoritmo por defecto.
         $hash = password_hash($this->contra_cli_us, PASSWORD_DEFAULT);
         $sql = 'UPDATE cliente_user SET contra_cli_us = ? WHERE id_cliente_user = ?';
-        $params = array($hash, $id_cliente_user);
+        $params = array($hash, $this->id_cliente_user);
         return Database::executeRow($sql, $params);
     }
 }

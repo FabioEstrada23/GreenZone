@@ -54,7 +54,7 @@ document.getElementById('restore-form').addEventListener('submit', function (eve
             request.json().then(function (response) {
                 // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
                 if (response.status) {
-                    sweetAlert(1, response.exception, 'private_login.php');
+                    sweetAlert(1, response.message, 'login.php');
                     
                     
                 } else {

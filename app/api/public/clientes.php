@@ -60,20 +60,17 @@ if(isset($_GET['action'])){
                         if ($cliente->checkPassword($_POST['clave_actual_cli'])) {
                             if ($_POST['clave_actual_cli'] != $_POST['clave_nueva_1_cli']) {
                                 if ($_POST['clave_nueva_1_cli'] == $_POST['clave_nueva_2_cli']) {
-                                    if ($cliente->setPasswordNombreUsuario($_POST['clave_nueva_1_cli'], $_SESSION['nombre_usuario'])) {
                                             if ($cliente->setClave($_POST['clave_nueva_1_cli'])) {
                                                 if ($cliente->changePassword()) {
                                                     $result['status'] = 1;
-                                                    $result['message'] = 'Contraseña cambiada correctamente';
+                                                    $result['message'] = 'Contraseña cambiada correctamente. Por favor vuelva a iniciar sesión';
+                                                    unset($_SESSION['id_cliente_user']);
                                                 } else {
                                                     $result['exception'] = Database::getException();
                                                 }
                                             } else {
                                                 $result['exception'] = $cliente->getPasswordError();
-                                            }
-                                    } else {
-                                        $result['exception'] = $cliente->getPasswordError();
-                                    }    
+                                            }   
                                 } else {
                                     $result['exception'] = 'Claves nuevas diferentes';
                                 }

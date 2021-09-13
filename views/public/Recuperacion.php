@@ -55,7 +55,7 @@
                                         
                                             
                                             <label for="clave_actual"><i class="fas fa-key"></i> Introduzca el código enviado:</label>   
-                                            <input id="codigo_recu" type="text" name="codigo_recu" class="validate form-control" required/>
+                                            <input id="codigo_recu" type="password" name="codigo_recu" class="validate form-control" required/>
                                             
                                         
                                     </div>
@@ -81,9 +81,8 @@
                                             
                                     </div>        
                                 </div>  
-                            <div class="modal-footer">
-                            
-                            <button type="submit" data-tooltip="Actualizar" class="btn btn-primary" >Verificar</button>
+                                <div class="modal-footer">
+                                    <button type="submit" data-tooltip="Actualizar" class="btn btn-primary" >Verificar</button>
                                 </div>
                             </form>
                         </div>
