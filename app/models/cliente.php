@@ -369,6 +369,24 @@ class Cliente extends validator{
         }
     }
 
+    public function obtenerDiff()
+    {
+        $sql = 'SELECT fechacontra from cliente_user where id_cliente_user = ?';
+        $params = array($this->id_cliente_user);
+        $data = Database::getRow($sql, $params);
+        $fechaHoy = date('Y-m-d');
+        $dateDifference = abs(strtotime($fechaHoy) - strtotime($data['fechacontra']));
+        $years  = floor($dateDifference / (365 * 60 * 60 * 24));
+        $months = floor(($dateDifference - $years * 365 * 60 * 60 * 24) / (30 * 60 * 60 * 24));
+        $days   = floor(($dateDifference - $years * 365 * 60 * 60 * 24 - $months * 30 * 60 * 60 *24) / (60 * 60 * 24));
+
+        if($days>=1){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
     public function readAllPedidoCliente()
     {
         $sql = 'SELECT id_pedido, fecha_pedido, fecha_entrega, id_estado_pedido from pedido 

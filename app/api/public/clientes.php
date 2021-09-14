@@ -257,6 +257,39 @@ if(isset($_GET['action'])){
                     }
                     break;
 
+                        case 'tiempocontra':
+                            $_POST = $cliente->validateForm($_POST);
+                            
+                            if ($cliente->checkUser($_POST['correo'])) {
+                                if ($cliente->getIdEstadoCli() == 1) {
+                                    if ($cliente->checkPassword($_POST['clave'])) {
+                                        if($cliente->obtenerDiff()){
+                                            $result['exception'] = 'Debe cambiar su contraseña';
+                                        }else{
+                                            $result['status'] = 1;
+                                            $result['message'] = 'Su contraseña es valida';
+                                        }
+
+                                    } else {
+                                        if (Database::getException()) {
+                                            $result['exception'] = Database::getException();
+                                        } else {
+                                            $result['exception'] = 'Clave incorrecta';
+                                        }
+                                    }
+                                } else {
+                                    $result['exception'] = 'La cuenta ha sido desactivada';
+                                }
+                            } else {
+                                if (Database::getException()) {
+                                    $result['exception'] = Database::getException();
+                                } else {
+                                    $result['exception'] = 'Correo incorrecto';
+                                }
+                            }
+                            break;
+                        
+                            
         
                         case 'comparar':
                             $_POST = $cliente->validateForm($_POST);

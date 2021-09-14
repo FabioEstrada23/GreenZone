@@ -14,7 +14,7 @@ document.getElementById('session-form').addEventListener('submit', function (eve
     // Se evita recargar la página web después de enviar el formulario.
     event.preventDefault();
 
-    fetch(API_CLIENTES + 'logIn', {
+    fetch(API_CLIENTES + 'tiempocontra', {
         method: 'post',
         body: new FormData(document.getElementById('session-form'))
     }).then(function (request) {
@@ -23,13 +23,33 @@ document.getElementById('session-form').addEventListener('submit', function (eve
             request.json().then(function (response) {
                 // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
                 if (response.status) {
-                    sweetAlert(1, response.message, null);
-
-                    var myModal = new bootstrap.Modal(document.getElementById('confirmar-modal'));
-                    myModal.show();
-
+                    fetch(API_CLIENTES + 'logIn', {
+                        method: 'post',
+                        body: new FormData(document.getElementById('session-form'))
+                    }).then(function (request) {
+                        // Se verifica si la petición es correcta, de lo contrario se muestra un mensaje indicando el problema.
+                        if (request.ok) {
+                            request.json().then(function (response) {
+                                // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
+                                if (response.status) {
+                                    sweetAlert(1, response.message, null);
+                
+                                    var myModal = new bootstrap.Modal(document.getElementById('confirmar-modal'));
+                                    myModal.show();
+                
+                                } else {
+                                    sweetAlert(2, response.exception, null);
+                                }
+                            });
+                        } else {
+                            console.log(request.status + ' ' + request.statusText);
+                        }
+                    }).catch(function (error) {
+                        console.log(error);
+                    });
+                
                 } else {
-                    sweetAlert(2, response.exception, null);
+                    sweetAlert(4, response.exception, 'recuperacion.php');
                 }
             });
         } else {
@@ -39,6 +59,7 @@ document.getElementById('session-form').addEventListener('submit', function (eve
         console.log(error);
     });
 
+    
 
 });
 
@@ -70,4 +91,11 @@ document.getElementById('confirmar-form').addEventListener('submit', function (e
 
 
 });
+
+
+function openCambiarContra() {
+
+
+
+}
 
