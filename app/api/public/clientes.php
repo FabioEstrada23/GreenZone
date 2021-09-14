@@ -260,7 +260,7 @@ if(isset($_GET['action'])){
         
                         case 'comparar':
                             $_POST = $cliente->validateForm($_POST);
-                            if($cliente->checkCodigo($_POST['codigo'])){
+                            if($cliente->checkCodigo2($_POST['codigo'])){
                                 $_SESSION['id_cliente_user'] = $cliente->getIdClienteUser();
                                 $_SESSION['tiempo_usuario'] = time();
                                 $result['status'] = 1;
