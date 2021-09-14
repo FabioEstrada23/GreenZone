@@ -221,42 +221,53 @@ class Validator
         if (strlen($value) < 8) {
             $this->passwordError = 'Clave menor a 8 caracteres';
             return false;
-        } 
-        if(strlen($value) > 16){
+        } else{
+            if(strlen($value) > 16){
             $this->passwordError = "La clave no puede tener más de 16 caracteres";
             return false;
-         }
-         if (!preg_match('`[a-z]`',$value)){
-            $this->passwordError = "La clave debe tener al menos una letra minúscula";
-            return false;
-         }
-         if (!preg_match('`[A-Z]`',$value)){
-            $this->passwordError = "La clave debe tener al menos una letra mayúscula";
-            return false;
-         }
-         if (!preg_match('`[0-9]`',$value)){
-            $this->passwordError = "La clave debe tener al menos un caracter numérico";
-            return false;
-         }
-         if ((strpos($value, " "))){
-            $this->passwordError = "No deje espacios vacíos";
-            return false;
-         }
-         return true;
-      
+            } else{
+                if (!preg_match('`[a-z]`',$value)){
+                $this->passwordError = "La clave debe tener al menos una letra minúscula";
+                return false;
+                } else{
+                    if (!preg_match('`[A-Z]`',$value)){
+                    $this->passwordError = "La clave debe tener al menos una letra mayúscula";
+                    return false;
+                    } else{
+                        if (!preg_match('`[0-9]`',$value)){
+                        $this->passwordError = "La clave debe tener al menos un caracter numérico";
+                        return false;
+                        } else {
+                            if ((strpos($value, " "))){
+                                $this->passwordError = "Procure que la contraseña no tenga espacios";
+                                return false;
+                            } else{
+                                if (preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬-]/', $value)){
+
+                                        return true;
+                                }
+                                else {
+                                    $this->passwordError = "Agregar por lo menos un carácter especial";
+                                    return false;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }     
     }
 
-    public function validatePasswordAlias($value, $alias, $length)
+    public function validatePasswordAlias($value, $alias)
     {
-        
-        if ((strncmp($value, $alias, $length))){
-            $this->passwordError = "Por favor no introduzca su nombre de usuario como contraseña";
+        similar_text($value, $alias, $percent);
+        if($percent >= 30){
+            $this->passwordError = "Por favor, no ocupe su nombre de usuario como contraseña";
             return false;
-        }
+        } else{
             return true;
+        }
         
-        
-      
     }
 
     /*

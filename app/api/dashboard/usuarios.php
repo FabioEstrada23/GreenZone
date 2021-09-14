@@ -19,10 +19,10 @@ if (isset($_GET['action'])) {
                 case 'logOut':
                     unset($_SESSION['id_empleado']);
                     $result['status'] = 1;
-                    $result['message'] = 'Se ha cerrado la sesión por inactividad';          
+                    $result['message'] = 'Se ha cerrado la sesión';          
                 break;
                 case 'sessionTime':
-                    if((time() - $_SESSION['tiempo_usuario']) < 10){
+                    if((time() - $_SESSION['tiempo_usuario']) < 300){
                         $_SESSION['tiempo_usuario'] = time();
                     } else{
                        unset($_SESSION['id_empleado'], $_SESSION['alias_emp'], $_SESSION['tiempo_usuario']);
@@ -33,24 +33,23 @@ if (isset($_GET['action'])) {
                 case 'changePassword':
                     if ($usuario->setId($_SESSION['id_empleado'])) {
                         $_POST = $usuario->validateForm($_POST);
-                        if ($usuario->checkPassword($_POST['clave_actual'])) {
+                       // if ($usuario->checkPassword($_POST['clave_actual'])) {
                             if ($_POST['clave_actual'] != $_POST['clave_nueva_1']) {
                                 if ($_POST['clave_nueva_1'] == $_POST['clave_nueva_2']) {
-                                            
+                                        if ($usuario->setPasswordAlias($_POST['clave_nueva_1'], $_SESSION['alias_emp'])) {
                                             if ($usuario->setClave($_POST['clave_nueva_1'])) {
-                                                if ($usuario->setPasswordAlias($_POST['clave_nueva_1'], $_SESSION['alias_emp'])) {
-                                                    if ($usuario->changePassword()) {
-                                                        $result['status'] = 1;
-                                                        $result['message'] = 'Contraseña cambiada correctamente';
-                                                    } else {
-                                                        $result['exception'] = Database::getException();
-                                                    }
+                                                if ($usuario->changePassword()) {
+                                                    $result['status'] = 1;
+                                                    $result['message'] = 'Contraseña cambiada correctamente';
                                                 } else {
-                                                    $result['exception'] = $usuario->getPasswordError();
+                                                    $result['exception'] = Database::getException();
                                                 }
                                             } else {
                                                 $result['exception'] = $usuario->getPasswordError();
                                             }
+                                        } else {
+                                            $result['exception'] = $usuario->getPasswordError();
+                                        }
                                         
                                 } else {
                                     $result['exception'] = 'Claves nuevas diferentes';
@@ -58,9 +57,9 @@ if (isset($_GET['action'])) {
                             } else {
                                 $result['exception'] = 'Intente ingresar una contraseña que no sea igual a la anterior';
                             }    
-                        } else {
-                            $result['exception'] = 'Clave actual incorrecta';
-                        }
+                        //} else {
+                           //$result['exception'] = 'Clave actual incorrecta';
+                        //}
                     } else {
                         $result['exception'] = 'Usuario incorrecto';
                     }
@@ -116,7 +115,7 @@ if (isset($_GET['action'])) {
                     if ($usuario->setApellidos($_POST['apellidos_usuario'])) {
                         if ($usuario->setCorreo($_POST['correo_usuario'])) {
                             if ($usuario->setAlias($_POST['alias_usuario'])) {
-                                if ($_POST['clave_usuario'] == $_POST['confirmar_clave']) {
+                                if ($_POST['clave_emp'] == $_POST['confirmar_clave']) {
                                     if ($usuario->setClave($_POST['clave_usuario'])) {
                                         if ($usuario->setPasswordAlias($_POST['clave_nueva_1'], $_POST['alias_usuario'])) {
                                             if ($usuario->createRow()) {

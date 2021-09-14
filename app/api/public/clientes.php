@@ -25,7 +25,7 @@ if(isset($_GET['action'])){
                 
                 break;
             case 'sessionTime':
-                    if((time() - $_SESSION['tiempo_usuario']) < 10){
+                    if((time() - $_SESSION['tiempo_usuario']) < 300){
                         $_SESSION['tiempo_usuario'] = time();
                     } else{
                        unset($_SESSION['id_cliente_user'], $_SESSION['correo_cli_us'], $_SESSION['tiempo_usuario']);

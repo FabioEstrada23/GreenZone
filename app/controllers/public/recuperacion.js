@@ -19,8 +19,9 @@ document.getElementById('recuperacion-form').addEventListener('submit', function
                 if (response.status) {
                     sweetAlert(3, response.message, null);
                     ocultar();
-                    mostrar();
                     bloquearCorreo()
+                    var myModal = new bootstrap.Modal(document.getElementById('recuperacion-modal'));
+                    myModal.show();
                 } else {
                     sweetAlert(2, response.exception, null);
                 }
@@ -33,13 +34,11 @@ document.getElementById('recuperacion-form').addEventListener('submit', function
     });
 });
 
+
 function ocultar(){
     document.getElementById('enviar').style.display = 'none';
 }
 
-function mostrar(){
-    document.getElementById('introducir').style.display = 'block';
-}
 
 function bloquearCorreo(){
     document.getElementById('correo').disabled = true;
