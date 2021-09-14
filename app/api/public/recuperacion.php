@@ -56,8 +56,7 @@ require_once('../../models/cliente.php');
                             $_POST = $cliente->validateForm($_POST);
                             if ($cliente->checkCodigo($_POST['codigo_recu'])) {
                                     if ($_POST['clave_nueva_1'] == $_POST['clave_nueva_2']) {
-                                        if ($cliente->setPasswordNombreUsuario($_POST['clave_nueva_1_cli'], $cliente->getCorreoCliUs())) {
-                                                if ($cliente->setClave($_POST['clave_nueva_1_cli'])) {
+                                                if ($cliente->setClave($_POST['clave_nueva_1'])) {
                                                     if ($cliente->restorePassword()) {
                                                         $result['status'] = 1;
                                                         $result['message'] = 'Contraseña restaurada correctamente';
@@ -66,10 +65,7 @@ require_once('../../models/cliente.php');
                                                     }
                                                 } else {
                                                     $result['exception'] = $cliente->getPasswordError();
-                                                }
-                                        } else {
-                                            $result['exception'] = $cliente->getPasswordError();
-                                        }    
+                                                }    
                                     } else {
                                         $result['exception'] = 'Claves nuevas diferentes';
                                     }        

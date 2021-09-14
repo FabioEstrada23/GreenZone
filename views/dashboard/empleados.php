@@ -254,8 +254,8 @@ Dashboard_Page::headerTemplate('Gestión de empleados');
                                                 <th scope="col">Apellidos</th>
                                                 <th scope="col">Correo</th>
                                                 <th scope="col">Alias</th>
-                                                <th scope="col">Tipo emp</th>
-                                                <th scope="col">Estado_emp</th>
+                                                <th scope="col">Tipo empleado</th>
+                                                <th scope="col">Estado empleado</th>
                                                 <th class="actions-column">Acciones</th>
                                             </tr>
                                         </thead>

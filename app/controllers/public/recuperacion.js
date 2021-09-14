@@ -20,6 +20,7 @@ document.getElementById('recuperacion-form').addEventListener('submit', function
                     sweetAlert(3, response.message, null);
                     ocultar();
                     mostrar();
+                    bloquearCorreo()
                 } else {
                     sweetAlert(2, response.exception, null);
                 }
@@ -40,6 +41,10 @@ function mostrar(){
     document.getElementById('introducir').style.display = 'block';
 }
 
+function bloquearCorreo(){
+    document.getElementById('correo').disabled = true;
+}
+
 // Método manejador de eventos que se ejecuta cuando se envía el formulario de cambiar clave.
 document.getElementById('restore-form').addEventListener('submit', function (event) {
     // Se evita recargar la página web después de enviar el formulario.
@@ -54,7 +59,7 @@ document.getElementById('restore-form').addEventListener('submit', function (eve
             request.json().then(function (response) {
                 // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
                 if (response.status) {
-                    sweetAlert(1, response.exception, 'private_login.php');
+                    sweetAlert(1, response.message, 'login.php');
                     
                     
                 } else {

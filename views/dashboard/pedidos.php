@@ -137,7 +137,7 @@ Dashboard_Page::headerTemplate('Gestión de pedidos');
                     <table class="table table-dark table-striped" id="tabla">
                         <thead>
                             <tr>
-                                <th scope="col">Cliente</th>
+                                <th scope="col">Correo</th>
                                 <th scope="col">Fecha del Pedido</th>
                                 <th scope="col">Fecha de entrega</th>
                                 <th scope="col">Estado</th>

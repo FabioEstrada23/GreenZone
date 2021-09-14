@@ -34,6 +34,15 @@ class Cliente extends validator{
     *   Métodos para asignar valores a los atributos.
     */
 
+    public function setPasswordNombreUsuario($value, $alias)
+    {
+        if ($this->validatePasswordAlias($value, $alias, 16)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function setCodigoRecu($value){
         if($this->validateAlphanumeric($value, 1, 6)){
             $this->codigo_recu = $value;
@@ -280,7 +289,7 @@ class Cliente extends validator{
 
     public function searchRows($value)
     {
-        $sql = 'SELECT id_cliente_user, DUI_cli, telefono_cli, cliente_user, correo_cli_us, contra_cli_us, nombres_cli, apellidos_cli, direccion_cli, ciudad.ciudad, codigo_pos_cli, fecha_nac_cli, genero, estado_cli.estado_cli  from cliente_user
+        $sql = 'SELECT id_cliente_user, DUI_cli, telefono_cli, correo_cli_us, contra_cli_us, nombres_cli, apellidos_cli, direccion_cli, ciudad.ciudad, codigo_pos_cli, fecha_nac_cli, genero, estado_cli.estado_cli  from cliente_user
         INNER JOIN ciudad ON cliente_user.id_ciudad = ciudad.id_ciudad
         INNER JOIN estado_cli ON cliente_user.id_estado_cli = estado_cli.id_estado_cli 
         WHERE cliente_user ILIKE ?';
@@ -290,7 +299,7 @@ class Cliente extends validator{
 
     public function readAll()
     {
-        $sql = 'SELECT id_cliente_user, DUI_cli, telefono_cli, cliente_user, correo_cli_us, contra_cli_us, nombres_cli, apellidos_cli, direccion_cli, ciudad.ciudad, codigo_pos_cli, fecha_nac_cli, genero, estado_cli  from cliente_user
+        $sql = 'SELECT id_cliente_user, DUI_cli, telefono_cli, correo_cli_us, contra_cli_us, nombres_cli, apellidos_cli, direccion_cli, ciudad.ciudad, codigo_pos_cli, fecha_nac_cli, genero, estado_cli  from cliente_user
         INNER JOIN ciudad ON cliente_user.id_ciudad = ciudad.id_ciudad
         INNER JOIN estado_cli ON cliente_user.id_estado_cli = estado_cli.id_estado_cli
         
@@ -301,7 +310,7 @@ class Cliente extends validator{
 
     public function readOne()
     {
-        $sql = 'SELECT id_cliente_user, DUI_cli, telefono_cli, cliente_user, correo_cli_us, contra_cli_us, nombres_cli, apellidos_cli, direccion_cli, cliente_user.id_ciudad, codigo_pos_cli, fecha_nac_cli, genero, cliente_user.id_estado_cli  from cliente_user
+        $sql = 'SELECT id_cliente_user, DUI_cli, telefono_cli, correo_cli_us, contra_cli_us, nombres_cli, apellidos_cli, direccion_cli, cliente_user.id_ciudad, codigo_pos_cli, fecha_nac_cli, genero, cliente_user.id_estado_cli  from cliente_user
         INNER JOIN ciudad ON cliente_user.id_ciudad = ciudad.id_ciudad
         INNER JOIN estado_cli ON cliente_user.id_estado_cli = estado_cli.id_estado_cli 
         WHERE id_cliente_user = ?';
@@ -474,6 +483,18 @@ class Cliente extends validator{
     }
 
     public function checkCodigo($restauracion)
+    {
+        $sql = 'SELECT id_cliente_user, correo_cli_us FROM cliente_user WHERE codigo_recu = ?';
+        $params = array($restauracion);
+        if ($data = Database::getRow($sql, $params)) {
+            $this->id_cliente_user = $data['id_cliente_user'];
+            $this->correo_cli_us = $data['correo_cli_us'];
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public function checkCodigo2($restauracion)
     {
         $sql = 'SELECT id_cliente_user, codigo_recu FROM cliente_user WHERE correo_cli_us = ?';
         $params = array($_SESSION['correo_cli_us']);

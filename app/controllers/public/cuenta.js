@@ -43,7 +43,6 @@ function openProfileDialog() {
                     // Se inicializan los campos del formulario con los datos del usuario que ha iniciado sesión.
                     document.getElementById('dui_cli').value = response.dataset.dui_cli;
                     document.getElementById('telefono_cli').value = response.dataset.telefono_cli;
-                    document.getElementById('user').value = response.dataset.cliente_user;
                     document.getElementById('correo').value = response.dataset.correo_cli_us;
                     document.getElementById('nombres_cli').value = response.dataset.nombres_cli;
                     document.getElementById('apellidos_cli').value = response.dataset.apellidos_cli;
@@ -144,26 +143,8 @@ document.getElementById('password-form-cli').addEventListener('submit', function
                 // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
                 if (response.status) {
                     // Se cierra la caja de dialogo (modal) del formulario.
-                    
-                    fetch(API + 'logOut', {
-                        method: 'get'
-                    }).then(function (request) {
-                        // Se verifica si la petición es correcta, de lo contrario se muestra un mensaje indicando el problema.
-                        if (request.ok) {
-                            request.json().then(function (response) {
-                                // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
-                                if (response.status) {
-                                    sweetAlert(1, response.message, 'login.php');
-                                } else {
-                                    sweetAlert(2, response.exception, null);
-                                }
-                            });
-                        } else {
-                            console.log(request.status + ' ' + request.statusText);
-                        }
-                    }).catch(function (error) {
-                        console.log(error);
-                    });
+                        sweetAlert(3, response.message, 'login.php');
+
                 } else {
                     sweetAlert(2, response.exception, null);
                 }
