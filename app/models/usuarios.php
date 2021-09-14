@@ -20,7 +20,7 @@ class Usuarios extends Validator
     */
     public function setPasswordAlias($value, $alias)
     {
-        if ($this->validatePasswordAlias($value, $alias, 16)) {
+        if ($this->validatePasswordAlias($value, $alias)) {
             return true;
         } else {
             return false;

@@ -36,7 +36,6 @@
             <label for="mail">Correo</label>
             <input id="correo" name="correo" type="text" placeholder="Ingresa tu correo"  autocomplete="off" class="validate" required>
             <input class='Enviar' id="enviar" type="submit" value="Enviar mensaje" >
-            <button type="button" id="introducir" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#recuperacion-modal">Introducir código</button>
             <span class="text-footer">¿Recordaste la contraseña?
                 <a href="login.php">Ingresa</a>
             </span>               

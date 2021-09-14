@@ -34,7 +34,7 @@ Dashboard_Page::headerTemplate('Gestión de empleados');
                                         <div class="col-9">
                                             <input type="text" class="form-control"
                                                 aria-label="Buscar" aria-describedby="basic-addon1" id="nombres_emp"
-                                                type="text" name="nombres_emp" class="validate" required>
+                                                type="text" name="nombres_emp" class="validate" autocomplete="off" required>
                                         </div>
             
                                     </div>
@@ -46,7 +46,7 @@ Dashboard_Page::headerTemplate('Gestión de empleados');
                                         <div class="col-9">
                                         <input type="text" class="form-control"
                                                 aria-label="Buscar" aria-describedby="basic-addon1" id="apellidos_emp"
-                                                type="text" name="apellidos_emp" class="validate" required>
+                                                type="text" name="apellidos_emp" class="validate" autocomplete="off" required>
                                         </div>
                                     </div>
 
@@ -58,7 +58,7 @@ Dashboard_Page::headerTemplate('Gestión de empleados');
                                         <div class="col-9">
                                         <input type="email" class="form-control"
                                                 aria-label="Buscar" aria-describedby="basic-addon1" id="correo_emp"
-                                                type="email" name="correo_emp" class="validate" required>
+                                                type="email" name="correo_emp" class="validate" autocomplete="off" required>
                                         </div>
                                     </div>
 
@@ -69,7 +69,7 @@ Dashboard_Page::headerTemplate('Gestión de empleados');
                                         <div class="col-9">
                                         <input type="text" class="form-control"
                                                 aria-label="Buscar" aria-describedby="basic-addon1" id="alias_emp"
-                                                type="text" name="alias_emp" class="validate" required>
+                                                type="text" name="alias_emp" class="validate" autocomplete="off" required>
                                         </div>
                                     </div>
 
@@ -81,7 +81,18 @@ Dashboard_Page::headerTemplate('Gestión de empleados');
                                         <div class="col-9">
                                         <input type="password" class="form-control"
                                                 aria-label="Buscar" aria-describedby="basic-addon1" id="clave_emp"
-                                                type="password" name="clave_emp" class="validate" required>
+                                                type="password" name="clave_emp" class="validate" autocomplete="off" required>
+                                        </div>
+                                    </div>
+                                    <div class="row  p-3">
+                                        <div class="col-3 text-center">
+            
+                                            <h6>Confirmar contraseña</h6>
+                                        </div>
+                                        <div class="col-9">
+                                        <input type="password" class="form-control"
+                                                aria-label="Buscar" aria-describedby="basic-addon1" id="confirmar_clave"
+                                                type="password" name="confirmar_clave" class="validate" autocomplete="off" required>
                                         </div>
                                     </div>
 
@@ -167,33 +178,33 @@ Dashboard_Page::headerTemplate('Gestión de empleados');
                                     <label for="formGroupExampleInput">ID:</label>
                                     <input type="text" class="form-control " placeholder="Ej: MalteHC..."
                                         aria-label="Buscar" aria-describedby="basic-addon1" id="id_empleado" type="text"
-                                        name="id_empleado" class="validate" required>
+                                        name="id_empleado" class="validate" autocomplete="off" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="formGroupExampleInput">Nombres:</label>
                                     <input type="text" class="form-control" placeholder="Ej: MalteHC..."
                                         aria-label="Buscar" aria-describedby="basic-addon1" id="nombres_emp2" type="text"
-                                        name="nombres_emp2" class="validate" required>
+                                        name="nombres_emp2" class="validate" autocomplete="off" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="formGroupExampleInput2">Apellidos:</label>
                                     <input type="text" class="form-control"
                                         placeholder="Ej: MalteHC..." aria-label="Buscar"
                                         aria-describedby="basic-addon1" id="apellidos_emp2" type="text"
-                                        name="apellidos_emp2" class="validate" required>
+                                        name="apellidos_emp2" class="validate" autocomplete="off" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="formGroupExampleInput2">correo:</label>
                                     <input type="text" class="form-control"
                                         placeholder="Ej: fulanito@gmail.com..." aria-label="Buscar"
                                         aria-describedby="basic-addon1" id="correo_emp2" type="text"
-                                        name="correo_emp2" class="validate" required>
+                                        name="correo_emp2" class="validate" autocomplete="off" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="formGroupExampleInput3">Alias:</label>
                                     <input type="text" class="form-control" placeholder="Ej: MalteHC..."
                                         aria-label="Buscar" aria-describedby="basic-addon1" id="alias_emp2" type="text"
-                                        name="alias_emp2" class="validate" required>
+                                        name="alias_emp2" class="validate" autocomplete="off" required>
                                 </div>
                                 
                                 <div class="form-group">

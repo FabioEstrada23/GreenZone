@@ -80,35 +80,39 @@ if (isset($_GET['action'])) {
                             if($Empleado->setApellidos($_POST['apellidos_emp'])){
                                 if($Empleado->setCorreo($_POST['correo_emp'])){
                                     if($Empleado->setAlias($_POST['alias_emp'])){
-                                        if($Empleado->setClave($_POST['clave_emp'])){
+                                        if ($_POST['clave_emp'] == $_POST['confirmar_clave']) {
                                             if ($Empleado->setPasswordEmpleado($_POST['clave_emp'], $_POST['alias_emp'])) {
-                                                if(isset($_POST['tipo_empleado'])){
-                                                    if($Empleado->setTipoEmp($_POST['tipo_empleado'])){
-                                                        if(isset($_POST['estado_emp'])){
-                                                            if($Empleado->setEstado($_POST['estado_emp'])){
-                                                                if ($Empleado->createRow()) {
-                                                                    $result['status'] = 1;
-                                                                    $result['message'] = 'Usuario creado correctamente';
-                                                                } else {
-                                                                    $result['exception'] = Database::getException();
+                                                if($Empleado->setClave($_POST['clave_emp'])){
+                                                    if(isset($_POST['tipo_empleado'])){
+                                                        if($Empleado->setTipoEmp($_POST['tipo_empleado'])){
+                                                            if(isset($_POST['estado_emp'])){
+                                                                if($Empleado->setEstado($_POST['estado_emp'])){
+                                                                    if ($Empleado->createRow()) {
+                                                                        $result['status'] = 1;
+                                                                        $result['message'] = 'Usuario creado correctamente';
+                                                                    } else {
+                                                                        $result['exception'] = Database::getException();
+                                                                    }
+                                                                }else{
+                                                                    $result['message'] = 'Estado Empleado Incorrecto';    
                                                                 }
                                                             }else{
-                                                                $result['message'] = 'Estado Empleado Incorrecto';    
+                                                                $result['message'] = 'Seleccione un estado empleado';
                                                             }
                                                         }else{
-                                                            $result['message'] = 'Seleccione un estado empleado';
+                                                        $result['message'] = 'Tipo Empleado Incorrecto';    
                                                         }
                                                     }else{
-                                                    $result['message'] = 'Tipo Empleado Incorrecto';    
+                                                        $result['message'] = 'Seleccione un tipo empleado';
                                                     }
-                                                }else{
-                                                    $result['message'] = 'Seleccione un tipo empleado';
+                                                } else {
+                                                    $result['exception'] = $Empleado->getPasswordError();
                                                 }
-                                            } else {
-                                                $result['exception'] = $Empleado->getPasswordError();
+                                            }else{
+                                                $result['exception'] = $Empleado->getPasswordError();    
                                             }
-                                        }else{
-                                            $result['exception'] = $Empleado->getPasswordError();    
+                                        } else {
+                                            $result['exception'] = 'Claves diferentes';
                                         }
                                     }else{
                                         $result['message'] = 'Alias Incorrecto';    
