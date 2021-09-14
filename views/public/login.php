@@ -20,9 +20,31 @@ Public_Page::headerTemplate('Iniciar sesión');
                 <!-- Ingresar contresenia de usuario -->
                 <label for="password"><i class="material-icons prefix">security</i> Contraseña</label>
                 <input type="password" placeholder="Ingresa tu contraseña" id="clave" name="clave" class="validate" required>
-                <input type="submit" value="Log In" data-bs-toggle="modal" data-bs-target="#recuperacion-modal">
-                
+                <input type="submit" value="Log In">
             </form>
+
+
+            <form method="post" id="confirmar-form">
+                <!-- Modal -->
+                <div class="modal fade" id="confirmar-modal" tabindex="-1" aria-labelledby="confirmar-modal" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Ingresa el codigo de confirmacion</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <input type="text" class="form-select" id="codigo" autocomplete="off" name="codigo">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Salir</button>
+                            <button  type="submit" class="btn btn-primary">Confirmar</button>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
             <!-- Recuperacion de contrasenia -->
             <span class="text-footer">¿Perdiste tu contraseña?
                 <a href="recuperacion.php">Recupérala</a>

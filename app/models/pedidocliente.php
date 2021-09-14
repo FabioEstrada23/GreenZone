@@ -167,7 +167,7 @@ class Pedido extends Validator
 
     public function comprobantePago()
     {
-        $sql = 'SELECT id_detalle_pedido, nombre_pro, precio_producto, cantidad
+        $sql = 'SELECT id_detalle_pedido, nombre_pro, precio_producto, cantidad, (cantidad * precio_producto) as subtotal
         FROM pedido INNER JOIN detalle_pedido USING(id_pedido) INNER JOIN producto USING(id_producto)
         WHERE id_pedido = ? group by id_detalle_pedido, nombre_pro, precio_pro, cantidad';
        $params = array($this->id_pedido);

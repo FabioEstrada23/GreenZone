@@ -27,6 +27,7 @@ class Cliente extends validator{
     private $id_estado_cli = null;
     private $correoError = null;
     private $codigo_recu = null;
+    private $clienteUser = null;
 
 
     /*
@@ -40,6 +41,15 @@ class Cliente extends validator{
         }else{
             return false;
         }  
+    }
+
+    public function setPasswordNombreUsuario($value, $alias)
+    {
+        if ($this->validatePasswordAlias($value, $alias, 16)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public function setIdClienteUser($value)
@@ -95,6 +105,15 @@ class Cliente extends validator{
     public function setNombres($value){
         if($this->validateAlphabetic($value, 1, 30)){
             $this->nombres_cli = $value;
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public function setClienteUser($value){
+        if($this->validateAlphabetic($value, 1, 30)){
+            $this->clienteUser = $value;
             return true;
         }else{
             return false;
@@ -248,6 +267,12 @@ class Cliente extends validator{
     {
         return $this->codigo_recu;
     }
+
+    public function getClienteUser()
+    {
+        return $this->clienteUser;
+    }
+
 
     /*
     *   Métodos para realizar las operaciones SCRUD (search, create, read, update, delete).
@@ -406,14 +431,13 @@ class Cliente extends validator{
         // Inicio
         $mail = new PHPMailer(true);
 
-        try {
             // Configuracion SMTP
             $mail->SMTPDebug = 0;                      // Mostrar salida (Desactivar en producción)
             $mail->isSMTP();                                               // Activar envio SMTP
             $mail->Host  = 'smtp.gmail.com';                     // Servidor SMTP
             $mail->SMTPAuth  = true;                                       // Identificacion SMTP
-            $mail->Username  = '20160393@ricaldone.edu.sv';                  // Usuario SMTP
-            $mail->Password  = '16625968';	          // Contraseña SMTP
+            $mail->Username  = '20fernandoaquino02@gmail.com';                  // Usuario SMTP
+            $mail->Password  = 'mainkra123';	          // Contraseña SMTP
             $mail->SMTPSecure = 'tls';
             $mail->Port  = 587;
             $mail->setFrom("20160393@ricaldone.edu.sv", "Green Zone");                // Remitente del correo
@@ -427,14 +451,12 @@ class Cliente extends validator{
             $mail->Body = 'Estimado cliente, ' .$correo .'gracias por preferirnos. 
                         Por este medio le enviamos el codígo de verificación para continuar con el proceso de restauración de contraseña
                         El cual es:<b>'.$codigo.'!</b>';
-            $mail->send();
-            
-            return true;
 
-        } catch (Exception $e) {
-            $this->$correoError = "El mensaje no se ha enviado. Mailer Error: {$mail->ErrorInfo}";
-            return false;
-        }
+            if($mail->send()){
+                return true;
+            } else{
+                return false;
+            }
     }
 
     public function updateCodigo()
@@ -444,25 +466,36 @@ class Cliente extends validator{
         return Database::getRows($sql, $params);
     }
 
+    public function updateCodigo2($codigo_con)
+    {
+        $sql = 'UPDATE cliente_user SET codigo_recu = ? WHERE id_cliente_user = ?';
+        $params = array($codigo_con, $this->id_cliente_user);
+        return Database::executeRow($sql, $params);
+    }
+
     public function checkCodigo($restauracion)
     {
-        $sql = 'SELECT codigo_recu FROM cliente_user WHERE id_cliente_user = ?';
-        $params = array($this->id_cliente_user);
+        $sql = 'SELECT id_cliente_user, codigo_recu FROM cliente_user WHERE correo_cli_us = ?';
+        $params = array($_SESSION['correo_cli_us']);
         $data = Database::getRow($sql, $params);
         if ($restauracion == $data['codigo_recu']) {
-            
-            return true;
+            $this->id_cliente_user = $data['id_cliente_user'];
+            $sql = 'UPDATE cliente_user SET codigo_recu = null WHERE id_cliente_user = ?';
+            $params = array($this->id_cliente_user);
+            return Database::executeRow($sql, $params);
         } else {
             return false;
         }
     }
+
+    
 
     public function restorePassword()
     {
         // Se transforma la contraseña a una cadena de texto de longitud fija mediante el algoritmo por defecto.
         $hash = password_hash($this->contra_cli_us, PASSWORD_DEFAULT);
         $sql = 'UPDATE cliente_user SET contra_cli_us = ? WHERE id_cliente_user = ?';
-        $params = array($hash, $id_cliente_user);
+        $params = array($hash, $this->id_cliente_user);
         return Database::executeRow($sql, $params);
     }
 }

@@ -9,12 +9,14 @@ if(isset($_GET['action'])){
     session_start();
     // Se instancia la clase correspondiente.
     $cliente = new Cliente;
+    
     // Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
     $result = array('status' => 0, 'error' => 0, 'message' => null, 'exception' => null);
     // Se verifica si existe una sesión iniciada como administrador, de lo contrario se finaliza el script con un mensaje de error.
     if (isset($_SESSION['id_cliente_user'])) {
-
+        
         switch ($_GET['action']) {
+
             case 'logOut':
                 
                     unset($_SESSION['id_cliente_user']);
@@ -145,6 +147,7 @@ if(isset($_GET['action'])){
                 $result['exception'] = 'Acción no disponible dentro de la sesión';
         }
     }else {
+        $clienteTemp = null;
         // Se compara la acción a realizar cuando el administrador no ha iniciado sesión.
         switch ($_GET['action']) {
             case 'register':
@@ -224,13 +227,20 @@ if(isset($_GET['action'])){
                 case 'logIn':
                     $_POST = $cliente->validateForm($_POST);
                     if ($cliente->checkUser($_POST['correo'])) {
-                        if ($cliente->getIdEstadoCli()) {
+                        if ($cliente->getIdEstadoCli() == 1) {
                             if ($cliente->checkPassword($_POST['clave'])) {
-                                $_SESSION['id_cliente_user'] = $cliente->getIdClienteUser();
-                                $_SESSION['correo_cli_us'] = $cliente->getCorreoCliUs();
-                                $_SESSION['tiempo_usuario'] = time();
-                                $result['status'] = 1;
-                                $result['message'] = 'Autenticación correcta';
+                                $codigo = $cliente->generarCodigoRecu(6);
+                                if ($cliente->enviarCorreo($_POST['correo'], $codigo)) {
+                                    if($cliente->updateCodigo2($codigo)){
+                                        $_SESSION['correo_cli_us'] = $cliente->getCorreoCliUs();
+                                        $result['status'] = 1;
+                                        $result['message'] = 'Se ha enviado un codigo de confirmacion a su correo';
+                                    }else{
+                                        $result['exception'] = 'Ocurrio un problema al actualizar el código';
+                                    }
+                                } else {
+                                    $result['exception'] = $cliente->getCorreoError();
+                                } 
                             } else {
                                 if (Database::getException()) {
                                     $result['exception'] = Database::getException();
@@ -249,6 +259,21 @@ if(isset($_GET['action'])){
                         }
                     }
                     break;
+
+        
+                        case 'comparar':
+                            $_POST = $cliente->validateForm($_POST);
+                            if($cliente->checkCodigo($_POST['codigo'])){
+                                $_SESSION['id_cliente_user'] = $cliente->getIdClienteUser();
+                                $_SESSION['tiempo_usuario'] = time();
+                                $result['status'] = 1;
+                                $result['message'] = 'Autenticación correcta';
+                                
+                            }else {
+                                $result['exception'] = 'codigo incorrecto, verifique otra vez';
+                            }
+                            
+                            break;
             default:
                 $result['exception'] = 'Acción no disponible fuera de la sesión';
         }
