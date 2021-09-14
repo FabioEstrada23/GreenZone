@@ -55,6 +55,7 @@ require_once('../../models/cliente.php');
                             echo $id;
                             $_POST = $cliente->validateForm($_POST);
                             if ($cliente->checkCodigo($_POST['codigo_recu'])) {
+                                if ($cliente->setPasswordNombreUsuario($_POST['clave_nueva_1'], $cliente->getCorreoCliUs())) {
                                     if ($_POST['clave_nueva_1'] == $_POST['clave_nueva_2']) {
                                                 if ($cliente->setClave($_POST['clave_nueva_1'])) {
                                                     if ($cliente->restorePassword()) {
@@ -65,9 +66,12 @@ require_once('../../models/cliente.php');
                                                     }
                                                 } else {
                                                     $result['exception'] = $cliente->getPasswordError();
-                                                }    
+                                                } 
+                                            } else {
+                                                $result['exception'] = 'Claves nuevas diferentes';
+                                            }       
                                     } else {
-                                        $result['exception'] = 'Claves nuevas diferentes';
+                                        $result['exception'] = $cliente->getPasswordError();
                                     }        
                             } else {
                                 $result['exception'] = 'Código ingresado erróneo';
