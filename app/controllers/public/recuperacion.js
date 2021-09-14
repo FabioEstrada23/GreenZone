@@ -20,6 +20,7 @@ document.getElementById('recuperacion-form').addEventListener('submit', function
                     sweetAlert(3, response.message, null);
                     ocultar();
                     mostrar();
+                    bloquearCorreo()
                 } else {
                     sweetAlert(2, response.exception, null);
                 }
@@ -38,6 +39,10 @@ function ocultar(){
 
 function mostrar(){
     document.getElementById('introducir').style.display = 'block';
+}
+
+function bloquearCorreo(){
+    document.getElementById('correo').disabled = true;
 }
 
 // Método manejador de eventos que se ejecuta cuando se envía el formulario de cambiar clave.

@@ -34,7 +34,7 @@
             <form id="recuperacion-form" method="post">
             <!-- Ingresar correo de usuario -->
             <label for="mail">Correo</label>
-            <input id="correo" name="correo" type="text" placeholder="Ingresa tu correo"  class="validate" required>
+            <input id="correo" name="correo" type="text" placeholder="Ingresa tu correo"  autocomplete="off" class="validate" required>
             <input class='Enviar' id="enviar" type="submit" value="Enviar mensaje" >
             <button type="button" id="introducir" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#recuperacion-modal">Introducir código</button>
             <span class="text-footer">¿Recordaste la contraseña?

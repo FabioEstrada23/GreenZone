@@ -16,10 +16,10 @@ Public_Page::headerTemplate('Iniciar sesión');
                 
                 <!-- Ingresar nombre de usuario -->
                 <label for="username"><i class="material-icons prefix">email</i> Correo</label>
-                <input type="text" placeholder="Ingresa tu email" id="correo" name="correo" class="validate" required>
+                <input type="text" placeholder="Ingresa tu email" id="correo" name="correo" autocomplete="off" class="validate" required>
                 <!-- Ingresar contresenia de usuario -->
                 <label for="password"><i class="material-icons prefix">security</i> Contraseña</label>
-                <input type="password" placeholder="Ingresa tu contraseña" id="clave" name="clave" class="validate" required>
+                <input type="password" placeholder="Ingresa tu contraseña" id="clave" name="clave" class="validate" autocomplete="off" required>
                 <input type="submit" value="Log In" data-bs-toggle="modal" data-bs-target="#recuperacion-modal">
                 
             </form>

@@ -18,10 +18,10 @@ Dashboard_Page::headerTemplate('Iniciar sesión');
                         
                         <!-- Ingresar nombre de usuario -->
                         <label for="username">Usuario</label>
-                        <input type="text" placeholder="Ingresa tu usuario" name="username" class="validate" required>
+                        <input type="text" placeholder="Ingresa tu usuario" name="username" class="validate" autocomplete="off" required>
                         <!-- Ingresar contresenia de usuario -->
                         <label for="password">Contraseña</label>
-                        <input type="password" placeholder="Ingresa tu contraseña" name="clave" class="validate" required>
+                        <input type="password" placeholder="Ingresa tu contraseña" name="clave" class="validate" autocomplete="off" required>
                         <button type="submit" class="tooltipped" data-tooltip="Ingresar">Ingresar</button>
 
                     </form>
