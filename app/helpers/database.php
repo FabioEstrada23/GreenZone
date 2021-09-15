@@ -141,7 +141,7 @@ class Database
                 self::$error = 'Nombre de campo desconocido';
                 break;
             case '23505':
-                self::$error = 'Dato duplicado, no se puede guardar';
+                self::$error = 'Favor de agregar datos válidos y que no estén dentro del sistema';
                 break;
             case '42P01':
                 self::$error = 'Nombre de tabla desconocido';
@@ -149,6 +149,9 @@ class Database
             case '23503':
                 self::$error = 'Registro ocupado, no se puede eliminar';
                 break;
+            case '23007':
+                self::$error = 'Sintax de fecha invalida';
+                break;    
             default:
                 //self::$error = 'Ocurrió un problema en la base de datos';
                 self::$error = $message;
