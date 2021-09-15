@@ -380,7 +380,7 @@ class Cliente extends validator{
         $months = floor(($dateDifference - $years * 365 * 60 * 60 * 24) / (30 * 60 * 60 * 24));
         $days   = floor(($dateDifference - $years * 365 * 60 * 60 * 24 - $months * 30 * 60 * 60 *24) / (60 * 60 * 24));
 
-        if($days>=1){
+        if($days>=5){
             return true;
         }else{
             return false;

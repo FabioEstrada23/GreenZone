@@ -43,7 +43,7 @@ class Dashboard_Page
 
             
             // Se verifica si la página web actual es diferente a index.php (Iniciar sesión) y a register.php (Crear primer usuario) para no iniciar sesión otra vez, de lo contrario se direcciona a main.php
-            if ($filename != 'private_login.php' && $filename != 'register.php') {
+            if ($filename != 'login.php' && $filename != 'register.php') {
                 print('
                 <body>
 
@@ -148,8 +148,8 @@ class Dashboard_Page
             }
         } else {
             // Se verifica si la página web actual es diferente a index.php (Iniciar sesión) y a register.php (Crear primer usuario) para direccionar a index.php, de lo contrario se muestra un menú vacío.
-            if ($filename != 'private_login.php' && $filename != 'register.php') {
-                header('location: private_login.php');
+            if ($filename != 'login.php' && $filename != 'register.php') {
+                header('location: login.php');
             } else {
                 print('
                 <!DOCTYPE html>
