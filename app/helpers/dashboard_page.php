@@ -79,7 +79,7 @@ class Dashboard_Page
                             <nav class="menu-navegacion">
                                 
                                     <img src="../../resources/img/logos/lg_head.png" class="logo img-fluid">
-                                    <a href="../../views/dashboard/private_index.php" class="d-block text-light p-3"><i class="icon ion-md-home mr-2 lead"></i> Inicio</a>
+                                    <a href="../../views/dashboard/index.php" class="d-block text-light p-3"><i class="icon ion-md-home mr-2 lead"></i> Inicio</a>
                                     <a href="../../views/dashboard/agregar_producto.php" class="d-block text-light p-3"><i class="icon ion-md-cart mr-2 lead"></i> Productos</a>
                                     <a href="../../views/dashboard/marca.php" class="d-block text-light p-3"><i class="icon ion-md-pricetag mr-2 lead"></i> Marcas</a>
                                     <a href="../../views/dashboard/proveedores.php" class="d-block text-light p-3"><i class="icon ion-md-globe mr-2 lead"></i> Proveedores</a>
@@ -144,7 +144,7 @@ class Dashboard_Page
                     ');
                 
             } else {
-                header('location: private_index.php');
+                header('location: index.php');
             }
         } else {
             // Se verifica si la página web actual es diferente a index.php (Iniciar sesión) y a register.php (Crear primer usuario) para direccionar a index.php, de lo contrario se muestra un menú vacío.
@@ -174,7 +174,7 @@ class Dashboard_Page
                 <header>
                     <div class="row">
                                 <div id="cabecera">
-                                <a href="private_login.php" class="brand-logo"><i class="material-icons">dashboard</i></a>
+                                <a href="login.php" class="brand-logo"><i class="material-icons">dashboard</i></a>
                                 </div>
                     </div>
                 </header>
