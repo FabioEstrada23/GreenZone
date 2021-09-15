@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
             request.json().then(function (response) {
                 // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje.
                 if (response.status) {
-                    sweetAlert(3, response.message, 'private_login.php');
+                    sweetAlert(3, response.message, 'login.php');
                 } else {
                     // Se verifica si ocurrió un problema en la base de datos, de lo contrario se continua normalmente.
                     if (response.error) {
@@ -45,9 +45,9 @@ document.getElementById('register-form').addEventListener('submit', function (ev
             request.json().then(function (response) {
                 // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
                 if (response.status) {
-                    sweetAlert(1, response.message, 'private_login.php');
+                    sweetAlert(1, response.message, 'login.php');
                 } else {
-                    sweetAlert(2, response.exception, 'private_login.php');
+                    sweetAlert(2, response.exception, 'login.php');
                 }
             });
         } else {

@@ -16,7 +16,7 @@ function sessionTime()
                 request.json().then(function (response) {
                     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
                     if (response.status) {
-                        sweetAlert(4, response.message, 'private_login.php');
+                        sweetAlert(4, response.message, 'login.php');
                     } else {
                         console.log('Sesión activa')
                     }
@@ -58,7 +58,7 @@ document.getElementById('password-form').addEventListener('submit', function (ev
                             request.json().then(function (response) {
                                 // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
                                 if (response.status) {
-                                    sweetAlert(1, response.message, 'private_login.php');
+                                    sweetAlert(1, response.message, 'login.php');
                                 } else {
                                     sweetAlert(2, response.exception, null);
                                 }
@@ -102,7 +102,7 @@ function logOut() {
                     request.json().then(function (response) {
                         // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
                         if (response.status) {
-                            sweetAlert(1, response.message, 'private_login.php');
+                            sweetAlert(1, response.message, 'login.php');
                         } else {
                             sweetAlert(2, response.exception, null);
                         }

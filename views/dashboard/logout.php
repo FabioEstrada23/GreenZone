@@ -4,6 +4,6 @@ session_start();
 //Cerrar sesión
 unset($_SESSION['id_empleado']); 
 //Redirigir al login para que inicie sesión de nuevo
-header("Location: private_login.php");
+header("Location: login.php");
 ?>
 
