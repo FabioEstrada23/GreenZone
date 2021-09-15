@@ -62,6 +62,7 @@ if(isset($_GET['action'])){
                         if ($cliente->checkPassword($_POST['clave_actual_cli'])) {
                             if ($_POST['clave_actual_cli'] != $_POST['clave_nueva_1_cli']) {
                                 if ($_POST['clave_nueva_1_cli'] == $_POST['clave_nueva_2_cli']) {
+                                    if ($cliente->setPasswordNombreUsuario($_POST['clave_nueva_1_cli'], $_SESSION['correo_cli_us'])) {
                                             if ($cliente->setClave($_POST['clave_nueva_1_cli'])) {
                                                 if ($cliente->changePassword()) {
                                                     $result['status'] = 1;
@@ -72,7 +73,10 @@ if(isset($_GET['action'])){
                                                 }
                                             } else {
                                                 $result['exception'] = $cliente->getPasswordError();
-                                            }   
+                                            } 
+                                        } else {
+                                            $result['exception'] = $cliente->getPasswordError();
+                                        }      
                                 } else {
                                     $result['exception'] = 'Claves nuevas diferentes';
                                 }
@@ -185,6 +189,7 @@ if(isset($_GET['action'])){
                                         if ($cliente->setDuiCli($_POST['dui'])) {
                                             if ($cliente->setNacimiento($_POST['nacimiento_cliente'])) {
                                                     if ($_POST['clave_cliente'] == $_POST['confirmar_clave']) {
+                                                        if ($cliente->setPasswordNombreUsuario($_POST['clave_cliente'], $_POST['correo'])) {
                                                                 if ($cliente->setClave($_POST['clave_cliente'])) {
                                                                         if ($cliente->createRow()) {
                                                                         $result['status'] = 1;
@@ -195,6 +200,9 @@ if(isset($_GET['action'])){
                                                             } else {
                                                                 $result['exception'] = $cliente->getPasswordError();
                                                             }
+                                                        } else {
+                                                            $result['exception'] = $cliente->getPasswordError();
+                                                        }
                                                     } else {
                                                         $result['exception'] = 'Claves diferentes';
                                                     }

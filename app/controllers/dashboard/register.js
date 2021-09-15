@@ -47,7 +47,7 @@ document.getElementById('register-form').addEventListener('submit', function (ev
                 if (response.status) {
                     sweetAlert(1, response.message, 'private_login.php');
                 } else {
-                    sweetAlert(2, response.exception, null);
+                    sweetAlert(2, response.exception, 'private_login.php');
                 }
             });
         } else {

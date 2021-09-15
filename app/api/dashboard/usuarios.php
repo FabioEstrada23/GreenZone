@@ -243,12 +243,16 @@ if (isset($_GET['action'])) {
                                 if ($usuario->setCorreo($_POST['correo'])) {
                                     if ($usuario->setAlias($_POST['alias'])) {
                                         if ($_POST['clave1'] == $_POST['clave2']) {
-                                            if ($usuario->setClave($_POST['clave1'])) {
-                                                if ($usuario->createRow()) {
-                                                    $result['status'] = 1;
-                                                    $result['message'] = 'Usuario registrado correctamente';
+                                            if ($usuario->setPasswordAlias($_POST['clave_nueva_1'], $_POST['alias'])) {
+                                                if ($usuario->setClave($_POST['clave1'])) {
+                                                    if ($usuario->createRow()) {
+                                                        $result['status'] = 1;
+                                                        $result['message'] = 'Usuario registrado correctamente';
+                                                    } else {
+                                                        $result['exception'] = Database::getException();
+                                                    }
                                                 } else {
-                                                    $result['exception'] = Database::getException();
+                                                    $result['exception'] = $usuario->getPasswordError();
                                                 }
                                             } else {
                                                 $result['exception'] = $usuario->getPasswordError();
@@ -275,19 +279,23 @@ if (isset($_GET['action'])) {
             case 'logIn':
                 $_POST = $usuario->validateForm($_POST);
                 if ($usuario->checkUser($_POST['username'])) {
-                    if ($usuario->checkPassword($_POST['clave'])) {
-                        $result['status'] = 1;
-                        $result['message'] = 'Autenticación correcta';
-                        $_SESSION['id_empleado'] = $usuario->getId();
-                        $_SESSION['alias_emp'] = $usuario->getAlias();
-                        $_SESSION['tiempo_usuario'] = time();
-                    } else {
-                        if (Database::getException()) {
-                            $result['exception'] = Database::getException();
+                    if ($cliente->getIdEstadoCli() == 1) {
+                        if ($usuario->checkPassword($_POST['clave'])) {
+                            $result['status'] = 1;
+                            $result['message'] = 'Autenticación correcta';
+                            $_SESSION['id_empleado'] = $usuario->getId();
+                            $_SESSION['alias_emp'] = $usuario->getAlias();
+                            $_SESSION['tiempo_usuario'] = time();
                         } else {
-                            $result['exception'] = 'Clave incorrecta';
+                            if (Database::getException()) {
+                                $result['exception'] = Database::getException();
+                            } else {
+                                $result['exception'] = 'Clave incorrecta';
+                            }
                         }
-                    }
+                    } else {
+                        $result['exception'] = 'La cuenta ha sido desactivada';
+                    }    
                 } else {
                     if (Database::getException()) {
                         $result['exception'] = Database::getException();

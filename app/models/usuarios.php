@@ -168,10 +168,11 @@ class Usuarios extends Validator
     */
     public function checkUser($alias)
     {
-        $sql = 'SELECT id_empleado FROM empleado_user WHERE alias_emp = ?';
+        $sql = 'SELECT id_empleado, id_estado_emp FROM empleado_user WHERE alias_emp = ?';
         $params = array($alias);
         if ($data = Database::getRow($sql, $params)) {
             $this->id = $data['id_empleado'];
+            $this->id_estado_cli = $data['id_estado_emp'];
             $this->alias = $alias;
             return true;
         } else {
