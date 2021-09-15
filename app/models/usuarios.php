@@ -260,7 +260,7 @@ class Usuarios extends Validator
         return $codigo;
     }
 
-    public function enviarCorreo($codigo){
+    public function enviarCorreo2($codigo){
         // Inicio
         $mail = new PHPMailer(true);
 
@@ -273,7 +273,7 @@ class Usuarios extends Validator
             $mail->Password  = 'greenzone';	          // Contraseña SMTP
             $mail->SMTPSecure = 'tls';
             $mail->Port  = 587;
-            $mail->setFrom("20160393@ricaldone.edu.sv", "Green Zone");                // Remitente del correo
+            $mail->setFrom("greenzonesv8@gmail.com", "Green Zone");                // Remitente del correo
 
             // Destinatarios
             $mail->addAddress($this->correo);  // Email y nombre del destinatario

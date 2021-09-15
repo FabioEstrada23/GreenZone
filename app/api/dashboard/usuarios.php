@@ -274,15 +274,15 @@ if (isset($_GET['action'])) {
                         }
                     }
                 }
-                
                 break;
+
             case 'logIn':
                 $_POST = $usuario->validateForm($_POST);
                 if ($usuario->checkUser($_POST['username'])) {
                     if ($usuario->getIdEsUsE() == 1) {
                         if ($usuario->checkPassword($_POST['clave'])) {
                             $codigo = $usuario->generarCodigoRecu(6);
-                            if ($usuario->enviarCorreo($codigo)) {
+                            if ($usuario->enviarCorreo2($codigo)) {
                                 if($usuario->updateCodigo2($codigo)){
                                     $_SESSION['correo_emp'] = $usuario->getCorreo();
                                     $result['status'] = 1;

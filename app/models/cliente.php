@@ -380,7 +380,7 @@ class Cliente extends validator{
         $months = floor(($dateDifference - $years * 365 * 60 * 60 * 24) / (30 * 60 * 60 * 24));
         $days   = floor(($dateDifference - $years * 365 * 60 * 60 * 24 - $months * 30 * 60 * 60 *24) / (60 * 60 * 24));
 
-        if($days>=1){
+        if($days>=5){
             return true;
         }else{
             return false;
@@ -460,7 +460,7 @@ class Cliente extends validator{
             $mail->Password  = 'greenzone';	  	          // Contraseña SMTP
             $mail->SMTPSecure = 'tls';
             $mail->Port  = 587;
-            $mail->setFrom("20160393@ricaldone.edu.sv", "Green Zone");                // Remitente del correo
+            $mail->setFrom("greenzonesv8@gmail.com", "Green Zone");                // Remitente del correo
 
             // Destinatarios
             $mail->addAddress($correo);  // Email y nombre del destinatario
@@ -468,7 +468,7 @@ class Cliente extends validator{
             // Contenido del correo
             $mail->isHTML(true);
             $mail->Subject = 'Código para restaurar contraseña';
-            $mail->Body = 'Estimado cliente, ' .$correo .'gracias por preferirnos. 
+            $mail->Body = 'Estimado cliente, ' .$correo .' gracias por preferirnos. 
                         Por este medio le enviamos el codígo de verificación para continuar con el proceso de restauración de contraseña
                         El cual es:<b>'.$codigo.'!</b>';
 

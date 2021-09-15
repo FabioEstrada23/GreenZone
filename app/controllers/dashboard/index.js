@@ -44,6 +44,7 @@ document.getElementById('session-form').addEventListener('submit', function (eve
         // Se verifica si la petición es correcta, de lo contrario se muestra un mensaje indicando el problema.
         if (request.ok) {
             request.json().then(function (response) {
+                
                 // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
                 if (response.status) {
                     fetch(API_USUARIOS + 'logIn', {
