@@ -269,8 +269,8 @@ class Usuarios extends Validator
             $mail->isSMTP();                                               // Activar envio SMTP
             $mail->Host  = 'smtp.gmail.com';                     // Servidor SMTP
             $mail->SMTPAuth  = true;                                       // Identificacion SMTP
-            $mail->Username  = '20fernandoaquino02@gmail.com';                  // Usuario SMTP
-            $mail->Password  = 'mainkra123';	          // Contraseña SMTP
+            $mail->Username  = 'greenzonesv8@gmail.com';                  // Usuario SMTP
+            $mail->Password  = 'greenzone';	          // Contraseña SMTP
             $mail->SMTPSecure = 'tls';
             $mail->Port  = 587;
             $mail->setFrom("20160393@ricaldone.edu.sv", "Green Zone");                // Remitente del correo
