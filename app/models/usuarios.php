@@ -1,4 +1,14 @@
 <?php
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\SMTP;
+
+require '../../../libraries/phpmailer/src/Exception.php';
+require '../../../libraries/phpmailer/src/PHPMailer.php';
+require '../../../libraries/phpmailer/src/SMTP.php';
+
+
 /*
 *	Clase para manejar la tabla usuarios de la base de datos. Es clase hija de Validator.
 */
@@ -12,7 +22,8 @@ class Usuarios extends Validator
     private $alias = null;
     private $clave = null;
     private $idTiUsE = null;
-    private $idEsUsE = null;
+    private $id_estado_cli = null;
+    private $correoError = null;
     private $passwordAlias = null;
 
     /*
@@ -100,7 +111,7 @@ class Usuarios extends Validator
     public function setIdEsUsE($value)
     {
         if ($this->validateNaturalNumber($value)) {
-            $this->idEsUsE = $value;
+            $this->id_estado_cli = $value;
             return true;
         } else {
             return false;
@@ -147,12 +158,18 @@ class Usuarios extends Validator
 
     public function getIdEsUsE()
     {
-        return $this->idEsUsE;
+        return $this->id_estado_cli;
     }
 
     /*
     *   Métodos para gestionar la cuenta del usuario.
     */
+
+    public function getCorreoError()
+    {
+        return $this->correoError;
+    }
+
 
     public function readAll()
     {
@@ -168,12 +185,13 @@ class Usuarios extends Validator
     */
     public function checkUser($alias)
     {
-        $sql = 'SELECT id_empleado, id_estado_emp FROM empleado_user WHERE alias_emp = ?';
+        $sql = 'SELECT id_empleado, id_estado_emp, correo_emp FROM empleado_user WHERE alias_emp = ?';
         $params = array($alias);
         if ($data = Database::getRow($sql, $params)) {
             $this->id = $data['id_empleado'];
             $this->id_estado_cli = $data['id_estado_emp'];
             $this->alias = $alias;
+            $this->correo = $data['correo_emp'];
             return true;
         } else {
             return false;
@@ -222,6 +240,97 @@ class Usuarios extends Validator
         $sql = 'UPDATE empleado_user SET clave_emp = ? WHERE id_empleado = ?';
         $params = array($hash, $_SESSION['id_empleado']);
         return Database::executeRow($sql, $params);
+    }
+
+    //Funciones para contraseña
+
+    public function generarCodigoRecu($longitud){
+        //creamos la variable codigo
+        $codigo = "";
+        //caracteres a ser utilizados
+        $caracteres="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        //el maximo de caracteres a usar
+        $max=strlen($caracteres)-1;
+        //creamos un for para generar el codigo aleatorio utilizando parametros min y max
+        for($i=0;$i < $longitud;$i++)
+        {
+            $codigo.=$caracteres[rand(0,$max)];
+        }
+        //regresamos codigo como valor
+        return $codigo;
+    }
+
+    public function enviarCorreo($codigo){
+        // Inicio
+        $mail = new PHPMailer(true);
+
+            // Configuracion SMTP
+            $mail->SMTPDebug = 0;                      // Mostrar salida (Desactivar en producción)
+            $mail->isSMTP();                                               // Activar envio SMTP
+            $mail->Host  = 'smtp.gmail.com';                     // Servidor SMTP
+            $mail->SMTPAuth  = true;                                       // Identificacion SMTP
+            $mail->Username  = '20fernandoaquino02@gmail.com';                  // Usuario SMTP
+            $mail->Password  = 'mainkra123';	          // Contraseña SMTP
+            $mail->SMTPSecure = 'tls';
+            $mail->Port  = 587;
+            $mail->setFrom("20160393@ricaldone.edu.sv", "Green Zone");                // Remitente del correo
+
+            // Destinatarios
+            $mail->addAddress($this->correo);  // Email y nombre del destinatario
+
+            // Contenido del correo
+            $mail->isHTML(true);
+            $mail->Subject = 'Código para restaurar contraseña';
+            $mail->Body = 'Estimado cliente, ' .$this->correo .'gracias por preferirnos. 
+                        Por este medio le enviamos el codígo de verificación para continuar con el proceso de restauración de contraseña
+                        El cual es:<b>'.$codigo.'!</b>';
+
+            if($mail->send()){
+                return true;
+            } else{
+                return false;
+            }
+    }
+
+    public function updateCodigo2($codigo_con)
+    {
+        $sql = 'UPDATE empleado_user SET codigo_recu = ? WHERE id_empleado = ?';
+        $params = array($codigo_con, $this->id);
+        return Database::executeRow($sql, $params);
+    }
+
+    public function checkCodigo2($restauracion)
+    {
+        $sql = 'SELECT id_empleado, codigo_recu, alias_emp FROM empleado_user WHERE correo_emp = ?';
+        $params = array($_SESSION['correo_emp']);
+        $data = Database::getRow($sql, $params);
+        if ($restauracion == $data['codigo_recu']) {
+            $this->id = $data['id_empleado'];
+            $this->alias = $data['alias_emp'];
+            $sql = 'UPDATE empleado_user SET codigo_recu = null WHERE id_empleado = ?';
+            $params = array($this->id);
+            return Database::executeRow($sql, $params);
+        } else {
+            return false;
+        }
+    }
+
+    public function obtenerDiff()
+    {
+        $sql = 'SELECT fechacontra from empleado_user where id_empleado = ?';
+        $params = array($this->id);
+        $data = Database::getRow($sql, $params);
+        $fechaHoy = date('Y-m-d');
+        $dateDifference = abs(strtotime($fechaHoy) - strtotime($data['fechacontra']));
+        $years  = floor($dateDifference / (365 * 60 * 60 * 24));
+        $months = floor(($dateDifference - $years * 365 * 60 * 60 * 24) / (30 * 60 * 60 * 24));
+        $days   = floor(($dateDifference - $years * 365 * 60 * 60 * 24 - $months * 30 * 60 * 60 *24) / (60 * 60 * 24));
+
+        if($days>=10){
+            return true;
+        }else{
+            return false;
+        }
     }
     
 }

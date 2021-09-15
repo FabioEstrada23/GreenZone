@@ -279,13 +279,20 @@ if (isset($_GET['action'])) {
             case 'logIn':
                 $_POST = $usuario->validateForm($_POST);
                 if ($usuario->checkUser($_POST['username'])) {
-                    if ($cliente->getIdEstadoCli() == 1) {
+                    if ($usuario->getIdEsUsE() == 1) {
                         if ($usuario->checkPassword($_POST['clave'])) {
-                            $result['status'] = 1;
-                            $result['message'] = 'Autenticación correcta';
-                            $_SESSION['id_empleado'] = $usuario->getId();
-                            $_SESSION['alias_emp'] = $usuario->getAlias();
-                            $_SESSION['tiempo_usuario'] = time();
+                            $codigo = $usuario->generarCodigoRecu(6);
+                            if ($usuario->enviarCorreo($codigo)) {
+                                if($usuario->updateCodigo2($codigo)){
+                                    $_SESSION['correo_emp'] = $usuario->getCorreo();
+                                    $result['status'] = 1;
+                                    $result['message'] = 'Se ha enviado un codigo de confirmacion a su correo';
+                                }else{
+                                    $result['exception'] = 'Ocurrio un problema al actualizar el código';
+                                }
+                            } else {
+                                $result['exception'] = $usuario->getCorreoError();
+                            } 
                         } else {
                             if (Database::getException()) {
                                 $result['exception'] = Database::getException();
@@ -304,6 +311,56 @@ if (isset($_GET['action'])) {
                     }
                 }
                 break;
+
+                case 'comparar':
+                    $_POST = $usuario->validateForm($_POST);
+                    if($usuario->checkCodigo2($_POST['codigo'])){
+                        $_SESSION['id_empleado'] = $usuario->getId();
+                        $_SESSION['alias_emp'] = $usuario->getAlias();
+                        $_SESSION['tiempo_usuario'] = time();
+                        $result['status'] = 1;
+                        $result['message'] = 'Autenticación correcta';
+                        
+                    }else {
+                        $result['exception'] = 'codigo incorrecto, verifique otra vez';
+                    }
+                    
+                    break;
+
+                    case 'tiempocontra':
+                        $_POST = $usuario->validateForm($_POST);
+                        
+                        if ($usuario->checkUser($_POST['username'])) {
+                            if ($usuario->getIdEsUsE() == 1) {
+                                if ($usuario->checkPassword($_POST['clave'])) {
+                                    if($usuario->obtenerDiff()){
+                                        $result['exception'] = 'Debe cambiar su contraseña';
+                                    }else{
+                                        $result['status'] = 1;
+                                        $result['message'] = 'Su contraseña es valida';
+                                    }
+
+                                } else {
+                                    if (Database::getException()) {
+                                        $result['exception'] = Database::getException();
+                                    } else {
+                                        $result['exception'] = 'Clave incorrecta';
+                                    }
+                                }
+                            } else {
+                                $result['exception'] = 'La cuenta ha sido desactivada';
+                            }
+                        } else {
+                            if (Database::getException()) {
+                                $result['exception'] = Database::getException();
+                            } else {
+                                $result['exception'] = 'Correo incorrecto';
+                            }
+                        }
+                        break;
+
+
+
             default:
                 $result['exception'] = 'Acción no disponible fuera de la sesión';
         }
