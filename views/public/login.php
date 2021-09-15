@@ -16,20 +16,42 @@ Public_Page::headerTemplate('Iniciar sesión');
                 
                 <!-- Ingresar nombre de usuario -->
                 <label for="username"><i class="material-icons prefix">email</i> Correo</label>
-                <input type="text" placeholder="Ingresa tu email" id="correo" name="correo" class="validate" required>
+                <input type="text" placeholder="Ingresa tu email" id="correo" name="correo" autocomplete="off" class="validate" required>
                 <!-- Ingresar contresenia de usuario -->
                 <label for="password"><i class="material-icons prefix">security</i> Contraseña</label>
                 <input type="password" placeholder="Ingresa tu contraseña" id="clave" name="clave" class="validate" required>
-                <input type="submit" value="Log In">
-
+                <input type="submit" value="Log In" onclick="openCambiarContra()">
             </form>
+
+
+            <form method="post" id="confirmar-form">
+                <!-- Modal -->
+                <div class="modal fade" id="confirmar-modal" tabindex="-1" aria-labelledby="confirmar-modal" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Ingresa el codigo de confirmacion</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <input type="text" class="form-select" id="codigo" autocomplete="off" name="codigo">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Salir</button>
+                            <button  type="submit" class="btn btn-primary">Confirmar</button>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
             <!-- Recuperacion de contrasenia -->
             <span class="text-footer">¿Perdiste tu contraseña?
-                <a href="Recuperacion.php">Recupérala</a>
+                <a href="recuperacion.php">Recupérala</a>
             </span>
             <!-- Registro -->
             <span class="text-footer">¿No tienes una cuenta?
-                <a href="Registro.php">Créala</a>
+                <a href="registro.php">Créala</a>
             </span>
         </div>
         <div class="ctn-text">

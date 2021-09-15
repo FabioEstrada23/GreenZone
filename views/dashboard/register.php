@@ -20,31 +20,31 @@ Dashboard_Page::headerTemplate('Registrar primer usuario');
                         <!-- Ingresar nombres de usuario -->
                         
                         <label for="nombres"><i class="material-icons prefix">person</i> Nombres:</label>
-                        <input id="nombres" type="text" placeholder="Ingresa tus nombres" name="nombres" class="validate" required/>
+                        <input id="nombres" type="text" placeholder="Ingresa tus nombres" name="nombres" class="validate" autocomplete="off" required/>
                         <!-- Ingresar apellidos de usuario -->
 
                         <label for="apellidos">Apellidos:</label>
-                        <input id="apellidos" type="text" placeholder="Ingresa tus apellidos" name="apellidos" class="validate" required/>
+                        <input id="apellidos" type="text" placeholder="Ingresa tus apellidos" name="apellidos" class="validate" autocomplete="off" required/>
 
                         <!-- Ingresar correo de usuario -->
 
                         <label for="correo"><i class="material-icons prefix">email</i> Correo:</label>
-                        <input id="correo" type="email" placeholder="Ingresa tu correo" name="correo" class="validate" required/>
+                        <input id="correo" type="email" placeholder="Ingresa tu correo" name="correo" class="validate" autocomplete="off" required/>
 
                         <!-- Ingresar alias de usuario -->
 
                         <label for="alias">Nickname:</label>
-                        <input id="alias" type="text" placeholder="Ingresa tu nickname" name="alias" class="validate" required/>
+                        <input id="alias" type="text" placeholder="Ingresa tu nickname" name="alias" class="validate" autocomplete="off" required/>
                         
                         <!-- Ingresar contraseña de usuario -->
 
                         <label for="clave1"><i class="material-icons prefix">security</i> Contraseña</label>
-                        <input id="clave1" type="password" placeholder="Ingresa tu contraseña" name="clave1" class="validate" required/>
+                        <input id="clave1" type="password" placeholder="Ingresa tu contraseña" name="clave1" class="validate" autocomplete="off" required/>
                         
                         <!-- Confirmar contraseña de usuario -->
 
                         <label for="clave2">Confirmar clave</label>
-                        <input id="clave2" type="password" placeholder="Ingresa nuevamente tu contraseña" name="clave2" class="validate" required/>
+                        <input id="clave2" type="password" placeholder="Ingresa nuevamente tu contraseña" name="clave2" class="validate" autocomplete="off"required/>
 
                         <button type="submit" id="btn-registro" class="tooltipped" data-tooltip="Registrar">Registrar</button>
 

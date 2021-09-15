@@ -58,7 +58,7 @@ class Public_Page
         // Se comprueba si existe una sesión de administrador para mostrar el menú de opciones, de lo contrario se muestra un menú vacío.
         if (isset($_SESSION['id_cliente_user'])) {
             // Se verifica si la página web actual es diferente a index.php (Iniciar sesión) y a register.php (Crear primer usuario) para no iniciar sesión otra vez, de lo contrario se direcciona a main.php
-            if ($filename != 'login.php' && $filename != 'registro.php') {
+            if ($filename != 'login.php' && $filename != 'registro.php' && $filename != 'codigo.php' && $filename != 'recuperacion.php') {
                 print('
                 <!-- Header -->
                 <header>
@@ -282,31 +282,27 @@ class Public_Page
                             <form id="profile-form" method="post" enctype="multipart/form-data">
                                 <div class="form-group">
                                 <label for="formGroupExampleInput1"><i class="material-icons prefix">how_to_reg</i> DUI</label>
-                                <input type="text" placeholder="00000000-0" pattern="[0-9]{8}[-][0-9]{1}" name="dui_cli" id="dui_cli" class="validate" required>
+                                <input type="text" placeholder="00000000-0" pattern="[0-9]{8}[-][0-9]{1}" name="dui_cli" id="dui_cli" class="validate" autocomplete="off" required>
                                 </div>
                                 <div class="form-group">
                                 <label for="correo"><i class="material-icons prefix">phone</i> Teléfono</label>
-                                <input type="text" placeholder="0000-0000" pattern="[2,6,7]{1}[0-9]{3}[-][0-9]{4}" id="telefono_cli" name="telefono_cli" class="validate" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="correo"><i class="material-icons prefix">person</i> Usuario</label>
-                                    <input type="text" placeholder="Usuario" id="user" name="user" class="validate" required>
+                                <input type="text" placeholder="0000-0000" pattern="[2,6,7]{1}[0-9]{3}[-][0-9]{4}" id="telefono_cli" name="telefono_cli" class="validate" autocomplete="off" required>
                                 </div>
                                 <div class="form-group">
                                 <label for="correo"><i class="material-icons prefix">email</i> Correo</label>
-                                <input type="text" placeholder="Ingresa tu correo electrónico" id="correo" name="correo" class="validate" required>
+                                <input type="text" placeholder="Ingresa tu correo electrónico" id="correo" name="correo" class="validate" autocomplete="off" required>
                                 </div>
                                 <div class="form-group">
                                 <label for="nombre"><i class="material-icons prefix">person</i> Nombres</label>
-                                <input type="text" placeholder="Ingresa tu nombre" id="nombres_cli" name="nombres_cli" class="validate" required>
+                                <input type="text" placeholder="Ingresa tu nombre" id="nombres_cli" name="nombres_cli" class="validate" autocomplete="off" required>
                                 </div>
                                 <div class="form-group">
                                 <label for="nombre"><i class="material-icons prefix">person</i> Apellidos</label>
-                                <input type="text" placeholder="Ingresa tu apellido" id="apellidos_cli" name="apellidos_cli" class="validate" required>
+                                <input type="text" placeholder="Ingresa tu apellido" id="apellidos_cli" name="apellidos_cli" class="validate" autocomplete="off" required>
                                 </div>
                                 <div class="form-group">
                                 <label for="nombre"><i class="material-icons prefix">my_location</i> Dirección</label>
-                                <input type="text" placeholder="Ingresa tu dirección" id="direccion_cli" name="direccion_cli" class="validate" required>
+                                <input type="text" placeholder="Ingresa tu dirección" id="direccion_cli" name="direccion_cli" class="validate" autocomplete="off" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="marca2"> Ciudad</label>
@@ -315,7 +311,7 @@ class Public_Page
                                 </div>
                                 <div class="form-group">
                                 <label for="nombre"> Código postal</label>
-                                <input type="text" placeholder="Ingresa código postal" id="codigo_pos_cli" name="codigo_pos_cli" class="validate" required>
+                                <input type="text" placeholder="Ingresa código postal" id="codigo_pos_cli" name="codigo_pos_cli" class="validate" autocomplete="off" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleFormControlTextarea1">Fecha Nacimiento:</label>
@@ -357,7 +353,7 @@ class Public_Page
                                         
                                             <i class="fas fa-shield-alt"></i>
                                             <label for="clave_actual">Clave actual</label>   
-                                            <input id="clave_actual_cli" type="password" name="clave_actual_cli" class="validate form-control" required/>
+                                            <input id="clave_actual_cli" type="password" name="clave_actual_cli" class="validate form-control" autocomplete="off" required/>
                                             
                                         
                                     </div>
@@ -370,7 +366,7 @@ class Public_Page
                                         
                                             <i class="fas fa-shield-alt"></i>
                                             <label for="clave_nueva_1">Clave</label>
-                                            <input id="clave_nueva_1_cli" type="password" name="clave_nueva_1_cli" class="validate form-control" required/>
+                                            <input id="clave_nueva_1_cli" type="password" name="clave_nueva_1_cli" class="validate form-control" autocomplete="off" required/>
                                             
                                             
                                     </div>
@@ -379,7 +375,7 @@ class Public_Page
                                     <div class="form-group">
                                             <i class="fas fa-shield-alt"></i>
                                             <label for="clave_nueva_2">Confirmar clave</label>   
-                                            <input id="clave_nueva_2_cli" type="password" name="clave_nueva_2_cli" class="validate form-control" required/>
+                                            <input id="clave_nueva_2_cli" type="password" name="clave_nueva_2_cli" class="validate form-control" autocomplete="off" required/>
                                             
                                     </div>        
                                 </div>  
@@ -398,7 +394,7 @@ class Public_Page
             }
         } else {
 
-            if($filename != 'login.php') {
+            if($filename != 'login.php' && $filename != 'codigo.php' && $filename != 'recuperacion.php') {
                 print('
                 <!-- Header -->
                 <header>

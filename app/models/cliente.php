@@ -1,5 +1,13 @@
 <?php
 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\SMTP;
+
+require '../../../libraries/phpmailer/src/Exception.php';
+require '../../../libraries/phpmailer/src/PHPMailer.php';
+require '../../../libraries/phpmailer/src/SMTP.php';
+
 class Cliente extends validator{
 
     // Declaración de atributos (propiedades).
@@ -7,7 +15,6 @@ class Cliente extends validator{
     private $id_cliente_user = null;
     private $dui_cli = null;
     private $telefono_cli = null;
-    private $cliente_user = null;
     private $correo_cli_us = null;
     private $contra_cli_us = null;
     private $nombres_cli = null;
@@ -18,11 +25,25 @@ class Cliente extends validator{
     private $fecha_nac_cli = null;
     private $genero = null;
     private $id_estado_cli = null;
+    private $correoError = null;
+    private $codigo_recu = null;
+    private $clienteUser = null;
 
 
     /*
     *   Métodos para asignar valores a los atributos.
     */
+
+  
+
+    public function setCodigoRecu($value){
+        if($this->validateAlphanumeric($value, 1, 6)){
+            $this->codigo_recu = $value;
+            return true;
+        }else{
+            return false;
+        }  
+    }
 
     public function setPasswordNombreUsuario($value, $alias)
     {
@@ -63,15 +84,6 @@ class Cliente extends validator{
         }
     }
 
-    public function setClienteUser($value){
-        if($this->validateAlphanumeric($value, 1, 25)){
-            $this->cliente_user = $value;
-            return true;
-        }else{
-            return false;
-        }  
-    }
-
     public function setCorreo($value)
     {
         if ($this->validateEmail($value)) {
@@ -95,6 +107,15 @@ class Cliente extends validator{
     public function setNombres($value){
         if($this->validateAlphabetic($value, 1, 30)){
             $this->nombres_cli = $value;
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public function setClienteUser($value){
+        if($this->validateAlphabetic($value, 1, 30)){
+            $this->clienteUser = $value;
             return true;
         }else{
             return false;
@@ -174,6 +195,11 @@ class Cliente extends validator{
     *   Métodos para obtener valores de los atributos.
     */
 
+    public function getCorreoError()
+    {
+        return $this->correoError;
+    }
+
     public function getIdClienteUser()
     {
         return $this->id_cliente_user;
@@ -187,11 +213,6 @@ class Cliente extends validator{
     public function getTelefonoCli()
     {
         return $this->telefono_cli;
-    }
-
-    public function getClienteUser()
-    {
-        return $this->cliente_user;
     }
 
     public function getCorreoCliUs()
@@ -244,13 +265,24 @@ class Cliente extends validator{
         return $this->id_estado_cli;
     }
 
+    public function getCodigoRecu()
+    {
+        return $this->codigo_recu;
+    }
+
+    public function getClienteUser()
+    {
+        return $this->clienteUser;
+    }
+
+
     /*
     *   Métodos para realizar las operaciones SCRUD (search, create, read, update, delete).
     */
 
     public function searchRows($value)
     {
-        $sql = 'SELECT id_cliente_user, DUI_cli, telefono_cli, cliente_user, correo_cli_us, contra_cli_us, nombres_cli, apellidos_cli, direccion_cli, ciudad.ciudad, codigo_pos_cli, fecha_nac_cli, genero, estado_cli.estado_cli  from cliente_user
+        $sql = 'SELECT id_cliente_user, DUI_cli, telefono_cli, correo_cli_us, contra_cli_us, nombres_cli, apellidos_cli, direccion_cli, ciudad.ciudad, codigo_pos_cli, fecha_nac_cli, genero, estado_cli.estado_cli  from cliente_user
         INNER JOIN ciudad ON cliente_user.id_ciudad = ciudad.id_ciudad
         INNER JOIN estado_cli ON cliente_user.id_estado_cli = estado_cli.id_estado_cli 
         WHERE cliente_user ILIKE ?';
@@ -260,7 +292,7 @@ class Cliente extends validator{
 
     public function readAll()
     {
-        $sql = 'SELECT id_cliente_user, DUI_cli, telefono_cli, cliente_user, correo_cli_us, contra_cli_us, nombres_cli, apellidos_cli, direccion_cli, ciudad.ciudad, codigo_pos_cli, fecha_nac_cli, genero, estado_cli  from cliente_user
+        $sql = 'SELECT id_cliente_user, DUI_cli, telefono_cli, correo_cli_us, contra_cli_us, nombres_cli, apellidos_cli, direccion_cli, ciudad.ciudad, codigo_pos_cli, fecha_nac_cli, genero, estado_cli  from cliente_user
         INNER JOIN ciudad ON cliente_user.id_ciudad = ciudad.id_ciudad
         INNER JOIN estado_cli ON cliente_user.id_estado_cli = estado_cli.id_estado_cli
         
@@ -271,7 +303,7 @@ class Cliente extends validator{
 
     public function readOne()
     {
-        $sql = 'SELECT id_cliente_user, DUI_cli, telefono_cli, cliente_user, correo_cli_us, contra_cli_us, nombres_cli, apellidos_cli, direccion_cli, cliente_user.id_ciudad, codigo_pos_cli, fecha_nac_cli, genero, cliente_user.id_estado_cli  from cliente_user
+        $sql = 'SELECT id_cliente_user, DUI_cli, telefono_cli, correo_cli_us, contra_cli_us, nombres_cli, apellidos_cli, direccion_cli, cliente_user.id_ciudad, codigo_pos_cli, fecha_nac_cli, genero, cliente_user.id_estado_cli  from cliente_user
         INNER JOIN ciudad ON cliente_user.id_ciudad = ciudad.id_ciudad
         INNER JOIN estado_cli ON cliente_user.id_estado_cli = estado_cli.id_estado_cli 
         WHERE id_cliente_user = ?';
@@ -304,9 +336,9 @@ class Cliente extends validator{
     {
         // Se encripta la clave por medio del algoritmo bcrypt que genera un string de 60 caracteres.
         $hash = password_hash($this->contra_cli_us, PASSWORD_DEFAULT);
-        $sql = 'INSERT INTO cliente_user(DUI_cli, cliente_user, correo_cli_us, contra_cli_us, nombres_cli, apellidos_cli, fecha_nac_cli, id_estado_cli)
-                VALUES(?, ?, ?, ?, ?, ?, ?, ?)';
-        $params = array($this->dui_cli, $this->cliente_user, $this->correo_cli_us, $hash, $this->nombres_cli, $this->apellidos_cli, $this->fecha_nac_cli, 1);
+        $sql = 'INSERT INTO cliente_user(DUI_cli, correo_cli_us, contra_cli_us, nombres_cli, apellidos_cli, fecha_nac_cli, id_estado_cli)
+                VALUES(?, ?, ?, ?, ?, ?, ?)';
+        $params = array($this->dui_cli, $this->correo_cli_us, $hash, $this->nombres_cli, $this->apellidos_cli, $this->fecha_nac_cli, 1);
         return Database::executeRow($sql, $params);
     }
 
@@ -333,6 +365,24 @@ class Cliente extends validator{
             
             return true;
         } else {
+            return false;
+        }
+    }
+
+    public function obtenerDiff()
+    {
+        $sql = 'SELECT fechacontra from cliente_user where id_cliente_user = ?';
+        $params = array($this->id_cliente_user);
+        $data = Database::getRow($sql, $params);
+        $fechaHoy = date('Y-m-d');
+        $dateDifference = abs(strtotime($fechaHoy) - strtotime($data['fechacontra']));
+        $years  = floor($dateDifference / (365 * 60 * 60 * 24));
+        $months = floor(($dateDifference - $years * 365 * 60 * 60 * 24) / (30 * 60 * 60 * 24));
+        $days   = floor(($dateDifference - $years * 365 * 60 * 60 * 24 - $months * 30 * 60 * 60 *24) / (60 * 60 * 24));
+
+        if($days>=1){
+            return true;
+        }else{
             return false;
         }
     }
@@ -379,9 +429,109 @@ class Cliente extends validator{
         $params = array($hash, $_SESSION['id_cliente_user']);
         return Database::executeRow($sql, $params);
     }
+
+    
+    public function generarCodigoRecu($longitud){
+        //creamos la variable codigo
+        $codigo = "";
+        //caracteres a ser utilizados
+        $caracteres="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        //el maximo de caracteres a usar
+        $max=strlen($caracteres)-1;
+        //creamos un for para generar el codigo aleatorio utilizando parametros min y max
+        for($i=0;$i < $longitud;$i++)
+        {
+            $codigo.=$caracteres[rand(0,$max)];
+        }
+        //regresamos codigo como valor
+        return $codigo;
+    }
+
+    public function enviarCorreo($correo, $codigo){
+        // Inicio
+        $mail = new PHPMailer(true);
+
+            // Configuracion SMTP
+            $mail->SMTPDebug = 0;                      // Mostrar salida (Desactivar en producción)
+            $mail->isSMTP();                                               // Activar envio SMTP
+            $mail->Host  = 'smtp.gmail.com';                     // Servidor SMTP
+            $mail->SMTPAuth  = true;                                       // Identificacion SMTP
+            $mail->Username  = '20fernandoaquino02@gmail.com';                  // Usuario SMTP
+            $mail->Password  = 'mainkra123';	          // Contraseña SMTP
+            $mail->SMTPSecure = 'tls';
+            $mail->Port  = 587;
+            $mail->setFrom("20160393@ricaldone.edu.sv", "Green Zone");                // Remitente del correo
+
+            // Destinatarios
+            $mail->addAddress($correo);  // Email y nombre del destinatario
+
+            // Contenido del correo
+            $mail->isHTML(true);
+            $mail->Subject = 'Código para restaurar contraseña';
+            $mail->Body = 'Estimado cliente, ' .$correo .'gracias por preferirnos. 
+                        Por este medio le enviamos el codígo de verificación para continuar con el proceso de restauración de contraseña
+                        El cual es:<b>'.$codigo.'!</b>';
+
+            if($mail->send()){
+                return true;
+            } else{
+                return false;
+            }
+    }
+
+    public function updateCodigo()
+    {
+        $sql = 'UPDATE cliente_user SET codigo_recu = ? WHERE id_cliente_user = ?';
+        $params = array($this->codigo_recu, $this->id_cliente_user);
+        return Database::getRows($sql, $params);
+    }
+
+    public function updateCodigo2($codigo_con)
+    {
+        $sql = 'UPDATE cliente_user SET codigo_recu = ? WHERE id_cliente_user = ?';
+        $params = array($codigo_con, $this->id_cliente_user);
+        return Database::executeRow($sql, $params);
+    }
+
+    public function checkCodigo($restauracion)
+    {
+        $sql = 'SELECT id_cliente_user, correo_cli_us FROM cliente_user WHERE codigo_recu = ?';
+        $params = array($restauracion);
+        if ($data = Database::getRow($sql, $params)) {
+            $this->id_cliente_user = $data['id_cliente_user'];
+            $this->correo_cli_us = $data['correo_cli_us'];
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public function checkCodigo2($restauracion)
+    {
+        $sql = 'SELECT id_cliente_user, codigo_recu FROM cliente_user WHERE correo_cli_us = ?';
+        $params = array($_SESSION['correo_cli_us']);
+        $data = Database::getRow($sql, $params);
+        if ($restauracion == $data['codigo_recu']) {
+            $this->id_cliente_user = $data['id_cliente_user'];
+            $sql = 'UPDATE cliente_user SET codigo_recu = null WHERE id_cliente_user = ?';
+            $params = array($this->id_cliente_user);
+            return Database::executeRow($sql, $params);
+        } else {
+            return false;
+        }
+    }
+
+    
+
+    public function restorePassword()
+    {
+        // Se transforma la contraseña a una cadena de texto de longitud fija mediante el algoritmo por defecto.
+        $hash = password_hash($this->contra_cli_us, PASSWORD_DEFAULT);
+        $sql = 'UPDATE cliente_user SET contra_cli_us = ? WHERE id_cliente_user = ?';
+        $params = array($hash, $this->id_cliente_user);
+        return Database::executeRow($sql, $params);
+    }
 }
 
    
-
 
 ?>

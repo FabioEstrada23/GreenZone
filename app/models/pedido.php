@@ -139,7 +139,7 @@ class Pedido extends Validator
 
     public function searchRows($value1, $value2)
     {
-        $sql = 'SELECT id_pedido, cliente_user, fecha_pedido, fecha_entrega, estado_pedido FROM pedido INNER JOIN cliente_user USING(id_cliente_user) 
+        $sql = 'SELECT id_pedido, correo_cli_us, fecha_pedido, fecha_entrega, estado_pedido FROM pedido INNER JOIN cliente_user USING(id_cliente_user) 
         INNER JOIN estado_pedido using(id_estado_pedido) WHERE fecha_pedido BETWEEN ? and ?';
         $params = array("$value1", "$value2");
         return Database::getRows($sql, $params);
@@ -147,7 +147,7 @@ class Pedido extends Validator
 
     public function readAll()
     {
-        $sql = 'SELECT id_pedido, cliente_user, fecha_pedido, fecha_entrega, estado_pedido FROM pedido
+        $sql = 'SELECT id_pedido, correo_cli_us, fecha_pedido, fecha_entrega, estado_pedido FROM pedido
                 INNER JOIN cliente_user USING(id_cliente_user) 
                 INNER JOIN estado_pedido using(id_estado_pedido)
                 ORDER BY id_pedido';

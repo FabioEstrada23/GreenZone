@@ -40,9 +40,6 @@
             <!-- Ingresar apellidos de la persona -->
             <label for="apellidos">Apellidos</label>
             <input type="text" placeholder="Ingresa tus apellidos" name="apellidos" class="validate" autocomplete="off" required>
-            <!-- Ingresar nombre de usuario -->
-            <label for="username">Nombre de usuario</label>
-            <input type="text" placeholder="Ingresa tu nombre de usuario" name="usuario" class="validate" autocomplete="off" required/>
             <!-- Ingresar correo electronico -->
             <label for="correo"><i class="material-icons prefix">email</i> Correo</label>
             <input type="text" placeholder="Ingresa tu correo electrónico" name="correo" class="validate" autocomplete="off" required>

@@ -16,34 +16,40 @@ if (isset($_GET['action'])) {
         
         // Se compara la acción a realizar cuando un administrador ha iniciado sesión.
         switch ($_GET['action']) {
-            case 'logOut':
-
+                case 'logOut':
                     unset($_SESSION['id_empleado']);
                     $result['status'] = 1;
-                    $result['message'] = 'Sesión eliminada correctamente';
-                
+                    $result['message'] = 'Se ha cerrado la sesión';          
+                break;
+                case 'sessionTime':
+                    if((time() - $_SESSION['tiempo_usuario']) < 300){
+                        $_SESSION['tiempo_usuario'] = time();
+                    } else{
+                       unset($_SESSION['id_empleado'], $_SESSION['alias_emp'], $_SESSION['tiempo_usuario']);
+                        $result['status'] = 1;
+                        $result['message'] = 'Se ha cerrado la sesión por inactividad'; 
+                    }
                 break;
                 case 'changePassword':
                     if ($usuario->setId($_SESSION['id_empleado'])) {
                         $_POST = $usuario->validateForm($_POST);
-                        if ($usuario->checkPassword($_POST['clave_actual'])) {
+                       // if ($usuario->checkPassword($_POST['clave_actual'])) {
                             if ($_POST['clave_actual'] != $_POST['clave_nueva_1']) {
                                 if ($_POST['clave_nueva_1'] == $_POST['clave_nueva_2']) {
-                                            
+                                        if ($usuario->setPasswordAlias($_POST['clave_nueva_1'], $_SESSION['alias_emp'])) {
                                             if ($usuario->setClave($_POST['clave_nueva_1'])) {
-                                                if ($usuario->setPasswordAlias($_POST['clave_nueva_1'], $_SESSION['alias_emp'])) {
-                                                    if ($usuario->changePassword()) {
-                                                        $result['status'] = 1;
-                                                        $result['message'] = 'Contraseña cambiada correctamente';
-                                                    } else {
-                                                        $result['exception'] = Database::getException();
-                                                    }
+                                                if ($usuario->changePassword()) {
+                                                    $result['status'] = 1;
+                                                    $result['message'] = 'Contraseña cambiada correctamente';
                                                 } else {
-                                                    $result['exception'] = $usuario->getPasswordError();
+                                                    $result['exception'] = Database::getException();
                                                 }
                                             } else {
                                                 $result['exception'] = $usuario->getPasswordError();
                                             }
+                                        } else {
+                                            $result['exception'] = $usuario->getPasswordError();
+                                        }
                                         
                                 } else {
                                     $result['exception'] = 'Claves nuevas diferentes';
@@ -51,9 +57,9 @@ if (isset($_GET['action'])) {
                             } else {
                                 $result['exception'] = 'Intente ingresar una contraseña que no sea igual a la anterior';
                             }    
-                        } else {
-                            $result['exception'] = 'Clave actual incorrecta';
-                        }
+                        //} else {
+                           //$result['exception'] = 'Clave actual incorrecta';
+                        //}
                     } else {
                         $result['exception'] = 'Usuario incorrecto';
                     }
@@ -109,7 +115,7 @@ if (isset($_GET['action'])) {
                     if ($usuario->setApellidos($_POST['apellidos_usuario'])) {
                         if ($usuario->setCorreo($_POST['correo_usuario'])) {
                             if ($usuario->setAlias($_POST['alias_usuario'])) {
-                                if ($_POST['clave_usuario'] == $_POST['confirmar_clave']) {
+                                if ($_POST['clave_emp'] == $_POST['confirmar_clave']) {
                                     if ($usuario->setClave($_POST['clave_usuario'])) {
                                         if ($usuario->setPasswordAlias($_POST['clave_nueva_1'], $_POST['alias_usuario'])) {
                                             if ($usuario->createRow()) {
@@ -224,54 +230,79 @@ if (isset($_GET['action'])) {
                 }
                 break;
             case 'register':
-                $_POST = $usuario->validateForm($_POST);
-                if ($usuario->setNombres($_POST['nombres'])) {
-                    if ($usuario->setApellidos($_POST['apellidos'])) {
-                        if ($usuario->setCorreo($_POST['correo'])) {
-                            if ($usuario->setAlias($_POST['alias'])) {
-                                if ($_POST['clave1'] == $_POST['clave2']) {
-                                    if ($usuario->setClave($_POST['clave1'])) {
-                                        if ($usuario->createRow()) {
-                                            $result['status'] = 1;
-                                            $result['message'] = 'Usuario registrado correctamente';
+                if ($usuario->readAll()) {
+                    $result['exception'] = 'Existe al menos un usuario registrado';
+                } else {
+                    if (Database::getException()) {
+                        $result['error'] = 1;
+                        $result['exception'] = Database::getException();
+                    } else {
+                        $_POST = $usuario->validateForm($_POST);
+                        if ($usuario->setNombres($_POST['nombres'])) {
+                            if ($usuario->setApellidos($_POST['apellidos'])) {
+                                if ($usuario->setCorreo($_POST['correo'])) {
+                                    if ($usuario->setAlias($_POST['alias'])) {
+                                        if ($_POST['clave1'] == $_POST['clave2']) {
+                                            if ($usuario->setPasswordAlias($_POST['clave_nueva_1'], $_POST['alias'])) {
+                                                if ($usuario->setClave($_POST['clave1'])) {
+                                                    if ($usuario->createRow()) {
+                                                        $result['status'] = 1;
+                                                        $result['message'] = 'Usuario registrado correctamente';
+                                                    } else {
+                                                        $result['exception'] = Database::getException();
+                                                    }
+                                                } else {
+                                                    $result['exception'] = $usuario->getPasswordError();
+                                                }
+                                            } else {
+                                                $result['exception'] = $usuario->getPasswordError();
+                                            }
                                         } else {
-                                            $result['exception'] = Database::getException();
+                                            $result['exception'] = 'Claves diferentes';
                                         }
                                     } else {
-                                        $result['exception'] = $usuario->getPasswordError();
+                                        $result['exception'] = 'Alias incorrecto';
                                     }
                                 } else {
-                                    $result['exception'] = 'Claves diferentes';
+                                    $result['exception'] = 'Correo incorrecto';
                                 }
                             } else {
-                                $result['exception'] = 'Alias incorrecto';
+                                $result['exception'] = 'Apellidos incorrectos';
                             }
                         } else {
-                            $result['exception'] = 'Correo incorrecto';
+                            $result['exception'] = 'Nombres incorrectos';
                         }
-                    } else {
-                        $result['exception'] = 'Apellidos incorrectos';
                     }
-                } else {
-                    $result['exception'] = 'Nombres incorrectos';
                 }
+                
                 break;
             case 'logIn':
                 $_POST = $usuario->validateForm($_POST);
                 if ($usuario->checkUser($_POST['username'])) {
-                    if ($usuario->checkPassword($_POST['clave'])) {
-                        $result['status'] = 1;
-                        $result['message'] = 'Autenticación correcta';
-                        $_SESSION['id_empleado'] = $usuario->getId();
-                        $_SESSION['alias_emp'] = $usuario->getAlias();
-                        $_SESSION['last_login_timestamp'] = time();
-                    } else {
-                        if (Database::getException()) {
-                            $result['exception'] = Database::getException();
+                    if ($usuario->getIdEsUsE() == 1) {
+                        if ($usuario->checkPassword($_POST['clave'])) {
+                            $codigo = $usuario->generarCodigoRecu(6);
+                            if ($usuario->enviarCorreo($codigo)) {
+                                if($usuario->updateCodigo2($codigo)){
+                                    $_SESSION['correo_emp'] = $usuario->getCorreo();
+                                    $result['status'] = 1;
+                                    $result['message'] = 'Se ha enviado un codigo de confirmacion a su correo';
+                                }else{
+                                    $result['exception'] = 'Ocurrio un problema al actualizar el código';
+                                }
+                            } else {
+                                $result['exception'] = $usuario->getCorreoError();
+                            } 
                         } else {
-                            $result['exception'] = 'Clave incorrecta';
+                            if (Database::getException()) {
+                                $result['exception'] = Database::getException();
+                            } else {
+                                $result['exception'] = 'Clave incorrecta';
+                            }
                         }
-                    }
+                    } else {
+                        $result['exception'] = 'La cuenta ha sido desactivada';
+                    }    
                 } else {
                     if (Database::getException()) {
                         $result['exception'] = Database::getException();
@@ -280,6 +311,56 @@ if (isset($_GET['action'])) {
                     }
                 }
                 break;
+
+                case 'comparar':
+                    $_POST = $usuario->validateForm($_POST);
+                    if($usuario->checkCodigo2($_POST['codigo'])){
+                        $_SESSION['id_empleado'] = $usuario->getId();
+                        $_SESSION['alias_emp'] = $usuario->getAlias();
+                        $_SESSION['tiempo_usuario'] = time();
+                        $result['status'] = 1;
+                        $result['message'] = 'Autenticación correcta';
+                        
+                    }else {
+                        $result['exception'] = 'codigo incorrecto, verifique otra vez';
+                    }
+                    
+                    break;
+
+                    case 'tiempocontra':
+                        $_POST = $usuario->validateForm($_POST);
+                        
+                        if ($usuario->checkUser($_POST['username'])) {
+                            if ($usuario->getIdEsUsE() == 1) {
+                                if ($usuario->checkPassword($_POST['clave'])) {
+                                    if($usuario->obtenerDiff()){
+                                        $result['exception'] = 'Debe cambiar su contraseña';
+                                    }else{
+                                        $result['status'] = 1;
+                                        $result['message'] = 'Su contraseña es valida';
+                                    }
+
+                                } else {
+                                    if (Database::getException()) {
+                                        $result['exception'] = Database::getException();
+                                    } else {
+                                        $result['exception'] = 'Clave incorrecta';
+                                    }
+                                }
+                            } else {
+                                $result['exception'] = 'La cuenta ha sido desactivada';
+                            }
+                        } else {
+                            if (Database::getException()) {
+                                $result['exception'] = Database::getException();
+                            } else {
+                                $result['exception'] = 'Correo incorrecto';
+                            }
+                        }
+                        break;
+
+
+
             default:
                 $result['exception'] = 'Acción no disponible fuera de la sesión';
         }
