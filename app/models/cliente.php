@@ -333,12 +333,13 @@ class Cliente extends validator{
     }
 
     public function createRow()
-    {
+    {   
+        $fechahoy = date('Y-m-d');
         // Se encripta la clave por medio del algoritmo bcrypt que genera un string de 60 caracteres.
         $hash = password_hash($this->contra_cli_us, PASSWORD_DEFAULT);
-        $sql = 'INSERT INTO cliente_user(DUI_cli, correo_cli_us, contra_cli_us, nombres_cli, apellidos_cli, fecha_nac_cli, id_estado_cli)
-                VALUES(?, ?, ?, ?, ?, ?, ?)';
-        $params = array($this->dui_cli, $this->correo_cli_us, $hash, $this->nombres_cli, $this->apellidos_cli, $this->fecha_nac_cli, 1);
+        $sql = 'INSERT INTO cliente_user(DUI_cli, correo_cli_us, contra_cli_us, nombres_cli, apellidos_cli, fecha_nac_cli, id_estado_cli, fechacontra)
+                VALUES(?, ?, ?, ?, ?, ?, ?, ?)';
+        $params = array($this->dui_cli, $this->correo_cli_us, $hash, $this->nombres_cli, $this->apellidos_cli, $this->fecha_nac_cli, 1, $fechahoy);
         return Database::executeRow($sql, $params);
     }
 
@@ -423,10 +424,11 @@ class Cliente extends validator{
 
     public function changePassword()
     {
+        $fechahoy = date('Y-m-d');
         // Se transforma la contraseña a una cadena de texto de longitud fija mediante el algoritmo por defecto.
         $hash = password_hash($this->contra_cli_us, PASSWORD_DEFAULT);
-        $sql = 'UPDATE cliente_user SET contra_cli_us = ? WHERE id_cliente_user = ?';
-        $params = array($hash, $_SESSION['id_cliente_user']);
+        $sql = 'UPDATE cliente_user SET contra_cli_us = ?, fechacontra = ? WHERE id_cliente_user = ?';
+        $params = array($hash, $fechahoy, $_SESSION['id_cliente_user']);
         return Database::executeRow($sql, $params);
     }
 
@@ -524,10 +526,11 @@ class Cliente extends validator{
 
     public function restorePassword()
     {
+        $fechahoy = date('Y-m-d');
         // Se transforma la contraseña a una cadena de texto de longitud fija mediante el algoritmo por defecto.
         $hash = password_hash($this->contra_cli_us, PASSWORD_DEFAULT);
-        $sql = 'UPDATE cliente_user SET contra_cli_us = ? WHERE id_cliente_user = ?';
-        $params = array($hash, $this->id_cliente_user);
+        $sql = 'UPDATE cliente_user SET contra_cli_us = ?, fechacontra = ? WHERE id_cliente_user = ?';
+        $params = array($hash, $this->id_cliente_user, $fechahoy);
         return Database::executeRow($sql, $params);
     }
 }
