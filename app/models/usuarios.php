@@ -335,34 +335,26 @@ class Usuarios extends Validator
 
     public function registrarDispositivos()
     {
-        $sql = 'INSERT INTO historial_sesion(id_empleado,dispositivo)
-                VALUES(?,?)';
-        $params = array($_SESSION['id_empleado'],php_uname());
+        $dispositivo = php_uname();
+        $sql = 'INSERT INTO historial_sesion (id_empleado, dispositivo) VALUES(?,?)';
+        $params = array($_SESSION['id_empleado'], $dispositivo);
         return Database::executeRow($sql, $params);
-    }
-
-    public function verificarDispositivos()    
-    {        
-        $sql = 'SELECT*FROM historial_sesion 
-            WHERE dispositivo = ? 
-            AND id_empleado = ?';        
-        $params = array(php_uname(), $_SESSION['id_empleado']);        
-        return Database::getRow($sql, $params);    
     }
 
 
     //Verificar si el dispositivo ya existe
     public function checkDevice()
     {
-        $sql = 'SELECT*FROM historial_sesion WHERE dispositivo = ? AND id_empleado = ?';
+        $sql = 'SELECT dispositivo FROM historial_sesion WHERE dispositivo = ? AND id_empleado = ?';
         $params = array(php_uname(), $_SESSION['id_empleado']);
         return Database::getRow($sql, $params);
+        
     }
 
     //Obtener las sesiones de un dispositivo
     public function getDevices()
     {
-        $sql = 'SELECT*FROM historial_sesion WHERE id_empleado = ?';
+        $sql = 'SELECT dispositivo, fecha FROM historial_sesion WHERE id_empleado = ?';
         $params = array($_SESSION['id_empleado']);
         return Database::getRows($sql, $params);
     }    

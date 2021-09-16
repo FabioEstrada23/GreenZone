@@ -29,7 +29,6 @@ function sessionTime()
         });
 }
 
-// Función para mostrar el formulario de editar perfil con los datos del usuario que ha iniciado sesión.
 function openDevicesDialog() {
     fetch(API + 'getDevices', {
         method: 'get'
@@ -63,7 +62,6 @@ function openDevicesDialog() {
         console.log(error);
     });
 }
-
 
 //Métodos manejadores de eventos que se ejecutan cuando se realiza una acción
 document.addEventListener('click', sessionTime);
