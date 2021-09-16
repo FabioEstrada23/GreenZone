@@ -56,6 +56,18 @@ if(isset($_GET['action'])){
                 }
                 break;
 
+                case 'getDevices':
+                    if ($result['dataset'] = $cliente->getDevicesCli()) {
+                        $result['status'] = 1;
+                    } else {
+                        if (Database::getException()) {
+                            $result['exception'] = Database::getException();
+                        } else {
+                            $result['exception'] = 'Usted no posee sesiónes registradas.';
+                        }   
+                    }
+                    break;
+
                 case 'changePassword':
                     if ($cliente->setIdClienteUser($_SESSION['id_cliente_user'])) {
                         $_POST = $cliente->validateForm($_POST);
@@ -344,6 +356,11 @@ if(isset($_GET['action'])){
                                 $_SESSION['tiempo_usuario'] = time();
                                 $result['status'] = 1;
                                 $result['message'] = 'Autenticación correcta';
+                                if($cliente->checkDeviceCli()){
+                                    $result[''] = 'Ya hay dispositivos registrados';
+                                } else{
+                                    $cliente->registrarDispositivosCli();
+                                }
                                 
                             }else {
                                 $result['exception'] = 'codigo incorrecto, verifique otra vez';
