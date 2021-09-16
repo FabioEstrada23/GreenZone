@@ -332,5 +332,38 @@ class Usuarios extends Validator
             return false;
         }
     }
-    
+
+    public function registrarDispositivos()
+    {
+        $sql = 'INSERT INTO historial_sesion(id_empleado,dispositivo)
+                VALUES(?,?)';
+        $params = array($_SESSION['id_empleado'],php_uname());
+        return Database::executeRow($sql, $params);
+    }
+
+    public function verificarDispositivos()    
+    {        
+        $sql = 'SELECT*FROM historial_sesion 
+            WHERE dispositivo = ? 
+            AND id_empleado = ?';        
+        $params = array(php_uname(), $_SESSION['id_empleado']);        
+        return Database::getRow($sql, $params);    
+    }
+
+
+    //Verificar si el dispositivo ya existe
+    public function checkDevice()
+    {
+        $sql = 'SELECT*FROM historial_sesion WHERE dispositivo = ? AND id_empleado = ?';
+        $params = array(php_uname(), $_SESSION['id_empleado']);
+        return Database::getRow($sql, $params);
+    }
+
+    //Obtener las sesiones de un dispositivo
+    public function getDevices()
+    {
+        $sql = 'SELECT*FROM historial_sesion WHERE id_empleado = ?';
+        $params = array($_SESSION['id_empleado']);
+        return Database::getRows($sql, $params);
+    }    
 }

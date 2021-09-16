@@ -30,6 +30,53 @@ if (isset($_GET['action'])) {
                         $result['message'] = 'Se ha cerrado la sesión por inactividad'; 
                     }
                 break;
+
+                case 'registrarDispositivos':
+
+                    if ($historialemp->checkDevice()) {
+    
+                        $result['status'] = 1;
+    
+                        $result['message'] = 'Dispositivo registrado anteriormente.';
+    
+                    } else {
+    
+                        if (Database::getException()) {
+    
+                            $result['exception'] = Database::getException();
+    
+                        } else {
+    
+                            if ($historialemp->registrarDispositivos()) {
+    
+                                $result['status'] = 1;
+    
+                                $result['message'] = 'Dispositivo registrado.';
+    
+                            } else {
+    
+                                $result['exception'] = Database::getException();
+    
+                            }
+    
+                        }
+    
+                    }
+    
+                    break;
+
+                    case 'getDevices':
+                        if ($result['dataset'] = $historialemp->getDevices()) {
+                            $result['status'] = 1;
+                        } else {
+                            if (Database::getException()) {
+                                $result['exception'] = Database::getException();
+                            } else {
+                                $result['exception'] = 'Usted no posee sesiónes registradas.';
+                            }   
+                        }
+                        break;
+
                 case 'changePassword':
                     if ($usuario->setId($_SESSION['id_empleado'])) {
                         $_POST = $usuario->validateForm($_POST);
