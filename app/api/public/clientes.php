@@ -231,37 +231,75 @@ if(isset($_GET['action'])){
                 break;
                 case 'logIn':
                     $_POST = $cliente->validateForm($_POST);
-                    if ($cliente->checkUser($_POST['correo'])) {
-                        if ($cliente->getIdEstadoCli() == 1) {
-                            if ($cliente->checkPassword($_POST['clave'])) {
-                                $codigo = $cliente->generarCodigoRecu(6);
-                                if ($cliente->enviarCorreo($_POST['correo'], $codigo)) {
-                                    if($cliente->updateCodigo2($codigo)){
-                                        $_SESSION['correo_cli_us'] = $cliente->getCorreoCliUs();
-                                        $result['status'] = 1;
-                                        $result['message'] = 'Se ha enviado un codigo de confirmacion a su correo';
-                                    }else{
-                                        $result['exception'] = 'Ocurrio un problema al actualizar el código';
+                    // Se sanea el valor del token para evitar datos maliciosos.
+                    $token = filter_input(INPUT_POST, 'g-recaptcha-response', FILTER_SANITIZE_STRING);
+                    if ($token) {
+                        $secretKey = '6LeBqFccAAAAADTwGbfo-lrZJb3p6lb0T6_m8Lkf';
+                        $ip = $_SERVER['REMOTE_ADDR'];
+
+                        $data = array(
+                            'secret' => $secretKey,
+                            'response' => $token,
+                            'remoteip' => $ip
+                        );
+
+                        $options = array(
+                            'http' => array(
+                                'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+                                'method'  => 'POST',
+                                'content' => http_build_query($data)
+                            ),
+                            'ssl' => array(
+                                'verify_peer' => false,
+                                'verify_peer_name' => false
+                            )
+                        );
+
+                        $url = 'https://www.google.com/recaptcha/api/siteverify';
+                        $context  = stream_context_create($options);
+                        $response = file_get_contents($url, false, $context);
+                        $captcha = json_decode($response, true);
+
+                        if ($captcha['success']) {
+                            $_POST = $cliente->validateForm($_POST);
+                            if ($cliente->checkUser($_POST['correo'])) {
+                                if ($cliente->getIdEstadoCli() == 1) {
+                                    if ($cliente->checkPassword($_POST['clave'])) {
+                                        $codigo = $cliente->generarCodigoRecu(6);
+                                        if ($cliente->enviarCorreo($_POST['correo'], $codigo)) {
+                                            if($cliente->updateCodigo2($codigo)){
+                                                $_SESSION['correo_cli_us'] = $cliente->getCorreoCliUs();
+                                                $result['status'] = 1;
+                                                $result['message'] = 'Se ha enviado un codigo de confirmacion a su correo';
+                                            }else{
+                                                $result['exception'] = 'Ocurrio un problema al actualizar el código';
+                                            }
+                                        } else {
+                                            $result['exception'] = $cliente->getCorreoError();
+                                        } 
+                                    } else {
+                                        if (Database::getException()) {
+                                            $result['exception'] = Database::getException();
+                                        } else {
+                                            $result['exception'] = 'Clave incorrecta';
+                                        }
                                     }
                                 } else {
-                                    $result['exception'] = $cliente->getCorreoError();
-                                } 
+                                    $result['exception'] = 'La cuenta ha sido desactivada';
+                                }
                             } else {
                                 if (Database::getException()) {
                                     $result['exception'] = Database::getException();
                                 } else {
-                                    $result['exception'] = 'Clave incorrecta';
+                                    $result['exception'] = 'Correo incorrecto';
                                 }
                             }
                         } else {
-                            $result['exception'] = 'La cuenta ha sido desactivada';
+                            $result['recaptcha'] = 1;
+                            $result['exception'] = 'No eres un humano';
                         }
                     } else {
-                        if (Database::getException()) {
-                            $result['exception'] = Database::getException();
-                        } else {
-                            $result['exception'] = 'Correo incorrecto';
-                        }
+                        $result['exception'] = 'Ocurrió un problema al cargar el reCAPTCHA';
                     }
                     break;
 

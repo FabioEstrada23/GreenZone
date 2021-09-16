@@ -151,6 +151,10 @@ button[type="submit"]:hover{
     color: white;
 }
 
+#verifica{
+    
+}
+
 /* Responsive */ 
 
 @media screen and (max-width: 800px){

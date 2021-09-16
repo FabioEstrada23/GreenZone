@@ -13,13 +13,17 @@ Public_Page::headerTemplate('Iniciar sesión');
             <h1 class="title"> Iniciar sesión</h1>
 
             <form method="post" id="session-form">
-                
+                <input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response"/>
                 <!-- Ingresar nombre de usuario -->
                 <label for="username"><i class="material-icons prefix">email</i> Correo</label>
                 <input type="text" placeholder="Ingresa tu email" id="correo" name="correo" autocomplete="off" class="validate" required>
                 <!-- Ingresar contresenia de usuario -->
                 <label for="password"><i class="material-icons prefix">security</i> Contraseña</label>
                 <input type="password" placeholder="Ingresa tu contraseña" id="clave" name="clave" class="validate" required>
+                <label class="text-center">
+                    <input type="checkbox" id="verificacion" name="verificacion" required/>
+                    <label id="verifica">Comprueba de que eres humano</label>
+                </label>
                 <input type="submit" value="Log In" onclick="openCambiarContra()">
             </form>
 
@@ -63,6 +67,7 @@ Public_Page::headerTemplate('Iniciar sesión');
     </div>
 
     <!-- Agregamos SCRIPTS -->
+    <script type="text/javascript" src="https://www.google.com/recaptcha/api.js?render=6LeBqFccAAAAAKKKyrQri1N3nktSRu1YR8TC2iNs"></script>
     <script src="https://kit.fontawesome.com/592eb2e9e3.js" crossorigin="anonymous"></script>
     <script type="text/javascript" src="../../resources/js/bootstrap/bootstrap.min.js"></script>
     <script type="text/javascript" src="../../resources/js/sweetalert.min.js"></script>

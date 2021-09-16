@@ -3,10 +3,24 @@ const API_CLIENTES = '../../app/api/public/clientes.php?action=';
 
 // Método manejador de eventos que se ejecuta cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', function () {
-    
+    reCAPTCHA();
     sweetAlert(4, 'Debe autenticarse para ingresar', null);
     
 });
+
+// Función para obtener un token del reCAPTCHA y asignarlo al formulario.
+function reCAPTCHA() {
+    // Método para generar el token del reCAPTCHA.
+    grecaptcha.ready(function () {
+        // Se declara e inicializa una variable para guardar la llave pública del reCAPTCHA.
+        let publicKey = '6LeBqFccAAAAAKKKyrQri1N3nktSRu1YR8TC2iNs';
+        // Se obtiene un token para la página web mediante la llave pública.
+        grecaptcha.execute(publicKey, { action: 'homepage' }).then(function (token) {
+            // Se asigna el valor del token al campo oculto del formulario
+            document.getElementById('g-recaptcha-response').value = token;
+        });
+    });
+}
 
 
 // Método manejador de eventos que se ejecuta cuando se envía el formulario de iniciar sesión.
