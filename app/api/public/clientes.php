@@ -56,7 +56,7 @@ if(isset($_GET['action'])){
                 }
                 break;
 
-                case 'getDevices':
+                case 'getDevicesCli':
                     if ($result['dataset'] = $cliente->getDevicesCli()) {
                         $result['status'] = 1;
                     } else {

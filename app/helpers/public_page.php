@@ -109,7 +109,7 @@ class Public_Page
                                         <a href="#" onclick=""class="btn waves-effect blue tooltipped" data-tooltip="profile" data-bs-toggle="modal" data-bs-target="#password-modal-cli"><i class="fas fa-shield-alt"></i> Cambiar contraseña</a>
                                     </button>
                                     <button class="btn btn-primary ">
-                                        <a href="#" class="btn waves-effect blue tooltipped" onclick="openDevicesDialog()" data-tooltip="profile" data-bs-toggle="modal" data-bs-target="#devices-modal"><i class="fas fa-shield-alt"></i> Cambiar contraseña</a>
+                                        <a href="#" class="btn waves-effect blue tooltipped" onclick="openDevicesDialog()" data-tooltip="profile" data-bs-toggle="modal" data-bs-target="#devices-modal"><i class="fas fa-shield-alt"></i> Dispositivos</a>
                                     </button>
                                     <button class="btn btn-primary ">
                                         <a href="#" onclick="logOut()"><i class="fas fa-times"></i> Cerrar sesión</a>
