@@ -242,7 +242,7 @@ class Pedido extends Validator
     {
         $sql = 'SELECT id_detalle_pedido, nombre_pro, detalle_pedido.precio_producto, detalle_pedido.cantidad
                 FROM pedido INNER JOIN detalle_pedido USING(id_pedido) INNER JOIN producto USING(id_producto)
-                WHERE id_pedido = ?';
+                WHERE id_pedido = ? AND id_estado_pedido = 1';
         $params = array($this->id_pedido);
         return Database::getRows($sql, $params);
     }
@@ -251,11 +251,10 @@ class Pedido extends Validator
     {
         date_default_timezone_set('America/El_Salvador');
         $date = date('Y-m-d');
-        $this->id_estado_pedido = 1;
         $sql = 'UPDATE pedido
                 SET id_estado_pedido = ?, fecha_pedido = ?
                 WHERE id_pedido = ?';
-        $params = array($this->id_estado_pedido, $date, $this->id_pedido);
+        $params = array(2, $date, $this->id_pedido);
         return Database::executeRow($sql, $params);
     }
 
