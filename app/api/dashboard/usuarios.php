@@ -365,6 +365,7 @@ if (isset($_GET['action'])) {
                                     if (Database::getException()) {
                                         $result['exception'] = Database::getException();
                                     } else {
+                                        $usuario->agregarIntentosEmp();
                                         $result['exception'] = 'Clave incorrecta';
                                     }
                                 }

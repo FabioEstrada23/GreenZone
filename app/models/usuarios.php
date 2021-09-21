@@ -358,4 +358,36 @@ class Usuarios extends Validator
         $params = array($_SESSION['id_empleado']);
         return Database::getRows($sql, $params);
     }    
+
+
+    // Funciones para agregar intentos
+    public function agregarIntentosEmp()
+    {   
+        $sql = 'SELECT intentos FROM empleado_user WHERE id_empleado = ?';
+        $params = array($this->id_empleado);
+        if($data = Database::getRow($sql, $params)){
+            if($data['intentos'] >=3 ){
+                $sql = 'UPDATE empleado_user SET id_estado_emp = ? where id_empleado = ?';
+                $params = array(2, $this->id_empleado);
+                return Database::executeRow($sql, $params);
+            } else {
+                $this->intentosC = $data['intentos'];
+                $intentos = $this->intentosC + 1;
+                $sql = 'UPDATE empleado_user SET intentos = ? where id_empleado = ?';
+                $params = array($intentos, $this->id_empleado);
+                return Database::executeRow($sql, $params);
+            }
+        } else {
+            return false;
+        }
+
+    }
+
+    public function resetearIntentos()
+    {
+        $sql = 'UPDATE empleado_user SET intentos = null where id_empleado = ?';
+        $params = array($this->id_empleado);
+        return Database::executeRow($sql, $params);
+    }
+
 }
