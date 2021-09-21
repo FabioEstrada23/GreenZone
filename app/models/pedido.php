@@ -251,7 +251,7 @@ class Pedido extends Validator
     {
         date_default_timezone_set('America/El_Salvador');
         $date = date('Y-m-d');
-        $this->id_estado_pedido = 2;
+        $this->id_estado_pedido = 1;
         $sql = 'UPDATE pedido
                 SET id_estado_pedido = ?, fecha_pedido = ?
                 WHERE id_pedido = ?';
