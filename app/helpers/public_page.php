@@ -109,6 +109,9 @@ class Public_Page
                                         <a href="#" onclick=""class="btn waves-effect blue tooltipped" data-tooltip="profile" data-bs-toggle="modal" data-bs-target="#password-modal-cli"><i class="fas fa-shield-alt"></i> Cambiar contraseña</a>
                                     </button>
                                     <button class="btn btn-primary ">
+                                        <a href="#" class="btn waves-effect blue tooltipped" onclick="openDevicesDialog()" data-tooltip="profile" data-bs-toggle="modal" data-bs-target="#devices-modal"><i class="fas fa-shield-alt"></i> Cambiar contraseña</a>
+                                    </button>
+                                    <button class="btn btn-primary ">
                                         <a href="#" onclick="logOut()"><i class="fas fa-times"></i> Cerrar sesión</a>
                                     </button>
                                 </div>
@@ -339,6 +342,40 @@ class Public_Page
                     </div>
                 </div>
             </div>
+
+            <!-- Componente Modal para mostrar el formulario de dispositivos -->
+            <div class="modal fade" id="devices-modal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modal-title"> Dispositivos registrados</h5>
+                        </div>
+                        <div class="modal-body">
+                        <form method="post" id="device-form">
+                            <div class="row">
+                                <!-- Tabla para mostrar los registros existentes -->
+                                <table class="highlight" id="data-table">
+                                    <!-- Cabeza de la tabla para mostrar los títulos de las columnas -->
+                                    <thead>
+                                        <tr>
+                                            <th>DISPOSITIVO</th>
+                                            <th>FECHA</th>
+                                        </tr>
+                                    </thead>
+                                    <!-- Cuerpo de la tabla para mostrar un registro por fila -->
+                                    <tbody id="tbody-devices">
+                                    </tbody>
+                                </table>
+                            </div>
+                            <br>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="modal fade" id="password-modal-cli" tabindex="-1" aria-labelledby="exampleModalLabel"
                         aria-hidden="true">
                         <div class="modal-dialog">

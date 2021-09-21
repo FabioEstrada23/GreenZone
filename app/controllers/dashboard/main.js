@@ -28,6 +28,8 @@ document.addEventListener('DOMContentLoaded', function () {
     graficaPastelMostSelling();
 });
 
+
+
 // Función para mostrar la cantidad de productos por categoría en una gráfica de barras.
 function graficaBarrasCategorias() {
     fetch(API_PRODUCTOS + 'cantidadProductosCategoria', {

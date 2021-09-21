@@ -30,6 +30,7 @@ if (isset($_GET['action'])) {
                         $result['message'] = 'Se ha cerrado la sesión por inactividad'; 
                     }
                 break;
+
                 case 'changePassword':
                     if ($usuario->setId($_SESSION['id_empleado'])) {
                         $_POST = $usuario->validateForm($_POST);
@@ -75,7 +76,18 @@ if (isset($_GET['action'])) {
                     }
                 }
                 break;
-            
+            case 'getDevices':
+                        if ($result['dataset'] = $usuario->getDevices()) {
+                            $result['status'] = 1;
+                        } else {
+                            if (Database::getException()) {
+                                $result['exception'] = Database::getException();
+                            } else {
+                                $result['exception'] = 'Usted no posee sesiónes registradas.';
+                            }   
+                        }
+                        break;
+
             case 'readAll':
                 if ($result['dataset'] = $usuario->readAll()) {
                     $result['status'] = 1;
@@ -320,6 +332,15 @@ if (isset($_GET['action'])) {
                         $_SESSION['tiempo_usuario'] = time();
                         $result['status'] = 1;
                         $result['message'] = 'Autenticación correcta';
+                        if($usuario->checkDevice()){
+                            $result[''] = 'Ya hay dispositivos registrados';
+                        } else{
+                            $usuario->registrarDispositivos();
+                        }
+                            
+                        
+                        
+                        
                         
                     }else {
                         $result['exception'] = 'codigo incorrecto, verifique otra vez';

@@ -554,6 +554,32 @@ class Cliente extends validator{
     }
 
 
+    //Consultas historial empleado
+    public function registrarDispositivosCli()
+    {
+        $dispositivo = php_uname();
+        $sql = 'INSERT INTO historial_sesion_cli (id_cliente_user, dispositivo) VALUES(?,?)';
+        $params = array($_SESSION['id_cliente_user'], $dispositivo);
+        return Database::executeRow($sql, $params);
+    }
+
+
+    //Verificar si el dispositivo ya existe
+    public function checkDeviceCli()
+    {
+        $sql = 'SELECT dispositivo FROM historial_sesion_cli WHERE dispositivo = ? AND id_cliente_user = ?';
+        $params = array(php_uname(), $_SESSION['id_cliente_user']);
+        return Database::getRow($sql, $params);
+        
+    }
+
+    //Obtener las sesiones de un dispositivo
+    public function getDevicesCli()
+    {
+        $sql = 'SELECT dispositivo, fecha FROM historial_sesion_cli WHERE id_cliente_user = ?';
+        $params = array($_SESSION['id_cliente_user']);
+        return Database::getRows($sql, $params);
+    }
 }
 
    
