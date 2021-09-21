@@ -537,7 +537,7 @@ class Cliente extends validator{
         $params = array($this->id_cliente_user);
         if($data = Database::getRow($sql, $params)){
             if($data['intentos'] >=3 ){
-                $sql = 'UPDATE cliente_user SET id_estado_cliente = ? where id_cliente_user = ?';
+                $sql = 'UPDATE cliente_user SET id_estado_cli = ? where id_cliente_user = ?';
                 $params = array(2, $this->id_cliente_user);
                 return Database::executeRow($sql, $params);
             } else {
@@ -551,6 +551,13 @@ class Cliente extends validator{
             return false;
         }
 
+    }
+
+    public function resetearIntentos()
+    {
+        $sql = 'UPDATE cliente_user SET intentos = null where id_cliente_user = ?';
+        $params = array($this->id_cliente_user);
+        return Database::executeRow($sql, $params);
     }
 
 
