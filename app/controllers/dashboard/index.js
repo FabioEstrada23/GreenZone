@@ -69,11 +69,11 @@ document.getElementById('session-form').addEventListener('submit', function (eve
                             console.log(request.status + ' ' + request.statusText);
                         }
                     }).catch(function (error) {
-                        console.log(error);
+                        sweetAlert(4, response.exception, 'recuperacion.php');
                     });
                 
                 } else {
-                    sweetAlert(4, response.exception, 'recuperacion.php');
+                    sweetAlert(4, response.exception, null);
                 }
             });
         } else {

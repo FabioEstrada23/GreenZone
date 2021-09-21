@@ -303,7 +303,8 @@ if(isset($_GET['action'])){
                                 if (Database::getException()) {
                                     $result['exception'] = Database::getException();
                                 } else {
-                                    $result['exception'] = 'Correo incorrecto';
+                                    $cliente->agregarIntentos();
+                                    $result['exception'] = 'Clave incorrecta';
                                 }
                             }
                         } else {
@@ -332,6 +333,7 @@ if(isset($_GET['action'])){
                                         if (Database::getException()) {
                                             $result['exception'] = Database::getException();
                                         } else {
+                                            $cliente->agregarIntentos();
                                             $result['exception'] = 'Clave incorrecta';
                                         }
                                     }
@@ -352,6 +354,7 @@ if(isset($_GET['action'])){
                         case 'comparar':
                             $_POST = $cliente->validateForm($_POST);
                             if($cliente->checkCodigo2($_POST['codigo'])){
+                                $cliente->resetearIntentos();
                                 $_SESSION['id_cliente_user'] = $cliente->getIdClienteUser();
                                 $_SESSION['tiempo_usuario'] = time();
                                 $result['status'] = 1;

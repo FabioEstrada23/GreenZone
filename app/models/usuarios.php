@@ -269,11 +269,11 @@ class Usuarios extends Validator
             $mail->isSMTP();                                               // Activar envio SMTP
             $mail->Host  = 'smtp.gmail.com';                     // Servidor SMTP
             $mail->SMTPAuth  = true;                                       // Identificacion SMTP
-            $mail->Username  = 'greenzonesv8@gmail.com';                  // Usuario SMTP
-            $mail->Password  = 'greenzone';	          // Contraseña SMTP
+            $mail->Username  = 'greenzonesv778@gmail.com';                  // Usuario SMTP
+            $mail->Password  = 'felix224';	  	          // Contraseña SMTP
             $mail->SMTPSecure = 'tls';
             $mail->Port  = 587;
-            $mail->setFrom("greenzonesv8@gmail.com", "Green Zone");                // Remitente del correo
+            $mail->setFrom("greenzonesv778@gmail.com", "Green Zone");                // Remitente del correo
 
             // Destinatarios
             $mail->addAddress($this->correo);  // Email y nombre del destinatario
@@ -358,4 +358,36 @@ class Usuarios extends Validator
         $params = array($_SESSION['id_empleado']);
         return Database::getRows($sql, $params);
     }    
+
+
+    // Funciones para agregar intentos
+    public function agregarIntentosEmp()
+    {   
+        $sql = 'SELECT intentos FROM empleado_user WHERE id_empleado = ?';
+        $params = array($this->id_empleado);
+        if($data = Database::getRow($sql, $params)){
+            if($data['intentos'] >=3 ){
+                $sql = 'UPDATE empleado_user SET id_estado_emp = ? where id_empleado = ?';
+                $params = array(2, $this->id_empleado);
+                return Database::executeRow($sql, $params);
+            } else {
+                $this->intentosC = $data['intentos'];
+                $intentos = $this->intentosC + 1;
+                $sql = 'UPDATE empleado_user SET intentos = ? where id_empleado = ?';
+                $params = array($intentos, $this->id_empleado);
+                return Database::executeRow($sql, $params);
+            }
+        } else {
+            return false;
+        }
+
+    }
+
+    public function resetearIntentos()
+    {
+        $sql = 'UPDATE empleado_user SET intentos = null where id_empleado = ?';
+        $params = array($this->id_empleado);
+        return Database::executeRow($sql, $params);
+    }
+
 }
