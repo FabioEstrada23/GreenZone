@@ -327,6 +327,7 @@ if (isset($_GET['action'])) {
                 case 'comparar':
                     $_POST = $usuario->validateForm($_POST);
                     if($usuario->checkCodigo2($_POST['codigo'])){
+                        $usuario->resetearIntentos();
                         $_SESSION['id_empleado'] = $usuario->getId();
                         $_SESSION['alias_emp'] = $usuario->getAlias();
                         $_SESSION['tiempo_usuario'] = time();
