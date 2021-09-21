@@ -28,7 +28,7 @@ class Cliente extends validator{
     private $correoError = null;
     private $codigo_recu = null;
     private $clienteUser = null;
-
+    private $intentosC = null;
 
     /*
     *   Métodos para asignar valores a los atributos.
@@ -380,7 +380,7 @@ class Cliente extends validator{
         $months = floor(($dateDifference - $years * 365 * 60 * 60 * 24) / (30 * 60 * 60 * 24));
         $days   = floor(($dateDifference - $years * 365 * 60 * 60 * 24 - $months * 30 * 60 * 60 *24) / (60 * 60 * 24));
 
-        if($days>=5){
+        if($days>=10){
             return true;
         }else{
             return false;
@@ -456,11 +456,11 @@ class Cliente extends validator{
             $mail->isSMTP();                                               // Activar envio SMTP
             $mail->Host  = 'smtp.gmail.com';                     // Servidor SMTP
             $mail->SMTPAuth  = true;                                       // Identificacion SMTP
-            $mail->Username  = 'greenzonesv8@gmail.com';                  // Usuario SMTP
-            $mail->Password  = 'greenzone';	  	          // Contraseña SMTP
+            $mail->Username  = 'greenzonesv778@gmail.com';                  // Usuario SMTP
+            $mail->Password  = 'felix224';	  	          // Contraseña SMTP
             $mail->SMTPSecure = 'tls';
             $mail->Port  = 587;
-            $mail->setFrom("greenzonesv8@gmail.com", "Green Zone");                // Remitente del correo
+            $mail->setFrom("greenzonesv778@gmail.com", "Green Zone");                // Remitente del correo
 
             // Destinatarios
             $mail->addAddress($correo);  // Email y nombre del destinatario
@@ -530,6 +530,30 @@ class Cliente extends validator{
         $params = array($hash, $this->id_cliente_user);
         return Database::executeRow($sql, $params);
     }
+
+    public function agregarIntentos()
+    {   
+        $sql = 'SELECT intentos FROM cliente_user WHERE id_cliente_user = ?';
+        $params = array($this->id_cliente_user);
+        if($data = Database::getRow($sql, $params)){
+            if($data['intentos'] >=3 ){
+                $sql = 'UPDATE cliente_user SET id_estado_cliente = ? where id_cliente_user = ?';
+                $params = array(2, $this->id_cliente_user);
+                return Database::executeRow($sql, $params);
+            } else {
+                $this->intentosC = $data['intentos'];
+                $intentos = $this->intentosC + 1;
+                $sql = 'UPDATE cliente_user SET intentos = ? where id_cliente_user = ?';
+                $params = array($intentos, $this->id_cliente_user);
+                return Database::executeRow($sql, $params);
+            }
+        } else {
+            return false;
+        }
+
+    }
+
+
 }
 
    

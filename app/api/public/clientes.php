@@ -250,6 +250,7 @@ if(isset($_GET['action'])){
                                 if (Database::getException()) {
                                     $result['exception'] = Database::getException();
                                 } else {
+                                    $cliente->agregarIntentos();
                                     $result['exception'] = 'Clave incorrecta';
                                 }
                             }
@@ -282,6 +283,7 @@ if(isset($_GET['action'])){
                                         if (Database::getException()) {
                                             $result['exception'] = Database::getException();
                                         } else {
+                                            $cliente->agregarIntentos();
                                             $result['exception'] = 'Clave incorrecta';
                                         }
                                     }
