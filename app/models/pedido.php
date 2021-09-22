@@ -243,7 +243,7 @@ class Pedido extends Validator
     {
         $sql = 'SELECT id_detalle_pedido, nombre_pro, detalle_pedido.precio_producto, detalle_pedido.cantidad
                 FROM pedido INNER JOIN detalle_pedido USING(id_pedido) INNER JOIN producto USING(id_producto)
-                WHERE id_pedido = ?';
+                WHERE id_pedido = ? AND id_estado_pedido = 1';
         $params = array($this->id_pedido);
         return Database::getRows($sql, $params);
     }
