@@ -23,7 +23,7 @@ function fillTable(dataset) {
         content += `
             <tr>
                 
-                <td>${row.cliente_user}</td>
+                <td>${row.correo_cli_us}</td>
                 <td>${row.puntuaciones}</td>
                 <td>${row.comentario}</td>
             </tr>

@@ -102,17 +102,17 @@ class Valoraciones extends Validator
 
     public function searchRows($value)
     {   
-        $sql = 'SELECT id_valoracion, cliente_user.cliente_user, producto.nombre_pro, puntuaciones, comentario FROM valoraciones
+        $sql = 'SELECT select id_valoracion, cliente_user.correo_cli_us, producto.nombre_pro, puntuaciones, comentario FROM valoraciones
         INNER JOIN producto ON valoraciones.id_producto = producto.id_producto
         INNER JOIN cliente_user ON valoraciones.id_cliente_user = cliente_user.id_cliente_user 
-        WHERE producto.nombre_pro ILIKE ? order by producto.nombre_pro';
+        WHERE producto.nombre_pro ILIKE ? ';
         $params = array("%$value%");
         return Database::getRows($sql, $params);
     }
 
     public function readAll()
     {
-        $sql = 'SELECT id_valoracion, cliente_user.cliente_user, producto.nombre_pro, puntuaciones, comentario FROM valoraciones
+        $sql = 'SELECT id_valoracion, cliente_user.correo_cli_us, producto.nombre_pro, puntuaciones, comentario FROM valoraciones
         INNER JOIN producto ON valoraciones.id_producto = producto.id_producto
         INNER JOIN cliente_user ON valoraciones.id_cliente_user = cliente_user.id_cliente_user
         order by puntuaciones desc';
@@ -122,7 +122,7 @@ class Valoraciones extends Validator
 
     public function readValoraciones()
     {
-        $sql = 'SELECT id_valoracion, cliente_user.cliente_user, producto.nombre_pro, puntuaciones, comentario FROM valoraciones
+        $sql = 'SELECT id_valoracion, cliente_user.correo_cli_us, producto.nombre_pro, puntuaciones, comentario FROM valoraciones
         INNER JOIN producto ON valoraciones.id_producto = producto.id_producto
         INNER JOIN cliente_user ON valoraciones.id_cliente_user = cliente_user.id_cliente_user
         where estado_val = true

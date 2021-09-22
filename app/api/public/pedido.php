@@ -104,7 +104,7 @@ if (isset($_GET['action'])) {
                 }
                 break;
             case 'finishOrder':
-                if ($pedido->setId($_SESSION['id_pedido'])) {
+                if ($pedido->setCliente($_SESSION['id_cliente_user'])) {
                     if ($pedido->finishOrder()) {
                         $result['status'] = 1;
                         $result['message'] = 'Pedido finalizado correctamente';
@@ -112,7 +112,7 @@ if (isset($_GET['action'])) {
                         $result['exception'] = 'Ocurrió un problema al finalizar el pedido';
                     }
                 } else {
-                    $result['exception'] = 'Pedido incorrecto';
+                    $result['exception'] = 'Cliente incorrecto';
                 }
                 break;
             default:

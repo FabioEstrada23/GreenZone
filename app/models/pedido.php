@@ -207,20 +207,21 @@ class Pedido extends Validator
 
     public function readOrder()
     {
+        $this->id_estado_pedido = 1;
         date_default_timezone_set('America/El_Salvador');
         $date = date('Y-m-d');
 
         $sql = 'SELECT id_pedido
                 FROM pedido
-                WHERE id_estado_pedido = 1 AND id_cliente_user = ?';
-        $params = array($_SESSION['id_cliente_user']);
+                WHERE id_estado_pedido = ? AND id_cliente_user = ?';
+        $params = array($this->id_estado_pedido, $_SESSION['id_cliente_user']);
         if ($data = Database::getRow($sql, $params)) {
             $this->id_pedido = $data['id_pedido'];
             return true;
         } else {
             $sql = 'INSERT INTO pedido(id_cliente_user, fecha_pedido, fecha_entrega, id_estado_pedido)
-                    VALUES(?,?,?,1)';
-            $params = array($_SESSION['id_cliente_user'], $date, $date);
+                    VALUES(?,?,?,?)';
+            $params = array($_SESSION['id_cliente_user'], $date, $date, $this->id_estado_pedido);
             // Se obtiene el ultimo valor insertado en la llave primaria de la tabla pedidos.
             if ($this->id_pedido = Database::getLastRow($sql, $params)) {
                 return true;
@@ -251,11 +252,11 @@ class Pedido extends Validator
     {
         date_default_timezone_set('America/El_Salvador');
         $date = date('Y-m-d');
-        $this->id_estado_pedido = 1;
+        $this->id_estado_pedido = 2;
         $sql = 'UPDATE pedido
                 SET id_estado_pedido = ?, fecha_pedido = ?
                 WHERE id_pedido = ?';
-        $params = array($this->id_estado_pedido, $date, $this->id_pedido);
+        $params = array(2, $date, $_SESSION['id_pedido']);
         return Database::executeRow($sql, $params);
     }
 
