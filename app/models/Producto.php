@@ -14,7 +14,7 @@ class Producto extends Validator
     private $id_proveedor = null;
     private $existencias = null;
     private $imagen = null;
-    private $direccion = '../../../resources/img/productos/';
+    private $direccion = '../../resources/img/productos/';
 	
     public function setId($value){
         if ($this->validateNaturalNumber($value)) {
