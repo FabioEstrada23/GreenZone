@@ -18,7 +18,7 @@ class Database
         $server = 'localhost';
         $database = 'Green_Zone';
         $username = 'postgres';
-        $password = 'fernandojose12';
+        $password = '02032003';
              
 
         self::$connection = new PDO('pgsql:host='.$server.';dbname='.$database.';port=5432', $username, $password);

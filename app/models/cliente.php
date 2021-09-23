@@ -508,7 +508,6 @@ class Cliente extends validator{
     public function checkCodigo2($restauracion)
     {
         $sql = 'SELECT id_cliente_user, codigo_recu FROM cliente_user WHERE correo_cli_us = ?';
-        $params = array($_SESSION['correo_cli_us']);
         $data = Database::getRow($sql, $params);
         if ($restauracion == $data['codigo_recu']) {
             $this->id_cliente_user = $data['id_cliente_user'];
